@@ -141,8 +141,9 @@ export function evaluateBuild(
   let statsApCost = 0;
 
   for (const item of attributes) {
-    const effectiveBase = Number(item.baseStat);
-    const effectiveCap = Number(item.capStat);
+    const effectiveBase = Number(item.base_stat);
+    const effectiveCap = Number(item.cap_stat);
+    const category = item.category as CategoryName;
 
     const requested = userStats[item.attribute] ?? effectiveBase;
     const targetStat = clamp(requested, effectiveBase, effectiveCap);
@@ -153,7 +154,7 @@ export function evaluateBuild(
         ? calculateSingleAttributeCost(
             effectiveBase,
             targetStat,
-            item.costTier,
+            item.cost_tier,
           )
         : 0;
 
@@ -161,14 +162,14 @@ export function evaluateBuild(
     const statTotal = Math.min(99, targetStat + masteryBonus);
 
     statsApCost += apCost;
-    byCategory[item.category] = (byCategory[item.category] ?? 0) + apCost;
+    byCategory[category] = (byCategory[category] ?? 0) + apCost;
 
     breakdown.push({
-      category: item.category,
+      category,
       attribute: item.attribute,
       baseStat: effectiveBase,
       capStat: effectiveCap,
-      costTier: item.costTier,
+      costTier: item.cost_tier,
       targetStat,
       apCost,
       masteryBonus,

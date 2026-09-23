@@ -107,20 +107,14 @@ const attributeRows = parseCsv(sourceFile("archetype_attributes")).map((r) => ({
   archetype: r.archetype,
   category: r.category,
   attribute: r.attribute,
-  baseStat: num(r.base_stat),
-  capStat: num(r.cap_stat),
-  costTier: r.cost_tier,
+  base_stat: num(r.base_stat),
+  cap_stat: num(r.cap_stat),
+  cost_tier: r.cost_tier,
 }));
 
 const attributesByArchetype = {};
 for (const row of attributeRows) {
-  (attributesByArchetype[row.archetype] ??= []).push({
-    category: row.category,
-    attribute: row.attribute,
-    baseStat: row.baseStat,
-    capStat: row.capStat,
-    costTier: row.costTier,
-  });
+  (attributesByArchetype[row.archetype] ??= []).push(row);
 }
 
 // --- 3. Cost tiers -------------------------------------------------------
@@ -205,7 +199,7 @@ export function getArchetype(name: string): Archetype | undefined {
 `;
 
 const attrsFile = `${banner}
-import type { ArchetypeAttribute, CategoryName } from "@/types";
+import type { ArchetypeAttribute } from "@/types";
 
 export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = ${
   JSON.stringify(attributesByArchetype, null, 2)
@@ -220,7 +214,7 @@ export const ALL_ATTRIBUTES: string[] = Array.from(
   new Set(Object.values(ATTRIBUTES_BY_ARCHETYPE).flat().map((a) => a.attribute)),
 );
 
-export const CATEGORIES_BY_ARCHETYPE: Record<string, CategoryName[]> = Object.fromEntries(
+export const CATEGORIES_BY_ARCHETYPE: Record<string, string[]> = Object.fromEntries(
   Object.entries(ATTRIBUTES_BY_ARCHETYPE).map(([name, attrs]) => [
     name,
     Array.from(new Set(attrs.map((a) => a.category))),

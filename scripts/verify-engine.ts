@@ -24,29 +24,38 @@ const finisher = getArchetypeAttributes("Finisher");
 const attr = (name: string) => finisher.find((a) => a.attribute === name)!;
 
 console.log("--- Finisher: datos desde raw-data (sin físicos) ---");
-check("Aceleracion base", attr("Aceleracion").baseStat, 70);
-check("Aceleracion cap", attr("Aceleracion").capStat, 94);
-check("Aceleracion tier", attr("Aceleracion").costTier, "Cheapest");
-check("Sprint base", attr("Sprint").baseStat, 75);
-check("Sprint cap", attr("Sprint").capStat, 96);
-check("Sprint tier", attr("Sprint").costTier, "Expensive");
-check("Definicion tier", attr("Definicion").costTier, "Most Expensive");
+check("Aceleracion base", attr("Aceleracion").base_stat, 75);
+check("Aceleracion cap", attr("Aceleracion").cap_stat, 95);
+check("Aceleracion tier", attr("Aceleracion").cost_tier, "Cheapest");
+check("Sprint base", attr("Sprint").base_stat, 75);
+check("Sprint cap", attr("Sprint").cap_stat, 95);
+check("Sprint tier", attr("Sprint").cost_tier, "Expensive");
+check("Definicion tier", attr("Definicion").cost_tier, "Cheapest");
+
+// Tope de ritmo por arquetipo (datos oficiales): Finisher 95/95, Target 90/92, Spark 99/99.
+const targetAttrs = getArchetypeAttributes("Target");
+const sparkAttrs = getArchetypeAttributes("Spark");
+const capOf = (list: typeof finisher, name: string) =>
+  list.find((a) => a.attribute === name)!.cap_stat;
+check("Finisher ritmo 95/95", [capOf(finisher, "Aceleracion"), capOf(finisher, "Sprint")], [95, 95]);
+check("Target ritmo 90/92", [capOf(targetAttrs, "Aceleracion"), capOf(targetAttrs, "Sprint")], [90, 92]);
+check("Spark ritmo 99/99", [capOf(sparkAttrs, "Aceleracion"), capOf(sparkAttrs, "Sprint")], [99, 99]);
 
 console.log("--- Coste marginal por tier ---");
 check(
   "Aceleracion 90->92 (Cheapest)",
-  calculateSingleAttributeCost(90, 92, attr("Aceleracion").costTier),
+  calculateSingleAttributeCost(90, 92, attr("Aceleracion").cost_tier),
   16,
 );
 check(
   "Sprint 90->92 (Expensive)",
-  calculateSingleAttributeCost(90, 92, attr("Sprint").costTier),
+  calculateSingleAttributeCost(90, 92, attr("Sprint").cost_tier),
   30,
 );
 check(
-  "Definicion 90->92 (Most Expensive)",
-  calculateSingleAttributeCost(90, 92, attr("Definicion").costTier),
-  40,
+  "Definicion 90->92 (Cheapest)",
+  calculateSingleAttributeCost(90, 92, attr("Definicion").cost_tier),
+  16,
 );
 check("toStat < fromStat => 0", calculateSingleAttributeCost(92, 90, "Cheapest"), 0);
 check("toStat == fromStat => 0", calculateSingleAttributeCost(90, 90, "Expensive"), 0);
@@ -63,7 +72,7 @@ const base = evaluateBuild("Finisher");
 check("Base build totalApSpent", base.totalApSpent, 0);
 check("Base build remainingAp", base.remainingAp, MAX_AP);
 const acel = base.breakdown.find((b) => b.attribute === "Aceleracion")!;
-check("Aceleracion effective base == base_stat", [acel.baseStat, acel.targetStat], [70, 70]);
+check("Aceleracion effective base == base_stat", [acel.baseStat, acel.targetStat], [75, 75]);
 
 // Single raised attribute: Sprint -> 92 (Expensive, base 75).
 const build = evaluateBuild("Finisher", { Sprint: 92 });
@@ -78,7 +87,7 @@ const clamped = evaluateBuild("Finisher", { Sprint: 999, TirosLejanos: 0 });
 check(
   "Sprint clamped to cap",
   clamped.breakdown.find((b) => b.attribute === "Sprint")!.targetStat,
-  96,
+  95,
 );
 
 // Over-budget detection.
@@ -146,7 +155,7 @@ check("Definicion cap 99 + 2 => 99", defiCapped.statTotal, 99);
 check(
   "AP de Definicion sin cambios por maestría",
   defiCapped.apCost,
-  calculateSingleAttributeCost(75, 99, "Most Expensive"),
+  calculateSingleAttributeCost(75, 99, attr("Definicion").cost_tier),
 );
 
 // Malformed source row handled without inventing data.

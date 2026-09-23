@@ -2,9 +2,9 @@ import type { CategoryName } from "@/types";
 
 export const CATEGORY_ORDER: CategoryName[] = [
   "Pace",
-  "Shooting",
+  "Scoring",
   "Passing",
-  "Dribbling",
+  "Ball Control",
   "Defending",
   "Physical",
   "Goalkeeping",
@@ -12,9 +12,9 @@ export const CATEGORY_ORDER: CategoryName[] = [
 
 export const CATEGORY_LABELS: Record<CategoryName, string> = {
   Pace: "Ritmo",
-  Shooting: "Tiro",
+  Scoring: "Tiro",
   Passing: "Pase",
-  Dribbling: "Regate",
+  "Ball Control": "Regate",
   Defending: "Defensa",
   Physical: "Físico",
   Goalkeeping: "Portería",
@@ -22,9 +22,9 @@ export const CATEGORY_LABELS: Record<CategoryName, string> = {
 
 export const CATEGORY_ICONS: Record<CategoryName, string> = {
   Pace: "⚡",
-  Shooting: "🎯",
+  Scoring: "🎯",
   Passing: "🎩",
-  Dribbling: "🪄",
+  "Ball Control": "🪄",
   Defending: "🛡️",
   Physical: "💪",
   Goalkeeping: "🧤",

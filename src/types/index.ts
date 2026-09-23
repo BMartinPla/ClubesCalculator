@@ -2,9 +2,9 @@ export type CostTier = "Cheapest" | "Cheap" | "Expensive" | "Most Expensive";
 
 export type CategoryName =
   | "Pace"
-  | "Shooting"
+  | "Scoring"
   | "Passing"
-  | "Dribbling"
+  | "Ball Control"
   | "Defending"
   | "Physical"
   | "Goalkeeping";
@@ -34,13 +34,14 @@ export interface Archetype {
   base_ap: number;
 }
 
-/** A single attribute row of an archetype with its cost tier. */
+/** A single attribute row of an archetype with its cost tier (raw CSV shape). */
 export interface ArchetypeAttribute {
-  category: CategoryName;
+  archetype: string;
+  category: string;
   attribute: string;
-  baseStat: number;
-  capStat: number;
-  costTier: CostTier;
+  base_stat: number;
+  cap_stat: number;
+  cost_tier: CostTier;
 }
 
 /** Fixed max-level mastery bonus unlocked by an archetype. */

@@ -124,11 +124,11 @@ function AttributeRowBase({ entry, onChange }: AttributeRowProps) {
 
       <div className="mt-1.5 flex items-center justify-between text-[10px] font-medium text-zinc-600">
         <span>
-          base <span className="font-mono text-zinc-400">{baseStat}</span>
+          Base: <span className="font-mono text-zinc-400">{baseStat}</span>
         </span>
         <span>
           AP <span className="font-mono text-zinc-400">{targetStat}</span>
-          {" · "}tope <span className="font-mono text-zinc-400">{capStat}</span>
+          {" · "}Tope: <span className="font-mono text-zinc-400">{capStat}</span>
         </span>
       </div>
     </div>
