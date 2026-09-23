@@ -1,0 +1,120 @@
+parameter_type,range_label,min_val,max_val,stat_affected,modifier
+Height,Muy Bajo (~160 cm),150,162,Aceleracion,6
+Height,Muy Bajo (~160 cm),150,162,Sprint,-2
+Height,Muy Bajo (~160 cm),150,162,Agilidad,8
+Height,Muy Bajo (~160 cm),150,162,Balance,8
+Height,Muy Bajo (~160 cm),150,162,Salto,-4
+Height,Muy Bajo (~160 cm),150,162,Fuerza,-8
+Height,Muy Bajo (~160 cm),150,162,Precision Cabeza,-6
+Height,Bajo (~165 cm),163,167,Aceleracion,4
+Height,Bajo (~165 cm),163,167,Sprint,-1
+Height,Bajo (~165 cm),163,167,Agilidad,5
+Height,Bajo (~165 cm),163,167,Balance,5
+Height,Bajo (~165 cm),163,167,Salto,-2
+Height,Bajo (~165 cm),163,167,Fuerza,-5
+Height,Bajo (~165 cm),163,167,Precision Cabeza,-4
+Height,Medio Bajo (~170 cm),168,172,Aceleracion,2
+Height,Medio Bajo (~170 cm),168,172,Sprint,0
+Height,Medio Bajo (~170 cm),168,172,Agilidad,3
+Height,Medio Bajo (~170 cm),168,172,Balance,3
+Height,Medio Bajo (~170 cm),168,172,Salto,-1
+Height,Medio Bajo (~170 cm),168,172,Fuerza,-3
+Height,Medio Bajo (~170 cm),168,172,Precision Cabeza,-2
+Height,Casi Neutro (~175 cm),173,176,Aceleracion,1
+Height,Casi Neutro (~175 cm),173,176,Sprint,0
+Height,Casi Neutro (~175 cm),173,176,Agilidad,1
+Height,Casi Neutro (~175 cm),173,176,Balance,1
+Height,Casi Neutro (~175 cm),173,176,Salto,0
+Height,Casi Neutro (~175 cm),173,176,Fuerza,-1
+Height,Casi Neutro (~175 cm),173,176,Precision Cabeza,-1
+Height,Neutro (~178 cm),177,180,Aceleracion,0
+Height,Neutro (~178 cm),177,180,Sprint,0
+Height,Neutro (~178 cm),177,180,Agilidad,0
+Height,Neutro (~178 cm),177,180,Balance,0
+Height,Neutro (~178 cm),177,180,Salto,0
+Height,Neutro (~178 cm),177,180,Fuerza,0
+Height,Neutro (~178 cm),177,180,Precision Cabeza,0
+Height,Medio Alto (~182 cm),181,184,Aceleracion,-1
+Height,Medio Alto (~182 cm),181,184,Sprint,1
+Height,Medio Alto (~182 cm),181,184,Agilidad,-2
+Height,Medio Alto (~182 cm),181,184,Balance,-2
+Height,Medio Alto (~182 cm),181,184,Salto,1
+Height,Medio Alto (~182 cm),181,184,Fuerza,2
+Height,Medio Alto (~182 cm),181,184,Precision Cabeza,2
+Height,Alto (~186 cm),185,188,Aceleracion,-3
+Height,Alto (~186 cm),185,188,Sprint,2
+Height,Alto (~185 cm),185,188,Agilidad,-4
+Height,Alto (~186 cm),185,188,Balance,-4
+Height,Alto (~186 cm),185,188,Salto,2
+Height,Alto (~186 cm),185,188,Fuerza,4
+Height,Alto (~186 cm),185,188,Precision Cabeza,3
+Height,Muy Alto (~190 cm),189,193,Aceleracion,-5
+Height,Muy Alto (~190 cm),189,193,Sprint,2
+Height,Muy Alto (~190 cm),189,193,Agilidad,-7
+Height,Muy Alto (~190 cm),189,193,Balance,-7
+Height,Muy Alto (~190 cm),189,193,Salto,3
+Height,Muy Alto (~190 cm),189,193,Fuerza,6
+Height,Muy Alto (~190 cm),189,193,Precision Cabeza,5
+Height,Gigante (~196 cm),194,198,Aceleracion,-8
+Height,Gigante (~196 cm),194,198,Sprint,1
+Height,Gigante (~196 cm),194,198,Agilidad,-11
+Height,Gigante (~196 cm),194,198,Balance,-11
+Height,Gigante (~196 cm),194,198,Salto,4
+Height,Gigante (~196 cm),194,198,Fuerza,9
+Height,Gigante (~196 cm),194,198,Precision Cabeza,7
+Height,Maximo (~201+ cm),199,205,Aceleracion,-12
+Height,Maximo (~201+ cm),199,205,Sprint,0
+Height,Maximo (~201+ cm),199,205,Agilidad,-15
+Height,Maximo (~201+ cm),199,205,Balance,-15
+Height,Maximo (~201+ cm),199,205,Salto,5
+Height,Maximo (~201+ cm),199,205,Fuerza,12
+Height,Maximo (~201+ cm),199,205,Precision Cabeza,9
+Weight,Muy Liviano (45-54 kg),45,54,Aceleracion,3
+Weight,Muy Liviano (45-54 kg),45,54,Sprint,0
+Weight,Muy Liviano (45-54 kg),45,54,Agilidad,3
+Weight,Muy Liviano (45-54 kg),45,54,Balance,-2
+Weight,Muy Liviano (45-54 kg),45,54,Fuerza,-7
+Weight,Muy Liviano (45-54 kg),45,54,Agresividad,-6
+Weight,Muy Liviano (45-54 kg),45,54,Resistencia,2
+Weight,Liviano (55-64 kg),55,64,Aceleracion,1
+Weight,Liviano (55-64 kg),55,64,Sprint,0
+Weight,Liviano (55-64 kg),55,64,Agilidad,1
+Weight,Liviano (55-64 kg),55,64,Balance,-1
+Weight,Liviano (55-64 kg),55,64,Fuerza,-4
+Weight,Liviano (55-64 kg),55,64,Agresividad,-3
+Weight,Liviano (55-64 kg),55,64,Resistencia,1
+Weight,Neutro (65-74 kg),65,74,Aceleracion,0
+Weight,Neutro (65-74 kg),65,74,Sprint,0
+Weight,Neutro (65-74 kg),65,74,Agilidad,0
+Weight,Neutro (65-74 kg),65,74,Balance,0
+Weight,Neutro (65-74 kg),65,74,Fuerza,0
+Weight,Neutro (65-74 kg),65,74,Agresividad,0
+Weight,Neutro (65-74 kg),65,74,Resistencia,0
+Weight,Medio Pesado (75-84 kg),75,84,Aceleracion,-1
+Weight,Medio Pesado (75-84 kg),75,84,Sprint,0
+Weight,Medio Pesado (75-84 kg),75,84,Agilidad,-1
+Weight,Medio Pesado (75-84 kg),75,84,Balance,1
+Weight,Medio Pesado (75-84 kg),75,84,Fuerza,3
+Weight,Medio Pesado (75-84 kg),75,84,Agresividad,2
+Weight,Medio Pesado (75-84 kg),75,84,Resistencia,-1
+Weight,Pesado (85-94 kg),85,94,Aceleracion,-3
+Weight,Pesado (85-94 kg),85,94,Sprint,-1
+Weight,Pesado (85-94 kg),85,94,Agilidad,-3
+Weight,Pesado (85-94 kg),85,94,Balance,2
+Weight,Pesado (85-94 kg),85,94,Fuerza,6
+Weight,Pesado (85-94 kg),85,94,Agresividad,5
+Weight,Pesado (85-94 kg),85,94,Resistencia,-2
+Weight,Muy Pesado (95-105 kg),95,105,Aceleracion,-5
+Weight,Muy Pesado (95-105 kg),95,105,Sprint,-2
+Weight,Muy Pesado (95-105 kg),95,105,Agilidad,-5
+Weight,Muy Pesado (95-105 kg),95,105,Balance,3
+Weight,Muy Pesado (95-105 kg),95,105,Fuerza,9
+Weight,Muy Pesado (95-105 kg),95,105,Agresividad,8
+Weight,Muy Pesado (95-105 kg),95,105,Resistencia,-4
+Weight,Maximo (106-115 kg),106,115,Aceleracion,-7
+Weight,Maximo (106-115 kg),106,115,Sprint,-3
+Weight,Maximo (106-115 kg),106,115,Agilidad,-8
+Weight,Maximo (106-115 kg),106,115,Balance,4
+Weight,Maximo (106-115 kg),106,115,Fuerza,12
+Weight,Maximo (106-115 kg),106,115,Agresividad,10
+Weight,Maximo (106-115 kg),106,115,Resistencia,-6

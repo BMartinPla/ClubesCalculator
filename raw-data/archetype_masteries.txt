@@ -1,0 +1,14 @@
+archetype,stat_1,bonus_1,stat_2,bonus_2
+Finisher,Compostura,1,Definicion,2
+Target,Balance,1,Salto,2
+Magician,Efecto,1,Aceleracion,2
+Spark,Centros,1,Regates,2
+Creator,Precision Cabeza,1,Vision,2
+Maestro,Reacciones,1,Control Balon,2
+Disruptor,Resistencia,1,Intercepciones,2
+Recycler,Percepcion Defensiva,Pase Corto,2
+Boss,Agresividad,1,Fuerza,2
+Progressor,Pase Largo,1,Robos,2
+Marauder,Barridas,1,Sprint,2
+Shot Stopper,GK_Colocacion,1,GK_Reflejos,2
+Sweeper Keeper,GK_Paradas,1,GK_Estirada,2

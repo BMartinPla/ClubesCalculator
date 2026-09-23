@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  @apply bg-zinc-950 text-zinc-100 antialiased;
+  background-image:
+    radial-gradient(60rem 60rem at 15% -10%, rgba(34, 197, 94, 0.08), transparent 60%),
+    radial-gradient(50rem 50rem at 100% 0%, rgba(59, 130, 246, 0.08), transparent 55%);
+  background-attachment: fixed;
+}
+
+/* Keep sticky header offset clean on anchor jumps */
+html {
+  scroll-padding-top: 6rem;
+}
+
+/* Thin scrollbars for a premium dark feel */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #3f3f46 transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #3f3f46;
+  border-radius: 9999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #52525b;
+}
+
+/* ---- Range slider ---- */
+.ap-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 1.5rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+.ap-range:focus {
+  outline: none;
+}
+
+.ap-range::-webkit-slider-runnable-track {
+  height: 0.375rem;
+  border-radius: 9999px;
+  background: transparent;
+}
+
+.ap-range::-moz-range-track {
+  height: 0.375rem;
+  border-radius: 9999px;
+  background: transparent;
+}
+
+.ap-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -0.3125rem;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 9999px;
+  background: #fafafa;
+  border: 2px solid #18181b;
+  box-shadow: 0 0 0 3px rgba(250, 250, 250, 0.12);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.ap-range:hover::-webkit-slider-thumb,
+.ap-range:focus-visible::-webkit-slider-thumb {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.25);
+}
+
+.ap-range::-moz-range-thumb {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 9999px;
+  background: #fafafa;
+  border: 2px solid #18181b;
+  box-shadow: 0 0 0 3px rgba(250, 250, 250, 0.12);
+}
+
+.ap-range.ap-over::-webkit-slider-thumb {
+  box-shadow: 0 0 0 5px rgba(239, 68, 68, 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

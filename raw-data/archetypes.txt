@@ -1,0 +1,14 @@
+id,name,role,primary_position,signature_playstyle_plus,specializations,inspired_by,min_height,max_height,default_height,min_weight,max_weight,default_weight,base_ap
+1,Finisher,Delantero,DC / SD,Low Driven Shot,"Chip Shot, Relentless, Gamechanger",Alex Morgan,165,195,180,55,95,75,962
+2,Target,Delantero Boya,DC,Precision Header,"Acrobatic, Incisive Pass, Enforcer",Zlatan Ibrahimovic,182,205,192,75,115,88,962
+3,Magician,Delantero / Mediapunta,MCO / EI / ED,Technical,"First Touch, Power Shot, Incisive Pass",Ronaldinho,160,188,172,50,85,68,962
+4,Spark,Extremo,EI / ED / MD / MI,Trickster,"Quick Step, Whipped Pass, Chip Shot",Luis Figo,155,185,168,45,80,64,962
+5,Creator,Mediocampista,MCO / MC,Incisive Pass,"Whipped Pass, Dead Ball, Power Shot",Andres Iniesta,162,188,174,52,85,70,962
+6,Maestro,Mediocampista,MC,Pinged Pass,"Technical, First Touch, Relentless",Toni Kroos,168,192,178,60,90,74,962
+7,Disruptor,Mediocampista Defensivo,MCD,Jockey,"Intercept, Slide Tackle, Bruiser",Roy Keane,172,196,184,68,100,80,962
+8,Recycler,Mediocampista Defensivo,MCD / MC,Intercept,"Pinged Pass, Enforcer, Anticipate",Claude Makelele,168,192,176,62,92,73,962
+9,Boss,Defensa,DFC,Bruiser,"Slide Tackle, Press Proven, Block",Nemanja Vidic,180,205,188,75,115,85,962
+10,Progressor,Defensa,DFC,Long Ball Pass,"Jockey, Pinged Pass, Quick Step",Fernando Hierro,178,201,185,70,105,80,962
+11,Marauder,Lateral,LD / LI,Quick Step,"Slide Tackle, Rapid, Bruiser",Cafu,165,188,175,58,88,72,962
+12,Shot Stopper,Arquero,POR,Far Reach,"Cross Claimer, 1v1 Close Down, Deflector",Gianluigi Buffon,185,205,192,75,110,86,962
+13,Sweeper Keeper,Arquero,POR,Footwork,"Far Throw, Long Ball Pass, Press Proven",Edwin van der Sar,183,201,188,70,105,82,962
