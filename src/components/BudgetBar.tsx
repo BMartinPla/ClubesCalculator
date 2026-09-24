@@ -1,12 +1,16 @@
 "use client";
 
-import { MAX_AP, getBudgetStatus } from "@/lib/buildEngine";
+import { getBudgetStatus } from "@/lib/buildEngine";
+import { LEVEL_OPTIONS, getLevelLabel } from "@/data/levelProgression";
 
-interface HeaderBudgetProps {
+interface BudgetBarProps {
   archetypeName: string;
   spent: number;
+  maxAp: number;
   statsApCost: number;
   starsApCost: number;
+  level: number;
+  onLevelChange: (level: number) => void;
   onReset: () => void;
   onShare: () => void;
   onExport: () => void;
@@ -31,21 +35,24 @@ const STATUS_STYLES = {
   },
 } as const;
 
-export default function HeaderBudget({
+export default function BudgetBar({
   archetypeName,
   spent,
+  maxAp,
   statsApCost,
   starsApCost,
+  level,
+  onLevelChange,
   onReset,
   onShare,
   onExport,
   onSave,
-}: HeaderBudgetProps) {
-  const status = getBudgetStatus(spent);
+}: BudgetBarProps) {
+  const status = getBudgetStatus(spent, maxAp);
   const styles = STATUS_STYLES[status];
-  const pct = Math.min(100, (spent / MAX_AP) * 100);
-  const remaining = Math.max(0, MAX_AP - spent);
-  const overBy = Math.max(0, spent - MAX_AP);
+  const pct = Math.min(100, (spent / maxAp) * 100);
+  const remaining = Math.max(0, maxAp - spent);
+  const overBy = Math.max(0, spent - maxAp);
 
   return (
     <header className="sticky top-0 z-50 border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur-xl">
@@ -67,12 +74,16 @@ export default function HeaderBudget({
 
         {/* Budget meter */}
         <div className="flex flex-1 items-center gap-4 lg:justify-end">
-          <div className="min-w-0 flex-1 lg:max-w-md">
+          <div
+            className={`min-w-0 flex-1 rounded-lg px-2 py-1 lg:max-w-md ${
+              status === "over" ? "bg-rose-500/20" : ""
+            }`}
+          >
             <div className="mb-1.5 flex items-baseline justify-between gap-3 text-xs">
               <span className="font-medium text-zinc-400">
-                AP Gastados:{" "}
+                AP Usados:{" "}
                 <span className={styles.text}>{spent}</span>
-                <span className="text-zinc-600"> / {MAX_AP}</span>
+                <span className="text-zinc-600"> / {maxAp}</span>
                 <span className="hidden text-zinc-600 sm:inline">
                   {" "}
                   (Stats: {statsApCost} AP | Estrellas: {starsApCost} AP)
@@ -81,7 +92,7 @@ export default function HeaderBudget({
               <span className={`font-mono font-semibold ${styles.text}`}>
                 {overBy > 0
                   ? `${overBy} AP de más`
-                  : `${remaining} AP disponibles`}
+                  : `AP Restantes: ${remaining}`}
               </span>
             </div>
             <div className="h-2 w-full overflow-hidden rounded-full bg-zinc-800">
@@ -91,7 +102,7 @@ export default function HeaderBudget({
                 role="progressbar"
                 aria-valuenow={spent}
                 aria-valuemin={0}
-                aria-valuemax={MAX_AP}
+                aria-valuemax={maxAp}
               />
             </div>
           </div>
@@ -102,8 +113,28 @@ export default function HeaderBudget({
               {overBy > 0 ? `-${overBy}` : remaining}
             </p>
             <p className="text-[10px] font-medium uppercase tracking-widest text-zinc-500">
-              {overBy > 0 ? "AP de más" : "AP disponibles"}
+              {overBy > 0 ? "AP de más" : "AP restantes"}
             </p>
+          </div>
+
+          {/* Level selector */}
+          <div className="flex shrink-0 items-center gap-2">
+            <label htmlFor="pro-level" className="text-[10px] font-bold uppercase tracking-wider text-zinc-500">
+              Nivel
+            </label>
+            <select
+              id="pro-level"
+              value={level}
+              onChange={(e) => onLevelChange(Number(e.target.value))}
+              aria-label="Nivel del Pro"
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 font-bold text-white focus:border-emerald-500/60 focus:outline-none"
+            >
+              {LEVEL_OPTIONS.map(({ level: lvl }) => (
+                <option key={lvl} value={lvl}>
+                  {getLevelLabel(lvl)}
+                </option>
+              ))}
+            </select>
           </div>
 
           {/* Actions */}
@@ -154,8 +185,9 @@ export default function HeaderBudget({
       </div>
 
       {status === "over" && (
-        <div className="border-t border-red-500/30 bg-red-500/10 px-4 py-2 text-center text-xs font-semibold text-red-300 sm:px-6">
-          Has superado el presupuesto. Reduce atributos para volver a {MAX_AP} AP.
+        <div className="border-t border-rose-500/30 bg-rose-500/20 px-4 py-2 text-center text-xs font-semibold text-rose-200 sm:px-6">
+          Has superado el presupuesto: {overBy} AP de más. Reduce atributos o
+          estrellas para volver a {maxAp} AP ({getLevelLabel(level)}).
         </div>
       )}
     </header>

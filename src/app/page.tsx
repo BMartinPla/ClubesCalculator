@@ -3,9 +3,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import ArchetypeDropdown from "@/components/ArchetypeDropdown";
+import BudgetBar from "@/components/BudgetBar";
 import CategorySection from "@/components/CategorySection";
 import ExportBuildModal from "@/components/ExportBuildModal";
-import HeaderBudget from "@/components/HeaderBudget";
 import MasteriesModal from "@/components/MasteriesModal";
 import ShareBuildModal from "@/components/ShareBuildModal";
 import SkillControls from "@/components/SkillControls";
@@ -13,10 +13,16 @@ import { ARCHETYPES, DEFAULT_ARCHETYPE, getArchetype } from "@/data/archetypes";
 import { ARCHETYPE_MASTERIES, getMastery } from "@/data/archetypeMasteries";
 import { getStars } from "@/data/archetypeStars";
 import { CATEGORY_ORDER } from "@/data/categories";
+import { MIN_LEVEL, MAX_LEVEL } from "@/data/levelProgression";
 import { evaluateBuild } from "@/lib/buildEngine";
 import type { Archetype, CategoryName, MasteriesState } from "@/types";
 
 const FALLBACK_ARCHETYPE = getArchetype(DEFAULT_ARCHETYPE) as Archetype;
+
+function clampLevel(level: number): number {
+  if (!Number.isFinite(level)) return MIN_LEVEL;
+  return Math.min(MAX_LEVEL, Math.max(MIN_LEVEL, Math.floor(level)));
+}
 
 const resolveArchetype = (name: string): Archetype =>
   getArchetype(name) ?? FALLBACK_ARCHETYPE;
@@ -68,6 +74,7 @@ export default function Page() {
   const [masteries, setMasteries] = useState<MasteriesState>({});
   const [skills, setSkills] = useState(initialStars.skills);
   const [weakFoot, setWeakFoot] = useState(initialStars.weakFoot);
+  const [level, setLevel] = useState(MIN_LEVEL);
   const [openCategories, setOpenCategories] = useState<Set<CategoryName>>(
     () => new Set(categoriesFor(DEFAULT_ARCHETYPE).slice(0, 1)),
   );
@@ -94,13 +101,15 @@ export default function Page() {
     setWeakFoot(base.weakFoot);
     setTargetStats(parseStatsParam(params.get("stats")));
     setMasteries(parseMasteriesParam(params.get("m")));
+    const lvlParam = Number.parseInt(params.get("lvl") ?? "", 10);
+    setLevel(Number.isFinite(lvlParam) ? clampLevel(lvlParam) : MIN_LEVEL);
     setOpenCategories(new Set(categoriesFor(validArch).slice(0, 1)));
   }, []);
 
   // --- Derived build -----------------------------------------------------
   const build = useMemo(
-    () => evaluateBuild(archetype, targetStats, masteries, { skills, weakFoot }),
-    [archetype, targetStats, masteries, skills, weakFoot],
+    () => evaluateBuild(archetype, targetStats, masteries, { skills, weakFoot }, level),
+    [archetype, targetStats, masteries, skills, weakFoot, level],
   );
 
   const { breakdown } = build;
@@ -154,6 +163,7 @@ export default function Page() {
     if (typeof window === "undefined") return "";
     const params = new URLSearchParams();
     params.set("archetype", archetype);
+    params.set("lvl", String(level));
     const raised = Object.entries(targetStats)
       .filter(([, v]) => Number.isFinite(v))
       .sort(([a], [b]) => a.localeCompare(b))
@@ -165,7 +175,7 @@ export default function Page() {
       .sort();
     if (activeMasteries.length > 0) params.set("m", activeMasteries.join(","));
     return `${window.location.origin}${window.location.pathname}?${params.toString()}`;
-  }, [archetype, targetStats, masteries]);
+  }, [archetype, targetStats, masteries, level]);
 
   // Keep the address bar in sync with the current build.
   useEffect(() => {
@@ -228,11 +238,14 @@ export default function Page() {
 
   return (
     <>
-      <HeaderBudget
+      <BudgetBar
         archetypeName={archetype}
         spent={build.totalApSpent}
+        maxAp={build.maxAp}
         statsApCost={build.statsApCost}
         starsApCost={build.totalStarsCost}
+        level={level}
+        onLevelChange={(lvl) => setLevel(clampLevel(lvl))}
         onReset={resetPoints}
         onShare={() => setShareOpen(true)}
         onExport={() => setExportOpen(true)}

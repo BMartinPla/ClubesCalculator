@@ -10,6 +10,7 @@ import { getArchetype } from "../src/data/archetypes";
 import { getArchetypeAttributes } from "../src/data/archetypeAttributes";
 import { ARCHETYPE_MASTERIES } from "../src/data/archetypeMasteries";
 import { getStars } from "../src/data/archetypeStars";
+import { getMaxApForLevel } from "../src/data/levelProgression";
 
 let failures = 0;
 function check(label: string, actual: unknown, expected: unknown) {
@@ -68,14 +69,14 @@ check(
 console.log("--- evaluateBuild ---");
 
 // Base build = 0 AP; effective base equals native base_stat (no physical).
-const base = evaluateBuild("Finisher");
+const base = evaluateBuild("Finisher", {}, {}, null, 40);
 check("Base build totalApSpent", base.totalApSpent, 0);
 check("Base build remainingAp", base.remainingAp, MAX_AP);
 const acel = base.breakdown.find((b) => b.attribute === "Aceleracion")!;
 check("Aceleracion effective base == base_stat", [acel.baseStat, acel.targetStat], [75, 75]);
 
 // Single raised attribute: Sprint -> 92 (Expensive, base 70).
-const build = evaluateBuild("Finisher", { Sprint: 92 });
+const build = evaluateBuild("Finisher", { Sprint: 92 }, {}, null, 40);
 const sprint = build.breakdown.find((b) => b.attribute === "Sprint")!;
 check("Sprint apCost (70->92 Expensive)", sprint.apCost, 4 * 4 + 5 * 6 + 5 * 7 + 5 * 11 + 3 * 15);
 check("Build totalApSpent", build.totalApSpent, 181);
@@ -83,7 +84,7 @@ check("Build remainingAp", build.remainingAp, MAX_AP - 181);
 check("Build isValid", build.isValid, true);
 
 // Values are clamped into [base_stat, cap_stat].
-const clamped = evaluateBuild("Finisher", { Sprint: 999, TirosLejanos: 0 });
+const clamped = evaluateBuild("Finisher", { Sprint: 999, TirosLejanos: 0 }, {}, null, 40);
 check(
   "Sprint clamped to cap",
   clamped.breakdown.find((b) => b.attribute === "Sprint")!.targetStat,
@@ -91,11 +92,17 @@ check(
 );
 
 // Over-budget detection.
-const over = evaluateBuild("Finisher", {
-  Definicion: 99,
-  Sprint: 99,
-  Posicionamiento: 99,
-});
+const over = evaluateBuild(
+  "Finisher",
+  {
+    Definicion: 99,
+    Sprint: 99,
+    Posicionamiento: 99,
+  },
+  {},
+  null,
+  40,
+);
 console.log(
   `Over-budget probe: spent=${over.totalApSpent} overBy=${over.overBy} isValid=${over.isValid}`,
 );
@@ -138,7 +145,7 @@ check(
 );
 
 // Masteries never cost AP: base build stays at 0.
-const withMasteries = evaluateBuild("Finisher", {}, { Finisher: true });
+const withMasteries = evaluateBuild("Finisher", {}, { Finisher: true }, null, 40);
 check("Maestrías no consumen AP", withMasteries.totalApSpent, 0);
 check("Build remainingAp con maestrías", withMasteries.remainingAp, MAX_AP);
 
@@ -149,7 +156,7 @@ check("Compostura base 75 + 1", [comp.targetStat, comp.masteryBonus, comp.statTo
 check("Definicion base 75 + 2", [defi.targetStat, defi.masteryBonus, defi.statTotal], [75, 2, 77]);
 
 // Mastery bonus is capped at 99 and does not reduce AP cost.
-const capped = evaluateBuild("Finisher", { Definicion: 99 }, { Finisher: true });
+const capped = evaluateBuild("Finisher", { Definicion: 99 }, { Finisher: true }, null, 40);
 const defiCapped = capped.breakdown.find((b) => b.attribute === "Definicion")!;
 check("Definicion cap 99 + 2 => 99", defiCapped.statTotal, 99);
 check(
@@ -195,7 +202,7 @@ check(
 );
 
 // Shared budget: stats + stars.
-const starsOnly = evaluateBuild("Finisher", {}, {}, { skills: 5, weakFoot: 4 });
+const starsOnly = evaluateBuild("Finisher", {}, {}, { skills: 5, weakFoot: 4 }, 40);
 check("Solo estrellas: totalApSpent", starsOnly.totalApSpent, 75);
 check("Solo estrellas: statsApCost", starsOnly.statsApCost, 0);
 check("Solo estrellas: totalStarsCost", starsOnly.totalStarsCost, 75);
@@ -203,14 +210,14 @@ check("Solo estrellas: remainingAp", starsOnly.remainingAp, MAX_AP - 75);
 check("Solo estrellas: isValid", starsOnly.isValid, true);
 
 // Stats + stars share the same 962 budget.
-const combined = evaluateBuild("Finisher", { Sprint: 92 }, {}, { skills: 5, weakFoot: 4 });
+const combined = evaluateBuild("Finisher", { Sprint: 92 }, {}, { skills: 5, weakFoot: 4 }, 40);
 check("Stats+estrellas: totalApSpent", combined.totalApSpent, 181 + 75);
 check("Stats+estrellas: remainingAp", combined.remainingAp, MAX_AP - (181 + 75));
 
 // Stars default to base when no selection is provided.
 check(
   "Sin selección de estrellas => 0",
-  evaluateBuild("Finisher", { Sprint: 92 }).totalStarsCost,
+  evaluateBuild("Finisher", { Sprint: 92 }, {}, null, 40).totalStarsCost,
   0,
 );
 
@@ -220,6 +227,7 @@ const overStars = evaluateBuild(
   { Sprint: 96, Aceleracion: 94, Definicion: 99 },
   {},
   { skills: 5, weakFoot: 5 },
+  40,
 );
 check("Over-budget (stats+estrellas) isValid", overStars.isValid, overStars.totalApSpent <= MAX_AP);
 check(
@@ -227,6 +235,21 @@ check(
   overStars.remainingAp,
   MAX_AP - overStars.totalApSpent,
 );
+
+console.log("--- Niveles (presupuesto dinámico) ---");
+check("Nivel 1 => 100 AP", getMaxApForLevel(1), 100);
+check("Nivel 5 => 146 AP", getMaxApForLevel(5), 146);
+check("Nivel 20 => 397 AP", getMaxApForLevel(20), 397);
+check("Nivel 40 => 962 AP", getMaxApForLevel(40), 962);
+check("Nivel fuera de rango se clampea", getMaxApForLevel(999), 962);
+
+// Level 1 budget is 100 AP: Sprint->92 (181 AP) must overflow.
+const lvl1 = evaluateBuild("Finisher", { Sprint: 92 });
+check("Nivel 1: maxAp", lvl1.maxAp, 100);
+check("Nivel 1: level", lvl1.level, 1);
+check("Nivel 1: sobregasto => isValid false", lvl1.isValid, false);
+check("Nivel 1: overBy", lvl1.overBy, 181 - 100);
+check("Nivel 1: remainingAp negativo", lvl1.remainingAp, 100 - 181);
 
 console.log(failures === 0 ? "\nALL CHECKS PASSED" : `\n${failures} CHECK(S) FAILED`);
 process.exit(failures === 0 ? 0 : 1);

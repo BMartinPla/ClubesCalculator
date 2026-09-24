@@ -99,6 +99,9 @@ export interface AttributeBreakdown {
 /** Full result of evaluating a build. */
 export interface BuildResult {
   archetype: string;
+  /** Active Pro level (1..40). */
+  level: number;
+  /** AP budget for the active level. */
   maxAp: number;
   /** Total AP = stats AP + stars AP. */
   totalApSpent: number;

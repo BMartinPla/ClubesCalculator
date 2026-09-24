@@ -221,12 +221,12 @@ const BuildSummaryCard = forwardRef<HTMLDivElement, BuildSummaryCardProps>(
             <div className="min-w-0">
               <p className="truncate text-lg font-black leading-tight">{archetype.name}</p>
               <p className="text-[10px] leading-snug text-zinc-400">
-                SM: {skills}/5 • WF: {weakFoot}/5
+                Level {build.level}. SM: {skills}/5 • WF: {weakFoot}/5
               </p>
               <p className="text-[10px] leading-snug text-zinc-400">
-                AP Usados:{" "}
-                <span className="text-zinc-200">{build.totalApSpent}</span>/962 •
-                AP Restantes:{" "}
+                AP Used:{" "}
+                <span className="text-zinc-200">{build.totalApSpent}</span>/
+                {build.maxAp}. AP Left:{" "}
                 <span className="text-zinc-200">
                   {Math.max(0, build.remainingAp)}
                 </span>

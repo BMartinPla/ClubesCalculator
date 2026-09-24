@@ -3,6 +3,7 @@ import { getArchetypeAttributes } from "@/data/archetypeAttributes";
 import { ARCHETYPE_MASTERIES } from "@/data/archetypeMasteries";
 import { getStars } from "@/data/archetypeStars";
 import { CATEGORY_ORDER } from "@/data/categories";
+import { getMaxApForLevel, MAX_LEVEL, MIN_LEVEL } from "@/data/levelProgression";
 import type {
   ArchetypeMastery,
   ArchetypeStarsConfig,
@@ -14,8 +15,8 @@ import type {
   StarsSelection,
 } from "@/types";
 
-/** Total Attribute Points available to every build. */
-export const MAX_AP = 962;
+/** Maximum AP budget at the highest level (Level 40). */
+export const MAX_AP = getMaxApForLevel(MAX_LEVEL);
 
 export const clamp = (value: number, min: number, max: number): number =>
   Math.min(max, Math.max(min, value));
@@ -118,7 +119,10 @@ export function evaluateBuild(
   userStats: Record<string, number> = {},
   activeMasteries: MasteriesState = {},
   stars: StarsSelection | null = null,
+  level: number = MIN_LEVEL,
 ): BuildResult {
+  const level_ = Math.min(MAX_LEVEL, Math.max(MIN_LEVEL, Math.floor(level) || MIN_LEVEL));
+  const maxAp = getMaxApForLevel(level_);
   const attributes = getArchetypeAttributes(archetypeName);
   const masteryBonuses = calculateMasteryBonuses(
     ARCHETYPE_MASTERIES,
@@ -177,19 +181,20 @@ export function evaluateBuild(
     });
   }
 
-  // Single shared budget: stats + stars.
+  // Single shared budget: stats + stars, capped by the active level.
   const totalApSpent = statsApCost + totalStarsCost;
-  const remainingAp = MAX_AP - totalApSpent;
-  const isBudgetExceeded = totalApSpent > MAX_AP;
-  const overBy = Math.max(0, totalApSpent - MAX_AP);
+  const remainingAp = maxAp - totalApSpent;
+  const isBudgetExceeded = totalApSpent > maxAp;
+  const overBy = Math.max(0, totalApSpent - maxAp);
 
   if (isBudgetExceeded) {
-    errors.push(`Presupuesto excedido en ${overBy} AP (máximo ${MAX_AP} AP).`);
+    errors.push(`Presupuesto excedido en ${overBy} AP (máximo ${maxAp} AP).`);
   }
 
   return {
     archetype: archetypeName,
-    maxAp: MAX_AP,
+    level: level_,
+    maxAp,
     totalApSpent,
     statsApCost,
     skillsCost,
@@ -198,7 +203,7 @@ export function evaluateBuild(
     remainingAp,
     overBy,
     isBudgetExceeded,
-    isValid: totalApSpent <= MAX_AP,
+    isValid: totalApSpent <= maxAp,
     errors,
     breakdown,
     byCategory,
@@ -208,11 +213,11 @@ export function evaluateBuild(
 
 export type BudgetStatus = "ok" | "warn" | "over";
 
-/** Threshold (AP) after which the header switches from green to amber. */
-export const BUDGET_WARN_THRESHOLD = 0.9 * MAX_AP;
+/** Threshold ratio after which the header switches from green to amber. */
+export const BUDGET_WARN_RATIO = 0.9;
 
-export function getBudgetStatus(spent: number): BudgetStatus {
-  if (spent > MAX_AP) return "over";
-  if (spent >= BUDGET_WARN_THRESHOLD) return "warn";
+export function getBudgetStatus(spent: number, maxAp: number = MAX_AP): BudgetStatus {
+  if (spent > maxAp) return "over";
+  if (spent >= BUDGET_WARN_RATIO * maxAp) return "warn";
   return "ok";
 }
