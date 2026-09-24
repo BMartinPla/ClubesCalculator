@@ -1,4 +1,3 @@
-import { COST_TIERS_TABLE } from "@/data/costTiers";
 import { getArchetypeAttributes } from "@/data/archetypeAttributes";
 import { ARCHETYPE_MASTERIES } from "@/data/archetypeMasteries";
 import { getStars } from "@/data/archetypeStars";
@@ -15,40 +14,159 @@ import type {
   StarsSelection,
 } from "@/types";
 
+export type { CostTier };
+
 /** Maximum AP budget at the highest level (Level 40). */
 export const MAX_AP = getMaxApForLevel(MAX_LEVEL);
 
 export const clamp = (value: number, min: number, max: number): number =>
   Math.min(max, Math.max(min, value));
 
-/** AP price of a single point at a given stat value, per cost tier. */
-export function getPointCost(pt: number, tier: CostTier): number {
-  const range = COST_TIERS_TABLE.find(
-    (r) => pt >= Number(r.min) && pt <= Number(r.max),
-  );
-  return range ? Number(range.rates[tier]) : 0;
+/**
+ * Cost in AP of raising a single point TO `targetValue`, per cost tier.
+ * Official EA SPORTS FC 27 marginal cost table.
+ */
+export function getSinglePointCost(targetValue: number, tier: CostTier): number {
+  if (targetValue <= 60) {
+    switch (tier) {
+      case "Cheapest": return 1;
+      case "Cheap": return 1;
+      case "Expensive": return 1;
+      case "Most Expensive": return 2;
+    }
+  }
+  if (targetValue <= 63) {
+    switch (tier) {
+      case "Cheapest": return 1;
+      case "Cheap": return 1;
+      case "Expensive": return 2;
+      case "Most Expensive": return 3;
+    }
+  }
+  if (targetValue <= 66) {
+    switch (tier) {
+      case "Cheapest": return 1;
+      case "Cheap": return 2;
+      case "Expensive": return 3;
+      case "Most Expensive": return 4;
+    }
+  }
+  if (targetValue <= 69) {
+    switch (tier) {
+      case "Cheapest": return 1;
+      case "Cheap": return 2;
+      case "Expensive": return 3;
+      case "Most Expensive": return 5;
+    }
+  }
+  if (targetValue <= 74) {
+    switch (tier) {
+      case "Cheapest": return 2;
+      case "Cheap": return 3;
+      case "Expensive": return 4;
+      case "Most Expensive": return 6;
+    }
+  }
+  if (targetValue <= 79) {
+    switch (tier) {
+      case "Cheapest": return 3;
+      case "Cheap": return 4;
+      case "Expensive": return 6;
+      case "Most Expensive": return 8;
+    }
+  }
+  if (targetValue <= 84) {
+    switch (tier) {
+      case "Cheapest": return 3;
+      case "Cheap": return 5;
+      case "Expensive": return 7;
+      case "Most Expensive": return 10;
+    }
+  }
+  if (targetValue <= 89) {
+    switch (tier) {
+      case "Cheapest": return 6;
+      case "Cheap": return 8;
+      case "Expensive": return 11;
+      case "Most Expensive": return 15;
+    }
+  }
+  if (targetValue <= 92) {
+    switch (tier) {
+      case "Cheapest": return 8;
+      case "Cheap": return 11;
+      case "Expensive": return 15;
+      case "Most Expensive": return 20;
+    }
+  }
+  if (targetValue <= 94) {
+    switch (tier) {
+      case "Cheapest": return 10;
+      case "Cheap": return 15;
+      case "Expensive": return 20;
+      case "Most Expensive": return 25;
+    }
+  }
+  if (targetValue === 95) {
+    switch (tier) {
+      case "Cheapest": return 15;
+      case "Cheap": return 20;
+      case "Expensive": return 25;
+      case "Most Expensive": return 30;
+    }
+  }
+  if (targetValue === 96) {
+    switch (tier) {
+      case "Cheapest": return 20;
+      case "Cheap": return 25;
+      case "Expensive": return 30;
+      case "Most Expensive": return 35;
+    }
+  }
+  if (targetValue === 97) {
+    switch (tier) {
+      case "Cheapest": return 25;
+      case "Cheap": return 30;
+      case "Expensive": return 35;
+      case "Most Expensive": return 40;
+    }
+  }
+  if (targetValue === 98) {
+    switch (tier) {
+      case "Cheapest": return 30;
+      case "Cheap": return 35;
+      case "Expensive": return 40;
+      case "Most Expensive": return 45;
+    }
+  }
+  // 99
+  switch (tier) {
+    case "Cheapest": return 35;
+    case "Cheap": return 40;
+    case "Expensive": return 45;
+    case "Most Expensive": return 50;
+  }
 }
 
 /**
- * Cost to move one attribute from `fromStat` to `toStat`.
- *
- * Strictly marginal: iterates every intermediate point and adds that point's
- * tier rate. Direct multiplication like (target - base) * rate is forbidden.
- * If `toStat <= fromStat` the cost is exactly 0.
+ * Accumulated AP cost to raise an attribute from `baseStat` to `currentStat`,
+ * summing the marginal single-point cost of every intermediate value.
  */
-export function calculateSingleAttributeCost(
-  fromStat: number,
-  toStat: number,
+export function calculateAttributeUpgradeCost(
+  baseStat: number,
+  currentStat: number,
   tier: CostTier,
 ): number {
-  if (toStat <= fromStat) return 0;
-
-  let cost = 0;
-  for (let pt = fromStat + 1; pt <= toStat; pt++) {
-    cost += getPointCost(pt, tier);
+  if (currentStat <= baseStat) return 0;
+  let totalAp = 0;
+  for (let val = baseStat + 1; val <= currentStat; val++) {
+    totalAp += getSinglePointCost(val, tier);
   }
-  return cost;
+  return totalAp;
 }
+
+/** Backwards-compatible alias of {@link calculateAttributeUpgradeCost}. */
+export const calculateSingleAttributeCost = calculateAttributeUpgradeCost;
 
 /**
  * Total passive bonus per stat contributed by the active masteries.
@@ -155,7 +273,7 @@ export function evaluateBuild(
     // AP is charged strictly on the allocated points (base -> target).
     const apCost =
       targetStat > effectiveBase
-        ? calculateSingleAttributeCost(
+        ? calculateAttributeUpgradeCost(
             effectiveBase,
             targetStat,
             item.cost_tier,

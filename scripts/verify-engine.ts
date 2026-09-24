@@ -1,5 +1,7 @@
 import {
   calculateSingleAttributeCost,
+  calculateAttributeUpgradeCost,
+  getSinglePointCost,
   calculateMasteryBonuses,
   evaluateBuild,
   getStarsCost,
@@ -250,6 +252,14 @@ check("Nivel 1: level", lvl1.level, 1);
 check("Nivel 1: sobregasto => isValid false", lvl1.isValid, false);
 check("Nivel 1: overBy", lvl1.overBy, 181 - 100);
 check("Nivel 1: remainingAp negativo", lvl1.remainingAp, 100 - 181);
+
+console.log("--- Tabla de costes marginales (casos testigo) ---");
+check("Caso testigo 75->90 Cheapest = 65", calculateAttributeUpgradeCost(75, 90, "Cheapest"), 65);
+check("Caso testigo 75->90 Most Expensive = 177", calculateAttributeUpgradeCost(75, 90, "Most Expensive"), 177);
+check("Caso testigo 75->99 Most Expensive = 467", calculateAttributeUpgradeCost(75, 99, "Most Expensive"), 467);
+check("Punto individual 90 Cheapest = 8", getSinglePointCost(90, "Cheapest"), 8);
+check("Punto individual 99 Most Expensive = 50", getSinglePointCost(99, "Most Expensive"), 50);
+check("Alias coincide", calculateSingleAttributeCost(75, 90, "Cheapest"), 65);
 
 console.log(failures === 0 ? "\nALL CHECKS PASSED" : `\n${failures} CHECK(S) FAILED`);
 process.exit(failures === 0 ? 0 : 1);
