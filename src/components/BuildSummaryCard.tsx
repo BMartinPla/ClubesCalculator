@@ -35,7 +35,7 @@ const ATTRIBUTE_LABELS: Record<string, string> = {
   Penales: "Penalties",
   Vision: "Vision",
   Centros: "Crossing",
-  "Precision Faltas": "FK Accuracy",
+  "Precision TL": "FK Accuracy",
   "Pase Corto": "Short Passing",
   "Pase Largo": "Long Passing",
   Efecto: "Curve",

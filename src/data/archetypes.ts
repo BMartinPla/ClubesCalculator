@@ -221,46 +221,6 @@ export const ARCHETYPES: Archetype[] = [
     "max_weight": 88,
     "default_weight": 72,
     "base_ap": 962
-  },
-  {
-    "id": 12,
-    "name": "Shot Stopper",
-    "role": "Arquero",
-    "primary_position": "POR",
-    "signature_playstyle_plus": "Far Reach",
-    "specializations": [
-      "Cross Claimer",
-      "1v1 Close Down",
-      "Deflector"
-    ],
-    "inspired_by": "Gianluigi Buffon",
-    "min_height": 185,
-    "max_height": 205,
-    "default_height": 192,
-    "min_weight": 75,
-    "max_weight": 110,
-    "default_weight": 86,
-    "base_ap": 962
-  },
-  {
-    "id": 13,
-    "name": "Sweeper Keeper",
-    "role": "Arquero",
-    "primary_position": "POR",
-    "signature_playstyle_plus": "Footwork",
-    "specializations": [
-      "Far Throw",
-      "Long Ball Pass",
-      "Press Proven"
-    ],
-    "inspired_by": "Edwin van der Sar",
-    "min_height": 183,
-    "max_height": 201,
-    "default_height": 188,
-    "min_weight": 70,
-    "max_weight": 105,
-    "default_weight": 82,
-    "base_ap": 962
   }
 ];
 

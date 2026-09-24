@@ -27,7 +27,7 @@ console.log("--- Finisher: datos desde raw-data (sin físicos) ---");
 check("Aceleracion base", attr("Aceleracion").base_stat, 75);
 check("Aceleracion cap", attr("Aceleracion").cap_stat, 95);
 check("Aceleracion tier", attr("Aceleracion").cost_tier, "Cheapest");
-check("Sprint base", attr("Sprint").base_stat, 75);
+check("Sprint base", attr("Sprint").base_stat, 70);
 check("Sprint cap", attr("Sprint").cap_stat, 95);
 check("Sprint tier", attr("Sprint").cost_tier, "Expensive");
 check("Definicion tier", attr("Definicion").cost_tier, "Cheapest");
@@ -74,12 +74,12 @@ check("Base build remainingAp", base.remainingAp, MAX_AP);
 const acel = base.breakdown.find((b) => b.attribute === "Aceleracion")!;
 check("Aceleracion effective base == base_stat", [acel.baseStat, acel.targetStat], [75, 75]);
 
-// Single raised attribute: Sprint -> 92 (Expensive, base 75).
+// Single raised attribute: Sprint -> 92 (Expensive, base 70).
 const build = evaluateBuild("Finisher", { Sprint: 92 });
 const sprint = build.breakdown.find((b) => b.attribute === "Sprint")!;
-check("Sprint apCost (75->92 Expensive)", sprint.apCost, 4 * 6 + 5 * 7 + 5 * 11 + 3 * 15);
-check("Build totalApSpent", build.totalApSpent, 159);
-check("Build remainingAp", build.remainingAp, MAX_AP - 159);
+check("Sprint apCost (70->92 Expensive)", sprint.apCost, 4 * 4 + 5 * 6 + 5 * 7 + 5 * 11 + 3 * 15);
+check("Build totalApSpent", build.totalApSpent, 181);
+check("Build remainingAp", build.remainingAp, MAX_AP - 181);
 check("Build isValid", build.isValid, true);
 
 // Values are clamped into [base_stat, cap_stat].
@@ -124,7 +124,7 @@ check(
 
 console.log("--- Maestrías (bonos pasivos, sin coste AP) ---");
 
-check("13 maestrías cargadas", ARCHETYPE_MASTERIES.length, 13);
+check("11 maestrías cargadas", ARCHETYPE_MASTERIES.length, 11);
 
 check(
   "Bonus Finisher activo",
@@ -160,14 +160,15 @@ check(
 
 // Malformed source row handled without inventing data.
 const recycler = ARCHETYPE_MASTERIES.find((m) => m.archetype === "Recycler")!;
-check("Recycler bonus_1 = 0 (dato incompleto)", recycler.bonus_1, 0);
+check("Recycler bonus_1 = 1", recycler.bonus_1, 1);
 check("Recycler stat_2 conservado", recycler.stat_2, "Pase Corto");
 
 console.log("--- Estrellas (SM/WF) ---");
 check("Finisher base skills", getStars("Finisher")!.base_skills, 3);
 check("Finisher base weak foot", getStars("Finisher")!.base_weak_foot, 3);
 check("Boss max skills", getStars("Boss")!.max_skills, 4);
-check("Shot Stopper max weak foot", getStars("Shot Stopper")!.max_weak_foot, 1);
+check("Magician base skills", getStars("Magician")!.base_skills, 4);
+check("Recycler base skills", getStars("Recycler")!.base_skills, 2);
 
 console.log("--- Coste de estrellas (AP compartido) ---");
 const finStars = getStars("Finisher")!;
@@ -203,8 +204,8 @@ check("Solo estrellas: isValid", starsOnly.isValid, true);
 
 // Stats + stars share the same 962 budget.
 const combined = evaluateBuild("Finisher", { Sprint: 92 }, {}, { skills: 5, weakFoot: 4 });
-check("Stats+estrellas: totalApSpent", combined.totalApSpent, 159 + 75);
-check("Stats+estrellas: remainingAp", combined.remainingAp, MAX_AP - (159 + 75));
+check("Stats+estrellas: totalApSpent", combined.totalApSpent, 181 + 75);
+check("Stats+estrellas: remainingAp", combined.remainingAp, MAX_AP - (181 + 75));
 
 // Stars default to base when no selection is provided.
 check(

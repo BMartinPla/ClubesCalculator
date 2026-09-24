@@ -144,32 +144,6 @@ export const ARCHETYPE_STARS: ArchetypeStars[] = [
     "cost_wf_3": 0,
     "cost_wf_4": 35,
     "cost_wf_5": 50
-  },
-  {
-    "archetype": "Shot Stopper",
-    "base_skills": 1,
-    "max_skills": 1,
-    "cost_skills_3": 0,
-    "cost_skills_4": 0,
-    "cost_skills_5": 0,
-    "base_weak_foot": 1,
-    "max_weak_foot": 1,
-    "cost_wf_3": 0,
-    "cost_wf_4": 0,
-    "cost_wf_5": 0
-  },
-  {
-    "archetype": "Sweeper Keeper",
-    "base_skills": 2,
-    "max_skills": 3,
-    "cost_skills_3": 15,
-    "cost_skills_4": 0,
-    "cost_skills_5": 0,
-    "base_weak_foot": 2,
-    "max_weak_foot": 3,
-    "cost_wf_3": 20,
-    "cost_wf_4": 0,
-    "cost_wf_5": 0
   }
 ];
 

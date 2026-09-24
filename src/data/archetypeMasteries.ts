@@ -54,7 +54,7 @@ export const ARCHETYPE_MASTERIES: ArchetypeMastery[] = [
   {
     "archetype": "Recycler",
     "stat_1": "Percepcion Defensiva",
-    "bonus_1": 0,
+    "bonus_1": 1,
     "stat_2": "Pase Corto",
     "bonus_2": 2
   },
@@ -77,20 +77,6 @@ export const ARCHETYPE_MASTERIES: ArchetypeMastery[] = [
     "stat_1": "Barridas",
     "bonus_1": 1,
     "stat_2": "Sprint",
-    "bonus_2": 2
-  },
-  {
-    "archetype": "Shot Stopper",
-    "stat_1": "GK_Colocacion",
-    "bonus_1": 1,
-    "stat_2": "GK_Reflejos",
-    "bonus_2": 2
-  },
-  {
-    "archetype": "Sweeper Keeper",
-    "stat_1": "GK_Paradas",
-    "bonus_1": 1,
-    "stat_2": "GK_Estirada",
     "bonus_2": 2
   }
 ];

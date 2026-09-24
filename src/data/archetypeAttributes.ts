@@ -15,7 +15,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Finisher",
       "category": "Pace",
       "attribute": "Sprint",
-      "base_stat": 75,
+      "base_stat": 70,
       "cap_stat": 95,
       "cost_tier": "Expensive"
     },
@@ -86,7 +86,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
     {
       "archetype": "Finisher",
       "category": "Passing",
-      "attribute": "Precision Faltas",
+      "attribute": "Precision TL",
       "base_stat": 65,
       "cap_stat": 82,
       "cost_tier": "Expensive"
@@ -119,7 +119,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Finisher",
       "category": "Ball Control",
       "attribute": "Agilidad",
-      "base_stat": 75,
+      "base_stat": 72,
       "cap_stat": 92,
       "cost_tier": "Cheap"
     },
@@ -241,7 +241,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Pace",
       "attribute": "Aceleracion",
-      "base_stat": 65,
+      "base_stat": 70,
       "cap_stat": 90,
       "cost_tier": "Cheapest"
     },
@@ -249,7 +249,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Pace",
       "attribute": "Sprint",
-      "base_stat": 68,
+      "base_stat": 65,
       "cap_stat": 92,
       "cost_tier": "Expensive"
     },
@@ -257,7 +257,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Scoring",
       "attribute": "Posicionamiento",
-      "base_stat": 78,
+      "base_stat": 80,
       "cap_stat": 95,
       "cost_tier": "Cheapest"
     },
@@ -265,7 +265,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Scoring",
       "attribute": "Definicion",
-      "base_stat": 74,
+      "base_stat": 72,
       "cap_stat": 96,
       "cost_tier": "Cheapest"
     },
@@ -273,7 +273,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Scoring",
       "attribute": "Potencia Tiro",
-      "base_stat": 78,
+      "base_stat": 75,
       "cap_stat": 98,
       "cost_tier": "Cheapest"
     },
@@ -297,7 +297,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Scoring",
       "attribute": "Penales",
-      "base_stat": 70,
+      "base_stat": 75,
       "cap_stat": 88,
       "cost_tier": "Cheap"
     },
@@ -305,7 +305,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Passing",
       "attribute": "Vision",
-      "base_stat": 62,
+      "base_stat": 65,
       "cap_stat": 82,
       "cost_tier": "Expensive"
     },
@@ -320,8 +320,8 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
     {
       "archetype": "Target",
       "category": "Passing",
-      "attribute": "Precision Faltas",
-      "base_stat": 55,
+      "attribute": "Precision TL",
+      "base_stat": 65,
       "cap_stat": 75,
       "cost_tier": "Expensive"
     },
@@ -329,7 +329,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Passing",
       "attribute": "Pase Corto",
-      "base_stat": 72,
+      "base_stat": 75,
       "cap_stat": 90,
       "cost_tier": "Cheap"
     },
@@ -337,7 +337,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Passing",
       "attribute": "Pase Largo",
-      "base_stat": 52,
+      "base_stat": 50,
       "cap_stat": 78,
       "cost_tier": "Expensive"
     },
@@ -345,7 +345,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Passing",
       "attribute": "Efecto",
-      "base_stat": 58,
+      "base_stat": 55,
       "cap_stat": 78,
       "cost_tier": "Expensive"
     },
@@ -353,7 +353,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Ball Control",
       "attribute": "Agilidad",
-      "base_stat": 60,
+      "base_stat": 70,
       "cap_stat": 80,
       "cost_tier": "Most Expensive"
     },
@@ -361,7 +361,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Ball Control",
       "attribute": "Balance",
-      "base_stat": 62,
+      "base_stat": 75,
       "cap_stat": 82,
       "cost_tier": "Expensive"
     },
@@ -369,7 +369,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Ball Control",
       "attribute": "Reacciones",
-      "base_stat": 72,
+      "base_stat": 75,
       "cap_stat": 92,
       "cost_tier": "Cheap"
     },
@@ -377,7 +377,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Ball Control",
       "attribute": "Control Balon",
-      "base_stat": 74,
+      "base_stat": 70,
       "cap_stat": 92,
       "cost_tier": "Cheap"
     },
@@ -385,7 +385,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Ball Control",
       "attribute": "Regates",
-      "base_stat": 66,
+      "base_stat": 70,
       "cap_stat": 85,
       "cost_tier": "Expensive"
     },
@@ -393,7 +393,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Ball Control",
       "attribute": "Compostura",
-      "base_stat": 76,
+      "base_stat": 72,
       "cap_stat": 95,
       "cost_tier": "Cheap"
     },
@@ -401,7 +401,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Defending",
       "attribute": "Intercepciones",
-      "base_stat": 55,
+      "base_stat": 50,
       "cap_stat": 72,
       "cost_tier": "Most Expensive"
     },
@@ -409,7 +409,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Defending",
       "attribute": "Precision Cabeza",
-      "base_stat": 82,
+      "base_stat": 75,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -417,7 +417,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Defending",
       "attribute": "Percepcion Defensiva",
-      "base_stat": 58,
+      "base_stat": 50,
       "cap_stat": 75,
       "cost_tier": "Most Expensive"
     },
@@ -425,7 +425,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Defending",
       "attribute": "Robos",
-      "base_stat": 55,
+      "base_stat": 45,
       "cap_stat": 72,
       "cost_tier": "Most Expensive"
     },
@@ -433,7 +433,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Defending",
       "attribute": "Barridas",
-      "base_stat": 42,
+      "base_stat": 40,
       "cap_stat": 62,
       "cost_tier": "Most Expensive"
     },
@@ -441,7 +441,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Physical",
       "attribute": "Salto",
-      "base_stat": 76,
+      "base_stat": 75,
       "cap_stat": 98,
       "cost_tier": "Cheapest"
     },
@@ -449,7 +449,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Physical",
       "attribute": "Resistencia",
-      "base_stat": 70,
+      "base_stat": 60,
       "cap_stat": 90,
       "cost_tier": "Cheap"
     },
@@ -457,7 +457,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Physical",
       "attribute": "Fuerza",
-      "base_stat": 82,
+      "base_stat": 75,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -465,7 +465,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Target",
       "category": "Physical",
       "attribute": "Agresividad",
-      "base_stat": 78,
+      "base_stat": 65,
       "cap_stat": 96,
       "cost_tier": "Cheapest"
     }
@@ -475,7 +475,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Pace",
       "attribute": "Aceleracion",
-      "base_stat": 84,
+      "base_stat": 75,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -483,7 +483,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Pace",
       "attribute": "Sprint",
-      "base_stat": 82,
+      "base_stat": 75,
       "cap_stat": 99,
       "cost_tier": "Expensive"
     },
@@ -491,7 +491,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Scoring",
       "attribute": "Posicionamiento",
-      "base_stat": 72,
+      "base_stat": 80,
       "cap_stat": 90,
       "cost_tier": "Cheap"
     },
@@ -499,7 +499,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Scoring",
       "attribute": "Definicion",
-      "base_stat": 68,
+      "base_stat": 65,
       "cap_stat": 88,
       "cost_tier": "Cheap"
     },
@@ -507,7 +507,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Scoring",
       "attribute": "Potencia Tiro",
-      "base_stat": 70,
+      "base_stat": 65,
       "cap_stat": 88,
       "cost_tier": "Cheap"
     },
@@ -515,7 +515,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Scoring",
       "attribute": "Tiros Lejanos",
-      "base_stat": 62,
+      "base_stat": 65,
       "cap_stat": 84,
       "cost_tier": "Expensive"
     },
@@ -523,7 +523,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Scoring",
       "attribute": "Voleas",
-      "base_stat": 64,
+      "base_stat": 72,
       "cap_stat": 82,
       "cost_tier": "Expensive"
     },
@@ -531,7 +531,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Scoring",
       "attribute": "Penales",
-      "base_stat": 65,
+      "base_stat": 75,
       "cap_stat": 82,
       "cost_tier": "Expensive"
     },
@@ -539,7 +539,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Passing",
       "attribute": "Vision",
-      "base_stat": 70,
+      "base_stat": 75,
       "cap_stat": 88,
       "cost_tier": "Cheap"
     },
@@ -547,15 +547,15 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Passing",
       "attribute": "Centros",
-      "base_stat": 76,
+      "base_stat": 75,
       "cap_stat": 96,
       "cost_tier": "Cheapest"
     },
     {
       "archetype": "Spark",
       "category": "Passing",
-      "attribute": "Precision Faltas",
-      "base_stat": 64,
+      "attribute": "Precision TL",
+      "base_stat": 65,
       "cap_stat": 84,
       "cost_tier": "Expensive"
     },
@@ -563,7 +563,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Passing",
       "attribute": "Pase Corto",
-      "base_stat": 74,
+      "base_stat": 75,
       "cap_stat": 92,
       "cost_tier": "Cheap"
     },
@@ -571,7 +571,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Passing",
       "attribute": "Pase Largo",
-      "base_stat": 62,
+      "base_stat": 65,
       "cap_stat": 82,
       "cost_tier": "Expensive"
     },
@@ -579,7 +579,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Passing",
       "attribute": "Efecto",
-      "base_stat": 72,
+      "base_stat": 75,
       "cap_stat": 90,
       "cost_tier": "Cheap"
     },
@@ -587,7 +587,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Ball Control",
       "attribute": "Agilidad",
-      "base_stat": 84,
+      "base_stat": 75,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -595,7 +595,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Ball Control",
       "attribute": "Balance",
-      "base_stat": 80,
+      "base_stat": 75,
       "cap_stat": 96,
       "cost_tier": "Cheapest"
     },
@@ -603,7 +603,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Ball Control",
       "attribute": "Reacciones",
-      "base_stat": 74,
+      "base_stat": 75,
       "cap_stat": 94,
       "cost_tier": "Cheap"
     },
@@ -611,7 +611,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Ball Control",
       "attribute": "Control Balon",
-      "base_stat": 78,
+      "base_stat": 75,
       "cap_stat": 96,
       "cost_tier": "Cheap"
     },
@@ -619,7 +619,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Ball Control",
       "attribute": "Regates",
-      "base_stat": 82,
+      "base_stat": 75,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -627,7 +627,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Ball Control",
       "attribute": "Compostura",
-      "base_stat": 70,
+      "base_stat": 72,
       "cap_stat": 88,
       "cost_tier": "Expensive"
     },
@@ -635,7 +635,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Defending",
       "attribute": "Intercepciones",
-      "base_stat": 50,
+      "base_stat": 55,
       "cap_stat": 68,
       "cost_tier": "Most Expensive"
     },
@@ -643,7 +643,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Defending",
       "attribute": "Precision Cabeza",
-      "base_stat": 55,
+      "base_stat": 50,
       "cap_stat": 72,
       "cost_tier": "Most Expensive"
     },
@@ -651,7 +651,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Defending",
       "attribute": "Percepcion Defensiva",
-      "base_stat": 48,
+      "base_stat": 50,
       "cap_stat": 65,
       "cost_tier": "Most Expensive"
     },
@@ -659,7 +659,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Defending",
       "attribute": "Robos",
-      "base_stat": 48,
+      "base_stat": 55,
       "cap_stat": 66,
       "cost_tier": "Most Expensive"
     },
@@ -675,7 +675,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Physical",
       "attribute": "Salto",
-      "base_stat": 60,
+      "base_stat": 55,
       "cap_stat": 80,
       "cost_tier": "Expensive"
     },
@@ -683,7 +683,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Physical",
       "attribute": "Resistencia",
-      "base_stat": 72,
+      "base_stat": 65,
       "cap_stat": 92,
       "cost_tier": "Cheap"
     },
@@ -691,7 +691,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Physical",
       "attribute": "Fuerza",
-      "base_stat": 58,
+      "base_stat": 65,
       "cap_stat": 78,
       "cost_tier": "Most Expensive"
     },
@@ -699,7 +699,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Spark",
       "category": "Physical",
       "attribute": "Agresividad",
-      "base_stat": 60,
+      "base_stat": 50,
       "cap_stat": 78,
       "cost_tier": "Expensive"
     }
@@ -709,7 +709,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Pace",
       "attribute": "Aceleracion",
-      "base_stat": 78,
+      "base_stat": 75,
       "cap_stat": 95,
       "cost_tier": "Cheapest"
     },
@@ -717,7 +717,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Pace",
       "attribute": "Sprint",
-      "base_stat": 76,
+      "base_stat": 70,
       "cap_stat": 94,
       "cost_tier": "Expensive"
     },
@@ -725,7 +725,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Scoring",
       "attribute": "Posicionamiento",
-      "base_stat": 75,
+      "base_stat": 80,
       "cap_stat": 92,
       "cost_tier": "Cheap"
     },
@@ -733,7 +733,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Scoring",
       "attribute": "Definicion",
-      "base_stat": 72,
+      "base_stat": 75,
       "cap_stat": 92,
       "cost_tier": "Cheap"
     },
@@ -741,7 +741,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Scoring",
       "attribute": "Potencia Tiro",
-      "base_stat": 72,
+      "base_stat": 70,
       "cap_stat": 90,
       "cost_tier": "Cheap"
     },
@@ -749,7 +749,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Scoring",
       "attribute": "Tiros Lejanos",
-      "base_stat": 74,
+      "base_stat": 65,
       "cap_stat": 94,
       "cost_tier": "Cheapest"
     },
@@ -757,7 +757,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Scoring",
       "attribute": "Voleas",
-      "base_stat": 70,
+      "base_stat": 72,
       "cap_stat": 88,
       "cost_tier": "Cheap"
     },
@@ -765,7 +765,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Scoring",
       "attribute": "Penales",
-      "base_stat": 72,
+      "base_stat": 75,
       "cap_stat": 90,
       "cost_tier": "Cheap"
     },
@@ -773,7 +773,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Passing",
       "attribute": "Vision",
-      "base_stat": 78,
+      "base_stat": 75,
       "cap_stat": 96,
       "cost_tier": "Cheapest"
     },
@@ -781,15 +781,15 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Passing",
       "attribute": "Centros",
-      "base_stat": 72,
+      "base_stat": 65,
       "cap_stat": 90,
       "cost_tier": "Cheap"
     },
     {
       "archetype": "Magician",
       "category": "Passing",
-      "attribute": "Precision Faltas",
-      "base_stat": 76,
+      "attribute": "Precision TL",
+      "base_stat": 65,
       "cap_stat": 94,
       "cost_tier": "Cheapest"
     },
@@ -797,7 +797,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Passing",
       "attribute": "Pase Corto",
-      "base_stat": 80,
+      "base_stat": 75,
       "cap_stat": 98,
       "cost_tier": "Cheapest"
     },
@@ -805,7 +805,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Passing",
       "attribute": "Pase Largo",
-      "base_stat": 74,
+      "base_stat": 50,
       "cap_stat": 92,
       "cost_tier": "Cheap"
     },
@@ -813,7 +813,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Passing",
       "attribute": "Efecto",
-      "base_stat": 80,
+      "base_stat": 75,
       "cap_stat": 98,
       "cost_tier": "Cheapest"
     },
@@ -821,7 +821,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Ball Control",
       "attribute": "Agilidad",
-      "base_stat": 82,
+      "base_stat": 72,
       "cap_stat": 98,
       "cost_tier": "Cheapest"
     },
@@ -829,7 +829,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Ball Control",
       "attribute": "Balance",
-      "base_stat": 78,
+      "base_stat": 75,
       "cap_stat": 95,
       "cost_tier": "Cheap"
     },
@@ -837,7 +837,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Ball Control",
       "attribute": "Reacciones",
-      "base_stat": 76,
+      "base_stat": 75,
       "cap_stat": 95,
       "cost_tier": "Cheap"
     },
@@ -845,7 +845,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Ball Control",
       "attribute": "Control Balon",
-      "base_stat": 82,
+      "base_stat": 75,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -853,7 +853,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Ball Control",
       "attribute": "Regates",
-      "base_stat": 84,
+      "base_stat": 75,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -861,7 +861,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Ball Control",
       "attribute": "Compostura",
-      "base_stat": 78,
+      "base_stat": 72,
       "cap_stat": 96,
       "cost_tier": "Cheap"
     },
@@ -869,7 +869,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Defending",
       "attribute": "Intercepciones",
-      "base_stat": 52,
+      "base_stat": 50,
       "cap_stat": 70,
       "cost_tier": "Most Expensive"
     },
@@ -877,7 +877,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Defending",
       "attribute": "Precision Cabeza",
-      "base_stat": 56,
+      "base_stat": 65,
       "cap_stat": 74,
       "cost_tier": "Most Expensive"
     },
@@ -885,7 +885,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Defending",
       "attribute": "Percepcion Defensiva",
-      "base_stat": 50,
+      "base_stat": 45,
       "cap_stat": 68,
       "cost_tier": "Most Expensive"
     },
@@ -893,7 +893,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Defending",
       "attribute": "Robos",
-      "base_stat": 50,
+      "base_stat": 40,
       "cap_stat": 68,
       "cost_tier": "Most Expensive"
     },
@@ -901,7 +901,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Defending",
       "attribute": "Barridas",
-      "base_stat": 44,
+      "base_stat": 40,
       "cap_stat": 62,
       "cost_tier": "Most Expensive"
     },
@@ -909,7 +909,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Physical",
       "attribute": "Salto",
-      "base_stat": 62,
+      "base_stat": 60,
       "cap_stat": 82,
       "cost_tier": "Expensive"
     },
@@ -917,7 +917,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Physical",
       "attribute": "Resistencia",
-      "base_stat": 70,
+      "base_stat": 65,
       "cap_stat": 90,
       "cost_tier": "Cheap"
     },
@@ -925,7 +925,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Physical",
       "attribute": "Fuerza",
-      "base_stat": 60,
+      "base_stat": 65,
       "cap_stat": 80,
       "cost_tier": "Expensive"
     },
@@ -933,7 +933,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Magician",
       "category": "Physical",
       "attribute": "Agresividad",
-      "base_stat": 62,
+      "base_stat": 55,
       "cap_stat": 80,
       "cost_tier": "Expensive"
     }
@@ -943,7 +943,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Pace",
       "attribute": "Aceleracion",
-      "base_stat": 74,
+      "base_stat": 70,
       "cap_stat": 92,
       "cost_tier": "Expensive"
     },
@@ -951,7 +951,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Pace",
       "attribute": "Sprint",
-      "base_stat": 72,
+      "base_stat": 65,
       "cap_stat": 90,
       "cost_tier": "Expensive"
     },
@@ -959,7 +959,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Scoring",
       "attribute": "Posicionamiento",
-      "base_stat": 74,
+      "base_stat": 80,
       "cap_stat": 90,
       "cost_tier": "Cheap"
     },
@@ -967,7 +967,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Scoring",
       "attribute": "Definicion",
-      "base_stat": 68,
+      "base_stat": 65,
       "cap_stat": 88,
       "cost_tier": "Cheap"
     },
@@ -991,7 +991,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Scoring",
       "attribute": "Voleas",
-      "base_stat": 66,
+      "base_stat": 72,
       "cap_stat": 84,
       "cost_tier": "Expensive"
     },
@@ -999,7 +999,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Scoring",
       "attribute": "Penales",
-      "base_stat": 68,
+      "base_stat": 75,
       "cap_stat": 85,
       "cost_tier": "Cheap"
     },
@@ -1007,7 +1007,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Passing",
       "attribute": "Vision",
-      "base_stat": 84,
+      "base_stat": 75,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -1015,14 +1015,14 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Passing",
       "attribute": "Centros",
-      "base_stat": 76,
+      "base_stat": 75,
       "cap_stat": 94,
       "cost_tier": "Cheapest"
     },
     {
       "archetype": "Creator",
       "category": "Passing",
-      "attribute": "Precision Faltas",
+      "attribute": "Precision TL",
       "base_stat": 75,
       "cap_stat": 92,
       "cost_tier": "Cheap"
@@ -1031,7 +1031,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Passing",
       "attribute": "Pase Corto",
-      "base_stat": 84,
+      "base_stat": 75,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -1039,7 +1039,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Passing",
       "attribute": "Pase Largo",
-      "base_stat": 80,
+      "base_stat": 75,
       "cap_stat": 96,
       "cost_tier": "Cheapest"
     },
@@ -1047,7 +1047,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Passing",
       "attribute": "Efecto",
-      "base_stat": 78,
+      "base_stat": 75,
       "cap_stat": 95,
       "cost_tier": "Cheap"
     },
@@ -1055,7 +1055,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Ball Control",
       "attribute": "Agilidad",
-      "base_stat": 76,
+      "base_stat": 72,
       "cap_stat": 94,
       "cost_tier": "Cheap"
     },
@@ -1063,7 +1063,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Ball Control",
       "attribute": "Balance",
-      "base_stat": 74,
+      "base_stat": 65,
       "cap_stat": 90,
       "cost_tier": "Cheap"
     },
@@ -1071,7 +1071,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Ball Control",
       "attribute": "Reacciones",
-      "base_stat": 76,
+      "base_stat": 75,
       "cap_stat": 95,
       "cost_tier": "Cheap"
     },
@@ -1079,7 +1079,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Ball Control",
       "attribute": "Control Balon",
-      "base_stat": 80,
+      "base_stat": 75,
       "cap_stat": 98,
       "cost_tier": "Cheapest"
     },
@@ -1087,7 +1087,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Ball Control",
       "attribute": "Regates",
-      "base_stat": 78,
+      "base_stat": 75,
       "cap_stat": 95,
       "cost_tier": "Cheap"
     },
@@ -1095,7 +1095,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Ball Control",
       "attribute": "Compostura",
-      "base_stat": 78,
+      "base_stat": 72,
       "cap_stat": 95,
       "cost_tier": "Cheap"
     },
@@ -1103,7 +1103,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Defending",
       "attribute": "Intercepciones",
-      "base_stat": 58,
+      "base_stat": 55,
       "cap_stat": 78,
       "cost_tier": "Expensive"
     },
@@ -1111,7 +1111,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Defending",
       "attribute": "Precision Cabeza",
-      "base_stat": 58,
+      "base_stat": 50,
       "cap_stat": 76,
       "cost_tier": "Expensive"
     },
@@ -1119,7 +1119,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Defending",
       "attribute": "Percepcion Defensiva",
-      "base_stat": 56,
+      "base_stat": 50,
       "cap_stat": 75,
       "cost_tier": "Expensive"
     },
@@ -1127,7 +1127,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Defending",
       "attribute": "Robos",
-      "base_stat": 56,
+      "base_stat": 65,
       "cap_stat": 75,
       "cost_tier": "Expensive"
     },
@@ -1135,7 +1135,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Defending",
       "attribute": "Barridas",
-      "base_stat": 48,
+      "base_stat": 50,
       "cap_stat": 68,
       "cost_tier": "Most Expensive"
     },
@@ -1143,7 +1143,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Physical",
       "attribute": "Salto",
-      "base_stat": 62,
+      "base_stat": 60,
       "cap_stat": 80,
       "cost_tier": "Expensive"
     },
@@ -1151,7 +1151,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Physical",
       "attribute": "Resistencia",
-      "base_stat": 74,
+      "base_stat": 65,
       "cap_stat": 94,
       "cost_tier": "Cheap"
     },
@@ -1159,7 +1159,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Physical",
       "attribute": "Fuerza",
-      "base_stat": 62,
+      "base_stat": 65,
       "cap_stat": 82,
       "cost_tier": "Expensive"
     },
@@ -1167,7 +1167,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Creator",
       "category": "Physical",
       "attribute": "Agresividad",
-      "base_stat": 64,
+      "base_stat": 55,
       "cap_stat": 82,
       "cost_tier": "Expensive"
     }
@@ -1185,7 +1185,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Pace",
       "attribute": "Sprint",
-      "base_stat": 70,
+      "base_stat": 65,
       "cap_stat": 88,
       "cost_tier": "Expensive"
     },
@@ -1193,7 +1193,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Scoring",
       "attribute": "Posicionamiento",
-      "base_stat": 70,
+      "base_stat": 80,
       "cap_stat": 86,
       "cost_tier": "Cheap"
     },
@@ -1201,7 +1201,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Scoring",
       "attribute": "Definicion",
-      "base_stat": 66,
+      "base_stat": 65,
       "cap_stat": 84,
       "cost_tier": "Cheap"
     },
@@ -1209,7 +1209,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Scoring",
       "attribute": "Potencia Tiro",
-      "base_stat": 74,
+      "base_stat": 70,
       "cap_stat": 92,
       "cost_tier": "Cheap"
     },
@@ -1217,7 +1217,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Scoring",
       "attribute": "Tiros Lejanos",
-      "base_stat": 76,
+      "base_stat": 70,
       "cap_stat": 94,
       "cost_tier": "Cheapest"
     },
@@ -1225,7 +1225,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Scoring",
       "attribute": "Voleas",
-      "base_stat": 68,
+      "base_stat": 65,
       "cap_stat": 86,
       "cost_tier": "Cheap"
     },
@@ -1241,7 +1241,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Passing",
       "attribute": "Vision",
-      "base_stat": 82,
+      "base_stat": 75,
       "cap_stat": 98,
       "cost_tier": "Cheapest"
     },
@@ -1249,15 +1249,15 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Passing",
       "attribute": "Centros",
-      "base_stat": 76,
+      "base_stat": 75,
       "cap_stat": 94,
       "cost_tier": "Cheap"
     },
     {
       "archetype": "Maestro",
       "category": "Passing",
-      "attribute": "Precision Faltas",
-      "base_stat": 78,
+      "attribute": "Precision TL",
+      "base_stat": 75,
       "cap_stat": 95,
       "cost_tier": "Cheapest"
     },
@@ -1265,7 +1265,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Passing",
       "attribute": "Pase Corto",
-      "base_stat": 84,
+      "base_stat": 75,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -1273,7 +1273,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Passing",
       "attribute": "Pase Largo",
-      "base_stat": 84,
+      "base_stat": 75,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -1281,7 +1281,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Passing",
       "attribute": "Efecto",
-      "base_stat": 78,
+      "base_stat": 70,
       "cap_stat": 95,
       "cost_tier": "Cheap"
     },
@@ -1289,7 +1289,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Ball Control",
       "attribute": "Agilidad",
-      "base_stat": 72,
+      "base_stat": 75,
       "cap_stat": 90,
       "cost_tier": "Cheap"
     },
@@ -1297,7 +1297,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Ball Control",
       "attribute": "Balance",
-      "base_stat": 72,
+      "base_stat": 70,
       "cap_stat": 90,
       "cost_tier": "Cheap"
     },
@@ -1305,7 +1305,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Ball Control",
       "attribute": "Reacciones",
-      "base_stat": 80,
+      "base_stat": 65,
       "cap_stat": 98,
       "cost_tier": "Cheapest"
     },
@@ -1313,7 +1313,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Ball Control",
       "attribute": "Control Balon",
-      "base_stat": 82,
+      "base_stat": 75,
       "cap_stat": 98,
       "cost_tier": "Cheapest"
     },
@@ -1321,7 +1321,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Ball Control",
       "attribute": "Regates",
-      "base_stat": 76,
+      "base_stat": 65,
       "cap_stat": 94,
       "cost_tier": "Cheap"
     },
@@ -1329,7 +1329,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Ball Control",
       "attribute": "Compostura",
-      "base_stat": 82,
+      "base_stat": 75,
       "cap_stat": 98,
       "cost_tier": "Cheapest"
     },
@@ -1337,7 +1337,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Defending",
       "attribute": "Intercepciones",
-      "base_stat": 68,
+      "base_stat": 75,
       "cap_stat": 88,
       "cost_tier": "Cheap"
     },
@@ -1345,7 +1345,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Defending",
       "attribute": "Precision Cabeza",
-      "base_stat": 62,
+      "base_stat": 50,
       "cap_stat": 80,
       "cost_tier": "Expensive"
     },
@@ -1353,7 +1353,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Defending",
       "attribute": "Percepcion Defensiva",
-      "base_stat": 66,
+      "base_stat": 65,
       "cap_stat": 86,
       "cost_tier": "Cheap"
     },
@@ -1361,7 +1361,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Defending",
       "attribute": "Robos",
-      "base_stat": 66,
+      "base_stat": 72,
       "cap_stat": 86,
       "cost_tier": "Cheap"
     },
@@ -1369,7 +1369,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Defending",
       "attribute": "Barridas",
-      "base_stat": 58,
+      "base_stat": 50,
       "cap_stat": 78,
       "cost_tier": "Expensive"
     },
@@ -1377,7 +1377,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Physical",
       "attribute": "Salto",
-      "base_stat": 65,
+      "base_stat": 60,
       "cap_stat": 84,
       "cost_tier": "Expensive"
     },
@@ -1385,7 +1385,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Physical",
       "attribute": "Resistencia",
-      "base_stat": 78,
+      "base_stat": 65,
       "cap_stat": 96,
       "cost_tier": "Cheapest"
     },
@@ -1393,7 +1393,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Physical",
       "attribute": "Fuerza",
-      "base_stat": 68,
+      "base_stat": 65,
       "cap_stat": 88,
       "cost_tier": "Cheap"
     },
@@ -1401,7 +1401,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Maestro",
       "category": "Physical",
       "attribute": "Agresividad",
-      "base_stat": 70,
+      "base_stat": 65,
       "cap_stat": 88,
       "cost_tier": "Cheap"
     }
@@ -1411,7 +1411,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Pace",
       "attribute": "Aceleracion",
-      "base_stat": 72,
+      "base_stat": 75,
       "cap_stat": 90,
       "cost_tier": "Expensive"
     },
@@ -1419,7 +1419,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Pace",
       "attribute": "Sprint",
-      "base_stat": 74,
+      "base_stat": 70,
       "cap_stat": 92,
       "cost_tier": "Expensive"
     },
@@ -1427,7 +1427,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Scoring",
       "attribute": "Posicionamiento",
-      "base_stat": 60,
+      "base_stat": 70,
       "cap_stat": 78,
       "cost_tier": "Most Expensive"
     },
@@ -1435,7 +1435,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Scoring",
       "attribute": "Definicion",
-      "base_stat": 58,
+      "base_stat": 50,
       "cap_stat": 76,
       "cost_tier": "Most Expensive"
     },
@@ -1443,7 +1443,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Scoring",
       "attribute": "Potencia Tiro",
-      "base_stat": 72,
+      "base_stat": 70,
       "cap_stat": 88,
       "cost_tier": "Cheap"
     },
@@ -1451,7 +1451,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Scoring",
       "attribute": "Tiros Lejanos",
-      "base_stat": 64,
+      "base_stat": 65,
       "cap_stat": 82,
       "cost_tier": "Expensive"
     },
@@ -1459,7 +1459,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Scoring",
       "attribute": "Voleas",
-      "base_stat": 58,
+      "base_stat": 65,
       "cap_stat": 75,
       "cost_tier": "Most Expensive"
     },
@@ -1467,7 +1467,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Scoring",
       "attribute": "Penales",
-      "base_stat": 60,
+      "base_stat": 65,
       "cap_stat": 78,
       "cost_tier": "Most Expensive"
     },
@@ -1475,7 +1475,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Passing",
       "attribute": "Vision",
-      "base_stat": 68,
+      "base_stat": 65,
       "cap_stat": 86,
       "cost_tier": "Expensive"
     },
@@ -1483,15 +1483,15 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Passing",
       "attribute": "Centros",
-      "base_stat": 62,
+      "base_stat": 65,
       "cap_stat": 80,
       "cost_tier": "Expensive"
     },
     {
       "archetype": "Disruptor",
       "category": "Passing",
-      "attribute": "Precision Faltas",
-      "base_stat": 60,
+      "attribute": "Precision TL",
+      "base_stat": 50,
       "cap_stat": 78,
       "cost_tier": "Expensive"
     },
@@ -1499,7 +1499,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Passing",
       "attribute": "Pase Corto",
-      "base_stat": 76,
+      "base_stat": 75,
       "cap_stat": 94,
       "cost_tier": "Cheap"
     },
@@ -1507,7 +1507,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Passing",
       "attribute": "Pase Largo",
-      "base_stat": 72,
+      "base_stat": 70,
       "cap_stat": 90,
       "cost_tier": "Cheap"
     },
@@ -1515,7 +1515,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Passing",
       "attribute": "Efecto",
-      "base_stat": 62,
+      "base_stat": 65,
       "cap_stat": 80,
       "cost_tier": "Expensive"
     },
@@ -1523,7 +1523,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Ball Control",
       "attribute": "Agilidad",
-      "base_stat": 70,
+      "base_stat": 68,
       "cap_stat": 88,
       "cost_tier": "Cheap"
     },
@@ -1531,7 +1531,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Ball Control",
       "attribute": "Balance",
-      "base_stat": 72,
+      "base_stat": 75,
       "cap_stat": 90,
       "cost_tier": "Cheap"
     },
@@ -1539,7 +1539,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Ball Control",
       "attribute": "Reacciones",
-      "base_stat": 78,
+      "base_stat": 70,
       "cap_stat": 96,
       "cost_tier": "Cheap"
     },
@@ -1547,7 +1547,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Ball Control",
       "attribute": "Control Balon",
-      "base_stat": 74,
+      "base_stat": 65,
       "cap_stat": 92,
       "cost_tier": "Cheap"
     },
@@ -1555,7 +1555,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Ball Control",
       "attribute": "Regates",
-      "base_stat": 68,
+      "base_stat": 65,
       "cap_stat": 86,
       "cost_tier": "Expensive"
     },
@@ -1563,7 +1563,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Ball Control",
       "attribute": "Compostura",
-      "base_stat": 76,
+      "base_stat": 70,
       "cap_stat": 94,
       "cost_tier": "Cheap"
     },
@@ -1571,7 +1571,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Defending",
       "attribute": "Intercepciones",
-      "base_stat": 80,
+      "base_stat": 75,
       "cap_stat": 98,
       "cost_tier": "Cheapest"
     },
@@ -1579,7 +1579,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Defending",
       "attribute": "Precision Cabeza",
-      "base_stat": 72,
+      "base_stat": 65,
       "cap_stat": 90,
       "cost_tier": "Cheap"
     },
@@ -1587,7 +1587,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Defending",
       "attribute": "Percepcion Defensiva",
-      "base_stat": 78,
+      "base_stat": 70,
       "cap_stat": 96,
       "cost_tier": "Cheapest"
     },
@@ -1595,7 +1595,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Defending",
       "attribute": "Robos",
-      "base_stat": 82,
+      "base_stat": 70,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -1603,7 +1603,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Defending",
       "attribute": "Barridas",
-      "base_stat": 80,
+      "base_stat": 75,
       "cap_stat": 98,
       "cost_tier": "Cheapest"
     },
@@ -1611,7 +1611,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Physical",
       "attribute": "Salto",
-      "base_stat": 74,
+      "base_stat": 65,
       "cap_stat": 92,
       "cost_tier": "Cheap"
     },
@@ -1619,7 +1619,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Physical",
       "attribute": "Resistencia",
-      "base_stat": 84,
+      "base_stat": 75,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -1627,7 +1627,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Physical",
       "attribute": "Fuerza",
-      "base_stat": 80,
+      "base_stat": 75,
       "cap_stat": 98,
       "cost_tier": "Cheapest"
     },
@@ -1635,7 +1635,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Disruptor",
       "category": "Physical",
       "attribute": "Agresividad",
-      "base_stat": 84,
+      "base_stat": 70,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     }
@@ -1645,7 +1645,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Pace",
       "attribute": "Aceleracion",
-      "base_stat": 72,
+      "base_stat": 70,
       "cap_stat": 90,
       "cost_tier": "Expensive"
     },
@@ -1653,7 +1653,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Pace",
       "attribute": "Sprint",
-      "base_stat": 72,
+      "base_stat": 70,
       "cap_stat": 90,
       "cost_tier": "Expensive"
     },
@@ -1661,7 +1661,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Scoring",
       "attribute": "Posicionamiento",
-      "base_stat": 62,
+      "base_stat": 70,
       "cap_stat": 80,
       "cost_tier": "Most Expensive"
     },
@@ -1669,7 +1669,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Scoring",
       "attribute": "Definicion",
-      "base_stat": 56,
+      "base_stat": 55,
       "cap_stat": 75,
       "cost_tier": "Most Expensive"
     },
@@ -1677,7 +1677,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Scoring",
       "attribute": "Potencia Tiro",
-      "base_stat": 68,
+      "base_stat": 70,
       "cap_stat": 85,
       "cost_tier": "Expensive"
     },
@@ -1685,7 +1685,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Scoring",
       "attribute": "Tiros Lejanos",
-      "base_stat": 62,
+      "base_stat": 65,
       "cap_stat": 80,
       "cost_tier": "Expensive"
     },
@@ -1693,7 +1693,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Scoring",
       "attribute": "Voleas",
-      "base_stat": 56,
+      "base_stat": 65,
       "cap_stat": 74,
       "cost_tier": "Most Expensive"
     },
@@ -1701,7 +1701,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Scoring",
       "attribute": "Penales",
-      "base_stat": 60,
+      "base_stat": 65,
       "cap_stat": 78,
       "cost_tier": "Most Expensive"
     },
@@ -1709,7 +1709,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Passing",
       "attribute": "Vision",
-      "base_stat": 76,
+      "base_stat": 75,
       "cap_stat": 94,
       "cost_tier": "Cheap"
     },
@@ -1717,15 +1717,15 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Passing",
       "attribute": "Centros",
-      "base_stat": 66,
+      "base_stat": 65,
       "cap_stat": 84,
       "cost_tier": "Expensive"
     },
     {
       "archetype": "Recycler",
       "category": "Passing",
-      "attribute": "Precision Faltas",
-      "base_stat": 62,
+      "attribute": "Precision TL",
+      "base_stat": 50,
       "cap_stat": 80,
       "cost_tier": "Expensive"
     },
@@ -1733,7 +1733,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Passing",
       "attribute": "Pase Corto",
-      "base_stat": 82,
+      "base_stat": 70,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -1741,7 +1741,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Passing",
       "attribute": "Pase Largo",
-      "base_stat": 78,
+      "base_stat": 75,
       "cap_stat": 96,
       "cost_tier": "Cheapest"
     },
@@ -1749,7 +1749,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Passing",
       "attribute": "Efecto",
-      "base_stat": 66,
+      "base_stat": 65,
       "cap_stat": 84,
       "cost_tier": "Expensive"
     },
@@ -1757,7 +1757,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Ball Control",
       "attribute": "Agilidad",
-      "base_stat": 74,
+      "base_stat": 68,
       "cap_stat": 92,
       "cost_tier": "Cheap"
     },
@@ -1765,7 +1765,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Ball Control",
       "attribute": "Balance",
-      "base_stat": 76,
+      "base_stat": 75,
       "cap_stat": 94,
       "cost_tier": "Cheap"
     },
@@ -1773,7 +1773,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Ball Control",
       "attribute": "Reacciones",
-      "base_stat": 80,
+      "base_stat": 65,
       "cap_stat": 98,
       "cost_tier": "Cheapest"
     },
@@ -1781,7 +1781,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Ball Control",
       "attribute": "Control Balon",
-      "base_stat": 80,
+      "base_stat": 65,
       "cap_stat": 98,
       "cost_tier": "Cheapest"
     },
@@ -1789,7 +1789,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Ball Control",
       "attribute": "Regates",
-      "base_stat": 74,
+      "base_stat": 65,
       "cap_stat": 92,
       "cost_tier": "Cheap"
     },
@@ -1797,7 +1797,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Ball Control",
       "attribute": "Compostura",
-      "base_stat": 80,
+      "base_stat": 72,
       "cap_stat": 98,
       "cost_tier": "Cheapest"
     },
@@ -1805,7 +1805,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Defending",
       "attribute": "Intercepciones",
-      "base_stat": 84,
+      "base_stat": 75,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -1813,7 +1813,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Defending",
       "attribute": "Precision Cabeza",
-      "base_stat": 68,
+      "base_stat": 60,
       "cap_stat": 86,
       "cost_tier": "Cheap"
     },
@@ -1821,7 +1821,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Defending",
       "attribute": "Percepcion Defensiva",
-      "base_stat": 82,
+      "base_stat": 75,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -1829,7 +1829,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Defending",
       "attribute": "Robos",
-      "base_stat": 80,
+      "base_stat": 75,
       "cap_stat": 98,
       "cost_tier": "Cheapest"
     },
@@ -1837,7 +1837,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Defending",
       "attribute": "Barridas",
-      "base_stat": 76,
+      "base_stat": 75,
       "cap_stat": 94,
       "cost_tier": "Cheap"
     },
@@ -1845,7 +1845,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Physical",
       "attribute": "Salto",
-      "base_stat": 70,
+      "base_stat": 65,
       "cap_stat": 88,
       "cost_tier": "Expensive"
     },
@@ -1853,7 +1853,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Physical",
       "attribute": "Resistencia",
-      "base_stat": 84,
+      "base_stat": 72,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -1861,7 +1861,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Physical",
       "attribute": "Fuerza",
-      "base_stat": 74,
+      "base_stat": 72,
       "cap_stat": 94,
       "cost_tier": "Cheap"
     },
@@ -1869,7 +1869,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Recycler",
       "category": "Physical",
       "attribute": "Agresividad",
-      "base_stat": 76,
+      "base_stat": 75,
       "cap_stat": 95,
       "cost_tier": "Cheap"
     }
@@ -1879,7 +1879,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Pace",
       "attribute": "Aceleracion",
-      "base_stat": 66,
+      "base_stat": 70,
       "cap_stat": 88,
       "cost_tier": "Expensive"
     },
@@ -1887,7 +1887,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Pace",
       "attribute": "Sprint",
-      "base_stat": 72,
+      "base_stat": 70,
       "cap_stat": 92,
       "cost_tier": "Expensive"
     },
@@ -1895,8 +1895,8 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Scoring",
       "attribute": "Posicionamiento",
-      "base_stat": 50,
-      "cap_stat": 68,
+      "base_stat": 75,
+      "cap_stat": 85,
       "cost_tier": "Most Expensive"
     },
     {
@@ -1911,7 +1911,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Scoring",
       "attribute": "Potencia Tiro",
-      "base_stat": 65,
+      "base_stat": 70,
       "cap_stat": 85,
       "cost_tier": "Expensive"
     },
@@ -1919,7 +1919,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Scoring",
       "attribute": "Tiros Lejanos",
-      "base_stat": 50,
+      "base_stat": 60,
       "cap_stat": 70,
       "cost_tier": "Most Expensive"
     },
@@ -1927,7 +1927,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Scoring",
       "attribute": "Voleas",
-      "base_stat": 48,
+      "base_stat": 60,
       "cap_stat": 68,
       "cost_tier": "Most Expensive"
     },
@@ -1935,7 +1935,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Scoring",
       "attribute": "Penales",
-      "base_stat": 52,
+      "base_stat": 65,
       "cap_stat": 70,
       "cost_tier": "Most Expensive"
     },
@@ -1943,7 +1943,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Passing",
       "attribute": "Vision",
-      "base_stat": 58,
+      "base_stat": 55,
       "cap_stat": 78,
       "cost_tier": "Expensive"
     },
@@ -1951,14 +1951,14 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Passing",
       "attribute": "Centros",
-      "base_stat": 48,
+      "base_stat": 45,
       "cap_stat": 68,
       "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Boss",
       "category": "Passing",
-      "attribute": "Precision Faltas",
+      "attribute": "Precision TL",
       "base_stat": 50,
       "cap_stat": 70,
       "cost_tier": "Most Expensive"
@@ -1967,7 +1967,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Passing",
       "attribute": "Pase Corto",
-      "base_stat": 70,
+      "base_stat": 65,
       "cap_stat": 88,
       "cost_tier": "Cheap"
     },
@@ -1975,7 +1975,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Passing",
       "attribute": "Pase Largo",
-      "base_stat": 66,
+      "base_stat": 65,
       "cap_stat": 85,
       "cost_tier": "Expensive"
     },
@@ -1983,7 +1983,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Passing",
       "attribute": "Efecto",
-      "base_stat": 52,
+      "base_stat": 50,
       "cap_stat": 72,
       "cost_tier": "Most Expensive"
     },
@@ -1991,7 +1991,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Ball Control",
       "attribute": "Agilidad",
-      "base_stat": 58,
+      "base_stat": 65,
       "cap_stat": 78,
       "cost_tier": "Most Expensive"
     },
@@ -1999,7 +1999,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Ball Control",
       "attribute": "Balance",
-      "base_stat": 60,
+      "base_stat": 75,
       "cap_stat": 80,
       "cost_tier": "Expensive"
     },
@@ -2007,7 +2007,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Ball Control",
       "attribute": "Reacciones",
-      "base_stat": 76,
+      "base_stat": 60,
       "cap_stat": 96,
       "cost_tier": "Cheap"
     },
@@ -2015,7 +2015,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Ball Control",
       "attribute": "Control Balon",
-      "base_stat": 68,
+      "base_stat": 65,
       "cap_stat": 88,
       "cost_tier": "Cheap"
     },
@@ -2023,7 +2023,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Ball Control",
       "attribute": "Regates",
-      "base_stat": 58,
+      "base_stat": 60,
       "cap_stat": 78,
       "cost_tier": "Most Expensive"
     },
@@ -2031,7 +2031,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Ball Control",
       "attribute": "Compostura",
-      "base_stat": 76,
+      "base_stat": 65,
       "cap_stat": 96,
       "cost_tier": "Cheap"
     },
@@ -2039,7 +2039,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Defending",
       "attribute": "Intercepciones",
-      "base_stat": 82,
+      "base_stat": 75,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -2047,7 +2047,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Defending",
       "attribute": "Precision Cabeza",
-      "base_stat": 82,
+      "base_stat": 75,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -2055,7 +2055,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Defending",
       "attribute": "Percepcion Defensiva",
-      "base_stat": 84,
+      "base_stat": 75,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -2063,7 +2063,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Defending",
       "attribute": "Robos",
-      "base_stat": 84,
+      "base_stat": 75,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -2071,7 +2071,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Defending",
       "attribute": "Barridas",
-      "base_stat": 82,
+      "base_stat": 75,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -2079,7 +2079,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Physical",
       "attribute": "Salto",
-      "base_stat": 78,
+      "base_stat": 75,
       "cap_stat": 98,
       "cost_tier": "Cheapest"
     },
@@ -2087,7 +2087,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Physical",
       "attribute": "Resistencia",
-      "base_stat": 76,
+      "base_stat": 70,
       "cap_stat": 94,
       "cost_tier": "Cheap"
     },
@@ -2095,7 +2095,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Physical",
       "attribute": "Fuerza",
-      "base_stat": 84,
+      "base_stat": 75,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -2103,8 +2103,242 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Boss",
       "category": "Physical",
       "attribute": "Agresividad",
-      "base_stat": 84,
+      "base_stat": 75,
       "cap_stat": 99,
+      "cost_tier": "Cheapest"
+    }
+  ],
+  "Marauder": [
+    {
+      "archetype": "Marauder",
+      "category": "Pace",
+      "attribute": "Aceleracion",
+      "base_stat": 75,
+      "cap_stat": 96,
+      "cost_tier": "Expensive"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Pace",
+      "attribute": "Sprint",
+      "base_stat": 75,
+      "cap_stat": 97,
+      "cost_tier": "Expensive"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Scoring",
+      "attribute": "Posicionamiento",
+      "base_stat": 65,
+      "cap_stat": 80,
+      "cost_tier": "Most Expensive"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Scoring",
+      "attribute": "Definicion",
+      "base_stat": 55,
+      "cap_stat": 75,
+      "cost_tier": "Most Expensive"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Scoring",
+      "attribute": "Potencia Tiro",
+      "base_stat": 65,
+      "cap_stat": 86,
+      "cost_tier": "Expensive"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Scoring",
+      "attribute": "Tiros Lejanos",
+      "base_stat": 60,
+      "cap_stat": 80,
+      "cost_tier": "Expensive"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Scoring",
+      "attribute": "Voleas",
+      "base_stat": 65,
+      "cap_stat": 75,
+      "cost_tier": "Most Expensive"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Scoring",
+      "attribute": "Penales",
+      "base_stat": 65,
+      "cap_stat": 76,
+      "cost_tier": "Most Expensive"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Passing",
+      "attribute": "Vision",
+      "base_stat": 60,
+      "cap_stat": 88,
+      "cost_tier": "Cheap"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Passing",
+      "attribute": "Centros",
+      "base_stat": 75,
+      "cap_stat": 96,
+      "cost_tier": "Cheapest"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Passing",
+      "attribute": "Precision TL",
+      "base_stat": 60,
+      "cap_stat": 80,
+      "cost_tier": "Expensive"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Passing",
+      "attribute": "Pase Corto",
+      "base_stat": 65,
+      "cap_stat": 94,
+      "cost_tier": "Cheap"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Passing",
+      "attribute": "Pase Largo",
+      "base_stat": 65,
+      "cap_stat": 90,
+      "cost_tier": "Cheap"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Passing",
+      "attribute": "Efecto",
+      "base_stat": 75,
+      "cap_stat": 88,
+      "cost_tier": "Cheap"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Ball Control",
+      "attribute": "Agilidad",
+      "base_stat": 70,
+      "cap_stat": 94,
+      "cost_tier": "Cheap"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Ball Control",
+      "attribute": "Balance",
+      "base_stat": 65,
+      "cap_stat": 92,
+      "cost_tier": "Cheap"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Ball Control",
+      "attribute": "Reacciones",
+      "base_stat": 70,
+      "cap_stat": 95,
+      "cost_tier": "Cheap"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Ball Control",
+      "attribute": "Control Balon",
+      "base_stat": 70,
+      "cap_stat": 94,
+      "cost_tier": "Cheap"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Ball Control",
+      "attribute": "Regates",
+      "base_stat": 70,
+      "cap_stat": 92,
+      "cost_tier": "Cheap"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Ball Control",
+      "attribute": "Compostura",
+      "base_stat": 65,
+      "cap_stat": 92,
+      "cost_tier": "Cheap"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Defending",
+      "attribute": "Intercepciones",
+      "base_stat": 70,
+      "cap_stat": 95,
+      "cost_tier": "Cheapest"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Defending",
+      "attribute": "Precision Cabeza",
+      "base_stat": 65,
+      "cap_stat": 86,
+      "cost_tier": "Expensive"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Defending",
+      "attribute": "Percepcion Defensiva",
+      "base_stat": 70,
+      "cap_stat": 95,
+      "cost_tier": "Cheapest"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Defending",
+      "attribute": "Robos",
+      "base_stat": 70,
+      "cap_stat": 96,
+      "cost_tier": "Cheapest"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Defending",
+      "attribute": "Barridas",
+      "base_stat": 75,
+      "cap_stat": 98,
+      "cost_tier": "Cheapest"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Physical",
+      "attribute": "Salto",
+      "base_stat": 60,
+      "cap_stat": 90,
+      "cost_tier": "Expensive"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Physical",
+      "attribute": "Resistencia",
+      "base_stat": 75,
+      "cap_stat": 99,
+      "cost_tier": "Cheapest"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Physical",
+      "attribute": "Fuerza",
+      "base_stat": 60,
+      "cap_stat": 92,
+      "cost_tier": "Cheap"
+    },
+    {
+      "archetype": "Marauder",
+      "category": "Physical",
+      "attribute": "Agresividad",
+      "base_stat": 72,
+      "cap_stat": 96,
       "cost_tier": "Cheapest"
     }
   ],
@@ -2121,7 +2355,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Pace",
       "attribute": "Sprint",
-      "base_stat": 74,
+      "base_stat": 72,
       "cap_stat": 94,
       "cost_tier": "Expensive"
     },
@@ -2129,15 +2363,15 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Scoring",
       "attribute": "Posicionamiento",
-      "base_stat": 52,
-      "cap_stat": 70,
+      "base_stat": 70,
+      "cap_stat": 82,
       "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Progressor",
       "category": "Scoring",
       "attribute": "Definicion",
-      "base_stat": 48,
+      "base_stat": 50,
       "cap_stat": 68,
       "cost_tier": "Most Expensive"
     },
@@ -2145,7 +2379,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Scoring",
       "attribute": "Potencia Tiro",
-      "base_stat": 66,
+      "base_stat": 65,
       "cap_stat": 86,
       "cost_tier": "Expensive"
     },
@@ -2153,7 +2387,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Scoring",
       "attribute": "Tiros Lejanos",
-      "base_stat": 54,
+      "base_stat": 50,
       "cap_stat": 74,
       "cost_tier": "Most Expensive"
     },
@@ -2169,7 +2403,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Scoring",
       "attribute": "Penales",
-      "base_stat": 54,
+      "base_stat": 65,
       "cap_stat": 72,
       "cost_tier": "Most Expensive"
     },
@@ -2177,7 +2411,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Passing",
       "attribute": "Vision",
-      "base_stat": 68,
+      "base_stat": 75,
       "cap_stat": 88,
       "cost_tier": "Cheap"
     },
@@ -2185,15 +2419,15 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Passing",
       "attribute": "Centros",
-      "base_stat": 58,
+      "base_stat": 50,
       "cap_stat": 78,
       "cost_tier": "Expensive"
     },
     {
       "archetype": "Progressor",
       "category": "Passing",
-      "attribute": "Precision Faltas",
-      "base_stat": 56,
+      "attribute": "Precision TL",
+      "base_stat": 45,
       "cap_stat": 76,
       "cost_tier": "Expensive"
     },
@@ -2201,7 +2435,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Passing",
       "attribute": "Pase Corto",
-      "base_stat": 76,
+      "base_stat": 75,
       "cap_stat": 94,
       "cost_tier": "Cheapest"
     },
@@ -2209,7 +2443,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Passing",
       "attribute": "Pase Largo",
-      "base_stat": 78,
+      "base_stat": 75,
       "cap_stat": 96,
       "cost_tier": "Cheapest"
     },
@@ -2217,7 +2451,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Passing",
       "attribute": "Efecto",
-      "base_stat": 60,
+      "base_stat": 50,
       "cap_stat": 80,
       "cost_tier": "Expensive"
     },
@@ -2225,7 +2459,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Ball Control",
       "attribute": "Agilidad",
-      "base_stat": 64,
+      "base_stat": 70,
       "cap_stat": 84,
       "cost_tier": "Expensive"
     },
@@ -2233,7 +2467,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Ball Control",
       "attribute": "Balance",
-      "base_stat": 66,
+      "base_stat": 70,
       "cap_stat": 86,
       "cost_tier": "Expensive"
     },
@@ -2241,7 +2475,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Ball Control",
       "attribute": "Reacciones",
-      "base_stat": 78,
+      "base_stat": 65,
       "cap_stat": 96,
       "cost_tier": "Cheap"
     },
@@ -2249,7 +2483,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Ball Control",
       "attribute": "Control Balon",
-      "base_stat": 74,
+      "base_stat": 70,
       "cap_stat": 92,
       "cost_tier": "Cheap"
     },
@@ -2257,7 +2491,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Ball Control",
       "attribute": "Regates",
-      "base_stat": 66,
+      "base_stat": 65,
       "cap_stat": 85,
       "cost_tier": "Expensive"
     },
@@ -2265,7 +2499,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Ball Control",
       "attribute": "Compostura",
-      "base_stat": 80,
+      "base_stat": 75,
       "cap_stat": 98,
       "cost_tier": "Cheapest"
     },
@@ -2273,7 +2507,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Defending",
       "attribute": "Intercepciones",
-      "base_stat": 82,
+      "base_stat": 75,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -2281,7 +2515,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Defending",
       "attribute": "Precision Cabeza",
-      "base_stat": 78,
+      "base_stat": 75,
       "cap_stat": 96,
       "cost_tier": "Cheapest"
     },
@@ -2289,7 +2523,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Defending",
       "attribute": "Percepcion Defensiva",
-      "base_stat": 82,
+      "base_stat": 75,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -2297,7 +2531,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Defending",
       "attribute": "Robos",
-      "base_stat": 82,
+      "base_stat": 75,
       "cap_stat": 99,
       "cost_tier": "Cheapest"
     },
@@ -2305,7 +2539,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Defending",
       "attribute": "Barridas",
-      "base_stat": 78,
+      "base_stat": 75,
       "cap_stat": 96,
       "cost_tier": "Cheapest"
     },
@@ -2313,7 +2547,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Physical",
       "attribute": "Salto",
-      "base_stat": 74,
+      "base_stat": 75,
       "cap_stat": 94,
       "cost_tier": "Cheap"
     },
@@ -2321,7 +2555,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Physical",
       "attribute": "Resistencia",
-      "base_stat": 78,
+      "base_stat": 65,
       "cap_stat": 96,
       "cost_tier": "Cheap"
     },
@@ -2329,7 +2563,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Physical",
       "attribute": "Fuerza",
-      "base_stat": 76,
+      "base_stat": 70,
       "cap_stat": 95,
       "cost_tier": "Cheap"
     },
@@ -2337,431 +2571,9 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "archetype": "Progressor",
       "category": "Physical",
       "attribute": "Agresividad",
-      "base_stat": 76,
-      "cap_stat": 95,
-      "cost_tier": "Cheap"
-    }
-  ],
-  "Marauder": [
-    {
-      "archetype": "Marauder",
-      "category": "Pace",
-      "attribute": "Aceleracion",
-      "base_stat": 80,
-      "cap_stat": 96,
-      "cost_tier": "Expensive"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Pace",
-      "attribute": "Sprint",
-      "base_stat": 82,
-      "cap_stat": 97,
-      "cost_tier": "Expensive"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Scoring",
-      "attribute": "Posicionamiento",
-      "base_stat": 62,
-      "cap_stat": 80,
-      "cost_tier": "Most Expensive"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Scoring",
-      "attribute": "Definicion",
-      "base_stat": 55,
-      "cap_stat": 75,
-      "cost_tier": "Most Expensive"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Scoring",
-      "attribute": "Potencia Tiro",
-      "base_stat": 68,
-      "cap_stat": 86,
-      "cost_tier": "Expensive"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Scoring",
-      "attribute": "Tiros Lejanos",
-      "base_stat": 60,
-      "cap_stat": 80,
-      "cost_tier": "Expensive"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Scoring",
-      "attribute": "Voleas",
-      "base_stat": 56,
-      "cap_stat": 75,
-      "cost_tier": "Most Expensive"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Scoring",
-      "attribute": "Penales",
-      "base_stat": 58,
-      "cap_stat": 76,
-      "cost_tier": "Most Expensive"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Passing",
-      "attribute": "Vision",
-      "base_stat": 70,
-      "cap_stat": 88,
-      "cost_tier": "Cheap"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Passing",
-      "attribute": "Centros",
-      "base_stat": 78,
-      "cap_stat": 96,
-      "cost_tier": "Cheapest"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Passing",
-      "attribute": "Precision Faltas",
-      "base_stat": 60,
-      "cap_stat": 80,
-      "cost_tier": "Expensive"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Passing",
-      "attribute": "Pase Corto",
-      "base_stat": 76,
-      "cap_stat": 94,
-      "cost_tier": "Cheap"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Passing",
-      "attribute": "Pase Largo",
-      "base_stat": 72,
-      "cap_stat": 90,
-      "cost_tier": "Cheap"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Passing",
-      "attribute": "Efecto",
-      "base_stat": 70,
-      "cap_stat": 88,
-      "cost_tier": "Cheap"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Ball Control",
-      "attribute": "Agilidad",
-      "base_stat": 76,
-      "cap_stat": 94,
-      "cost_tier": "Cheap"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Ball Control",
-      "attribute": "Balance",
-      "base_stat": 74,
-      "cap_stat": 92,
-      "cost_tier": "Cheap"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Ball Control",
-      "attribute": "Reacciones",
-      "base_stat": 76,
-      "cap_stat": 95,
-      "cost_tier": "Cheap"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Ball Control",
-      "attribute": "Control Balon",
-      "base_stat": 76,
-      "cap_stat": 94,
-      "cost_tier": "Cheap"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Ball Control",
-      "attribute": "Regates",
-      "base_stat": 74,
-      "cap_stat": 92,
-      "cost_tier": "Cheap"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Ball Control",
-      "attribute": "Compostura",
-      "base_stat": 74,
-      "cap_stat": 92,
-      "cost_tier": "Cheap"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Defending",
-      "attribute": "Intercepciones",
-      "base_stat": 76,
-      "cap_stat": 95,
-      "cost_tier": "Cheapest"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Defending",
-      "attribute": "Precision Cabeza",
-      "base_stat": 68,
-      "cap_stat": 86,
-      "cost_tier": "Expensive"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Defending",
-      "attribute": "Percepcion Defensiva",
-      "base_stat": 76,
-      "cap_stat": 95,
-      "cost_tier": "Cheapest"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Defending",
-      "attribute": "Robos",
-      "base_stat": 78,
-      "cap_stat": 96,
-      "cost_tier": "Cheapest"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Defending",
-      "attribute": "Barridas",
-      "base_stat": 80,
-      "cap_stat": 98,
-      "cost_tier": "Cheapest"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Physical",
-      "attribute": "Salto",
-      "base_stat": 72,
-      "cap_stat": 90,
-      "cost_tier": "Expensive"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Physical",
-      "attribute": "Resistencia",
-      "base_stat": 84,
-      "cap_stat": 99,
-      "cost_tier": "Cheapest"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Physical",
-      "attribute": "Fuerza",
-      "base_stat": 72,
-      "cap_stat": 92,
-      "cost_tier": "Cheap"
-    },
-    {
-      "archetype": "Marauder",
-      "category": "Physical",
-      "attribute": "Agresividad",
-      "base_stat": 78,
-      "cap_stat": 96,
-      "cost_tier": "Cheapest"
-    }
-  ],
-  "Shot Stopper": [
-    {
-      "archetype": "Shot Stopper",
-      "category": "Goalkeeping",
-      "attribute": "GK_Estirada",
-      "base_stat": 78,
-      "cap_stat": 98,
-      "cost_tier": "Cheapest"
-    },
-    {
-      "archetype": "Shot Stopper",
-      "category": "Goalkeeping",
-      "attribute": "GK_Paradas",
-      "base_stat": 76,
-      "cap_stat": 96,
-      "cost_tier": "Cheapest"
-    },
-    {
-      "archetype": "Shot Stopper",
-      "category": "Goalkeeping",
-      "attribute": "GK_Saque",
-      "base_stat": 68,
-      "cap_stat": 88,
-      "cost_tier": "Expensive"
-    },
-    {
-      "archetype": "Shot Stopper",
-      "category": "Goalkeeping",
-      "attribute": "GK_Reflejos",
-      "base_stat": 82,
-      "cap_stat": 99,
-      "cost_tier": "Cheapest"
-    },
-    {
-      "archetype": "Shot Stopper",
-      "category": "Goalkeeping",
-      "attribute": "GK_Colocacion",
-      "base_stat": 78,
-      "cap_stat": 98,
-      "cost_tier": "Cheapest"
-    },
-    {
-      "archetype": "Shot Stopper",
-      "category": "Physical",
-      "attribute": "Reacciones",
-      "base_stat": 78,
-      "cap_stat": 98,
-      "cost_tier": "Cheapest"
-    },
-    {
-      "archetype": "Shot Stopper",
-      "category": "Physical",
-      "attribute": "Salto",
-      "base_stat": 75,
-      "cap_stat": 95,
-      "cost_tier": "Cheap"
-    },
-    {
-      "archetype": "Shot Stopper",
-      "category": "Physical",
-      "attribute": "Resistencia",
       "base_stat": 65,
-      "cap_stat": 85,
-      "cost_tier": "Expensive"
-    },
-    {
-      "archetype": "Shot Stopper",
-      "category": "Physical",
-      "attribute": "Fuerza",
-      "base_stat": 70,
-      "cap_stat": 90,
-      "cost_tier": "Cheap"
-    },
-    {
-      "archetype": "Shot Stopper",
-      "category": "Physical",
-      "attribute": "Sprint",
-      "base_stat": 60,
-      "cap_stat": 80,
-      "cost_tier": "Expensive"
-    },
-    {
-      "archetype": "Shot Stopper",
-      "category": "Physical",
-      "attribute": "Aceleracion",
-      "base_stat": 60,
-      "cap_stat": 80,
-      "cost_tier": "Expensive"
-    }
-  ],
-  "Sweeper Keeper": [
-    {
-      "archetype": "Sweeper Keeper",
-      "category": "Goalkeeping",
-      "attribute": "GK_Estirada",
-      "base_stat": 76,
-      "cap_stat": 96,
-      "cost_tier": "Cheapest"
-    },
-    {
-      "archetype": "Sweeper Keeper",
-      "category": "Goalkeeping",
-      "attribute": "GK_Paradas",
-      "base_stat": 74,
-      "cap_stat": 94,
-      "cost_tier": "Cheapest"
-    },
-    {
-      "archetype": "Sweeper Keeper",
-      "category": "Goalkeeping",
-      "attribute": "GK_Saque",
-      "base_stat": 78,
-      "cap_stat": 98,
-      "cost_tier": "Cheapest"
-    },
-    {
-      "archetype": "Sweeper Keeper",
-      "category": "Goalkeeping",
-      "attribute": "GK_Reflejos",
-      "base_stat": 78,
-      "cap_stat": 96,
-      "cost_tier": "Cheapest"
-    },
-    {
-      "archetype": "Sweeper Keeper",
-      "category": "Goalkeeping",
-      "attribute": "GK_Colocacion",
-      "base_stat": 76,
-      "cap_stat": 96,
-      "cost_tier": "Cheapest"
-    },
-    {
-      "archetype": "Sweeper Keeper",
-      "category": "Physical",
-      "attribute": "Reacciones",
-      "base_stat": 76,
-      "cap_stat": 96,
-      "cost_tier": "Cheapest"
-    },
-    {
-      "archetype": "Sweeper Keeper",
-      "category": "Passing",
-      "attribute": "Pase Corto",
-      "base_stat": 72,
-      "cap_stat": 92,
-      "cost_tier": "Cheapest"
-    },
-    {
-      "archetype": "Sweeper Keeper",
-      "category": "Passing",
-      "attribute": "Pase Largo",
-      "base_stat": 75,
       "cap_stat": 95,
-      "cost_tier": "Cheapest"
-    },
-    {
-      "archetype": "Sweeper Keeper",
-      "category": "Physical",
-      "attribute": "Salto",
-      "base_stat": 72,
-      "cap_stat": 92,
       "cost_tier": "Cheap"
-    },
-    {
-      "archetype": "Sweeper Keeper",
-      "category": "Physical",
-      "attribute": "Resistencia",
-      "base_stat": 68,
-      "cap_stat": 88,
-      "cost_tier": "Expensive"
-    },
-    {
-      "archetype": "Sweeper Keeper",
-      "category": "Physical",
-      "attribute": "Aceleracion",
-      "base_stat": 65,
-      "cap_stat": 85,
-      "cost_tier": "Expensive"
-    },
-    {
-      "archetype": "Sweeper Keeper",
-      "category": "Physical",
-      "attribute": "Sprint",
-      "base_stat": 65,
-      "cap_stat": 85,
-      "cost_tier": "Expensive"
     }
   ]
 };

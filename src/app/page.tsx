@@ -206,13 +206,12 @@ export default function Page() {
     });
   }, []);
 
-  // Reset build points, stars and masteries back to their base state.
+  // Reset build points + stars to base. Masteries stay intact (account-level).
   const resetPoints = useCallback(() => {
     const base = baseStars(archetype);
     setTargetStats({});
     setSkills(base.skills);
     setWeakFoot(base.weakFoot);
-    setMasteries({});
   }, [archetype]);
 
   const toggleMastery = useCallback((name: string) => {

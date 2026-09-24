@@ -1,0 +1,320 @@
+archetype,category,attribute,base_stat,cap_stat,cost_tier
+Finisher,Pace,Aceleracion,75,95,Cheapest
+Finisher,Pace,Sprint,70,95,Expensive
+Finisher,Scoring,Posicionamiento,80,99,Cheapest
+Finisher,Scoring,Definicion,75,99,Cheapest
+Finisher,Scoring,Potencia Tiro,75,97,Cheap
+Finisher,Scoring,Tiros Lejanos,60,88,Expensive
+Finisher,Scoring,Voleas,75,95,Cheapest
+Finisher,Scoring,Penales,75,92,Cheapest
+Finisher,Passing,Vision,65,84,Expensive
+Finisher,Passing,Centros,55,75,Expensive
+Finisher,Passing,Precision TL,65,82,Expensive
+Finisher,Passing,Pase Corto,70,88,Cheap
+Finisher,Passing,Pase Largo,50,75,Expensive
+Finisher,Passing,Efecto,70,85,Cheap
+Finisher,Ball Control,Agilidad,72,92,Cheap
+Finisher,Ball Control,Balance,75,88,Expensive
+Finisher,Ball Control,Reacciones,75,96,Cheap
+Finisher,Ball Control,Control Balon,75,95,Cheap
+Finisher,Ball Control,Regates,70,92,Cheap
+Finisher,Ball Control,Compostura,75,96,Cheapest
+Finisher,Defending,Intercepciones,60,75,Most Expensive
+Finisher,Defending,Precision Cabeza,75,92,Cheap
+Finisher,Defending,Percepcion Defensiva,55,70,Most Expensive
+Finisher,Defending,Robos,50,68,Most Expensive
+Finisher,Defending,Barridas,40,60,Most Expensive
+Finisher,Physical,Salto,65,85,Expensive
+Finisher,Physical,Resistencia,65,88,Cheap
+Finisher,Physical,Fuerza,70,90,Cheap
+Finisher,Physical,Agresividad,65,82,Expensive
+Target,Pace,Aceleracion,70,90,Cheapest
+Target,Pace,Sprint,65,92,Expensive
+Target,Scoring,Posicionamiento,80,95,Cheapest
+Target,Scoring,Definicion,72,96,Cheapest
+Target,Scoring,Potencia Tiro,75,98,Cheapest
+Target,Scoring,Tiros Lejanos,65,86,Expensive
+Target,Scoring,Voleas,72,92,Cheap
+Target,Scoring,Penales,75,88,Cheap
+Target,Passing,Vision,65,82,Expensive
+Target,Passing,Centros,50,70,Most Expensive
+Target,Passing,Precision TL,65,75,Expensive
+Target,Passing,Pase Corto,75,90,Cheap
+Target,Passing,Pase Largo,50,78,Expensive
+Target,Passing,Efecto,55,78,Expensive
+Target,Ball Control,Agilidad,70,80,Most Expensive
+Target,Ball Control,Balance,75,82,Expensive
+Target,Ball Control,Reacciones,75,92,Cheap
+Target,Ball Control,Control Balon,70,92,Cheap
+Target,Ball Control,Regates,70,85,Expensive
+Target,Ball Control,Compostura,72,95,Cheap
+Target,Defending,Intercepciones,50,72,Most Expensive
+Target,Defending,Precision Cabeza,75,99,Cheapest
+Target,Defending,Percepcion Defensiva,50,75,Most Expensive
+Target,Defending,Robos,45,72,Most Expensive
+Target,Defending,Barridas,40,62,Most Expensive
+Target,Physical,Salto,75,98,Cheapest
+Target,Physical,Resistencia,60,90,Cheap
+Target,Physical,Fuerza,75,99,Cheapest
+Target,Physical,Agresividad,65,96,Cheapest
+Spark,Pace,Aceleracion,75,99,Cheapest
+Spark,Pace,Sprint,75,99,Expensive
+Spark,Scoring,Posicionamiento,80,90,Cheap
+Spark,Scoring,Definicion,65,88,Cheap
+Spark,Scoring,Potencia Tiro,65,88,Cheap
+Spark,Scoring,Tiros Lejanos,65,84,Expensive
+Spark,Scoring,Voleas,72,82,Expensive
+Spark,Scoring,Penales,75,82,Expensive
+Spark,Passing,Vision,75,88,Cheap
+Spark,Passing,Centros,75,96,Cheapest
+Spark,Passing,Precision TL,65,84,Expensive
+Spark,Passing,Pase Corto,75,92,Cheap
+Spark,Passing,Pase Largo,65,82,Expensive
+Spark,Passing,Efecto,75,90,Cheap
+Spark,Ball Control,Agilidad,75,99,Cheapest
+Spark,Ball Control,Balance,75,96,Cheapest
+Spark,Ball Control,Reacciones,75,94,Cheap
+Spark,Ball Control,Control Balon,75,96,Cheap
+Spark,Ball Control,Regates,75,99,Cheapest
+Spark,Ball Control,Compostura,72,88,Expensive
+Spark,Defending,Intercepciones,55,68,Most Expensive
+Spark,Defending,Precision Cabeza,50,72,Most Expensive
+Spark,Defending,Percepcion Defensiva,50,65,Most Expensive
+Spark,Defending,Robos,55,66,Most Expensive
+Spark,Defending,Barridas,45,62,Most Expensive
+Spark,Physical,Salto,55,80,Expensive
+Spark,Physical,Resistencia,65,92,Cheap
+Spark,Physical,Fuerza,65,78,Most Expensive
+Spark,Physical,Agresividad,50,78,Expensive
+Magician,Pace,Aceleracion,75,95,Cheapest
+Magician,Pace,Sprint,70,94,Expensive
+Magician,Scoring,Posicionamiento,80,92,Cheap
+Magician,Scoring,Definicion,75,92,Cheap
+Magician,Scoring,Potencia Tiro,70,90,Cheap
+Magician,Scoring,Tiros Lejanos,65,94,Cheapest
+Magician,Scoring,Voleas,72,88,Cheap
+Magician,Scoring,Penales,75,90,Cheap
+Magician,Passing,Vision,75,96,Cheapest
+Magician,Passing,Centros,65,90,Cheap
+Magician,Passing,Precision TL,65,94,Cheapest
+Magician,Passing,Pase Corto,75,98,Cheapest
+Magician,Passing,Pase Largo,50,92,Cheap
+Magician,Passing,Efecto,75,98,Cheapest
+Magician,Ball Control,Agilidad,72,98,Cheapest
+Magician,Ball Control,Balance,75,95,Cheap
+Magician,Ball Control,Reacciones,75,95,Cheap
+Magician,Ball Control,Control Balon,75,99,Cheapest
+Magician,Ball Control,Regates,75,99,Cheapest
+Magician,Ball Control,Compostura,72,96,Cheap
+Magician,Defending,Intercepciones,50,70,Most Expensive
+Magician,Defending,Precision Cabeza,65,74,Most Expensive
+Magician,Defending,Percepcion Defensiva,45,68,Most Expensive
+Magician,Defending,Robos,40,68,Most Expensive
+Magician,Defending,Barridas,40,62,Most Expensive
+Magician,Physical,Salto,60,82,Expensive
+Magician,Physical,Resistencia,65,90,Cheap
+Magician,Physical,Fuerza,65,80,Expensive
+Magician,Physical,Agresividad,55,80,Expensive
+Creator,Pace,Aceleracion,70,92,Expensive
+Creator,Pace,Sprint,65,90,Expensive
+Creator,Scoring,Posicionamiento,80,90,Cheap
+Creator,Scoring,Definicion,65,88,Cheap
+Creator,Scoring,Potencia Tiro,72,88,Cheap
+Creator,Scoring,Tiros Lejanos,72,90,Cheap
+Creator,Scoring,Voleas,72,84,Expensive
+Creator,Scoring,Penales,75,85,Cheap
+Creator,Passing,Vision,75,99,Cheapest
+Creator,Passing,Centros,75,94,Cheapest
+Creator,Passing,Precision TL,75,92,Cheap
+Creator,Passing,Pase Corto,75,99,Cheapest
+Creator,Passing,Pase Largo,75,96,Cheapest
+Creator,Passing,Efecto,75,95,Cheap
+Creator,Ball Control,Agilidad,72,94,Cheap
+Creator,Ball Control,Balance,65,90,Cheap
+Creator,Ball Control,Reacciones,75,95,Cheap
+Creator,Ball Control,Control Balon,75,98,Cheapest
+Creator,Ball Control,Regates,75,95,Cheap
+Creator,Ball Control,Compostura,72,95,Cheap
+Creator,Defending,Intercepciones,55,78,Expensive
+Creator,Defending,Precision Cabeza,50,76,Expensive
+Creator,Defending,Percepcion Defensiva,50,75,Expensive
+Creator,Defending,Robos,65,75,Expensive
+Creator,Defending,Barridas,50,68,Most Expensive
+Creator,Physical,Salto,60,80,Expensive
+Creator,Physical,Resistencia,65,94,Cheap
+Creator,Physical,Fuerza,65,82,Expensive
+Creator,Physical,Agresividad,55,82,Expensive
+Maestro,Pace,Aceleracion,70,88,Expensive
+Maestro,Pace,Sprint,65,88,Expensive
+Maestro,Scoring,Posicionamiento,80,86,Cheap
+Maestro,Scoring,Definicion,65,84,Cheap
+Maestro,Scoring,Potencia Tiro,70,92,Cheap
+Maestro,Scoring,Tiros Lejanos,70,94,Cheapest
+Maestro,Scoring,Voleas,65,86,Cheap
+Maestro,Scoring,Penales,70,88,Cheap
+Maestro,Passing,Vision,75,98,Cheapest
+Maestro,Passing,Centros,75,94,Cheap
+Maestro,Passing,Precision TL,75,95,Cheapest
+Maestro,Passing,Pase Corto,75,99,Cheapest
+Maestro,Passing,Pase Largo,75,99,Cheapest
+Maestro,Passing,Efecto,70,95,Cheap
+Maestro,Ball Control,Agilidad,75,90,Cheap
+Maestro,Ball Control,Balance,70,90,Cheap
+Maestro,Ball Control,Reacciones,65,98,Cheapest
+Maestro,Ball Control,Control Balon,75,98,Cheapest
+Maestro,Ball Control,Regates,65,94,Cheap
+Maestro,Ball Control,Compostura,75,98,Cheapest
+Maestro,Defending,Intercepciones,75,88,Cheap
+Maestro,Defending,Precision Cabeza,50,80,Expensive
+Maestro,Defending,Percepcion Defensiva,65,86,Cheap
+Maestro,Defending,Robos,72,86,Cheap
+Maestro,Defending,Barridas,50,78,Expensive
+Maestro,Physical,Salto,60,84,Expensive
+Maestro,Physical,Resistencia,65,96,Cheapest
+Maestro,Physical,Fuerza,65,88,Cheap
+Maestro,Physical,Agresividad,65,88,Cheap
+Disruptor,Pace,Aceleracion,75,90,Expensive
+Disruptor,Pace,Sprint,70,92,Expensive
+Disruptor,Scoring,Posicionamiento,70,78,Most Expensive
+Disruptor,Scoring,Definicion,50,76,Most Expensive
+Disruptor,Scoring,Potencia Tiro,70,88,Cheap
+Disruptor,Scoring,Tiros Lejanos,65,82,Expensive
+Disruptor,Scoring,Voleas,65,75,Most Expensive
+Disruptor,Scoring,Penales,65,78,Most Expensive
+Disruptor,Passing,Vision,65,86,Expensive
+Disruptor,Passing,Centros,65,80,Expensive
+Disruptor,Passing,Precision TL,50,78,Expensive
+Disruptor,Passing,Pase Corto,75,94,Cheap
+Disruptor,Passing,Pase Largo,70,90,Cheap
+Disruptor,Passing,Efecto,65,80,Expensive
+Disruptor,Ball Control,Agilidad,68,88,Cheap
+Disruptor,Ball Control,Balance,75,90,Cheap
+Disruptor,Ball Control,Reacciones,70,96,Cheap
+Disruptor,Ball Control,Control Balon,65,92,Cheap
+Disruptor,Ball Control,Regates,65,86,Expensive
+Disruptor,Ball Control,Compostura,70,94,Cheap
+Disruptor,Defending,Intercepciones,75,98,Cheapest
+Disruptor,Defending,Precision Cabeza,65,90,Cheap
+Disruptor,Defending,Percepcion Defensiva,70,96,Cheapest
+Disruptor,Defending,Robos,70,99,Cheapest
+Disruptor,Defending,Barridas,75,98,Cheapest
+Disruptor,Physical,Salto,65,92,Cheap
+Disruptor,Physical,Resistencia,75,99,Cheapest
+Disruptor,Physical,Fuerza,75,98,Cheapest
+Disruptor,Physical,Agresividad,70,99,Cheapest
+Recycler,Pace,Aceleracion,70,90,Expensive
+Recycler,Pace,Sprint,70,90,Expensive
+Recycler,Scoring,Posicionamiento,70,80,Most Expensive
+Recycler,Scoring,Definicion,55,75,Most Expensive
+Recycler,Scoring,Potencia Tiro,70,85,Expensive
+Recycler,Scoring,Tiros Lejanos,65,80,Expensive
+Recycler,Scoring,Voleas,65,74,Most Expensive
+Recycler,Scoring,Penales,65,78,Most Expensive
+Recycler,Passing,Vision,75,94,Cheap
+Recycler,Passing,Centros,65,84,Expensive
+Recycler,Passing,Precision TL,50,80,Expensive
+Recycler,Passing,Pase Corto,70,99,Cheapest
+Recycler,Passing,Pase Largo,75,96,Cheapest
+Recycler,Passing,Efecto,65,84,Expensive
+Recycler,Ball Control,Agilidad,68,92,Cheap
+Recycler,Ball Control,Balance,75,94,Cheap
+Recycler,Ball Control,Reacciones,65,98,Cheapest
+Recycler,Ball Control,Control Balon,65,98,Cheapest
+Recycler,Ball Control,Regates,65,92,Cheap
+Recycler,Ball Control,Compostura,72,98,Cheapest
+Recycler,Defending,Intercepciones,75,99,Cheapest
+Recycler,Defending,Precision Cabeza,60,86,Cheap
+Recycler,Defending,Percepcion Defensiva,75,99,Cheapest
+Recycler,Defending,Robos,75,98,Cheapest
+Recycler,Defending,Barridas,75,94,Cheap
+Recycler,Physical,Salto,65,88,Expensive
+Recycler,Physical,Resistencia,72,99,Cheapest
+Recycler,Physical,Fuerza,72,94,Cheap
+Recycler,Physical,Agresividad,75,95,Cheap
+Boss,Pace,Aceleracion,70,88,Expensive
+Boss,Pace,Sprint,70,92,Expensive
+Boss,Scoring,Posicionamiento,75,85,Most Expensive
+Boss,Scoring,Definicion,45,65,Most Expensive
+Boss,Scoring,Potencia Tiro,70,85,Expensive
+Boss,Scoring,Tiros Lejanos,60,70,Most Expensive
+Boss,Scoring,Voleas,60,68,Most Expensive
+Boss,Scoring,Penales,65,70,Most Expensive
+Boss,Passing,Vision,55,78,Expensive
+Boss,Passing,Centros,45,68,Most Expensive
+Boss,Passing,Precision TL,50,70,Most Expensive
+Boss,Passing,Pase Corto,65,88,Cheap
+Boss,Passing,Pase Largo,65,85,Expensive
+Boss,Passing,Efecto,50,72,Most Expensive
+Boss,Ball Control,Agilidad,65,78,Most Expensive
+Boss,Ball Control,Balance,75,80,Expensive
+Boss,Ball Control,Reacciones,60,96,Cheap
+Boss,Ball Control,Control Balon,65,88,Cheap
+Boss,Ball Control,Regates,60,78,Most Expensive
+Boss,Ball Control,Compostura,65,96,Cheap
+Boss,Defending,Intercepciones,75,99,Cheapest
+Boss,Defending,Precision Cabeza,75,99,Cheapest
+Boss,Defending,Percepcion Defensiva,75,99,Cheapest
+Boss,Defending,Robos,75,99,Cheapest
+Boss,Defending,Barridas,75,99,Cheapest
+Boss,Physical,Salto,75,98,Cheapest
+Boss,Physical,Resistencia,70,94,Cheap
+Boss,Physical,Fuerza,75,99,Cheapest
+Boss,Physical,Agresividad,75,99,Cheapest
+Marauder,Pace,Aceleracion,75,96,Expensive
+Marauder,Pace,Sprint,75,97,Expensive
+Marauder,Scoring,Posicionamiento,65,80,Most Expensive
+Marauder,Scoring,Definicion,55,75,Most Expensive
+Marauder,Scoring,Potencia Tiro,65,86,Expensive
+Marauder,Scoring,Tiros Lejanos,60,80,Expensive
+Marauder,Scoring,Voleas,65,75,Most Expensive
+Marauder,Scoring,Penales,65,76,Most Expensive
+Marauder,Passing,Vision,60,88,Cheap
+Marauder,Passing,Centros,75,96,Cheapest
+Marauder,Passing,Precision TL,60,80,Expensive
+Marauder,Passing,Pase Corto,65,94,Cheap
+Marauder,Passing,Pase Largo,65,90,Cheap
+Marauder,Passing,Efecto,75,88,Cheap
+Marauder,Ball Control,Agilidad,70,94,Cheap
+Marauder,Ball Control,Balance,65,92,Cheap
+Marauder,Ball Control,Reacciones,70,95,Cheap
+Marauder,Ball Control,Control Balon,70,94,Cheap
+Marauder,Ball Control,Regates,70,92,Cheap
+Marauder,Ball Control,Compostura,65,92,Cheap
+Marauder,Defending,Intercepciones,70,95,Cheapest
+Marauder,Defending,Precision Cabeza,65,86,Expensive
+Marauder,Defending,Percepcion Defensiva,70,95,Cheapest
+Marauder,Defending,Robos,70,96,Cheapest
+Marauder,Defending,Barridas,75,98,Cheapest
+Marauder,Physical,Salto,60,90,Expensive
+Marauder,Physical,Resistencia,75,99,Cheapest
+Marauder,Physical,Fuerza,60,92,Cheap
+Marauder,Physical,Agresividad,72,96,Cheapest
+Progressor,Pace,Aceleracion,70,90,Expensive
+Progressor,Pace,Sprint,72,94,Expensive
+Progressor,Scoring,Posicionamiento,70,82,Most Expensive
+Progressor,Scoring,Definicion,50,68,Most Expensive
+Progressor,Scoring,Potencia Tiro,65,86,Expensive
+Progressor,Scoring,Tiros Lejanos,50,74,Most Expensive
+Progressor,Scoring,Voleas,50,70,Most Expensive
+Progressor,Scoring,Penales,65,72,Most Expensive
+Progressor,Passing,Vision,75,88,Cheap
+Progressor,Passing,Centros,50,78,Expensive
+Progressor,Passing,Precision TL,45,76,Expensive
+Progressor,Passing,Pase Corto,75,94,Cheapest
+Progressor,Passing,Pase Largo,75,96,Cheapest
+Progressor,Passing,Efecto,50,80,Expensive
+Progressor,Ball Control,Agilidad,70,84,Expensive
+Progressor,Ball Control,Balance,70,86,Expensive
+Progressor,Ball Control,Reacciones,65,96,Cheap
+Progressor,Ball Control,Control Balon,70,92,Cheap
+Progressor,Ball Control,Regates,65,85,Expensive
+Progressor,Ball Control,Compostura,75,98,Cheapest
+Progressor,Defending,Intercepciones,75,99,Cheapest
+Progressor,Defending,Precision Cabeza,75,96,Cheapest
+Progressor,Defending,Percepcion Defensiva,75,99,Cheapest
+Progressor,Defending,Robos,75,99,Cheapest
+Progressor,Defending,Barridas,75,96,Cheapest
+Progressor,Physical,Salto,75,94,Cheap
+Progressor,Physical,Resistencia,65,96,Cheap
+Progressor,Physical,Fuerza,70,95,Cheap
+Progressor,Physical,Agresividad,65,95,Cheap
