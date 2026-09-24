@@ -7,7 +7,6 @@ import BudgetBar from "@/components/BudgetBar";
 import CategorySection from "@/components/CategorySection";
 import ExportBuildModal from "@/components/ExportBuildModal";
 import MasteriesModal from "@/components/MasteriesModal";
-import ShareBuildModal from "@/components/ShareBuildModal";
 import SkillControls from "@/components/SkillControls";
 import { ARCHETYPES, DEFAULT_ARCHETYPE, getArchetype } from "@/data/archetypes";
 import { ARCHETYPE_MASTERIES, getMastery } from "@/data/archetypeMasteries";
@@ -78,7 +77,6 @@ export default function Page() {
   const [openCategories, setOpenCategories] = useState<Set<CategoryName>>(
     () => new Set(categoriesFor(DEFAULT_ARCHETYPE).slice(0, 1)),
   );
-  const [shareOpen, setShareOpen] = useState(false);
   const [exportOpen, setExportOpen] = useState(false);
   const [masteriesOpen, setMasteriesOpen] = useState(false);
   const hydrated = useRef(false);
@@ -245,11 +243,10 @@ export default function Page() {
         statsApCost={build.statsApCost}
         starsApCost={build.totalStarsCost}
         level={level}
+        shareUrl={shareUrl}
         onLevelChange={(lvl) => setLevel(clampLevel(lvl))}
         onReset={resetPoints}
-        onShare={() => setShareOpen(true)}
         onExport={() => setExportOpen(true)}
-        onSave={() => setExportOpen(true)}
       />
 
       <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
@@ -319,12 +316,6 @@ export default function Page() {
           </p>
         </footer>
       </main>
-
-      <ShareBuildModal
-        open={shareOpen}
-        url={shareUrl}
-        onClose={() => setShareOpen(false)}
-      />
 
       <MasteriesModal
         open={masteriesOpen}

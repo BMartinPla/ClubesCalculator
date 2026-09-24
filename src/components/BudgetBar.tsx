@@ -1,7 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { getBudgetStatus } from "@/lib/buildEngine";
-import { LEVEL_OPTIONS, getLevelLabel } from "@/data/levelProgression";
+import { MAX_LEVEL, getMaxApForLevel } from "@/data/levelProgression";
 
 interface BudgetBarProps {
   archetypeName: string;
@@ -10,30 +11,11 @@ interface BudgetBarProps {
   statsApCost: number;
   starsApCost: number;
   level: number;
+  shareUrl: string;
   onLevelChange: (level: number) => void;
   onReset: () => void;
-  onShare: () => void;
   onExport: () => void;
-  onSave: () => void;
 }
-
-const STATUS_STYLES = {
-  ok: {
-    text: "text-emerald-400",
-    bar: "bg-emerald-500",
-    ring: "shadow-[0_0_24px_-4px_rgba(34,197,94,0.55)]",
-  },
-  warn: {
-    text: "text-amber-400",
-    bar: "bg-amber-500",
-    ring: "shadow-[0_0_24px_-4px_rgba(245,158,11,0.55)]",
-  },
-  over: {
-    text: "text-rose-500",
-    bar: "bg-rose-500",
-    ring: "shadow-[0_0_24px_-4px_rgba(244,63,94,0.7)]",
-  },
-} as const;
 
 export default function BudgetBar({
   archetypeName,
@@ -42,22 +24,37 @@ export default function BudgetBar({
   statsApCost,
   starsApCost,
   level,
+  shareUrl,
   onLevelChange,
   onReset,
-  onShare,
   onExport,
-  onSave,
 }: BudgetBarProps) {
+  const remainingAp = maxAp - spent;
   const status = getBudgetStatus(spent, maxAp);
-  const styles = STATUS_STYLES[status];
+  const isOver = remainingAp < 0;
   const pct = Math.min(100, (spent / maxAp) * 100);
-  const remaining = Math.max(0, maxAp - spent);
-  const overBy = Math.max(0, spent - maxAp);
+
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    if (!copied) return;
+    const t = setTimeout(() => setCopied(false), 2000);
+    return () => clearTimeout(t);
+  }, [copied]);
+
+  const handleShare = async () => {
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      setCopied(true);
+    } catch {
+      window.prompt("Copia la URL para compartir tu build:", shareUrl);
+    }
+  };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-3 sm:px-6 lg:flex-row lg:items-center lg:gap-6">
-        {/* Brand */}
+    <header className="sticky top-0 z-50 w-full border-b border-zinc-800 bg-zinc-950/95 px-4 py-3 backdrop-blur sm:px-6">
+      <div className="mx-auto flex max-w-7xl flex-col gap-3 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
+        {/* Izquierda: Branding y arquetipo activo */}
         <div className="flex items-center gap-3">
           <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-400 to-emerald-600 text-sm font-black text-zinc-950 shadow-lg shadow-emerald-500/20">
             FC
@@ -72,122 +69,106 @@ export default function BudgetBar({
           </div>
         </div>
 
-        {/* Budget meter */}
-        <div className="flex flex-1 items-center gap-4 lg:justify-end">
-          <div
-            className={`min-w-0 flex-1 rounded-lg px-2 py-1 lg:max-w-md ${
-              status === "over" ? "bg-rose-500/20" : ""
-            }`}
-          >
-            <div className="mb-1.5 flex items-baseline justify-between gap-3 text-xs">
-              <span className="font-medium text-zinc-400">
-                AP Usados:{" "}
-                <span className={styles.text}>{spent}</span>
-                <span className="text-zinc-600"> / {maxAp}</span>
-                <span className="hidden text-zinc-600 sm:inline">
-                  {" "}
-                  (Stats: {statsApCost} AP | Estrellas: {starsApCost} AP)
-                </span>
-              </span>
-              <span className={`font-mono font-semibold ${styles.text}`}>
-                {overBy > 0
-                  ? `${overBy} AP de más`
-                  : `AP Restantes: ${remaining}`}
-              </span>
-            </div>
-            <div className="h-2 w-full overflow-hidden rounded-full bg-zinc-800">
-              <div
-                className={`h-full rounded-full transition-all duration-300 ease-out ${styles.bar} ${styles.ring}`}
-                style={{ width: `${Math.max(pct, spent > 0 ? 2 : 0)}%` }}
-                role="progressbar"
-                aria-valuenow={spent}
-                aria-valuemin={0}
-                aria-valuemax={maxAp}
-              />
-            </div>
-          </div>
-
-          {/* Remaining counter */}
-          <div className="hidden shrink-0 text-right sm:block">
-            <p className={`font-mono text-2xl font-black leading-none ${styles.text}`}>
-              {overBy > 0 ? `-${overBy}` : remaining}
-            </p>
-            <p className="text-[10px] font-medium uppercase tracking-widest text-zinc-500">
-              {overBy > 0 ? "AP de más" : "AP restantes"}
-            </p>
-          </div>
-
-          {/* Level selector */}
-          <div className="flex shrink-0 items-center gap-2">
-            <label htmlFor="pro-level" className="text-[10px] font-bold uppercase tracking-wider text-zinc-500">
+        {/* Centro: selector de nivel + cápsula de presupuesto unificada */}
+        <div className="flex flex-wrap items-center gap-3">
+          <div className="flex items-center gap-2 rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-1.5">
+            <span className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
               Nivel
-            </label>
+            </span>
             <select
-              id="pro-level"
               value={level}
               onChange={(e) => onLevelChange(Number(e.target.value))}
               aria-label="Nivel del Pro"
-              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 font-bold text-white focus:border-emerald-500/60 focus:outline-none"
+              className="cursor-pointer bg-transparent text-sm font-bold text-emerald-400 focus:outline-none"
             >
-              {LEVEL_OPTIONS.map(({ level: lvl }) => (
-                <option key={lvl} value={lvl}>
-                  {getLevelLabel(lvl)}
+              {Array.from({ length: MAX_LEVEL }, (_, i) => i + 1).map((lvl) => (
+                <option key={lvl} value={lvl} className="bg-zinc-900 text-white">
+                  {lvl} ({getMaxApForLevel(lvl)} AP)
                 </option>
               ))}
             </select>
           </div>
 
-          {/* Actions */}
-          <div className="flex shrink-0 items-center gap-2">
-            <button
-              type="button"
-              onClick={onExport}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-500 px-3 py-2 text-xs font-bold text-zinc-950 transition hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500"
-            >
-              <span aria-hidden="true">📷</span>
-              Exportar Captura
-            </button>
-            <button
-              type="button"
-              onClick={onSave}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-xs font-semibold text-zinc-200 transition hover:border-violet-500/60 hover:text-violet-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500"
-            >
-              <span aria-hidden="true">💾</span>
-              Guardar
-            </button>
-            <button
-              type="button"
-              onClick={onShare}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-xs font-semibold text-zinc-200 transition hover:border-emerald-500/60 hover:text-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500"
-            >
-              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <circle cx="18" cy="5" r="3" />
-                <circle cx="6" cy="12" r="3" />
-                <circle cx="18" cy="19" r="3" />
-                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
-                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
-              </svg>
-              Compartir
-            </button>
-            <button
-              type="button"
-              onClick={onReset}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-zinc-800 bg-zinc-900/60 px-3 py-2 text-xs font-semibold text-zinc-400 transition hover:border-red-500/60 hover:text-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500"
-            >
-              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M3 2v6h6" />
-                <path d="M3.51 15a9 9 0 1 0 2.13-9.36L3 8" />
-              </svg>
-              Resetear
-            </button>
+          <div className="flex items-center gap-4 rounded-xl border border-zinc-800 bg-zinc-900/90 px-4 py-2">
+            {/* Número grande de AP disponibles */}
+            <div className="text-right">
+              <div className="flex items-baseline justify-end gap-1.5">
+                <span
+                  className={`text-2xl font-black tabular-nums tracking-tight ${
+                    isOver ? "text-rose-500" : "text-emerald-400"
+                  }`}
+                >
+                  {remainingAp}
+                </span>
+                <span className="text-xs font-semibold uppercase text-zinc-400">
+                  AP Libres
+                </span>
+              </div>
+              <div className="mt-1 h-1.5 w-28 overflow-hidden rounded-full bg-zinc-800">
+                <div
+                  className={`h-full transition-all duration-300 ${
+                    isOver ? "bg-rose-500" : "bg-emerald-400"
+                  }`}
+                  style={{ width: `${pct}%` }}
+                />
+              </div>
+            </div>
+
+            {/* Desglose compacto */}
+            <div className="flex flex-col justify-center border-l border-zinc-800 pl-3 text-xs text-zinc-400">
+              <div>
+                Gastados:{" "}
+                <span className="font-semibold text-zinc-200">{spent}</span> / {maxAp}
+              </div>
+              <div className="text-[11px] text-zinc-400">
+                Stats:{" "}
+                <span className="font-medium text-zinc-300">{statsApCost}</span> •
+                Estrellas:{" "}
+                <span className="font-medium text-zinc-300">{starsApCost}</span>
+              </div>
+            </div>
           </div>
+        </div>
+
+        {/* Derecha: acciones */}
+        <div className="flex items-center gap-2.5">
+          <button
+            type="button"
+            onClick={onExport}
+            className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 font-bold text-zinc-950 transition hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500"
+          >
+            <span aria-hidden="true">📷</span>
+            Exportar Captura
+          </button>
+
+          <button
+            type="button"
+            onClick={handleShare}
+            className={`inline-flex items-center gap-2 rounded-lg border px-3.5 py-2 text-sm font-medium transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500 ${
+              copied
+                ? "border-emerald-500/50 bg-emerald-500/15 text-emerald-300"
+                : "border-zinc-700 bg-zinc-800 text-zinc-200 hover:bg-zinc-700"
+            }`}
+          >
+            <span aria-hidden="true">🔗</span>
+            {copied ? "¡Copiado!" : "Compartir"}
+          </button>
+
+          <button
+            type="button"
+            onClick={onReset}
+            className="inline-flex items-center gap-2 rounded-lg border border-zinc-800 bg-zinc-800/80 px-3.5 py-2 text-sm font-medium text-zinc-400 transition hover:border-rose-500/30 hover:bg-rose-500/20 hover:text-rose-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-500"
+          >
+            <span aria-hidden="true">🔄</span>
+            Resetear
+          </button>
         </div>
       </div>
 
       {status === "over" && (
-        <div className="border-t border-rose-500/30 bg-rose-500/20 px-4 py-2 text-center text-xs font-semibold text-rose-200 sm:px-6">
-          Has superado el presupuesto: {overBy} AP de más. Reduce atributos o
-          estrellas para volver a {maxAp} AP ({getLevelLabel(level)}).
+        <div className="mx-auto mt-3 max-w-7xl rounded-lg border border-rose-500/30 bg-rose-500/20 px-4 py-2 text-center text-xs font-semibold text-rose-200">
+          Has superado el presupuesto: {Math.abs(remainingAp)} AP de más. Reduce
+          atributos o estrellas para volver a {maxAp} AP.
         </div>
       )}
     </header>

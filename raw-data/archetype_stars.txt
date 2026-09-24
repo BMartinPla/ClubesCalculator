@@ -1,0 +1,12 @@
+archetype,base_skills,max_skills,cost_skills_3,cost_skills_4,cost_skills_5,base_weak_foot,max_weak_foot,cost_wf_3,cost_wf_4,cost_wf_5
+Finisher,2,5,10,15,25,2,5,20,35,50
+Target,2,5,10,15,25,2,5,20,35,50
+Spark,2,5,10,15,25,2,5,20,35,50
+Magician,2,5,10,15,25,2,5,20,35,50
+Creator,2,5,10,15,25,2,5,20,35,50
+Maestro,2,5,10,15,25,2,5,20,35,50
+Disruptor,2,5,10,15,25,2,5,20,35,50
+Recycler,2,5,10,15,25,2,5,20,35,50
+Boss,2,4,10,20,0,2,4,20,35,0
+Progressor,2,5,10,15,25,2,5,20,35,50
+Marauder,2,5,10,15,25,2,5,20,35,50
