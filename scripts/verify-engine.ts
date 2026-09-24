@@ -29,11 +29,11 @@ const attr = (name: string) => finisher.find((a) => a.attribute === name)!;
 console.log("--- Finisher: datos desde raw-data (sin físicos) ---");
 check("Aceleracion base", attr("Aceleracion").base_stat, 75);
 check("Aceleracion cap", attr("Aceleracion").cap_stat, 95);
-check("Aceleracion tier", attr("Aceleracion").cost_tier, "Cheapest");
+check("Aceleracion tier", attr("Aceleracion").cost_tier, "Expensive");
 check("Sprint base", attr("Sprint").base_stat, 70);
 check("Sprint cap", attr("Sprint").cap_stat, 95);
-check("Sprint tier", attr("Sprint").cost_tier, "Expensive");
-check("Definicion tier", attr("Definicion").cost_tier, "Cheapest");
+check("Sprint tier", attr("Sprint").cost_tier, "Cheapest");
+check("Definicion tier", attr("Definicion").cost_tier, "Most Expensive");
 
 // Tope de ritmo por arquetipo (datos oficiales): Finisher 95/95, Target 90/92, Spark 99/99.
 const targetAttrs = getArchetypeAttributes("Target");
@@ -46,19 +46,19 @@ check("Spark ritmo 99/99", [capOf(sparkAttrs, "Aceleracion"), capOf(sparkAttrs, 
 
 console.log("--- Coste marginal por tier ---");
 check(
-  "Aceleracion 90->92 (Cheapest)",
+  "Aceleracion 90->92 (Expensive)",
   calculateSingleAttributeCost(90, 92, attr("Aceleracion").cost_tier),
-  16,
-);
-check(
-  "Sprint 90->92 (Expensive)",
-  calculateSingleAttributeCost(90, 92, attr("Sprint").cost_tier),
   30,
 );
 check(
-  "Definicion 90->92 (Cheapest)",
-  calculateSingleAttributeCost(90, 92, attr("Definicion").cost_tier),
+  "Sprint 90->92 (Cheapest)",
+  calculateSingleAttributeCost(90, 92, attr("Sprint").cost_tier),
   16,
+);
+check(
+  "Definicion 90->92 (Most Expensive)",
+  calculateSingleAttributeCost(90, 92, attr("Definicion").cost_tier),
+  40,
 );
 check("toStat < fromStat => 0", calculateSingleAttributeCost(92, 90, "Cheapest"), 0);
 check("toStat == fromStat => 0", calculateSingleAttributeCost(90, 90, "Expensive"), 0);
@@ -77,12 +77,12 @@ check("Base build remainingAp", base.remainingAp, MAX_AP);
 const acel = base.breakdown.find((b) => b.attribute === "Aceleracion")!;
 check("Aceleracion effective base == base_stat", [acel.baseStat, acel.targetStat], [75, 75]);
 
-// Single raised attribute: Sprint -> 92 (Expensive, base 70).
+// Single raised attribute: Sprint -> 92 (Cheapest, base 70).
 const build = evaluateBuild("Finisher", { Sprint: 92 }, {}, null, 40);
 const sprint = build.breakdown.find((b) => b.attribute === "Sprint")!;
-check("Sprint apCost (70->92 Expensive)", sprint.apCost, 4 * 4 + 5 * 6 + 5 * 7 + 5 * 11 + 3 * 15);
-check("Build totalApSpent", build.totalApSpent, 181);
-check("Build remainingAp", build.remainingAp, MAX_AP - 181);
+check("Sprint apCost (70->92 Cheapest)", sprint.apCost, 4 * 2 + 5 * 3 + 5 * 3 + 5 * 6 + 3 * 8);
+check("Build totalApSpent", build.totalApSpent, 92);
+check("Build remainingAp", build.remainingAp, MAX_AP - 92);
 check("Build isValid", build.isValid, true);
 
 // Values are clamped into [base_stat, cap_stat].
@@ -213,8 +213,8 @@ check("Solo estrellas: isValid", starsOnly.isValid, true);
 
 // Stats + stars share the same 962 budget.
 const combined = evaluateBuild("Finisher", { Sprint: 92 }, {}, { skills: 5, weakFoot: 4 }, 40);
-check("Stats+estrellas: totalApSpent", combined.totalApSpent, 181 + 75);
-check("Stats+estrellas: remainingAp", combined.remainingAp, MAX_AP - (181 + 75));
+check("Stats+estrellas: totalApSpent", combined.totalApSpent, 92 + 75);
+check("Stats+estrellas: remainingAp", combined.remainingAp, MAX_AP - (92 + 75));
 
 // Stars default to base when no selection is provided.
 check(
@@ -245,13 +245,13 @@ check("Nivel 20 => 397 AP", getMaxApForLevel(20), 397);
 check("Nivel 40 => 962 AP", getMaxApForLevel(40), 962);
 check("Nivel fuera de rango se clampea", getMaxApForLevel(999), 962);
 
-// Level 1 budget is 100 AP: Sprint->92 (181 AP) must overflow.
-const lvl1 = evaluateBuild("Finisher", { Sprint: 92 });
+// Level 1 budget is 100 AP: Definicion->99 (Most Expensive, 467 AP) overflows.
+const lvl1 = evaluateBuild("Finisher", { Definicion: 99 });
 check("Nivel 1: maxAp", lvl1.maxAp, 100);
 check("Nivel 1: level", lvl1.level, 1);
 check("Nivel 1: sobregasto => isValid false", lvl1.isValid, false);
-check("Nivel 1: overBy", lvl1.overBy, 181 - 100);
-check("Nivel 1: remainingAp negativo", lvl1.remainingAp, 100 - 181);
+check("Nivel 1: overBy", lvl1.overBy, 467 - 100);
+check("Nivel 1: remainingAp negativo", lvl1.remainingAp, 100 - 467);
 
 console.log("--- Tabla de costes marginales (casos testigo) ---");
 check("Caso testigo 75->90 Cheapest = 65", calculateAttributeUpgradeCost(75, 90, "Cheapest"), 65);
@@ -260,6 +260,19 @@ check("Caso testigo 75->99 Most Expensive = 467", calculateAttributeUpgradeCost(
 check("Punto individual 90 Cheapest = 8", getSinglePointCost(90, "Cheapest"), 8);
 check("Punto individual 99 Most Expensive = 50", getSinglePointCost(99, "Most Expensive"), 50);
 check("Alias coincide", calculateSingleAttributeCost(75, 90, "Cheapest"), 65);
+
+console.log("--- Magician: coste por tier ---");
+const magicianAttrs = getArchetypeAttributes("Magician");
+const mag = (name: string) => magicianAttrs.find((a) => a.attribute === name)!;
+check("Magician Definicion tier", mag("Definicion").cost_tier, "Most Expensive");
+check("Magician Tiros Lejanos tier", mag("Tiros Lejanos").cost_tier, "Expensive");
+check("Magician Voleas tier", mag("Voleas").cost_tier, "Cheapest");
+check("Magician Posicionamiento tier", mag("Posicionamiento").cost_tier, "Cheap");
+const defCost = calculateAttributeUpgradeCost(75, 90, mag("Definicion").cost_tier);
+const volCost = calculateAttributeUpgradeCost(75, 90, mag("Voleas").cost_tier);
+check("Definicion 75->90 (Most Expensive) = 177 AP", defCost, 177);
+check("Voleas 75->90 (Cheapest) = 65 AP", volCost, 65);
+check("Definicion cuesta mas que Voleas", defCost > volCost, true);
 
 console.log(failures === 0 ? "\nALL CHECKS PASSED" : `\n${failures} CHECK(S) FAILED`);
 process.exit(failures === 0 ? 0 : 1);

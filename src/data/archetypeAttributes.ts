@@ -9,7 +9,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Aceleracion",
       "base_stat": 75,
       "cap_stat": 95,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Finisher",
@@ -17,7 +17,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Sprint",
       "base_stat": 70,
       "cap_stat": 95,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Finisher",
@@ -25,7 +25,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Posicionamiento",
       "base_stat": 80,
       "cap_stat": 99,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Finisher",
@@ -33,7 +33,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Definicion",
       "base_stat": 75,
       "cap_stat": 99,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Finisher",
@@ -41,7 +41,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Potencia Tiro",
       "base_stat": 75,
       "cap_stat": 97,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Finisher",
@@ -57,7 +57,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Voleas",
       "base_stat": 75,
       "cap_stat": 95,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Finisher",
@@ -65,7 +65,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Penales",
       "base_stat": 75,
       "cap_stat": 92,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Finisher",
@@ -73,7 +73,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Vision",
       "base_stat": 65,
       "cap_stat": 84,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Finisher",
@@ -89,7 +89,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Precision TL",
       "base_stat": 65,
       "cap_stat": 82,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Finisher",
@@ -97,7 +97,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Pase Corto",
       "base_stat": 70,
       "cap_stat": 88,
-      "cost_tier": "Cheap"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Finisher",
@@ -121,7 +121,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Agilidad",
       "base_stat": 72,
       "cap_stat": 92,
-      "cost_tier": "Cheap"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Finisher",
@@ -153,7 +153,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Regates",
       "base_stat": 70,
       "cap_stat": 92,
-      "cost_tier": "Cheap"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Finisher",
@@ -161,7 +161,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Compostura",
       "base_stat": 75,
       "cap_stat": 96,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Finisher",
@@ -177,7 +177,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Precision Cabeza",
       "base_stat": 75,
       "cap_stat": 92,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Finisher",
@@ -185,7 +185,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Percepcion Defensiva",
       "base_stat": 55,
       "cap_stat": 70,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Finisher",
@@ -201,7 +201,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Barridas",
       "base_stat": 40,
       "cap_stat": 60,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Finisher",
@@ -209,7 +209,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Salto",
       "base_stat": 65,
       "cap_stat": 85,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Finisher",
@@ -225,7 +225,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Fuerza",
       "base_stat": 70,
       "cap_stat": 90,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Finisher",
@@ -233,7 +233,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Agresividad",
       "base_stat": 65,
       "cap_stat": 82,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     }
   ],
   "Target": [
@@ -251,7 +251,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Sprint",
       "base_stat": 65,
       "cap_stat": 92,
-      "cost_tier": "Expensive"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Target",
@@ -259,7 +259,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Posicionamiento",
       "base_stat": 80,
       "cap_stat": 95,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Target",
@@ -267,7 +267,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Definicion",
       "base_stat": 72,
       "cap_stat": 96,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Target",
@@ -275,7 +275,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Potencia Tiro",
       "base_stat": 75,
       "cap_stat": 98,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Target",
@@ -315,7 +315,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Centros",
       "base_stat": 50,
       "cap_stat": 70,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Target",
@@ -323,7 +323,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Precision TL",
       "base_stat": 65,
       "cap_stat": 75,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Target",
@@ -331,7 +331,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Pase Corto",
       "base_stat": 75,
       "cap_stat": 90,
-      "cost_tier": "Cheap"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Target",
@@ -347,7 +347,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Efecto",
       "base_stat": 55,
       "cap_stat": 78,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Target",
@@ -363,7 +363,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Balance",
       "base_stat": 75,
       "cap_stat": 82,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Target",
@@ -379,7 +379,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Control Balon",
       "base_stat": 70,
       "cap_stat": 92,
-      "cost_tier": "Cheap"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Target",
@@ -387,7 +387,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Regates",
       "base_stat": 70,
       "cap_stat": 85,
-      "cost_tier": "Expensive"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Target",
@@ -395,7 +395,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Compostura",
       "base_stat": 72,
       "cap_stat": 95,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Target",
@@ -411,7 +411,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Precision Cabeza",
       "base_stat": 75,
       "cap_stat": 99,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Target",
@@ -419,7 +419,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Percepcion Defensiva",
       "base_stat": 50,
       "cap_stat": 75,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Target",
@@ -435,7 +435,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Barridas",
       "base_stat": 40,
       "cap_stat": 62,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Target",
@@ -443,7 +443,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Salto",
       "base_stat": 75,
       "cap_stat": 98,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Target",
@@ -459,7 +459,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Fuerza",
       "base_stat": 75,
       "cap_stat": 99,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Target",
@@ -467,7 +467,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Agresividad",
       "base_stat": 65,
       "cap_stat": 96,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Cheap"
     }
   ],
   "Spark": [
@@ -477,7 +477,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Aceleracion",
       "base_stat": 75,
       "cap_stat": 99,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Spark",
@@ -485,7 +485,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Sprint",
       "base_stat": 75,
       "cap_stat": 99,
-      "cost_tier": "Expensive"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Spark",
@@ -501,7 +501,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Definicion",
       "base_stat": 65,
       "cap_stat": 88,
-      "cost_tier": "Cheap"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Spark",
@@ -509,7 +509,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Potencia Tiro",
       "base_stat": 65,
       "cap_stat": 88,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Spark",
@@ -517,7 +517,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Tiros Lejanos",
       "base_stat": 65,
       "cap_stat": 84,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Spark",
@@ -525,7 +525,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Voleas",
       "base_stat": 72,
       "cap_stat": 82,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Spark",
@@ -533,7 +533,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Penales",
       "base_stat": 75,
       "cap_stat": 82,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Spark",
@@ -541,7 +541,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Vision",
       "base_stat": 75,
       "cap_stat": 88,
-      "cost_tier": "Cheap"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Spark",
@@ -549,7 +549,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Centros",
       "base_stat": 75,
       "cap_stat": 96,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Spark",
@@ -557,7 +557,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Precision TL",
       "base_stat": 65,
       "cap_stat": 84,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Spark",
@@ -565,7 +565,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Pase Corto",
       "base_stat": 75,
       "cap_stat": 92,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Spark",
@@ -581,7 +581,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Efecto",
       "base_stat": 75,
       "cap_stat": 90,
-      "cost_tier": "Cheap"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Spark",
@@ -589,7 +589,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Agilidad",
       "base_stat": 75,
       "cap_stat": 99,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Spark",
@@ -597,7 +597,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Balance",
       "base_stat": 75,
       "cap_stat": 96,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Spark",
@@ -613,7 +613,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Control Balon",
       "base_stat": 75,
       "cap_stat": 96,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Spark",
@@ -645,7 +645,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Precision Cabeza",
       "base_stat": 50,
       "cap_stat": 72,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Spark",
@@ -653,7 +653,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Percepcion Defensiva",
       "base_stat": 50,
       "cap_stat": 65,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Spark",
@@ -669,7 +669,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Barridas",
       "base_stat": 45,
       "cap_stat": 62,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Spark",
@@ -677,7 +677,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Salto",
       "base_stat": 55,
       "cap_stat": 80,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Spark",
@@ -693,7 +693,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Fuerza",
       "base_stat": 65,
       "cap_stat": 78,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Spark",
@@ -701,7 +701,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Agresividad",
       "base_stat": 50,
       "cap_stat": 78,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     }
   ],
   "Magician": [
@@ -711,7 +711,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Aceleracion",
       "base_stat": 75,
       "cap_stat": 95,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Magician",
@@ -719,7 +719,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Sprint",
       "base_stat": 70,
       "cap_stat": 94,
-      "cost_tier": "Expensive"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Magician",
@@ -735,7 +735,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Definicion",
       "base_stat": 75,
       "cap_stat": 92,
-      "cost_tier": "Cheap"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Magician",
@@ -743,7 +743,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Potencia Tiro",
       "base_stat": 70,
       "cap_stat": 90,
-      "cost_tier": "Cheap"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Magician",
@@ -751,7 +751,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Tiros Lejanos",
       "base_stat": 65,
       "cap_stat": 94,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Magician",
@@ -759,7 +759,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Voleas",
       "base_stat": 72,
       "cap_stat": 88,
-      "cost_tier": "Cheap"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Magician",
@@ -775,7 +775,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Vision",
       "base_stat": 75,
       "cap_stat": 96,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Magician",
@@ -783,7 +783,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Centros",
       "base_stat": 65,
       "cap_stat": 90,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Magician",
@@ -791,7 +791,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Precision TL",
       "base_stat": 65,
       "cap_stat": 94,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Magician",
@@ -799,7 +799,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Pase Corto",
       "base_stat": 75,
       "cap_stat": 98,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Magician",
@@ -807,7 +807,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Pase Largo",
       "base_stat": 50,
       "cap_stat": 92,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Magician",
@@ -815,7 +815,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Efecto",
       "base_stat": 75,
       "cap_stat": 98,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Magician",
@@ -823,7 +823,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Agilidad",
       "base_stat": 72,
       "cap_stat": 98,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Magician",
@@ -831,7 +831,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Balance",
       "base_stat": 75,
       "cap_stat": 95,
-      "cost_tier": "Cheap"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Magician",
@@ -847,7 +847,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Control Balon",
       "base_stat": 75,
       "cap_stat": 99,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Magician",
@@ -855,7 +855,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Regates",
       "base_stat": 75,
       "cap_stat": 99,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Magician",
@@ -863,7 +863,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Compostura",
       "base_stat": 72,
       "cap_stat": 96,
-      "cost_tier": "Cheap"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Magician",
@@ -879,7 +879,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Precision Cabeza",
       "base_stat": 65,
       "cap_stat": 74,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Magician",
@@ -887,7 +887,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Percepcion Defensiva",
       "base_stat": 45,
       "cap_stat": 68,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Magician",
@@ -903,7 +903,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Barridas",
       "base_stat": 40,
       "cap_stat": 62,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Magician",
@@ -911,7 +911,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Salto",
       "base_stat": 60,
       "cap_stat": 82,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Magician",
@@ -935,7 +935,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Agresividad",
       "base_stat": 55,
       "cap_stat": 80,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     }
   ],
   "Creator": [
@@ -945,7 +945,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Aceleracion",
       "base_stat": 70,
       "cap_stat": 92,
-      "cost_tier": "Expensive"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Creator",
@@ -953,7 +953,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Sprint",
       "base_stat": 65,
       "cap_stat": 90,
-      "cost_tier": "Expensive"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Creator",
@@ -969,7 +969,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Definicion",
       "base_stat": 65,
       "cap_stat": 88,
-      "cost_tier": "Cheap"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Creator",
@@ -977,7 +977,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Potencia Tiro",
       "base_stat": 72,
       "cap_stat": 88,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Creator",
@@ -985,7 +985,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Tiros Lejanos",
       "base_stat": 72,
       "cap_stat": 90,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Creator",
@@ -993,7 +993,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Voleas",
       "base_stat": 72,
       "cap_stat": 84,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Creator",
@@ -1009,7 +1009,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Vision",
       "base_stat": 75,
       "cap_stat": 99,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Creator",
@@ -1017,7 +1017,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Centros",
       "base_stat": 75,
       "cap_stat": 94,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Creator",
@@ -1033,7 +1033,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Pase Corto",
       "base_stat": 75,
       "cap_stat": 99,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Creator",
@@ -1057,7 +1057,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Agilidad",
       "base_stat": 72,
       "cap_stat": 94,
-      "cost_tier": "Cheap"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Creator",
@@ -1065,7 +1065,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Balance",
       "base_stat": 65,
       "cap_stat": 90,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Creator",
@@ -1073,7 +1073,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Reacciones",
       "base_stat": 75,
       "cap_stat": 95,
-      "cost_tier": "Cheap"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Creator",
@@ -1089,7 +1089,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Regates",
       "base_stat": 75,
       "cap_stat": 95,
-      "cost_tier": "Cheap"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Creator",
@@ -1105,7 +1105,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Intercepciones",
       "base_stat": 55,
       "cap_stat": 78,
-      "cost_tier": "Expensive"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Creator",
@@ -1129,7 +1129,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Robos",
       "base_stat": 65,
       "cap_stat": 75,
-      "cost_tier": "Expensive"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Creator",
@@ -1137,7 +1137,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Barridas",
       "base_stat": 50,
       "cap_stat": 68,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Creator",
@@ -1145,7 +1145,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Salto",
       "base_stat": 60,
       "cap_stat": 80,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Creator",
@@ -1169,7 +1169,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Agresividad",
       "base_stat": 55,
       "cap_stat": 82,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     }
   ],
   "Maestro": [
@@ -1179,7 +1179,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Aceleracion",
       "base_stat": 70,
       "cap_stat": 88,
-      "cost_tier": "Expensive"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Maestro",
@@ -1187,7 +1187,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Sprint",
       "base_stat": 65,
       "cap_stat": 88,
-      "cost_tier": "Expensive"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Maestro",
@@ -1203,7 +1203,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Definicion",
       "base_stat": 65,
       "cap_stat": 84,
-      "cost_tier": "Cheap"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Maestro",
@@ -1211,7 +1211,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Potencia Tiro",
       "base_stat": 70,
       "cap_stat": 92,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Maestro",
@@ -1219,7 +1219,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Tiros Lejanos",
       "base_stat": 70,
       "cap_stat": 94,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Maestro",
@@ -1243,7 +1243,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Vision",
       "base_stat": 75,
       "cap_stat": 98,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Maestro",
@@ -1251,7 +1251,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Centros",
       "base_stat": 75,
       "cap_stat": 94,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Maestro",
@@ -1259,7 +1259,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Precision TL",
       "base_stat": 75,
       "cap_stat": 95,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Maestro",
@@ -1275,7 +1275,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Pase Largo",
       "base_stat": 75,
       "cap_stat": 99,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Maestro",
@@ -1291,7 +1291,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Agilidad",
       "base_stat": 75,
       "cap_stat": 90,
-      "cost_tier": "Cheap"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Maestro",
@@ -1299,7 +1299,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Balance",
       "base_stat": 70,
       "cap_stat": 90,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Maestro",
@@ -1307,7 +1307,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Reacciones",
       "base_stat": 65,
       "cap_stat": 98,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Maestro",
@@ -1315,7 +1315,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Control Balon",
       "base_stat": 75,
       "cap_stat": 98,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Maestro",
@@ -1323,7 +1323,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Regates",
       "base_stat": 65,
       "cap_stat": 94,
-      "cost_tier": "Cheap"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Maestro",
@@ -1331,7 +1331,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Compostura",
       "base_stat": 75,
       "cap_stat": 98,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Maestro",
@@ -1339,7 +1339,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Intercepciones",
       "base_stat": 75,
       "cap_stat": 88,
-      "cost_tier": "Cheap"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Maestro",
@@ -1355,7 +1355,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Percepcion Defensiva",
       "base_stat": 65,
       "cap_stat": 86,
-      "cost_tier": "Cheap"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Maestro",
@@ -1363,7 +1363,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Robos",
       "base_stat": 72,
       "cap_stat": 86,
-      "cost_tier": "Cheap"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Maestro",
@@ -1379,7 +1379,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Salto",
       "base_stat": 60,
       "cap_stat": 84,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Maestro",
@@ -1387,7 +1387,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Resistencia",
       "base_stat": 65,
       "cap_stat": 96,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Maestro",
@@ -1395,7 +1395,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Fuerza",
       "base_stat": 65,
       "cap_stat": 88,
-      "cost_tier": "Cheap"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Maestro",
@@ -1421,7 +1421,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Sprint",
       "base_stat": 70,
       "cap_stat": 92,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Disruptor",
@@ -1429,7 +1429,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Posicionamiento",
       "base_stat": 70,
       "cap_stat": 78,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Disruptor",
@@ -1445,7 +1445,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Potencia Tiro",
       "base_stat": 70,
       "cap_stat": 88,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Disruptor",
@@ -1461,7 +1461,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Voleas",
       "base_stat": 65,
       "cap_stat": 75,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Disruptor",
@@ -1469,7 +1469,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Penales",
       "base_stat": 65,
       "cap_stat": 78,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Disruptor",
@@ -1485,7 +1485,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Centros",
       "base_stat": 65,
       "cap_stat": 80,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Disruptor",
@@ -1493,7 +1493,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Precision TL",
       "base_stat": 50,
       "cap_stat": 78,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Disruptor",
@@ -1501,7 +1501,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Pase Corto",
       "base_stat": 75,
       "cap_stat": 94,
-      "cost_tier": "Cheap"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Disruptor",
@@ -1509,7 +1509,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Pase Largo",
       "base_stat": 70,
       "cap_stat": 90,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Disruptor",
@@ -1517,7 +1517,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Efecto",
       "base_stat": 65,
       "cap_stat": 80,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Disruptor",
@@ -1525,7 +1525,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Agilidad",
       "base_stat": 68,
       "cap_stat": 88,
-      "cost_tier": "Cheap"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Disruptor",
@@ -1533,7 +1533,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Balance",
       "base_stat": 75,
       "cap_stat": 90,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Disruptor",
@@ -1549,7 +1549,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Control Balon",
       "base_stat": 65,
       "cap_stat": 92,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Disruptor",
@@ -1557,7 +1557,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Regates",
       "base_stat": 65,
       "cap_stat": 86,
-      "cost_tier": "Expensive"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Disruptor",
@@ -1565,7 +1565,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Compostura",
       "base_stat": 70,
       "cap_stat": 94,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Disruptor",
@@ -1573,7 +1573,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Intercepciones",
       "base_stat": 75,
       "cap_stat": 98,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Disruptor",
@@ -1581,7 +1581,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Precision Cabeza",
       "base_stat": 65,
       "cap_stat": 90,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Disruptor",
@@ -1589,7 +1589,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Percepcion Defensiva",
       "base_stat": 70,
       "cap_stat": 96,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Disruptor",
@@ -1597,7 +1597,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Robos",
       "base_stat": 70,
       "cap_stat": 99,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Disruptor",
@@ -1629,7 +1629,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Fuerza",
       "base_stat": 75,
       "cap_stat": 98,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Disruptor",
@@ -1637,7 +1637,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Agresividad",
       "base_stat": 70,
       "cap_stat": 99,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     }
   ],
   "Recycler": [
@@ -1647,7 +1647,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Aceleracion",
       "base_stat": 70,
       "cap_stat": 90,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Recycler",
@@ -1655,7 +1655,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Sprint",
       "base_stat": 70,
       "cap_stat": 90,
-      "cost_tier": "Expensive"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Recycler",
@@ -1663,7 +1663,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Posicionamiento",
       "base_stat": 70,
       "cap_stat": 80,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Recycler",
@@ -1679,7 +1679,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Potencia Tiro",
       "base_stat": 70,
       "cap_stat": 85,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Recycler",
@@ -1695,7 +1695,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Voleas",
       "base_stat": 65,
       "cap_stat": 74,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Recycler",
@@ -1703,7 +1703,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Penales",
       "base_stat": 65,
       "cap_stat": 78,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Recycler",
@@ -1711,7 +1711,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Vision",
       "base_stat": 75,
       "cap_stat": 94,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Recycler",
@@ -1727,7 +1727,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Precision TL",
       "base_stat": 50,
       "cap_stat": 80,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Recycler",
@@ -1735,7 +1735,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Pase Corto",
       "base_stat": 70,
       "cap_stat": 99,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Recycler",
@@ -1743,7 +1743,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Pase Largo",
       "base_stat": 75,
       "cap_stat": 96,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Recycler",
@@ -1751,7 +1751,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Efecto",
       "base_stat": 65,
       "cap_stat": 84,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Recycler",
@@ -1759,7 +1759,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Agilidad",
       "base_stat": 68,
       "cap_stat": 92,
-      "cost_tier": "Cheap"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Recycler",
@@ -1767,7 +1767,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Balance",
       "base_stat": 75,
       "cap_stat": 94,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Recycler",
@@ -1775,7 +1775,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Reacciones",
       "base_stat": 65,
       "cap_stat": 98,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Recycler",
@@ -1783,7 +1783,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Control Balon",
       "base_stat": 65,
       "cap_stat": 98,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Recycler",
@@ -1791,7 +1791,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Regates",
       "base_stat": 65,
       "cap_stat": 92,
-      "cost_tier": "Cheap"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Recycler",
@@ -1799,7 +1799,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Compostura",
       "base_stat": 72,
       "cap_stat": 98,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Recycler",
@@ -1807,7 +1807,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Intercepciones",
       "base_stat": 75,
       "cap_stat": 99,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Recycler",
@@ -1815,7 +1815,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Precision Cabeza",
       "base_stat": 60,
       "cap_stat": 86,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Recycler",
@@ -1823,7 +1823,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Percepcion Defensiva",
       "base_stat": 75,
       "cap_stat": 99,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Recycler",
@@ -1839,7 +1839,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Barridas",
       "base_stat": 75,
       "cap_stat": 94,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Recycler",
@@ -1847,7 +1847,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Salto",
       "base_stat": 65,
       "cap_stat": 88,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Recycler",
@@ -1863,7 +1863,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Fuerza",
       "base_stat": 72,
       "cap_stat": 94,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Recycler",
@@ -1871,7 +1871,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Agresividad",
       "base_stat": 75,
       "cap_stat": 95,
-      "cost_tier": "Cheap"
+      "cost_tier": "Cheapest"
     }
   ],
   "Boss": [
@@ -1881,7 +1881,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Aceleracion",
       "base_stat": 70,
       "cap_stat": 88,
-      "cost_tier": "Expensive"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Boss",
@@ -1889,7 +1889,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Sprint",
       "base_stat": 70,
       "cap_stat": 92,
-      "cost_tier": "Expensive"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Boss",
@@ -1897,7 +1897,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Posicionamiento",
       "base_stat": 75,
       "cap_stat": 85,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Boss",
@@ -1921,7 +1921,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Tiros Lejanos",
       "base_stat": 60,
       "cap_stat": 70,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Boss",
@@ -1929,7 +1929,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Voleas",
       "base_stat": 60,
       "cap_stat": 68,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Boss",
@@ -1937,7 +1937,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Penales",
       "base_stat": 65,
       "cap_stat": 70,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Boss",
@@ -1953,7 +1953,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Centros",
       "base_stat": 45,
       "cap_stat": 68,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Boss",
@@ -1961,7 +1961,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Precision TL",
       "base_stat": 50,
       "cap_stat": 70,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Boss",
@@ -1969,7 +1969,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Pase Corto",
       "base_stat": 65,
       "cap_stat": 88,
-      "cost_tier": "Cheap"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Boss",
@@ -1985,7 +1985,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Efecto",
       "base_stat": 50,
       "cap_stat": 72,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Boss",
@@ -2017,7 +2017,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Control Balon",
       "base_stat": 65,
       "cap_stat": 88,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Boss",
@@ -2033,7 +2033,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Compostura",
       "base_stat": 65,
       "cap_stat": 96,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Boss",
@@ -2041,7 +2041,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Intercepciones",
       "base_stat": 75,
       "cap_stat": 99,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Boss",
@@ -2057,7 +2057,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Percepcion Defensiva",
       "base_stat": 75,
       "cap_stat": 99,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Boss",
@@ -2065,7 +2065,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Robos",
       "base_stat": 75,
       "cap_stat": 99,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Boss",
@@ -2073,7 +2073,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Barridas",
       "base_stat": 75,
       "cap_stat": 99,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Boss",
@@ -2115,7 +2115,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Aceleracion",
       "base_stat": 75,
       "cap_stat": 96,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Marauder",
@@ -2131,7 +2131,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Posicionamiento",
       "base_stat": 65,
       "cap_stat": 80,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Marauder",
@@ -2163,7 +2163,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Voleas",
       "base_stat": 65,
       "cap_stat": 75,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Marauder",
@@ -2171,7 +2171,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Penales",
       "base_stat": 65,
       "cap_stat": 76,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Marauder",
@@ -2179,7 +2179,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Vision",
       "base_stat": 60,
       "cap_stat": 88,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Marauder",
@@ -2187,7 +2187,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Centros",
       "base_stat": 75,
       "cap_stat": 96,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Marauder",
@@ -2195,7 +2195,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Precision TL",
       "base_stat": 60,
       "cap_stat": 80,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Marauder",
@@ -2203,7 +2203,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Pase Corto",
       "base_stat": 65,
       "cap_stat": 94,
-      "cost_tier": "Cheap"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Marauder",
@@ -2211,7 +2211,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Pase Largo",
       "base_stat": 65,
       "cap_stat": 90,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Marauder",
@@ -2227,7 +2227,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Agilidad",
       "base_stat": 70,
       "cap_stat": 94,
-      "cost_tier": "Cheap"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Marauder",
@@ -2235,7 +2235,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Balance",
       "base_stat": 65,
       "cap_stat": 92,
-      "cost_tier": "Cheap"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Marauder",
@@ -2251,7 +2251,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Control Balon",
       "base_stat": 70,
       "cap_stat": 94,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Marauder",
@@ -2259,7 +2259,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Regates",
       "base_stat": 70,
       "cap_stat": 92,
-      "cost_tier": "Cheap"
+      "cost_tier": "Cheapest"
     },
     {
       "archetype": "Marauder",
@@ -2267,7 +2267,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Compostura",
       "base_stat": 65,
       "cap_stat": 92,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Marauder",
@@ -2291,7 +2291,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Percepcion Defensiva",
       "base_stat": 70,
       "cap_stat": 95,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Marauder",
@@ -2299,7 +2299,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Robos",
       "base_stat": 70,
       "cap_stat": 96,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Marauder",
@@ -2307,7 +2307,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Barridas",
       "base_stat": 75,
       "cap_stat": 98,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Marauder",
@@ -2315,7 +2315,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Salto",
       "base_stat": 60,
       "cap_stat": 90,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Marauder",
@@ -2323,7 +2323,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Resistencia",
       "base_stat": 75,
       "cap_stat": 99,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Marauder",
@@ -2331,7 +2331,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Fuerza",
       "base_stat": 60,
       "cap_stat": 92,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Marauder",
@@ -2339,7 +2339,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Agresividad",
       "base_stat": 72,
       "cap_stat": 96,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Cheap"
     }
   ],
   "Progressor": [
@@ -2349,7 +2349,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Aceleracion",
       "base_stat": 70,
       "cap_stat": 90,
-      "cost_tier": "Expensive"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Progressor",
@@ -2357,7 +2357,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Sprint",
       "base_stat": 72,
       "cap_stat": 94,
-      "cost_tier": "Expensive"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Progressor",
@@ -2365,7 +2365,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Posicionamiento",
       "base_stat": 70,
       "cap_stat": 82,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Progressor",
@@ -2389,7 +2389,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Tiros Lejanos",
       "base_stat": 50,
       "cap_stat": 74,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Progressor",
@@ -2397,7 +2397,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Voleas",
       "base_stat": 50,
       "cap_stat": 70,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Progressor",
@@ -2405,7 +2405,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Penales",
       "base_stat": 65,
       "cap_stat": 72,
-      "cost_tier": "Most Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Progressor",
@@ -2413,7 +2413,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Vision",
       "base_stat": 75,
       "cap_stat": 88,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Progressor",
@@ -2429,7 +2429,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Precision TL",
       "base_stat": 45,
       "cap_stat": 76,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Progressor",
@@ -2437,7 +2437,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Pase Corto",
       "base_stat": 75,
       "cap_stat": 94,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Progressor",
@@ -2453,7 +2453,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Efecto",
       "base_stat": 50,
       "cap_stat": 80,
-      "cost_tier": "Expensive"
+      "cost_tier": "Cheap"
     },
     {
       "archetype": "Progressor",
@@ -2461,7 +2461,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Agilidad",
       "base_stat": 70,
       "cap_stat": 84,
-      "cost_tier": "Expensive"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Progressor",
@@ -2485,7 +2485,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Control Balon",
       "base_stat": 70,
       "cap_stat": 92,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Progressor",
@@ -2493,7 +2493,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Regates",
       "base_stat": 65,
       "cap_stat": 85,
-      "cost_tier": "Expensive"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Progressor",
@@ -2509,7 +2509,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Intercepciones",
       "base_stat": 75,
       "cap_stat": 99,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Most Expensive"
     },
     {
       "archetype": "Progressor",
@@ -2517,7 +2517,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Precision Cabeza",
       "base_stat": 75,
       "cap_stat": 96,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Progressor",
@@ -2541,7 +2541,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Barridas",
       "base_stat": 75,
       "cap_stat": 96,
-      "cost_tier": "Cheapest"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Progressor",
@@ -2565,7 +2565,7 @@ export const ATTRIBUTES_BY_ARCHETYPE: Record<string, ArchetypeAttribute[]> = {
       "attribute": "Fuerza",
       "base_stat": 70,
       "cap_stat": 95,
-      "cost_tier": "Cheap"
+      "cost_tier": "Expensive"
     },
     {
       "archetype": "Progressor",
