@@ -196,6 +196,14 @@ check(
   { skillsCost: 50, weakFootCost: 55, totalStarsCost: 105 },
 );
 
+// Base 2★: 5★ skills (10+15+25=50) + 5★ weak foot (20+35+50=105) = 155 AP.
+check(
+  "Finisher 5★SM / 5★WF => 155 AP",
+  getStarsCost(finStars, 5, 5),
+  { skillsCost: 50, weakFootCost: 105, totalStarsCost: 155 },
+);
+check("Boss max weak foot 4 (5★ deshabilitada)", getStars("Boss")!.max_weak_foot, 4);
+
 // Recycler starts at 2★ skills: 10+15+25 = 50 to reach 5★.
 check(
   "Recycler 2->5★ skills => 50 AP",
