@@ -173,11 +173,12 @@ check("Recycler bonus_1 = 1", recycler.bonus_1, 1);
 check("Recycler stat_2 conservado", recycler.stat_2, "Pase Corto");
 
 console.log("--- Estrellas (SM/WF) ---");
-check("Finisher base skills", getStars("Finisher")!.base_skills, 2);
-check("Finisher base weak foot", getStars("Finisher")!.base_weak_foot, 2);
+check("Finisher base skills", getStars("Finisher")!.base_skills, 3);
+check("Finisher base weak foot", getStars("Finisher")!.base_weak_foot, 3);
 check("Boss max skills", getStars("Boss")!.max_skills, 4);
-check("Magician base skills", getStars("Magician")!.base_skills, 2);
+check("Magician base skills", getStars("Magician")!.base_skills, 3);
 check("Recycler base skills", getStars("Recycler")!.base_skills, 2);
+check("Disruptor base weak foot", getStars("Disruptor")!.base_weak_foot, 3);
 
 console.log("--- Coste de estrellas (AP compartido) ---");
 const finStars = getStars("Finisher")!;
@@ -189,20 +190,35 @@ check(
   { skillsCost: 0, weakFootCost: 0, totalStarsCost: 0 },
 );
 
-// Base 2★: 5★ skills (10+15+25) + 4★ weak foot (20+35) = 105 AP.
+// Base 3★: 5★ skills (15+25=40) + 4★ weak foot (35) = 75 AP.
 check(
-  "Finisher 5★SM / 4★WF => 105 AP",
+  "Finisher 5★SM / 4★WF => 75 AP",
   getStarsCost(finStars, 5, 4),
-  { skillsCost: 50, weakFootCost: 55, totalStarsCost: 105 },
+  { skillsCost: 40, weakFootCost: 35, totalStarsCost: 75 },
 );
 
-// Base 2★: 5★ skills (10+15+25=50) + 5★ weak foot (20+35+50=105) = 155 AP.
+// Base 3★: 5★ skills (15+25=40) + 5★ weak foot (35+50=85) = 125 AP.
 check(
-  "Finisher 5★SM / 5★WF => 155 AP",
+  "Finisher 5★SM / 5★WF => 125 AP",
   getStarsCost(finStars, 5, 5),
-  { skillsCost: 50, weakFootCost: 105, totalStarsCost: 155 },
+  { skillsCost: 40, weakFootCost: 85, totalStarsCost: 125 },
 );
 check("Boss max weak foot 4 (5★ deshabilitada)", getStars("Boss")!.max_weak_foot, 4);
+
+const disruptorStars = getStars("Disruptor")!;
+check("Disruptor 2->3★ SM = 10 AP", getStarsCost(disruptorStars, 3, 3).skillsCost, 10);
+check(
+  "Disruptor 5★SM / 5★WF => 135 AP",
+  getStarsCost(disruptorStars, 5, 5),
+  { skillsCost: 50, weakFootCost: 85, totalStarsCost: 135 },
+);
+const bossStars = getStars("Boss")!;
+check(
+  "Boss 4★SM / 4★WF => 85 AP",
+  getStarsCost(bossStars, 4, 4),
+  { skillsCost: 30, weakFootCost: 55, totalStarsCost: 85 },
+);
+check("Boss 2->3★ WF = 20 AP", getStarsCost(bossStars, 2, 3).weakFootCost, 20);
 
 // Recycler starts at 2★ skills: 10+15+25 = 50 to reach 5★.
 check(
@@ -213,16 +229,16 @@ check(
 
 // Shared budget: stats + stars.
 const starsOnly = evaluateBuild("Finisher", {}, {}, { skills: 5, weakFoot: 4 }, 40);
-check("Solo estrellas: totalApSpent", starsOnly.totalApSpent, 105);
+check("Solo estrellas: totalApSpent", starsOnly.totalApSpent, 75);
 check("Solo estrellas: statsApCost", starsOnly.statsApCost, 0);
-check("Solo estrellas: totalStarsCost", starsOnly.totalStarsCost, 105);
-check("Solo estrellas: remainingAp", starsOnly.remainingAp, MAX_AP - 105);
+check("Solo estrellas: totalStarsCost", starsOnly.totalStarsCost, 75);
+check("Solo estrellas: remainingAp", starsOnly.remainingAp, MAX_AP - 75);
 check("Solo estrellas: isValid", starsOnly.isValid, true);
 
 // Stats + stars share the same 962 budget.
 const combined = evaluateBuild("Finisher", { Sprint: 92 }, {}, { skills: 5, weakFoot: 4 }, 40);
-check("Stats+estrellas: totalApSpent", combined.totalApSpent, 92 + 105);
-check("Stats+estrellas: remainingAp", combined.remainingAp, MAX_AP - (92 + 105));
+check("Stats+estrellas: totalApSpent", combined.totalApSpent, 92 + 75);
+check("Stats+estrellas: remainingAp", combined.remainingAp, MAX_AP - (92 + 75));
 
 // Stars default to base when no selection is provided.
 check(
