@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import ArchetypeDropdown from "@/components/ArchetypeDropdown";
+import AnimationThresholdModal from "@/components/AnimationThresholdModal";
 import BudgetBar from "@/components/BudgetBar";
 import CategorySection from "@/components/CategorySection";
 import ExportBuildModal from "@/components/ExportBuildModal";
@@ -15,6 +16,7 @@ import { getStars } from "@/data/archetypeStars";
 import { CATEGORY_ORDER } from "@/data/categories";
 import { MIN_LEVEL, MAX_LEVEL } from "@/data/levelProgression";
 import { evaluateBuild } from "@/lib/buildEngine";
+import type { AnimationThreshold } from "@/lib/animationOptimizer";
 import type { Archetype, CategoryName, MasteriesState } from "@/types";
 
 const FALLBACK_ARCHETYPE = getArchetype(DEFAULT_ARCHETYPE) as Archetype;
@@ -80,6 +82,8 @@ export default function Page() {
   );
   const [exportOpen, setExportOpen] = useState(false);
   const [masteriesOpen, setMasteriesOpen] = useState(false);
+  const [animationsOpen, setAnimationsOpen] = useState(false);
+  const [animationThreshold, setAnimationThreshold] = useState<AnimationThreshold>(71);
   const hydrated = useRef(false);
 
   // --- Hydrate from URL (?archetype=&stats=&m=) --------------------------
@@ -235,6 +239,29 @@ export default function Page() {
 
   const unmarkAllMasteries = useCallback(() => setMasteries({}), []);
 
+  /** Apply an animation-threshold optimization to the build. */
+  const applyThresholdOptimization = useCallback(
+    (name: string, targets: Record<string, number>) => {
+      const changing = name !== archetype;
+      if (changing) {
+        const base = baseStars(name);
+        setArchetype(name);
+        setSkills(base.skills);
+        setWeakFoot(base.weakFoot);
+        setOpenCategories(new Set(categoriesFor(name).slice(0, 1)));
+      }
+      setTargetStats((prev) =>
+        changing ? { ...targets } : { ...prev, ...targets },
+      );
+    },
+    [archetype],
+  );
+
+  const openAnimations = useCallback((threshold: AnimationThreshold) => {
+    setAnimationThreshold(threshold);
+    setAnimationsOpen(true);
+  }, []);
+
   return (
     <>
       <BudgetBar
@@ -292,6 +319,36 @@ export default function Page() {
                 {activeMasteriesCount}/{ARCHETYPE_MASTERIES.length} activas
               </span>
             </button>
+
+            <div className="panel p-4">
+              <h2 className="mb-3 text-sm font-bold tracking-tight text-zinc-100">
+                Optimizador de Animaciones
+              </h2>
+              <div className="flex flex-col gap-2">
+                <button
+                  type="button"
+                  onClick={() => openAnimations(71)}
+                  className="focus-ring flex items-center gap-2 rounded-lg border border-white/[0.08] bg-zinc-900 px-3 py-2 text-xs font-semibold text-zinc-300 transition hover:border-white/20 hover:bg-zinc-800"
+                >
+                  <span aria-hidden="true">⚡</span>
+                  Animaciones Base
+                  <span className="ml-auto rounded bg-white/[0.05] px-1.5 py-0.5 font-mono text-[10px] text-zinc-400">
+                    71
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => openAnimations(85)}
+                  className="focus-ring flex items-center gap-2 rounded-lg border border-white/[0.08] bg-zinc-900 px-3 py-2 text-xs font-semibold text-zinc-300 transition hover:border-white/20 hover:bg-zinc-800"
+                >
+                  <span aria-hidden="true">⭐</span>
+                  Animaciones Mejoradas
+                  <span className="ml-auto rounded bg-white/[0.05] px-1.5 py-0.5 font-mono text-[10px] text-zinc-400">
+                    85
+                  </span>
+                </button>
+              </div>
+            </div>
           </aside>
 
           {/* ---- Attributes column ---- */}
@@ -351,6 +408,15 @@ export default function Page() {
         weakFoot={weakFoot}
         targetStats={targetStats}
         masteries={masteries}
+      />
+
+      <AnimationThresholdModal
+        open={animationsOpen}
+        onClose={() => setAnimationsOpen(false)}
+        initialThreshold={animationThreshold}
+        archetype={archetype}
+        masteryBonus={build.masteryBonuses}
+        onApply={applyThresholdOptimization}
       />
     </>
   );

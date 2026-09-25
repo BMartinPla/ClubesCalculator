@@ -13,6 +13,11 @@ import { getArchetypeAttributes } from "../src/data/archetypeAttributes";
 import { ARCHETYPE_MASTERIES } from "../src/data/archetypeMasteries";
 import { getStars } from "../src/data/archetypeStars";
 import { getMaxApForLevel } from "../src/data/levelProgression";
+import {
+  optimizeForAnimationThreshold,
+  evaluateArchetypeForThreshold,
+  buildThresholdTargets,
+} from "../src/lib/animationOptimizer";
 
 let failures = 0;
 function check(label: string, actual: unknown, expected: unknown) {
@@ -297,6 +302,29 @@ const volCost = calculateAttributeUpgradeCost(75, 90, mag("Voleas").cost_tier);
 check("Definicion 75->90 (Most Expensive) = 177 AP", defCost, 177);
 check("Voleas 75->90 (Cheapest) = 65 AP", volCost, 65);
 check("Definicion cuesta mas que Voleas", defCost > volCost, true);
+
+console.log("--- Optimizador de animaciones ---");
+const opt71 = optimizeForAnimationThreshold(["Aceleracion"], 71, {});
+check("Optimizador: 11 resultados", opt71.results.length, 11);
+check("Optimizador: Aceleracion@71 = 0 AP (base >= 71)", opt71.best?.totalCost, 0);
+
+// Centros@85: Finisher (cap 75) no puede; Spark (cap 96, Cheapest) sí por 33 AP.
+const opt85 = optimizeForAnimationThreshold(["Centros"], 85, {});
+const finCentros = evaluateArchetypeForThreshold("Finisher", ["Centros"], 85, {});
+check("Finisher Centros@85 imposible", finCentros.isPossible, false);
+check("Optimizador: best Centros@85 = Spark", opt85.best?.archetype, "Spark");
+check("Optimizador: best Centros@85 = 70 AP", opt85.best?.totalCost, 70);
+
+check(
+  "Targets Spark Centros@85 = 85",
+  buildThresholdTargets("Spark", ["Centros"], 85, {})["Centros"],
+  85,
+);
+check(
+  "Maestría pasiva cubre el umbral => 0 AP",
+  evaluateArchetypeForThreshold("Finisher", ["Centros"], 71, { Centros: 20 }).totalCost,
+  0,
+);
 
 console.log(failures === 0 ? "\nALL CHECKS PASSED" : `\n${failures} CHECK(S) FAILED`);
 process.exit(failures === 0 ? 0 : 1);
