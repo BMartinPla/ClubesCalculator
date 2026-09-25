@@ -52,79 +52,97 @@ export default function BudgetBar({
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/[0.06] bg-zinc-950/95 px-4 py-3 backdrop-blur sm:px-6">
-      <div className="mx-auto flex max-w-7xl flex-col gap-3 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
-        {/* Izquierda: Branding y arquetipo activo */}
+    <header className="sticky top-0 z-50 w-full border-b border-white/[0.06] bg-zinc-950/80 backdrop-blur-xl">
+      {/* Accent hairline */}
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
+
+      <div className="mx-auto flex max-w-[1440px] flex-col gap-3 px-4 py-3 lg:flex-row lg:items-center lg:justify-between lg:gap-6 lg:px-6">
+        {/* Izquierda: emblema + branding */}
         <div className="flex items-center gap-3">
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-400 to-emerald-600 text-sm font-black text-zinc-950 shadow-lg shadow-emerald-500/20">
-            FC
+          <div className="relative shrink-0">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-400 via-emerald-500 to-cyan-500 text-[11px] font-black leading-none text-zinc-950 shadow-[0_0_26px_-6px_rgba(34,197,94,0.85)]">
+              FC27
+            </div>
+            <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-zinc-950 bg-emerald-400" />
           </div>
           <div className="leading-tight">
-            <p className="text-sm font-bold tracking-tight text-zinc-100">
+            <p className="text-[13px] font-black tracking-tight text-zinc-50">
               Clubs Build Calculator
             </p>
-            <p className="text-[11px] font-medium uppercase tracking-widest text-zinc-500">
-              {archetypeName} · EA SPORTS FC Pro Clubs
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500">
+              {archetypeName}
             </p>
           </div>
         </div>
 
-        {/* Centro: selector de nivel + cápsula de presupuesto unificada */}
+        {/* Centro: cockpit (nivel + AP) */}
         <div className="flex flex-wrap items-center gap-3">
-          <div className="flex items-center gap-2 rounded-lg border border-white/[0.08] bg-zinc-900/70 px-3 py-1.5">
-            <span className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
+          <label className="flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.03] px-3 py-2">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">
               Nivel
             </span>
             <select
               value={level}
               onChange={(e) => onLevelChange(Number(e.target.value))}
               aria-label="Nivel del Pro"
-              className="cursor-pointer bg-transparent text-sm font-bold text-emerald-400 focus:outline-none"
+              className="cursor-pointer bg-transparent text-sm font-black text-emerald-400 focus:outline-none"
             >
               {Array.from({ length: MAX_LEVEL }, (_, i) => i + 1).map((lvl) => (
                 <option key={lvl} value={lvl} className="bg-zinc-900 text-white">
-                  {lvl} ({getMaxApForLevel(lvl)} AP)
+                  {lvl} · {getMaxApForLevel(lvl)} AP
                 </option>
               ))}
             </select>
-          </div>
+          </label>
 
-          <div className="flex items-center gap-4 rounded-xl border border-white/[0.08] bg-zinc-900/70 px-4 py-2">
-            {/* Número grande de AP disponibles */}
-            <div className="text-right">
-              <div className="flex items-baseline justify-end gap-1.5">
-                <span
-                  className={`text-2xl font-black tabular-nums tracking-tight ${
-                    isOver ? "text-rose-500" : "text-emerald-400"
-                  }`}
-                >
-                  {remainingAp}
-                </span>
-                <span className="text-xs font-semibold uppercase text-zinc-400">
-                  AP Libres
-                </span>
-              </div>
-              <div className="mt-1 h-1.5 w-28 overflow-hidden rounded-full bg-zinc-800">
-                <div
-                  className={`h-full transition-all duration-300 ${
-                    isOver ? "bg-rose-500" : "bg-emerald-400"
-                  }`}
-                  style={{ width: `${pct}%` }}
-                />
+          <div className="flex items-center gap-4 rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.07] to-transparent px-4 py-2.5">
+            {/* Saldo AP */}
+            <div className="flex items-center gap-3">
+              <span
+                aria-hidden="true"
+                className={`flex h-9 w-9 items-center justify-center rounded-xl text-base ${
+                  isOver
+                    ? "bg-rose-500/15 text-rose-400"
+                    : "bg-emerald-500/15 text-emerald-400"
+                }`}
+              >
+                ⚡
+              </span>
+              <div className="text-right">
+                <div className="flex items-baseline justify-end gap-1.5">
+                  <span
+                    className={`text-3xl font-black leading-none tabular-nums tracking-tight ${
+                      isOver ? "text-rose-500" : "text-emerald-400"
+                    }`}
+                  >
+                    {remainingAp}
+                  </span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+                    AP libres
+                  </span>
+                </div>
+                <div className="mt-1.5 h-1.5 w-32 overflow-hidden rounded-full bg-white/[0.06]">
+                  <div
+                    className={`h-full transition-all duration-300 ${
+                      isOver ? "bg-rose-500" : "bg-gradient-to-r from-emerald-500 to-cyan-400"
+                    }`}
+                    style={{ width: `${pct}%` }}
+                  />
+                </div>
               </div>
             </div>
 
-            {/* Desglose compacto */}
-            <div className="flex flex-col justify-center border-l border-white/[0.08] pl-3 text-xs text-zinc-400">
+            {/* Desglose */}
+            <div className="hidden border-l border-white/[0.08] pl-3.5 text-xs text-zinc-400 sm:flex sm:flex-col sm:justify-center">
               <div>
-                Gastados:{" "}
-                <span className="font-semibold text-zinc-200">{spent}</span> / {maxAp}
+                Gastados{" "}
+                <span className="font-mono font-bold text-zinc-100">{spent}</span>
+                <span className="text-zinc-600"> / {maxAp}</span>
               </div>
-              <div className="text-[11px] text-zinc-400">
-                Stats:{" "}
-                <span className="font-medium text-zinc-300">{statsApCost}</span> •
-                Estrellas:{" "}
-                <span className="font-medium text-zinc-300">{starsApCost}</span>
+              <div className="mt-0.5 text-[11px]">
+                Stats <span className="font-mono font-semibold text-zinc-300">{statsApCost}</span>
+                {" · "}Estrellas{" "}
+                <span className="font-mono font-semibold text-zinc-300">{starsApCost}</span>
               </div>
             </div>
           </div>
@@ -135,7 +153,7 @@ export default function BudgetBar({
           <button
             type="button"
             onClick={onExport}
-            className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 font-bold text-zinc-950 transition hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500"
+            className="focus-ring inline-flex items-center gap-2 rounded-xl bg-gradient-to-b from-emerald-400 to-emerald-500 px-4 py-2 text-sm font-black text-zinc-950 shadow-[0_8px_24px_-10px_rgba(34,197,94,0.9)] transition hover:from-emerald-300 hover:to-emerald-400"
           >
             <span aria-hidden="true">📷</span>
             Exportar Captura
@@ -144,10 +162,10 @@ export default function BudgetBar({
           <button
             type="button"
             onClick={handleShare}
-            className={`inline-flex items-center gap-2 rounded-lg border px-3.5 py-2 text-sm font-medium transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500 ${
+            className={`focus-ring inline-flex items-center gap-2 rounded-xl border px-3.5 py-2 text-sm font-semibold transition ${
               copied
                 ? "border-emerald-500/50 bg-emerald-500/15 text-emerald-300"
-                : "border-white/[0.08] bg-white/[0.06] text-zinc-200 hover:bg-white/[0.1]"
+                : "border-white/[0.08] bg-white/[0.04] text-zinc-200 hover:border-white/20 hover:bg-white/[0.08]"
             }`}
           >
             <span aria-hidden="true">🔗</span>
@@ -157,7 +175,7 @@ export default function BudgetBar({
           <button
             type="button"
             onClick={onReset}
-            className="focus-ring inline-flex items-center gap-2 rounded-lg border border-white/[0.08] bg-white/[0.04] px-3.5 py-2 text-sm font-medium text-zinc-400 transition hover:border-rose-500/30 hover:bg-rose-500/20 hover:text-rose-400"
+            className="focus-ring inline-flex items-center gap-2 rounded-xl border border-white/[0.08] bg-transparent px-3.5 py-2 text-sm font-semibold text-zinc-400 transition hover:border-rose-500/30 hover:bg-rose-500/20 hover:text-rose-400"
           >
             <span aria-hidden="true">🔄</span>
             Resetear
@@ -166,7 +184,7 @@ export default function BudgetBar({
       </div>
 
       {status === "over" && (
-        <div className="mx-auto mt-3 max-w-7xl rounded-lg border border-rose-500/30 bg-rose-500/20 px-4 py-2 text-center text-xs font-semibold text-rose-200">
+        <div className="mx-auto mb-3 max-w-[1440px] rounded-xl border border-rose-500/30 bg-rose-500/20 px-4 py-2 text-center text-xs font-semibold text-rose-200">
           Has superado el presupuesto: {Math.abs(remainingAp)} AP de más. Reduce
           atributos o estrellas para volver a {maxAp} AP.
         </div>
