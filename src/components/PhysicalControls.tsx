@@ -11,6 +11,7 @@ interface PhysicalControlsProps {
   defaultWeight: number;
   onHeight: (value: number) => void;
   onWeight: (value: number) => void;
+  deltas?: Record<string, number>;
 }
 
 /** 178 cm -> 5'10" */
@@ -104,7 +105,12 @@ export default function PhysicalControls({
   defaultWeight,
   onHeight,
   onWeight,
+  deltas = {},
 }: PhysicalControlsProps) {
+  const entries = Object.entries(deltas).filter(([, v]) => v !== 0);
+  const positives = entries.filter(([, v]) => v > 0);
+  const negatives = entries.filter(([, v]) => v < 0);
+
   return (
     <div className="panel p-4">
       <div className="mb-3 flex items-center justify-between">
@@ -136,6 +142,36 @@ export default function PhysicalControls({
           defaultValue={defaultWeight}
           onChange={onWeight}
         />
+      </div>
+
+      <div className="mt-3 rounded-xl border border-white/[0.06] bg-black/20 p-3">
+        <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+          Stats afectadas
+        </p>
+        {entries.length === 0 ? (
+          <p className="text-[11px] text-zinc-600">
+            En los valores base no hay modificadores por altura/peso.
+          </p>
+        ) : (
+          <div className="flex flex-wrap gap-1.5">
+            {[...positives, ...negatives].map(([stat, v]) => (
+              <span
+                key={stat}
+                className={`chip ${
+                  v > 0
+                    ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-300"
+                    : "border-rose-500/30 bg-rose-500/10 text-rose-300"
+                }`}
+              >
+                {stat}
+                <span className="font-mono">
+                  {v > 0 ? "+" : ""}
+                  {v}
+                </span>
+              </span>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

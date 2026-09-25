@@ -92,6 +92,8 @@ export interface AttributeBreakdown {
   apCost: number;
   /** Passive bonus contributed by active masteries (does not cost AP). */
   masteryBonus: number;
+  /** Height/weight delta applied to this attribute (does not cost AP). */
+  physicalModifier: number;
   /** Final visible stat: min(99, targetStat + masteryBonus). */
   statTotal: number;
 }

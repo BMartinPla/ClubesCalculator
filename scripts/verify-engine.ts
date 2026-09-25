@@ -13,6 +13,7 @@ import { getArchetypeAttributes } from "../src/data/archetypeAttributes";
 import { ARCHETYPE_MASTERIES } from "../src/data/archetypeMasteries";
 import { getStars } from "../src/data/archetypeStars";
 import { getMaxApForLevel } from "../src/data/levelProgression";
+import { getPhysicalModifiers, physicalStepMagnitude } from "../src/lib/physicalModifiers";
 import {
   optimizeForAnimationThreshold,
   evaluateArchetypeForThreshold,
@@ -126,6 +127,38 @@ console.log("--- Altura/peso por arquetipo ---");
 check("Finisher rango altura", [getArchetype("Finisher")!.min_height, getArchetype("Finisher")!.max_height], [164, 190]);
 check("Boss default peso", getArchetype("Boss")!.default_weight, 90);
 check("clamp altura Boss", clamp(150, getArchetype("Boss")!.min_height, getArchetype("Boss")!.max_height), 180);
+
+console.log("--- Modificadores de altura/peso (portados de proleague) ---");
+check("Magnitud por pasos (qe)", physicalStepMagnitude(190, 177, 4), 4);
+check("Magnitud en base = 0", physicalStepMagnitude(177, 177, 4), 0);
+check("Magnitud 1 punto = 1", physicalStepMagnitude(178, 177, 4), 1);
+// Finisher base 177/80; at 190 cm taller => -acc -agi -bal, +jump +sprint +strength.
+check(
+  "Finisher @190/80 (más alto)",
+  getPhysicalModifiers("Finisher", 190, 80),
+  { Aceleracion: -4, Agilidad: -4, Balance: -4, Salto: 4, Sprint: 4, Fuerza: 4 },
+);
+// Heavier than base (80 -> 96, s = 1+floor(15/8)=2): -acc -agi +bal +jump -sprint +strength.
+check(
+  "Finisher @177/96 (más pesado)",
+  getPhysicalModifiers("Finisher", 177, 96),
+  { Aceleracion: -2, Agilidad: -2, Balance: 2, Salto: 2, Sprint: -2, Fuerza: 2 },
+);
+// GK mapping.
+check(
+  "Shot Stopper @197/90 (más alto, portero)",
+  getPhysicalModifiers("Shot Stopper", 197, 90),
+  { GK_Estirada: 3, GK_Paradas: -3, GK_Reflejos: 3, Aceleracion: -3, Sprint: 3, Fuerza: 3 },
+);
+
+// evaluateBuild applies the physical delta to base/cap.
+const tall = evaluateBuild("Finisher", {}, {}, null, 40, 190, 80);
+const acelTall = tall.breakdown.find((b) => b.attribute === "Aceleracion")!;
+check("Aceleracion base efectiva @190 = 71", acelTall.baseStat, 71);
+check("Aceleracion statTotal @190 = 71", acelTall.statTotal, 71);
+check("Aceleracion modifier @190", acelTall.physicalModifier, -4);
+// At default height/weight there is no physical delta.
+check("Sin modificadores en base", evaluateBuild("Finisher", {}, {}, null, 40, 177, 80).totalApSpent, 0);
 
 console.log(failures === 0 ? "\nALL CHECKS PASSED" : `\n${failures} CHECK(S) FAILED`);
 process.exit(failures === 0 ? 0 : 1);

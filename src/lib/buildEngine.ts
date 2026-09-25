@@ -4,6 +4,7 @@ import { ARCHETYPE_MASTERIES } from "@/data/archetypeMasteries";
 import { getStars } from "@/data/archetypeStars";
 import { CATEGORY_ORDER } from "@/data/categories";
 import { getMaxApForLevel, MAX_LEVEL, MIN_LEVEL } from "@/data/levelProgression";
+import { getPhysicalModifiers } from "@/lib/physicalModifiers";
 import type {
   ArchetypeMastery,
   ArchetypeStarsConfig,
@@ -124,6 +125,8 @@ export function evaluateBuild(
   activeMasteries: MasteriesState = {},
   stars: StarsSelection | null = null,
   level: number = MIN_LEVEL,
+  heightCm?: number,
+  weightKg?: number,
 ): BuildResult {
   const level_ = Math.min(MAX_LEVEL, Math.max(MIN_LEVEL, Math.floor(level) || MIN_LEVEL));
   const maxAp = getMaxApForLevel(level_);
@@ -132,6 +135,10 @@ export function evaluateBuild(
     ARCHETYPE_MASTERIES,
     activeMasteries,
   );
+  const physicalModifiers =
+    heightCm !== undefined && weightKg !== undefined
+      ? getPhysicalModifiers(archetypeName, heightCm, weightKg)
+      : {};
   const byCategory = Object.fromEntries(
     CATEGORY_ORDER.map((c) => [c, 0]),
   ) as Record<CategoryName, number>;
@@ -149,8 +156,9 @@ export function evaluateBuild(
   let statsApCost = 0;
 
   for (const item of attributes) {
-    const effectiveBase = Number(item.base_stat);
-    const effectiveCap = Number(item.cap_stat);
+    const physicalModifier = physicalModifiers[item.attribute] ?? 0;
+    const effectiveBase = clamp(Number(item.base_stat) + physicalModifier, 1, 99);
+    const effectiveCap = clamp(Number(item.cap_stat) + physicalModifier, 1, 99);
     const category = item.category as CategoryName;
 
     const requested = userStats[item.attribute] ?? effectiveBase;
@@ -180,6 +188,7 @@ export function evaluateBuild(
       targetStat,
       apCost,
       masteryBonus,
+      physicalModifier,
       statTotal,
     });
   }

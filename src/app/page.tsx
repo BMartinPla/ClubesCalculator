@@ -24,6 +24,7 @@ import { getStars } from "@/data/archetypeStars";
 import { CATEGORY_ORDER } from "@/data/categories";
 import { MIN_LEVEL, MAX_LEVEL } from "@/data/levelProgression";
 import { evaluateBuild } from "@/lib/buildEngine";
+import { getPhysicalModifiers } from "@/lib/physicalModifiers";
 import type { AnimationThreshold } from "@/lib/animationOptimizer";
 import type { Archetype, CategoryName, MasteriesState } from "@/types";
 
@@ -152,8 +153,22 @@ export default function Page() {
 
   // --- Derived build -----------------------------------------------------
   const build = useMemo(
-    () => evaluateBuild(archetype, targetStats, masteries, { skills, weakFoot }, level),
-    [archetype, targetStats, masteries, skills, weakFoot, level],
+    () =>
+      evaluateBuild(
+        archetype,
+        targetStats,
+        masteries,
+        { skills, weakFoot },
+        level,
+        height,
+        weight,
+      ),
+    [archetype, targetStats, masteries, skills, weakFoot, level, height, weight],
+  );
+
+  const physicalDeltas = useMemo(
+    () => getPhysicalModifiers(archetype, height, weight),
+    [archetype, height, weight],
   );
 
   const { breakdown } = build;
@@ -369,6 +384,7 @@ export default function Page() {
               defaultWeight={activeArchetype.default_weight}
               onHeight={setHeight}
               onWeight={setWeight}
+              deltas={physicalDeltas}
             />
 
             <button

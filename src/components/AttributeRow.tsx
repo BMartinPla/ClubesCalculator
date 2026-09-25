@@ -41,6 +41,7 @@ function AttributeRowBase({ entry, onChange }: AttributeRowProps) {
     costTier,
     apCost,
     masteryBonus,
+    physicalModifier,
     statTotal,
   } = entry;
 
@@ -64,6 +65,19 @@ function AttributeRowBase({ entry, onChange }: AttributeRowProps) {
             className={`h-1.5 w-1.5 shrink-0 rounded-full ${accent.dot}`}
           />
           <p className="truncate text-sm font-semibold text-zinc-100">{attribute}</p>
+          {physicalModifier !== 0 && (
+            <span
+              title="Modificador por altura/peso"
+              className={`chip shrink-0 ${
+                physicalModifier > 0
+                  ? "border-cyan-500/40 bg-cyan-500/10 text-cyan-300"
+                  : "border-rose-500/40 bg-rose-500/10 text-rose-300"
+              }`}
+            >
+              {physicalModifier > 0 ? "+" : ""}
+              {physicalModifier} Fís
+            </span>
+          )}
           {masteryBonus > 0 && (
             <span
               title={`${targetStat} por AP + ${masteryBonus} de maestría`}
