@@ -8,6 +8,7 @@ interface ArchetypeDropdownProps {
   archetypes: Archetype[];
   selected: string;
   onSelect: (name: string) => void;
+  compact?: boolean;
 }
 
 function ChevronDown({ className }: { className?: string }) {
@@ -30,6 +31,7 @@ export default function ArchetypeDropdown({
   archetypes,
   selected,
   onSelect,
+  compact = false,
 }: ArchetypeDropdownProps) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -63,43 +65,63 @@ export default function ArchetypeDropdown({
 
   return (
     <div ref={rootRef} className="relative flex h-full flex-col">
-      <p className="mb-1.5 text-[10px] font-bold uppercase tracking-widest text-muted">
-        Active Archetype
-      </p>
+      {!compact && (
+        <p className="mb-1.5 text-[10px] font-bold uppercase tracking-widest text-muted">
+          Active Archetype
+        </p>
+      )}
 
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className="focus-ring flex h-full w-full items-center gap-3 rounded-lg border border-line bg-[#161a22]/60 px-3 py-2.5 text-left transition hover:border-line-strong"
+        className={`focus-ring flex w-full items-center gap-2.5 rounded-lg border border-line bg-[#161a22]/60 text-left transition hover:border-line-strong ${
+          compact ? "px-2.5 py-1.5" : "h-full px-3 py-2.5"
+        }`}
       >
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-line bg-black/30">
+        <span
+          className={`flex shrink-0 items-center justify-center rounded-lg border border-line bg-black/30 ${
+            compact ? "h-8 w-8" : "h-11 w-11"
+          }`}
+        >
           {icon ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={icon} alt="" width={34} height={34} className="h-9 w-9 object-contain" />
+            <img
+              src={icon}
+              alt=""
+              width={compact ? 26 : 34}
+              height={compact ? 26 : 34}
+              className={compact ? "h-6 w-6 object-contain" : "h-9 w-9 object-contain"}
+            />
           ) : (
             <span className="text-sm font-black text-white">{initials}</span>
           )}
         </span>
         <span className="min-w-0 flex-1">
-          <span className="flex flex-wrap items-center gap-2">
-            <span className="truncate text-lg font-extrabold uppercase tracking-wide text-white">
+          <span className="flex flex-wrap items-center gap-1.5">
+            <span
+              className={`truncate font-extrabold uppercase tracking-wide text-white ${
+                compact ? "text-sm" : "text-lg"
+              }`}
+            >
               {current?.name}
             </span>
             <span className="chip bg-white/[0.06] text-zinc-300">
               {current?.primary_position}
             </span>
           </span>
-          <span className="mt-1 flex flex-wrap items-center gap-2">
-            <span className="chip bg-gold/15 text-gold">
-              ★ {current?.signature_playstyle_plus}+
+          {!compact && (
+            <span className="mt-1 flex flex-wrap items-center gap-2">
+              <span className="chip bg-gold/15 text-gold">
+                ★ {current?.signature_playstyle_plus}+
+              </span>
+              <span className="text-[10px] text-muted">{current?.role}</span>
             </span>
-            <span className="text-[10px] text-muted">{current?.role}</span>
-          </span>
+          )}
         </span>
         <ChevronDown
-          className={`h-5 w-5 shrink-0 text-muted transition-transform duration-200 ${
+          className={`h-4 w-4 shrink-0 text-muted transition-transform duration-200 ${
             open ? "rotate-180" : ""
           }`}
         />

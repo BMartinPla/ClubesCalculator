@@ -9,7 +9,6 @@ import {
   useState,
 } from "react";
 
-import ArchetypeDropdown from "@/components/ArchetypeDropdown";
 import AnimationThresholdModal from "@/components/AnimationThresholdModal";
 import BudgetBar from "@/components/BudgetBar";
 import CategorySection from "@/components/CategorySection";
@@ -324,7 +323,9 @@ export default function Page() {
     <>
       <BudgetBar
         ref={headerRef}
+        archetypes={ARCHETYPES}
         archetypeName={archetype}
+        onArchetypeSelect={selectArchetype}
         spent={build.totalApSpent}
         maxAp={build.maxAp}
         statsApCost={build.statsApCost}
@@ -340,125 +341,104 @@ export default function Page() {
         className="mx-auto max-w-[1600px] px-4 pb-8 sm:px-6"
         style={{ paddingTop: (headerH || 88) + 14 }}
       >
-        {/* ---- Top config (5 equal cards, one row on desktop) ---- */}
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-5">
-          <ArchetypeDropdown
-            archetypes={ARCHETYPES}
-            selected={archetype}
-            onSelect={selectArchetype}
-          />
-          <PlayStylesPanel
-            level={level}
-            archetype={activeArchetype}
-            statTotals={statTotals}
-            selection={playStyleSelection}
-            onOpenPicker={(slot) => setPlayStyleSlot(slot)}
-            onClear={(slot) =>
-              setPlayStyleSelection((prev) => {
-                const next = [...prev];
-                next[slot] = null;
-                return next;
-              })
-            }
-          />
-          <SkillControls
-            skills={skills}
-            minSkills={minSkills}
-            maxSkills={maxSkills}
-            weakFoot={weakFoot}
-            minWeakFoot={minWeakFoot}
-            maxWeakFoot={maxWeakFoot}
-            skillsCost={build.skillsCost}
-            weakFootCost={build.weakFootCost}
-            onSkills={setSkills}
-            onWeakFoot={setWeakFoot}
-          />
-          <PhysicalControls
-            heightCm={height}
-            weightKg={weight}
-            minHeight={activeArchetype.min_height}
-            maxHeight={activeArchetype.max_height}
-            defaultHeight={activeArchetype.default_height}
-            minWeight={activeArchetype.min_weight}
-            maxWeight={activeArchetype.max_weight}
-            defaultWeight={activeArchetype.default_weight}
-            onHeight={setHeight}
-            onWeight={setWeight}
-            deltas={physicalDeltas}
-          />
-          <div className="panel flex h-full flex-col p-3">
-            <h2 className="panel-title mb-3">Tools</h2>
-            <div className="flex flex-col gap-2">
-              <button
-                type="button"
-                onClick={() => setMasteriesOpen(true)}
-                className={`focus-ring flex items-center justify-between gap-3 rounded border px-3 py-2 text-xs font-semibold transition ${
-                  activeMasteriesCount > 0
-                    ? "border-violet-500/50 bg-violet-500/15 text-violet-200"
-                    : "border-line bg-black/20 text-zinc-300 hover:border-line-strong"
-                }`}
-              >
-                <span className="flex items-center gap-2">
-                  <span aria-hidden="true">🏆</span> Masteries
-                </span>
-                <span className="rounded bg-white/[0.06] px-1.5 py-0.5 text-[10px] font-bold">
-                  {activeMasteriesCount}/{ARCHETYPE_MASTERIES.length}
-                </span>
-              </button>
-              <button
-                type="button"
-                onClick={() => openAnimations(71)}
-                className="focus-ring flex items-center gap-2 rounded border border-line bg-black/20 px-3 py-2 text-xs font-semibold text-zinc-300 transition hover:border-line-strong"
-              >
-                <span aria-hidden="true">⚡</span> Base Animations
-                <span className="ml-auto rounded bg-white/[0.06] px-1.5 py-0.5 font-mono text-[10px] text-muted">
-                  71
-                </span>
-              </button>
-              <button
-                type="button"
-                onClick={() => openAnimations(85)}
-                className="focus-ring flex items-center gap-2 rounded border border-line bg-black/20 px-3 py-2 text-xs font-semibold text-zinc-300 transition hover:border-line-strong"
-              >
-                <span aria-hidden="true">⭐</span> Improved Animations
-                <span className="ml-auto rounded bg-white/[0.06] px-1.5 py-0.5 font-mono text-[10px] text-muted">
-                  85
-                </span>
-              </button>
+        {/* ---- Tools (horizontal) ---- */}
+        <div className="panel flex flex-wrap items-center gap-2 p-3">
+          <span className="panel-title px-1">Tools</span>
+          <button
+            type="button"
+            onClick={() => setMasteriesOpen(true)}
+            className={`focus-ring flex items-center gap-2 rounded border px-3 py-2 text-xs font-semibold transition ${
+              activeMasteriesCount > 0
+                ? "border-violet-500/50 bg-violet-500/15 text-violet-200"
+                : "border-line bg-black/20 text-zinc-300 hover:border-line-strong"
+            }`}
+          >
+            <span aria-hidden="true">🏆</span> Masteries
+            <span className="rounded bg-white/[0.06] px-1.5 py-0.5 text-[10px] font-bold">
+              {activeMasteriesCount}/{ARCHETYPE_MASTERIES.length}
+            </span>
+          </button>
+          <button
+            type="button"
+            onClick={() => openAnimations(71)}
+            className="focus-ring flex items-center gap-2 rounded border border-line bg-black/20 px-3 py-2 text-xs font-semibold text-zinc-300 transition hover:border-line-strong"
+          >
+            <span aria-hidden="true">🎬</span> Animations
+            <span className="rounded bg-white/[0.06] px-1.5 py-0.5 font-mono text-[10px] text-muted">
+              Base / Improved
+            </span>
+          </button>
+        </div>
+
+        {/* ---- Left: PlayStyles + Skills + Physical · Right: Attributes ---- */}
+        <div className="mt-3 grid grid-cols-1 gap-3 lg:grid-cols-[330px_minmax(0,1fr)]">
+          <div className="flex flex-col gap-3">
+            <PlayStylesPanel
+              level={level}
+              archetype={activeArchetype}
+              statTotals={statTotals}
+              selection={playStyleSelection}
+              onOpenPicker={(slot) => setPlayStyleSlot(slot)}
+              onClear={(slot) =>
+                setPlayStyleSelection((prev) => {
+                  const next = [...prev];
+                  next[slot] = null;
+                  return next;
+                })
+              }
+            />
+            <SkillControls
+              skills={skills}
+              minSkills={minSkills}
+              maxSkills={maxSkills}
+              weakFoot={weakFoot}
+              minWeakFoot={minWeakFoot}
+              maxWeakFoot={maxWeakFoot}
+              skillsCost={build.skillsCost}
+              weakFootCost={build.weakFootCost}
+              onSkills={setSkills}
+              onWeakFoot={setWeakFoot}
+            />
+            <PhysicalControls
+              heightCm={height}
+              weightKg={weight}
+              minHeight={activeArchetype.min_height}
+              maxHeight={activeArchetype.max_height}
+              defaultHeight={activeArchetype.default_height}
+              minWeight={activeArchetype.min_weight}
+              maxWeight={activeArchetype.max_weight}
+              defaultWeight={activeArchetype.default_weight}
+              onHeight={setHeight}
+              onWeight={setWeight}
+              deltas={physicalDeltas}
+            />
+          </div>
+
+          {/* Attributes (larger) */}
+          <div>
+            <div className="mb-2 flex items-center justify-between px-1">
+              <h2 className="text-base font-extrabold uppercase tracking-[0.08em] text-white">
+                Attributes
+              </h2>
+              <span className="text-xs text-muted">
+                {build.totalApSpent} / {build.maxAp} AP used
+              </span>
+            </div>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {categories.map((category) => (
+                <CategorySection
+                  key={category}
+                  category={category}
+                  entries={entriesByCategory.get(category) ?? []}
+                  categoryAp={build.byCategory[category] ?? 0}
+                  onStatChange={handleStatChange}
+                />
+              ))}
             </div>
           </div>
         </div>
 
-        {/* ---- Priority: attributes (3 cols; last card fills the row) ---- */}
-        <div className="mt-4 flex items-center justify-between px-1">
-          <h2 className="text-base font-extrabold uppercase tracking-[0.08em] text-white">
-            Attributes
-          </h2>
-          <span className="text-xs text-muted">
-            {build.totalApSpent} / {build.maxAp} AP used
-          </span>
-        </div>
-        <div className="mt-2 grid grid-cols-1 gap-3 lg:grid-cols-2 xl:grid-cols-3">
-          {categories.map((category, i) => (
-            <div
-              key={category}
-              className={
-                i === categories.length - 1 && categories.length % 3 !== 0
-                  ? "xl:col-span-2"
-                  : undefined
-              }
-            >
-              <CategorySection
-                category={category}
-                entries={entriesByCategory.get(category) ?? []}
-                categoryAp={build.byCategory[category] ?? 0}
-                onStatChange={handleStatChange}
-              />
-            </div>
-          ))}
-        </div>
-
-        <footer className="mt-10 border-t border-line pt-5 text-[11px] leading-relaxed text-muted">
+        <footer className="mt-8 border-t border-line pt-5 text-[11px] leading-relaxed text-muted">
           <p>
             Archetype, attribute, mastery, star and cost data from{" "}
             <span className="font-mono text-zinc-400">raw-data/</span> (source:

@@ -3,10 +3,13 @@
 import { forwardRef, useEffect, useState } from "react";
 import { getBudgetStatus } from "@/lib/buildEngine";
 import { MAX_LEVEL, getMaxApForLevel } from "@/data/levelProgression";
-import { getArchetypeIcon } from "@/data/playstyles";
+import ArchetypeDropdown from "@/components/ArchetypeDropdown";
+import type { Archetype } from "@/types";
 
 interface BudgetBarProps {
+  archetypes: Archetype[];
   archetypeName: string;
+  onArchetypeSelect: (name: string) => void;
   spent: number;
   maxAp: number;
   statsApCost: number;
@@ -20,7 +23,9 @@ interface BudgetBarProps {
 
 const BudgetBar = forwardRef<HTMLElement, BudgetBarProps>(function BudgetBar(
   {
+    archetypes,
     archetypeName,
+    onArchetypeSelect,
     spent,
     maxAp,
     statsApCost,
@@ -55,35 +60,36 @@ const BudgetBar = forwardRef<HTMLElement, BudgetBarProps>(function BudgetBar(
     }
   };
 
-  const icon = getArchetypeIcon(archetypeName);
-
   return (
     <header
       ref={ref}
-      className="fixed left-0 right-0 top-0 z-50 w-full border-b border-line bg-[#0c0f16]/95 px-4 py-3 shadow-xl backdrop-blur-md sm:px-6"
+      className="fixed left-0 right-0 top-0 z-50 w-full border-b border-line bg-[#0c0f16]/95 px-4 py-2.5 shadow-xl backdrop-blur-md sm:px-6"
     >
-      <div className="mx-auto flex max-w-[1600px] flex-col gap-3 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
+      <div className="mx-auto flex max-w-[1600px] flex-col gap-3 lg:flex-row lg:items-center lg:gap-5">
         {/* Left: brand */}
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-brand/60 bg-brand/15 text-[11px] font-black leading-none text-brand-hi">
+        <div className="flex shrink-0 items-center gap-3">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-brand/60 bg-brand/15 text-[10px] font-black leading-none text-brand-hi">
             FC27
           </div>
           <div className="leading-tight">
-            <p className="text-[15px] font-extrabold uppercase tracking-[0.08em] text-white">
+            <p className="text-sm font-extrabold uppercase tracking-[0.08em] text-white">
               Clubs Builder
-            </p>
-            <p className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-muted">
-              {icon && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={icon} alt="" width={16} height={16} className="h-4 w-4 object-contain" />
-              )}
-              {archetypeName}
             </p>
           </div>
         </div>
 
+        {/* Archetype selector (from the header) */}
+        <div className="w-full min-w-0 lg:max-w-xs">
+          <ArchetypeDropdown
+            archetypes={archetypes}
+            selected={archetypeName}
+            onSelect={onArchetypeSelect}
+            compact
+          />
+        </div>
+
         {/* Center: level + AP */}
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex flex-1 flex-wrap items-center gap-3 lg:justify-end">
           <label className="flex items-center gap-2 rounded-lg border border-line bg-black/20 px-3 py-2">
             <span className="text-[10px] font-bold uppercase tracking-widest text-muted">
               Level
@@ -102,11 +108,11 @@ const BudgetBar = forwardRef<HTMLElement, BudgetBarProps>(function BudgetBar(
             </select>
           </label>
 
-          <div className="flex items-center gap-4 rounded-lg border border-line bg-[#161a22]/70 px-4 py-2">
+          <div className="flex items-center gap-4 rounded-lg border border-line bg-[#161a22]/70 px-4 py-1.5">
             <div className="text-right">
               <div className="flex items-baseline justify-end gap-1.5">
                 <span
-                  className={`text-3xl font-extrabold leading-none tabular-nums ${
+                  className={`text-2xl font-extrabold leading-none tabular-nums ${
                     isOver ? "text-rose-500" : "text-pitch"
                   }`}
                 >
@@ -116,7 +122,7 @@ const BudgetBar = forwardRef<HTMLElement, BudgetBarProps>(function BudgetBar(
                   AP Left
                 </span>
               </div>
-              <div className="mt-1.5 h-1.5 w-32 overflow-hidden rounded-full bg-line">
+              <div className="mt-1 h-1.5 w-28 overflow-hidden rounded-full bg-line">
                 <div
                   className={`h-full transition-all duration-300 ${
                     isOver ? "bg-rose-500" : "bg-pitch"
@@ -126,7 +132,7 @@ const BudgetBar = forwardRef<HTMLElement, BudgetBarProps>(function BudgetBar(
               </div>
             </div>
 
-            <div className="hidden border-l border-line pl-3.5 text-xs text-muted sm:flex sm:flex-col sm:justify-center">
+            <div className="hidden border-l border-line pl-3.5 text-xs text-muted xl:flex xl:flex-col xl:justify-center">
               <div>
                 Spent{" "}
                 <span className="font-mono font-bold text-white">{spent}</span>
