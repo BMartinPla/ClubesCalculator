@@ -3,66 +3,17 @@ import type { ArchetypeMastery } from "@/types";
 
 export const ARCHETYPE_MASTERIES: ArchetypeMastery[] = [
   {
-    "archetype": "Finisher",
-    "stat_1": "Compostura",
+    "archetype": "Shot Stopper",
+    "stat_1": "GK_Colocacion",
     "bonus_1": 1,
-    "stat_2": "Definicion",
+    "stat_2": "GK_Reflejos",
     "bonus_2": 2
   },
   {
-    "archetype": "Target",
-    "stat_1": "Balance",
+    "archetype": "Sweeper Keeper",
+    "stat_1": "GK_Paradas",
     "bonus_1": 1,
-    "stat_2": "Salto",
-    "bonus_2": 2
-  },
-  {
-    "archetype": "Magician",
-    "stat_1": "Efecto",
-    "bonus_1": 1,
-    "stat_2": "Aceleracion",
-    "bonus_2": 2
-  },
-  {
-    "archetype": "Spark",
-    "stat_1": "Centros",
-    "bonus_1": 1,
-    "stat_2": "Regates",
-    "bonus_2": 2
-  },
-  {
-    "archetype": "Creator",
-    "stat_1": "Precision Cabeza",
-    "bonus_1": 1,
-    "stat_2": "Vision",
-    "bonus_2": 2
-  },
-  {
-    "archetype": "Maestro",
-    "stat_1": "Reacciones",
-    "bonus_1": 1,
-    "stat_2": "Control Balon",
-    "bonus_2": 2
-  },
-  {
-    "archetype": "Disruptor",
-    "stat_1": "Resistencia",
-    "bonus_1": 1,
-    "stat_2": "Intercepciones",
-    "bonus_2": 2
-  },
-  {
-    "archetype": "Recycler",
-    "stat_1": "Percepcion Defensiva",
-    "bonus_1": 1,
-    "stat_2": "Pase Corto",
-    "bonus_2": 2
-  },
-  {
-    "archetype": "Boss",
-    "stat_1": "Agresividad",
-    "bonus_1": 1,
-    "stat_2": "Fuerza",
+    "stat_2": "GK_Estirada",
     "bonus_2": 2
   },
   {
@@ -73,10 +24,73 @@ export const ARCHETYPE_MASTERIES: ArchetypeMastery[] = [
     "bonus_2": 2
   },
   {
+    "archetype": "Boss",
+    "stat_1": "Agresividad",
+    "bonus_1": 1,
+    "stat_2": "Fuerza",
+    "bonus_2": 2
+  },
+  {
+    "archetype": "Disruptor",
+    "stat_1": "Resistencia",
+    "bonus_1": 1,
+    "stat_2": "Intercepciones",
+    "bonus_2": 2
+  },
+  {
     "archetype": "Marauder",
     "stat_1": "Barridas",
     "bonus_1": 1,
     "stat_2": "Sprint",
+    "bonus_2": 2
+  },
+  {
+    "archetype": "Recycler",
+    "stat_1": "Percepcion Defensiva",
+    "bonus_1": 1,
+    "stat_2": "Pase Corto",
+    "bonus_2": 2
+  },
+  {
+    "archetype": "Maestro",
+    "stat_1": "Reacciones",
+    "bonus_1": 1,
+    "stat_2": "Control Balon",
+    "bonus_2": 2
+  },
+  {
+    "archetype": "Creator",
+    "stat_1": "Precision TL",
+    "bonus_1": 1,
+    "stat_2": "Vision",
+    "bonus_2": 2
+  },
+  {
+    "archetype": "Spark",
+    "stat_1": "Centros",
+    "bonus_1": 1,
+    "stat_2": "Regates",
+    "bonus_2": 2
+  },
+  {
+    "archetype": "Magician",
+    "stat_1": "Efecto",
+    "bonus_1": 1,
+    "stat_2": "Aceleracion",
+    "bonus_2": 2
+  },
+  {
+    "archetype": "Finisher",
+    "stat_1": "Definicion",
+    "bonus_1": 2,
+    "stat_2": "Compostura",
+    "bonus_2": 1
+  },
+  {
+    "archetype": "Target",
+    "stat_1": "Balance",
+    "bonus_1": 1,
+    "stat_2": "Salto",
     "bonus_2": 2
   }
 ];

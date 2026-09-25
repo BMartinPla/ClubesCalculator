@@ -14,12 +14,12 @@ export const ARCHETYPES: Archetype[] = [
       "Gamechanger"
     ],
     "inspired_by": "Alex Morgan",
-    "min_height": 165,
-    "max_height": 195,
-    "default_height": 180,
-    "min_weight": 55,
-    "max_weight": 95,
-    "default_weight": 75,
+    "min_height": 164,
+    "max_height": 190,
+    "default_height": 177,
+    "min_weight": 70,
+    "max_weight": 90,
+    "default_weight": 80,
     "base_ap": 962
   },
   {
@@ -34,12 +34,12 @@ export const ARCHETYPES: Archetype[] = [
       "Enforcer"
     ],
     "inspired_by": "Zlatan Ibrahimovic",
-    "min_height": 182,
-    "max_height": 205,
-    "default_height": 192,
-    "min_weight": 75,
-    "max_weight": 115,
-    "default_weight": 88,
+    "min_height": 177,
+    "max_height": 195,
+    "default_height": 186,
+    "min_weight": 80,
+    "max_weight": 100,
+    "default_weight": 90,
     "base_ap": 962
   },
   {
@@ -54,12 +54,12 @@ export const ARCHETYPES: Archetype[] = [
       "Incisive Pass"
     ],
     "inspired_by": "Ronaldinho",
-    "min_height": 160,
+    "min_height": 162,
     "max_height": 188,
-    "default_height": 172,
-    "min_weight": 50,
-    "max_weight": 85,
-    "default_weight": 68,
+    "default_height": 175,
+    "min_weight": 60,
+    "max_weight": 80,
+    "default_weight": 70,
     "base_ap": 962
   },
   {
@@ -74,12 +74,12 @@ export const ARCHETYPES: Archetype[] = [
       "Chip Shot"
     ],
     "inspired_by": "Luis Figo",
-    "min_height": 155,
-    "max_height": 185,
-    "default_height": 168,
-    "min_weight": 45,
+    "min_height": 162,
+    "max_height": 188,
+    "default_height": 175,
+    "min_weight": 60,
     "max_weight": 80,
-    "default_weight": 64,
+    "default_weight": 70,
     "base_ap": 962
   },
   {
@@ -96,10 +96,10 @@ export const ARCHETYPES: Archetype[] = [
     "inspired_by": "Andres Iniesta",
     "min_height": 162,
     "max_height": 188,
-    "default_height": 174,
-    "min_weight": 52,
+    "default_height": 175,
+    "min_weight": 65,
     "max_weight": 85,
-    "default_weight": 70,
+    "default_weight": 75,
     "base_ap": 962
   },
   {
@@ -114,12 +114,12 @@ export const ARCHETYPES: Archetype[] = [
       "Relentless"
     ],
     "inspired_by": "Toni Kroos",
-    "min_height": 168,
-    "max_height": 192,
-    "default_height": 178,
-    "min_weight": 60,
-    "max_weight": 90,
-    "default_weight": 74,
+    "min_height": 162,
+    "max_height": 188,
+    "default_height": 175,
+    "min_weight": 65,
+    "max_weight": 85,
+    "default_weight": 75,
     "base_ap": 962
   },
   {
@@ -134,12 +134,12 @@ export const ARCHETYPES: Archetype[] = [
       "Bruiser"
     ],
     "inspired_by": "Roy Keane",
-    "min_height": 172,
-    "max_height": 196,
-    "default_height": 184,
-    "min_weight": 68,
-    "max_weight": 100,
-    "default_weight": 80,
+    "min_height": 168,
+    "max_height": 188,
+    "default_height": 178,
+    "min_weight": 65,
+    "max_weight": 85,
+    "default_weight": 75,
     "base_ap": 962
   },
   {
@@ -154,12 +154,12 @@ export const ARCHETYPES: Archetype[] = [
       "Anticipate"
     ],
     "inspired_by": "Claude Makelele",
-    "min_height": 168,
+    "min_height": 172,
     "max_height": 192,
-    "default_height": 176,
-    "min_weight": 62,
-    "max_weight": 92,
-    "default_weight": 73,
+    "default_height": 182,
+    "min_weight": 65,
+    "max_weight": 85,
+    "default_weight": 75,
     "base_ap": 962
   },
   {
@@ -175,11 +175,11 @@ export const ARCHETYPES: Archetype[] = [
     ],
     "inspired_by": "Nemanja Vidic",
     "min_height": 180,
-    "max_height": 205,
+    "max_height": 196,
     "default_height": 188,
-    "min_weight": 75,
-    "max_weight": 115,
-    "default_weight": 85,
+    "min_weight": 80,
+    "max_weight": 100,
+    "default_weight": 90,
     "base_ap": 962
   },
   {
@@ -194,12 +194,12 @@ export const ARCHETYPES: Archetype[] = [
       "Quick Step"
     ],
     "inspired_by": "Fernando Hierro",
-    "min_height": 178,
-    "max_height": 201,
-    "default_height": 185,
-    "min_weight": 70,
-    "max_weight": 105,
-    "default_weight": 80,
+    "min_height": 177,
+    "max_height": 195,
+    "default_height": 186,
+    "min_weight": 75,
+    "max_weight": 95,
+    "default_weight": 85,
     "base_ap": 962
   },
   {
@@ -214,12 +214,52 @@ export const ARCHETYPES: Archetype[] = [
       "Bruiser"
     ],
     "inspired_by": "Cafu",
-    "min_height": 165,
+    "min_height": 168,
     "max_height": 188,
-    "default_height": 175,
-    "min_weight": 58,
-    "max_weight": 88,
-    "default_weight": 72,
+    "default_height": 178,
+    "min_weight": 65,
+    "max_weight": 85,
+    "default_weight": 75,
+    "base_ap": 962
+  },
+  {
+    "id": 12,
+    "name": "Shot Stopper",
+    "role": "Arquero",
+    "primary_position": "POR",
+    "signature_playstyle_plus": "Far Reach",
+    "specializations": [
+      "Cross Claimer",
+      "1v1 Close Down",
+      "Deflector"
+    ],
+    "inspired_by": "Gianluigi Buffon",
+    "min_height": 179,
+    "max_height": 197,
+    "default_height": 188,
+    "min_weight": 80,
+    "max_weight": 100,
+    "default_weight": 90,
+    "base_ap": 962
+  },
+  {
+    "id": 13,
+    "name": "Sweeper Keeper",
+    "role": "Arquero",
+    "primary_position": "POR",
+    "signature_playstyle_plus": "Footwork",
+    "specializations": [
+      "Far Throw",
+      "Long Ball Pass",
+      "Press Proven"
+    ],
+    "inspired_by": "Edwin van der Sar",
+    "min_height": 184,
+    "max_height": 200,
+    "default_height": 192,
+    "min_weight": 80,
+    "max_weight": 100,
+    "default_weight": 90,
     "base_ap": 962
   }
 ];

@@ -4,6 +4,596 @@ import type { CostTierRange } from "@/types";
 export const COST_TIERS_TABLE: CostTierRange[] = [
   {
     "min": 1,
+    "max": 1,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 2,
+    "max": 2,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 3,
+    "max": 3,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 4,
+    "max": 4,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 5,
+    "max": 5,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 6,
+    "max": 6,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 7,
+    "max": 7,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 8,
+    "max": 8,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 9,
+    "max": 9,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 10,
+    "max": 10,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 11,
+    "max": 11,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 12,
+    "max": 12,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 13,
+    "max": 13,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 14,
+    "max": 14,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 15,
+    "max": 15,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 16,
+    "max": 16,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 17,
+    "max": 17,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 18,
+    "max": 18,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 19,
+    "max": 19,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 20,
+    "max": 20,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 21,
+    "max": 21,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 22,
+    "max": 22,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 23,
+    "max": 23,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 24,
+    "max": 24,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 25,
+    "max": 25,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 26,
+    "max": 26,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 27,
+    "max": 27,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 28,
+    "max": 28,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 29,
+    "max": 29,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 30,
+    "max": 30,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 31,
+    "max": 31,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 32,
+    "max": 32,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 33,
+    "max": 33,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 34,
+    "max": 34,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 35,
+    "max": 35,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 36,
+    "max": 36,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 37,
+    "max": 37,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 38,
+    "max": 38,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 39,
+    "max": 39,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 40,
+    "max": 40,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 41,
+    "max": 41,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 42,
+    "max": 42,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 43,
+    "max": 43,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 44,
+    "max": 44,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 45,
+    "max": 45,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 46,
+    "max": 46,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 47,
+    "max": 47,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 48,
+    "max": 48,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 49,
+    "max": 49,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 50,
+    "max": 50,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 51,
+    "max": 51,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 52,
+    "max": 52,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 53,
+    "max": 53,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 54,
+    "max": 54,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 55,
+    "max": 55,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 56,
+    "max": 56,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 57,
+    "max": 57,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 58,
+    "max": 58,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 59,
+    "max": 59,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 1,
+      "Most Expensive": 2
+    }
+  },
+  {
+    "min": 60,
     "max": 60,
     "rates": {
       "Cheapest": 1,
@@ -14,6 +604,26 @@ export const COST_TIERS_TABLE: CostTierRange[] = [
   },
   {
     "min": 61,
+    "max": 61,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 2,
+      "Most Expensive": 3
+    }
+  },
+  {
+    "min": 62,
+    "max": 62,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 1,
+      "Expensive": 2,
+      "Most Expensive": 3
+    }
+  },
+  {
+    "min": 63,
     "max": 63,
     "rates": {
       "Cheapest": 1,
@@ -24,6 +634,26 @@ export const COST_TIERS_TABLE: CostTierRange[] = [
   },
   {
     "min": 64,
+    "max": 64,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 2,
+      "Expensive": 3,
+      "Most Expensive": 4
+    }
+  },
+  {
+    "min": 65,
+    "max": 65,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 2,
+      "Expensive": 3,
+      "Most Expensive": 4
+    }
+  },
+  {
+    "min": 66,
     "max": 66,
     "rates": {
       "Cheapest": 1,
@@ -34,6 +664,26 @@ export const COST_TIERS_TABLE: CostTierRange[] = [
   },
   {
     "min": 67,
+    "max": 67,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 2,
+      "Expensive": 3,
+      "Most Expensive": 5
+    }
+  },
+  {
+    "min": 68,
+    "max": 68,
+    "rates": {
+      "Cheapest": 1,
+      "Cheap": 2,
+      "Expensive": 3,
+      "Most Expensive": 5
+    }
+  },
+  {
+    "min": 69,
     "max": 69,
     "rates": {
       "Cheapest": 1,
@@ -44,6 +694,46 @@ export const COST_TIERS_TABLE: CostTierRange[] = [
   },
   {
     "min": 70,
+    "max": 70,
+    "rates": {
+      "Cheapest": 2,
+      "Cheap": 3,
+      "Expensive": 4,
+      "Most Expensive": 6
+    }
+  },
+  {
+    "min": 71,
+    "max": 71,
+    "rates": {
+      "Cheapest": 2,
+      "Cheap": 3,
+      "Expensive": 4,
+      "Most Expensive": 6
+    }
+  },
+  {
+    "min": 72,
+    "max": 72,
+    "rates": {
+      "Cheapest": 2,
+      "Cheap": 3,
+      "Expensive": 4,
+      "Most Expensive": 6
+    }
+  },
+  {
+    "min": 73,
+    "max": 73,
+    "rates": {
+      "Cheapest": 2,
+      "Cheap": 3,
+      "Expensive": 4,
+      "Most Expensive": 6
+    }
+  },
+  {
+    "min": 74,
     "max": 74,
     "rates": {
       "Cheapest": 2,
@@ -54,6 +744,46 @@ export const COST_TIERS_TABLE: CostTierRange[] = [
   },
   {
     "min": 75,
+    "max": 75,
+    "rates": {
+      "Cheapest": 3,
+      "Cheap": 4,
+      "Expensive": 6,
+      "Most Expensive": 8
+    }
+  },
+  {
+    "min": 76,
+    "max": 76,
+    "rates": {
+      "Cheapest": 3,
+      "Cheap": 4,
+      "Expensive": 6,
+      "Most Expensive": 8
+    }
+  },
+  {
+    "min": 77,
+    "max": 77,
+    "rates": {
+      "Cheapest": 3,
+      "Cheap": 4,
+      "Expensive": 6,
+      "Most Expensive": 8
+    }
+  },
+  {
+    "min": 78,
+    "max": 78,
+    "rates": {
+      "Cheapest": 3,
+      "Cheap": 4,
+      "Expensive": 6,
+      "Most Expensive": 8
+    }
+  },
+  {
+    "min": 79,
     "max": 79,
     "rates": {
       "Cheapest": 3,
@@ -64,6 +794,46 @@ export const COST_TIERS_TABLE: CostTierRange[] = [
   },
   {
     "min": 80,
+    "max": 80,
+    "rates": {
+      "Cheapest": 3,
+      "Cheap": 5,
+      "Expensive": 7,
+      "Most Expensive": 10
+    }
+  },
+  {
+    "min": 81,
+    "max": 81,
+    "rates": {
+      "Cheapest": 3,
+      "Cheap": 5,
+      "Expensive": 7,
+      "Most Expensive": 10
+    }
+  },
+  {
+    "min": 82,
+    "max": 82,
+    "rates": {
+      "Cheapest": 3,
+      "Cheap": 5,
+      "Expensive": 7,
+      "Most Expensive": 10
+    }
+  },
+  {
+    "min": 83,
+    "max": 83,
+    "rates": {
+      "Cheapest": 3,
+      "Cheap": 5,
+      "Expensive": 7,
+      "Most Expensive": 10
+    }
+  },
+  {
+    "min": 84,
     "max": 84,
     "rates": {
       "Cheapest": 3,
@@ -74,6 +844,46 @@ export const COST_TIERS_TABLE: CostTierRange[] = [
   },
   {
     "min": 85,
+    "max": 85,
+    "rates": {
+      "Cheapest": 6,
+      "Cheap": 8,
+      "Expensive": 11,
+      "Most Expensive": 15
+    }
+  },
+  {
+    "min": 86,
+    "max": 86,
+    "rates": {
+      "Cheapest": 6,
+      "Cheap": 8,
+      "Expensive": 11,
+      "Most Expensive": 15
+    }
+  },
+  {
+    "min": 87,
+    "max": 87,
+    "rates": {
+      "Cheapest": 6,
+      "Cheap": 8,
+      "Expensive": 11,
+      "Most Expensive": 15
+    }
+  },
+  {
+    "min": 88,
+    "max": 88,
+    "rates": {
+      "Cheapest": 6,
+      "Cheap": 8,
+      "Expensive": 11,
+      "Most Expensive": 15
+    }
+  },
+  {
+    "min": 89,
     "max": 89,
     "rates": {
       "Cheapest": 6,
@@ -84,6 +894,26 @@ export const COST_TIERS_TABLE: CostTierRange[] = [
   },
   {
     "min": 90,
+    "max": 90,
+    "rates": {
+      "Cheapest": 8,
+      "Cheap": 11,
+      "Expensive": 15,
+      "Most Expensive": 20
+    }
+  },
+  {
+    "min": 91,
+    "max": 91,
+    "rates": {
+      "Cheapest": 8,
+      "Cheap": 11,
+      "Expensive": 15,
+      "Most Expensive": 20
+    }
+  },
+  {
+    "min": 92,
     "max": 92,
     "rates": {
       "Cheapest": 8,
@@ -94,10 +924,20 @@ export const COST_TIERS_TABLE: CostTierRange[] = [
   },
   {
     "min": 93,
+    "max": 93,
+    "rates": {
+      "Cheapest": 10,
+      "Cheap": 11,
+      "Expensive": 20,
+      "Most Expensive": 25
+    }
+  },
+  {
+    "min": 94,
     "max": 94,
     "rates": {
       "Cheapest": 10,
-      "Cheap": 15,
+      "Cheap": 11,
       "Expensive": 20,
       "Most Expensive": 25
     }
@@ -107,7 +947,7 @@ export const COST_TIERS_TABLE: CostTierRange[] = [
     "max": 95,
     "rates": {
       "Cheapest": 15,
-      "Cheap": 20,
+      "Cheap": 13,
       "Expensive": 25,
       "Most Expensive": 30
     }
@@ -117,7 +957,7 @@ export const COST_TIERS_TABLE: CostTierRange[] = [
     "max": 96,
     "rates": {
       "Cheapest": 20,
-      "Cheap": 25,
+      "Cheap": 16,
       "Expensive": 30,
       "Most Expensive": 35
     }
@@ -127,7 +967,7 @@ export const COST_TIERS_TABLE: CostTierRange[] = [
     "max": 97,
     "rates": {
       "Cheapest": 25,
-      "Cheap": 30,
+      "Cheap": 19,
       "Expensive": 35,
       "Most Expensive": 40
     }
@@ -137,7 +977,7 @@ export const COST_TIERS_TABLE: CostTierRange[] = [
     "max": 98,
     "rates": {
       "Cheapest": 30,
-      "Cheap": 35,
+      "Cheap": 22,
       "Expensive": 40,
       "Most Expensive": 45
     }
@@ -147,7 +987,7 @@ export const COST_TIERS_TABLE: CostTierRange[] = [
     "max": 99,
     "rates": {
       "Cheapest": 35,
-      "Cheap": 40,
+      "Cheap": 24,
       "Expensive": 45,
       "Most Expensive": 50
     }

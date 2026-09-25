@@ -1,3 +1,4 @@
+import { COST_TIERS_TABLE } from "@/data/costTiers";
 import { getArchetypeAttributes } from "@/data/archetypeAttributes";
 import { ARCHETYPE_MASTERIES } from "@/data/archetypeMasteries";
 import { getStars } from "@/data/archetypeStars";
@@ -24,128 +25,13 @@ export const clamp = (value: number, min: number, max: number): number =>
 
 /**
  * Cost in AP of raising a single point TO `targetValue`, per cost tier.
- * Official EA SPORTS FC 27 marginal cost table.
+ * Read from the official marginal cost table (raw-data/cost_tiers).
  */
 export function getSinglePointCost(targetValue: number, tier: CostTier): number {
-  if (targetValue <= 60) {
-    switch (tier) {
-      case "Cheapest": return 1;
-      case "Cheap": return 1;
-      case "Expensive": return 1;
-      case "Most Expensive": return 2;
-    }
-  }
-  if (targetValue <= 63) {
-    switch (tier) {
-      case "Cheapest": return 1;
-      case "Cheap": return 1;
-      case "Expensive": return 2;
-      case "Most Expensive": return 3;
-    }
-  }
-  if (targetValue <= 66) {
-    switch (tier) {
-      case "Cheapest": return 1;
-      case "Cheap": return 2;
-      case "Expensive": return 3;
-      case "Most Expensive": return 4;
-    }
-  }
-  if (targetValue <= 69) {
-    switch (tier) {
-      case "Cheapest": return 1;
-      case "Cheap": return 2;
-      case "Expensive": return 3;
-      case "Most Expensive": return 5;
-    }
-  }
-  if (targetValue <= 74) {
-    switch (tier) {
-      case "Cheapest": return 2;
-      case "Cheap": return 3;
-      case "Expensive": return 4;
-      case "Most Expensive": return 6;
-    }
-  }
-  if (targetValue <= 79) {
-    switch (tier) {
-      case "Cheapest": return 3;
-      case "Cheap": return 4;
-      case "Expensive": return 6;
-      case "Most Expensive": return 8;
-    }
-  }
-  if (targetValue <= 84) {
-    switch (tier) {
-      case "Cheapest": return 3;
-      case "Cheap": return 5;
-      case "Expensive": return 7;
-      case "Most Expensive": return 10;
-    }
-  }
-  if (targetValue <= 89) {
-    switch (tier) {
-      case "Cheapest": return 6;
-      case "Cheap": return 8;
-      case "Expensive": return 11;
-      case "Most Expensive": return 15;
-    }
-  }
-  if (targetValue <= 92) {
-    switch (tier) {
-      case "Cheapest": return 8;
-      case "Cheap": return 11;
-      case "Expensive": return 15;
-      case "Most Expensive": return 20;
-    }
-  }
-  if (targetValue <= 94) {
-    switch (tier) {
-      case "Cheapest": return 10;
-      case "Cheap": return 15;
-      case "Expensive": return 20;
-      case "Most Expensive": return 25;
-    }
-  }
-  if (targetValue === 95) {
-    switch (tier) {
-      case "Cheapest": return 15;
-      case "Cheap": return 20;
-      case "Expensive": return 25;
-      case "Most Expensive": return 30;
-    }
-  }
-  if (targetValue === 96) {
-    switch (tier) {
-      case "Cheapest": return 20;
-      case "Cheap": return 25;
-      case "Expensive": return 30;
-      case "Most Expensive": return 35;
-    }
-  }
-  if (targetValue === 97) {
-    switch (tier) {
-      case "Cheapest": return 25;
-      case "Cheap": return 30;
-      case "Expensive": return 35;
-      case "Most Expensive": return 40;
-    }
-  }
-  if (targetValue === 98) {
-    switch (tier) {
-      case "Cheapest": return 30;
-      case "Cheap": return 35;
-      case "Expensive": return 40;
-      case "Most Expensive": return 45;
-    }
-  }
-  // 99
-  switch (tier) {
-    case "Cheapest": return 35;
-    case "Cheap": return 40;
-    case "Expensive": return 45;
-    case "Most Expensive": return 50;
-  }
+  const range = COST_TIERS_TABLE.find(
+    (r) => targetValue >= Number(r.min) && targetValue <= Number(r.max),
+  );
+  return range ? Number(range.rates[tier]) : 0;
 }
 
 /**
@@ -226,11 +112,11 @@ export function getStarsCost(
 /**
  * Evaluate a full build from an archetype and the user's chosen stats.
  *
- * No physical (height/weight) modifiers are applied: each attribute's effective
- * base is exactly its native `base_stat` and its cap is exactly `cap_stat`.
- * AP is charged on the allocated attribute points (base_stat -> targetStat) AND
- * on the skill-moves / weak-foot star upgrades, sharing the same 962 AP budget.
- * Active masteries add a flat, AP-free bonus on top of each stat, capped at 99.
+ * No physical (height/weight) modifiers are applied to stats: each attribute's
+ * effective base is exactly its native `base_stat` and its cap is exactly
+ * `cap_stat`. AP is charged on the allocated attribute points (base_stat ->
+ * targetStat) AND on the skill-moves / weak-foot star upgrades, sharing the
+ * same level budget. Active masteries add a flat, AP-free bonus capped at 99.
  */
 export function evaluateBuild(
   archetypeName: string,
@@ -270,7 +156,6 @@ export function evaluateBuild(
     const requested = userStats[item.attribute] ?? effectiveBase;
     const targetStat = clamp(requested, effectiveBase, effectiveCap);
 
-    // AP is charged strictly on the allocated points (base -> target).
     const apCost =
       targetStat > effectiveBase
         ? calculateAttributeUpgradeCost(
@@ -299,7 +184,6 @@ export function evaluateBuild(
     });
   }
 
-  // Single shared budget: stats + stars, capped by the active level.
   const totalApSpent = statsApCost + totalStarsCost;
   const remainingAp = maxAp - totalApSpent;
   const isBudgetExceeded = totalApSpent > maxAp;

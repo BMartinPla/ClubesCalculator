@@ -15,6 +15,7 @@ import BudgetBar from "@/components/BudgetBar";
 import CategorySection from "@/components/CategorySection";
 import ExportBuildModal from "@/components/ExportBuildModal";
 import MasteriesModal from "@/components/MasteriesModal";
+import PhysicalControls from "@/components/PhysicalControls";
 import PlaystylesCard from "@/components/PlaystylesCard";
 import SkillControls from "@/components/SkillControls";
 import { ARCHETYPES, DEFAULT_ARCHETYPE, getArchetype } from "@/data/archetypes";
@@ -41,6 +42,14 @@ const baseStars = (name: string) => {
   return {
     skills: s?.base_skills ?? 1,
     weakFoot: s?.base_weak_foot ?? 1,
+  };
+};
+
+const basePhysical = (name: string) => {
+  const a = getArchetype(name);
+  return {
+    height: a?.default_height ?? 180,
+    weight: a?.default_weight ?? 80,
   };
 };
 
@@ -77,12 +86,15 @@ function parseMasteriesParam(raw: string | null): MasteriesState {
 
 export default function Page() {
   const initialStars = baseStars(DEFAULT_ARCHETYPE);
+  const initialPhysical = basePhysical(DEFAULT_ARCHETYPE);
 
   const [archetype, setArchetype] = useState(DEFAULT_ARCHETYPE);
   const [targetStats, setTargetStats] = useState<Record<string, number>>({});
   const [masteries, setMasteries] = useState<MasteriesState>({});
   const [skills, setSkills] = useState(initialStars.skills);
   const [weakFoot, setWeakFoot] = useState(initialStars.weakFoot);
+  const [height, setHeight] = useState(initialPhysical.height);
+  const [weight, setWeight] = useState(initialPhysical.weight);
   const [level, setLevel] = useState(MIN_LEVEL);
   const [openCategories, setOpenCategories] = useState<Set<CategoryName>>(
     () => new Set(categoriesFor(DEFAULT_ARCHETYPE).slice(0, 1)),
@@ -123,9 +135,14 @@ export default function Page() {
         : DEFAULT_ARCHETYPE;
 
     const base = baseStars(validArch);
+    const phys = basePhysical(validArch);
     setArchetype(validArch);
     setSkills(base.skills);
     setWeakFoot(base.weakFoot);
+    const hParam = Number.parseInt(params.get("h") ?? "", 10);
+    const wParam = Number.parseInt(params.get("w") ?? "", 10);
+    setHeight(Number.isFinite(hParam) ? hParam : phys.height);
+    setWeight(Number.isFinite(wParam) ? wParam : phys.weight);
     setTargetStats(parseStatsParam(params.get("stats")));
     setMasteries(parseMasteriesParam(params.get("m")));
     const lvlParam = Number.parseInt(params.get("lvl") ?? "", 10);
@@ -191,6 +208,8 @@ export default function Page() {
     const params = new URLSearchParams();
     params.set("archetype", archetype);
     params.set("lvl", String(level));
+    params.set("h", String(height));
+    params.set("w", String(weight));
     const raised = Object.entries(targetStats)
       .filter(([, v]) => Number.isFinite(v))
       .sort(([a], [b]) => a.localeCompare(b))
@@ -202,7 +221,7 @@ export default function Page() {
       .sort();
     if (activeMasteries.length > 0) params.set("m", activeMasteries.join(","));
     return `${window.location.origin}${window.location.pathname}?${params.toString()}`;
-  }, [archetype, targetStats, masteries, level]);
+  }, [archetype, targetStats, masteries, level, height, weight]);
 
   // Keep the address bar in sync with the current build.
   useEffect(() => {
@@ -214,10 +233,13 @@ export default function Page() {
   // --- Handlers ----------------------------------------------------------
   const selectArchetype = useCallback((name: string) => {
     const base = baseStars(name);
+    const phys = basePhysical(name);
     setArchetype(name);
     setTargetStats({});
     setSkills(base.skills);
     setWeakFoot(base.weakFoot);
+    setHeight(phys.height);
+    setWeight(phys.weight);
     setOpenCategories(new Set(categoriesFor(name).slice(0, 1)));
   }, []);
 
@@ -243,12 +265,15 @@ export default function Page() {
     });
   }, []);
 
-  // Reset build points + stars to base. Masteries stay intact (account-level).
+  // Reset build points + stars + physical to base. Masteries stay intact.
   const resetPoints = useCallback(() => {
     const base = baseStars(archetype);
+    const phys = basePhysical(archetype);
     setTargetStats({});
     setSkills(base.skills);
     setWeakFoot(base.weakFoot);
+    setHeight(phys.height);
+    setWeight(phys.weight);
   }, [archetype]);
 
   const toggleMastery = useCallback((name: string) => {
@@ -331,6 +356,19 @@ export default function Page() {
               weakFootCost={build.weakFootCost}
               onSkills={setSkills}
               onWeakFoot={setWeakFoot}
+            />
+
+            <PhysicalControls
+              heightCm={height}
+              weightKg={weight}
+              minHeight={activeArchetype.min_height}
+              maxHeight={activeArchetype.max_height}
+              defaultHeight={activeArchetype.default_height}
+              minWeight={activeArchetype.min_weight}
+              maxWeight={activeArchetype.max_weight}
+              defaultWeight={activeArchetype.default_weight}
+              onHeight={setHeight}
+              onWeight={setWeight}
             />
 
             <button
