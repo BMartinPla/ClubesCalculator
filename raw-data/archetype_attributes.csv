@@ -27,8 +27,8 @@ Shot Stopper,Defending,Precision Cabeza,40,75,Expensive
 Shot Stopper,Defending,Percepcion Defensiva,40,75,Expensive
 Shot Stopper,Defending,Robos,40,75,Most Expensive
 Shot Stopper,Defending,Barridas,50,70,Expensive
-Shot Stopper,Pace,Aceleracion,75,92,Cheapest
-Shot Stopper,Pace,Sprint,55,85,Most Expensive
+Shot Stopper,Pace,Aceleracion,75,92,Most Expensive
+Shot Stopper,Pace,Sprint,55,85,Cheapest
 Shot Stopper,Physical,Salto,65,96,Cheap
 Shot Stopper,Physical,Resistencia,65,90,Cheap
 Shot Stopper,Physical,Fuerza,65,96,Expensive
@@ -148,8 +148,8 @@ Disruptor,Defending,Precision Cabeza,65,90,Expensive
 Disruptor,Defending,Percepcion Defensiva,70,92,Expensive
 Disruptor,Defending,Robos,70,92,Most Expensive
 Disruptor,Defending,Barridas,75,92,Cheapest
-Disruptor,Pace,Aceleracion,75,92,Expensive
-Disruptor,Pace,Sprint,70,92,Cheapest
+Disruptor,Pace,Aceleracion,75,92,Cheapest
+Disruptor,Pace,Sprint,70,92,Expensive
 Disruptor,Physical,Salto,65,92,Cheap
 Disruptor,Physical,Resistencia,75,99,Cheapest
 Disruptor,Physical,Fuerza,75,96,Expensive
@@ -177,8 +177,8 @@ Marauder,Defending,Precision Cabeza,65,90,Expensive
 Marauder,Defending,Percepcion Defensiva,70,96,Expensive
 Marauder,Defending,Robos,70,96,Most Expensive
 Marauder,Defending,Barridas,75,96,Cheap
-Marauder,Pace,Aceleracion,75,95,Cheapest
-Marauder,Pace,Sprint,75,95,Expensive
+Marauder,Pace,Aceleracion,75,95,Expensive
+Marauder,Pace,Sprint,75,95,Cheapest
 Marauder,Physical,Salto,60,92,Cheap
 Marauder,Physical,Resistencia,75,96,Cheap
 Marauder,Physical,Fuerza,60,92,Expensive
@@ -206,8 +206,8 @@ Recycler,Defending,Precision Cabeza,60,90,Expensive
 Recycler,Defending,Percepcion Defensiva,75,99,Expensive
 Recycler,Defending,Robos,75,96,Cheapest
 Recycler,Defending,Barridas,75,92,Expensive
-Recycler,Pace,Aceleracion,70,90,Cheapest
-Recycler,Pace,Sprint,70,90,Most Expensive
+Recycler,Pace,Aceleracion,70,90,Most Expensive
+Recycler,Pace,Sprint,70,90,Cheapest
 Recycler,Physical,Salto,65,90,Cheap
 Recycler,Physical,Resistencia,72,96,Cheapest
 Recycler,Physical,Fuerza,72,96,Expensive
@@ -351,8 +351,8 @@ Finisher,Defending,Precision Cabeza,75,96,Expensive
 Finisher,Defending,Percepcion Defensiva,55,85,Expensive
 Finisher,Defending,Robos,50,75,Most Expensive
 Finisher,Defending,Barridas,40,75,Expensive
-Finisher,Pace,Aceleracion,75,95,Expensive
-Finisher,Pace,Sprint,70,95,Cheapest
+Finisher,Pace,Aceleracion,75,95,Cheapest
+Finisher,Pace,Sprint,70,95,Expensive
 Finisher,Physical,Salto,65,92,Cheap
 Finisher,Physical,Resistencia,65,92,Cheap
 Finisher,Physical,Fuerza,70,92,Expensive
@@ -380,8 +380,8 @@ Target,Defending,Precision Cabeza,75,99,Expensive
 Target,Defending,Percepcion Defensiva,50,82,Expensive
 Target,Defending,Robos,45,75,Most Expensive
 Target,Defending,Barridas,40,75,Expensive
-Target,Pace,Aceleracion,70,90,Cheapest
-Target,Pace,Sprint,65,92,Most Expensive
+Target,Pace,Aceleracion,70,90,Most Expensive
+Target,Pace,Sprint,65,92,Cheapest
 Target,Physical,Salto,75,96,Cheap
 Target,Physical,Resistencia,60,92,Cheap
 Target,Physical,Fuerza,75,99,Expensive

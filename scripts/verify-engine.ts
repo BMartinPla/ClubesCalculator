@@ -40,8 +40,8 @@ check(
   ["Shot Stopper", "Sweeper Keeper"].every((n) => ARCHETYPES.some((a) => a.name === n)),
   true,
 );
-check("Finisher Aceleracion", [attr("Aceleracion").base_stat, attr("Aceleracion").cap_stat, attr("Aceleracion").cost_tier], [75, 95, "Expensive"]);
-check("Finisher Sprint", [attr("Sprint").base_stat, attr("Sprint").cap_stat, attr("Sprint").cost_tier], [70, 95, "Cheapest"]);
+check("Finisher Aceleracion", [attr("Aceleracion").base_stat, attr("Aceleracion").cap_stat, attr("Aceleracion").cost_tier], [75, 95, "Cheapest"]);
+check("Finisher Sprint", [attr("Sprint").base_stat, attr("Sprint").cap_stat, attr("Sprint").cost_tier], [70, 95, "Expensive"]);
 check("Finisher Definicion", [attr("Definicion").base_stat, attr("Definicion").cap_stat, attr("Definicion").cost_tier], [75, 99, "Most Expensive"]);
 
 console.log("--- Coste marginal (casos testigo) ---");
