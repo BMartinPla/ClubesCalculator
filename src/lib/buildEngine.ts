@@ -157,8 +157,10 @@ export function evaluateBuild(
 
   for (const item of attributes) {
     const physicalModifier = physicalModifiers[item.attribute] ?? 0;
-    const effectiveBase = clamp(Number(item.base_stat) + physicalModifier, 1, 99);
-    const effectiveCap = clamp(Number(item.cap_stat) + physicalModifier, 1, 99);
+    // Cost/slider bounds use the raw base & cap (like the builder). Height and
+    // weight only shift the DISPLAYED final stat, never the AP cost.
+    const effectiveBase = clamp(Number(item.base_stat), 1, 99);
+    const effectiveCap = clamp(Number(item.cap_stat), 1, 99);
     const category = item.category as CategoryName;
 
     const requested = userStats[item.attribute] ?? effectiveBase;
@@ -174,7 +176,7 @@ export function evaluateBuild(
         : 0;
 
     const masteryBonus = masteryBonuses[item.attribute] ?? 0;
-    const statTotal = Math.min(99, targetStat + masteryBonus);
+    const statTotal = clamp(targetStat + masteryBonus + physicalModifier, 1, 99);
 
     statsApCost += apCost;
     byCategory[category] = (byCategory[category] ?? 0) + apCost;

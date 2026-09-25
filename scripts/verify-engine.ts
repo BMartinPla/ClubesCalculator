@@ -151,13 +151,21 @@ check(
   { GK_Estirada: 3, GK_Paradas: -3, GK_Reflejos: 3, Aceleracion: -3, Sprint: 3, Fuerza: 3 },
 );
 
-// evaluateBuild applies the physical delta to base/cap.
+// evaluateBuild: cost is always from the RAW base; physical only shifts the
+// displayed stat (like the builder: u = value + physical).
 const tall = evaluateBuild("Finisher", {}, {}, null, 40, 190, 80);
 const acelTall = tall.breakdown.find((b) => b.attribute === "Aceleracion")!;
-check("Aceleracion base efectiva @190 = 71", acelTall.baseStat, 71);
-check("Aceleracion statTotal @190 = 71", acelTall.statTotal, 71);
+check("Aceleracion base (raw) @190 = 75", acelTall.baseStat, 75);
+check("Aceleracion statTotal @190 = 71 (75-4)", acelTall.statTotal, 71);
 check("Aceleracion modifier @190", acelTall.physicalModifier, -4);
-// At default height/weight there is no physical delta.
+// Cost does not change with height/weight.
+const sprintTall = evaluateBuild("Finisher", { Sprint: 90 }, {}, null, 40, 190, 80);
+const sprintBase = evaluateBuild("Finisher", { Sprint: 90 }, {}, null, 40, 177, 80);
+check(
+  "Coste independiente de altura/peso",
+  sprintTall.breakdown.find((b) => b.attribute === "Sprint")!.apCost,
+  sprintBase.breakdown.find((b) => b.attribute === "Sprint")!.apCost,
+);
 check("Sin modificadores en base", evaluateBuild("Finisher", {}, {}, null, 40, 177, 80).totalApSpent, 0);
 
 console.log(failures === 0 ? "\nALL CHECKS PASSED" : `\n${failures} CHECK(S) FAILED`);
