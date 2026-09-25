@@ -341,38 +341,38 @@ export default function Page() {
         className="mx-auto max-w-[1600px] px-4 pb-8 sm:px-6"
         style={{ paddingTop: (headerH || 88) + 14 }}
       >
-        {/* ---- Tools (horizontal) ---- */}
-        <div className="panel flex flex-wrap items-center gap-2 p-3">
-          <span className="panel-title px-1">Tools</span>
-          <button
-            type="button"
-            onClick={() => setMasteriesOpen(true)}
-            className={`focus-ring flex items-center gap-2 rounded border px-3 py-2 text-xs font-semibold transition ${
-              activeMasteriesCount > 0
-                ? "border-violet-500/50 bg-violet-500/15 text-violet-200"
-                : "border-line bg-black/20 text-zinc-300 hover:border-line-strong"
-            }`}
-          >
-            <span aria-hidden="true">🏆</span> Masteries
-            <span className="rounded bg-white/[0.06] px-1.5 py-0.5 text-[10px] font-bold">
-              {activeMasteriesCount}/{ARCHETYPE_MASTERIES.length}
-            </span>
-          </button>
-          <button
-            type="button"
-            onClick={() => openAnimations(71)}
-            className="focus-ring flex items-center gap-2 rounded border border-line bg-black/20 px-3 py-2 text-xs font-semibold text-zinc-300 transition hover:border-line-strong"
-          >
-            <span aria-hidden="true">🎬</span> Animations
-            <span className="rounded bg-white/[0.06] px-1.5 py-0.5 font-mono text-[10px] text-muted">
-              Base / Improved
-            </span>
-          </button>
-        </div>
-
-        {/* ---- Left: PlayStyles + Skills + Physical · Right: Attributes ---- */}
-        <div className="mt-3 grid grid-cols-1 gap-3 lg:grid-cols-[330px_minmax(0,1fr)]">
+        {/* ---- Left: Tools + PlayStyles + Skills + Physical · Right: attributes ---- */}
+        <div className="grid grid-cols-1 items-start gap-3 lg:grid-cols-[330px_minmax(0,1fr)]">
           <div className="flex flex-col gap-3">
+            {/* Tools (horizontal, on top) */}
+            <div className="panel flex flex-wrap items-center gap-2 p-3">
+              <span className="panel-title px-1">Tools</span>
+              <button
+                type="button"
+                onClick={() => setMasteriesOpen(true)}
+                className={`focus-ring flex items-center gap-2 rounded border px-3 py-1.5 text-xs font-semibold transition ${
+                  activeMasteriesCount > 0
+                    ? "border-violet-500/50 bg-violet-500/15 text-violet-200"
+                    : "border-line bg-black/20 text-zinc-300 hover:border-line-strong"
+                }`}
+              >
+                <span aria-hidden="true">🏆</span> Masteries
+                <span className="rounded bg-white/[0.06] px-1.5 py-0.5 text-[10px] font-bold">
+                  {activeMasteriesCount}/{ARCHETYPE_MASTERIES.length}
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={() => openAnimations(71)}
+                className="focus-ring flex items-center gap-2 rounded border border-line bg-black/20 px-3 py-1.5 text-xs font-semibold text-zinc-300 transition hover:border-line-strong"
+              >
+                <span aria-hidden="true">🎬</span> Animations
+                <span className="rounded bg-white/[0.06] px-1.5 py-0.5 font-mono text-[10px] text-muted">
+                  Base / Improved
+                </span>
+              </button>
+            </div>
+
             <PlayStylesPanel
               level={level}
               archetype={activeArchetype}
@@ -414,27 +414,17 @@ export default function Page() {
             />
           </div>
 
-          {/* Attributes (larger) */}
-          <div>
-            <div className="mb-2 flex items-center justify-between px-1">
-              <h2 className="text-base font-extrabold uppercase tracking-[0.08em] text-white">
-                Attributes
-              </h2>
-              <span className="text-xs text-muted">
-                {build.totalApSpent} / {build.maxAp} AP used
-              </span>
-            </div>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {categories.map((category) => (
-                <CategorySection
-                  key={category}
-                  category={category}
-                  entries={entriesByCategory.get(category) ?? []}
-                  categoryAp={build.byCategory[category] ?? 0}
-                  onStatChange={handleStatChange}
-                />
-              ))}
-            </div>
+          {/* Attributes only */}
+          <div className="grid grid-cols-1 items-start gap-3 sm:grid-cols-2">
+            {categories.map((category) => (
+              <CategorySection
+                key={category}
+                category={category}
+                entries={entriesByCategory.get(category) ?? []}
+                categoryAp={build.byCategory[category] ?? 0}
+                onStatChange={handleStatChange}
+              />
+            ))}
           </div>
         </div>
 

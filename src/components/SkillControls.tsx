@@ -85,7 +85,7 @@ export default function SkillControls({
   onWeakFoot,
 }: SkillControlsProps) {
   return (
-    <div className="panel flex h-full flex-col p-3">
+    <div className="panel flex flex-col p-3">
       <div className="mb-3 flex items-center justify-between">
         <h2 className="panel-title">Skill Moves & Weak Foot</h2>
         <span className="text-[10px] font-semibold uppercase tracking-widest text-muted">

@@ -64,7 +64,7 @@ export default function ArchetypeDropdown({
   };
 
   return (
-    <div ref={rootRef} className="relative flex h-full flex-col">
+    <div ref={rootRef} className="relative flex flex-col">
       {!compact && (
         <p className="mb-1.5 text-[10px] font-bold uppercase tracking-widest text-muted">
           Active Archetype

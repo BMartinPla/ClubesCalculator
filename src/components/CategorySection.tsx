@@ -30,7 +30,7 @@ export default function CategorySection({
   );
 
   return (
-    <section className="h-full rounded-lg border border-line bg-[#161a22]/60 p-3">
+    <section className="rounded-lg border border-line bg-[#161a22]/60 p-3">
       <div className="mb-2 flex items-center justify-between gap-2">
         <h3 className="text-[12px] font-bold uppercase tracking-[0.08em] text-muted">
           {CATEGORY_LABELS[category]}

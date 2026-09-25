@@ -41,7 +41,7 @@ export default function PlayStylesPanel({
     PLAYSTYLES.find((p) => p.name === archetype.signature_playstyle_plus) ?? null;
 
   return (
-    <div className="panel flex h-full flex-col p-3">
+    <div className="panel flex flex-col p-3">
       <div className="mb-3 flex items-center justify-between gap-2">
         <h2 className="panel-title">PlayStyles</h2>
         <span className="chip bg-white/[0.05] text-muted">
