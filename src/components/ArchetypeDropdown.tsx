@@ -62,7 +62,7 @@ export default function ArchetypeDropdown({
   };
 
   return (
-    <div ref={rootRef} className="relative">
+    <div ref={rootRef} className="relative flex h-full flex-col">
       <p className="mb-1.5 text-[10px] font-bold uppercase tracking-widest text-muted">
         Active Archetype
       </p>
@@ -72,7 +72,7 @@ export default function ArchetypeDropdown({
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className="focus-ring flex w-full items-center gap-3 rounded-lg border border-line bg-[#161a22]/60 px-4 py-3 text-left transition hover:border-line-strong"
+        className="focus-ring flex h-full w-full items-center gap-3 rounded-lg border border-line bg-[#161a22]/60 px-3 py-2.5 text-left transition hover:border-line-strong"
       >
         <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-line bg-black/30">
           {icon ? (

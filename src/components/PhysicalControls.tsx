@@ -105,7 +105,7 @@ export default function PhysicalControls({
   const negatives = entries.filter(([, v]) => v < 0);
 
   return (
-    <div className="panel p-4">
+    <div className="panel flex h-full flex-col p-3">
       <div className="mb-3 flex items-center justify-between">
         <h2 className="panel-title">Physical</h2>
         <span className="text-[10px] font-semibold uppercase tracking-widest text-muted">

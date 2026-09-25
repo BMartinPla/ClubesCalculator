@@ -53,10 +53,10 @@ function AttributeRowBase({ entry, onChange }: AttributeRowProps) {
     onChange(attribute, Math.min(capStat, Math.max(baseStat, targetStat + delta)));
 
   return (
-    <div className="rounded-md border border-line bg-[#11151f] px-3 py-2.5 transition hover:border-line-strong">
+    <div className="rounded border border-line bg-[#11151f] px-2.5 py-1.5 transition hover:border-line-strong">
       <div className="flex items-center justify-between gap-2">
         <div className="flex min-w-0 items-center gap-1.5">
-          <p className="truncate text-[13px] font-semibold text-zinc-100">
+          <p className="truncate text-[12px] font-semibold text-zinc-100">
             {attributeNameToEn(attribute)}
           </p>
           {physicalModifier !== 0 && (
@@ -82,15 +82,15 @@ function AttributeRowBase({ entry, onChange }: AttributeRowProps) {
           )}
         </div>
 
-        <div className="flex shrink-0 items-center gap-2">
+        <div className="flex shrink-0 items-center gap-1.5">
           <span
-            className={`hidden chip md:inline-flex ${TIER_STYLES[costTier]}`}
+            className={`hidden chip lg:inline-flex ${TIER_STYLES[costTier]}`}
             title={`Cost tier: ${costTier}`}
           >
             {TIER_LABEL[costTier]}
           </span>
           <span
-            className={`min-w-[3rem] rounded px-1.5 py-0.5 text-right font-mono text-[11px] font-bold ${
+            className={`min-w-[2.6rem] rounded px-1.5 py-0.5 text-right font-mono text-[10px] font-bold ${
               apCost > 0 ? "bg-white/[0.06] text-white" : "text-muted"
             }`}
             title="AP cost"
@@ -100,13 +100,13 @@ function AttributeRowBase({ entry, onChange }: AttributeRowProps) {
         </div>
       </div>
 
-      <div className="mt-2 flex items-center gap-2.5">
+      <div className="mt-1.5 flex items-center gap-2">
         <button
           type="button"
           onClick={() => step(-1)}
           disabled={atBase}
           aria-label={`Decrease ${attribute}`}
-          className="flex h-7 w-7 shrink-0 items-center justify-center rounded border border-line bg-black/20 text-base font-bold leading-none text-zinc-300 transition hover:border-line-strong hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
+          className="flex h-6 w-6 shrink-0 items-center justify-center rounded border border-line bg-black/20 text-sm font-bold leading-none text-zinc-300 transition hover:border-line-strong hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
         >
           −
         </button>
@@ -125,7 +125,7 @@ function AttributeRowBase({ entry, onChange }: AttributeRowProps) {
         </div>
 
         <span
-          className={`w-10 shrink-0 text-center font-mono text-lg font-extrabold tabular-nums ${statColor(statTotal)}`}
+          className={`w-8 shrink-0 text-center font-mono text-base font-extrabold tabular-nums ${statColor(statTotal)}`}
         >
           {statTotal}
         </span>
@@ -135,19 +135,10 @@ function AttributeRowBase({ entry, onChange }: AttributeRowProps) {
           onClick={() => step(1)}
           disabled={atCap}
           aria-label={`Increase ${attribute}`}
-          className="flex h-7 w-7 shrink-0 items-center justify-center rounded border border-line bg-black/20 text-base font-bold leading-none text-zinc-300 transition hover:border-line-strong hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
+          className="flex h-6 w-6 shrink-0 items-center justify-center rounded border border-line bg-black/20 text-sm font-bold leading-none text-zinc-300 transition hover:border-line-strong hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
         >
           +
         </button>
-      </div>
-
-      <div className="mt-1 flex items-center justify-between text-[10px] font-medium text-muted">
-        <span>
-          Base <span className="font-mono text-zinc-300">{baseStat}</span>
-        </span>
-        <span>
-          Max <span className="font-mono text-zinc-300">{capStat}</span>
-        </span>
       </div>
     </div>
   );

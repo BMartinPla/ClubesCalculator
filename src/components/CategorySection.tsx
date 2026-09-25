@@ -30,18 +30,18 @@ export default function CategorySection({
   );
 
   return (
-    <section className="rounded-lg border border-line bg-[#161a22]/60 p-4">
-      <div className="mb-3 flex items-center justify-between gap-3">
-        <h3 className="text-[13px] font-bold uppercase tracking-[0.08em] text-muted">
+    <section className="h-full rounded-lg border border-line bg-[#161a22]/60 p-3">
+      <div className="mb-2 flex items-center justify-between gap-2">
+        <h3 className="text-[12px] font-bold uppercase tracking-[0.08em] text-muted">
           {CATEGORY_LABELS[category]}
         </h3>
-        <div className="flex items-center gap-3">
-          <span className="flex items-center gap-1.5">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-muted">
+        <div className="flex items-center gap-2">
+          <span className="flex items-center gap-1">
+            <span className="text-[9px] font-bold uppercase tracking-wider text-muted">
               AVG
             </span>
             <span
-              className={`min-w-[2rem] rounded border border-line bg-black/30 px-1.5 py-0.5 text-center font-mono text-sm font-bold ${avgColor(avg)}`}
+              className={`min-w-[1.8rem] rounded border border-line bg-black/30 px-1 py-0.5 text-center font-mono text-xs font-bold ${avgColor(avg)}`}
             >
               {avg}
             </span>
@@ -56,7 +56,7 @@ export default function CategorySection({
         </div>
       </div>
 
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-1.5">
         {entries.map((entry) => (
           <AttributeRow
             key={entry.attribute}

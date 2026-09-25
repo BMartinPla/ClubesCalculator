@@ -337,18 +337,16 @@ export default function Page() {
       />
 
       <main
-        className="mx-auto max-w-[1600px] px-4 pb-16 sm:px-6"
-        style={{ paddingTop: (headerH || 88) + 20 }}
+        className="mx-auto max-w-[1600px] px-4 pb-8 sm:px-6"
+        style={{ paddingTop: (headerH || 88) + 14 }}
       >
-        {/* ---- Top config bar (symmetric) ---- */}
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-          <div className="xl:col-span-2">
-            <ArchetypeDropdown
-              archetypes={ARCHETYPES}
-              selected={archetype}
-              onSelect={selectArchetype}
-            />
-          </div>
+        {/* ---- Top config (5 equal cards, one row on desktop) ---- */}
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-5">
+          <ArchetypeDropdown
+            archetypes={ARCHETYPES}
+            selected={archetype}
+            onSelect={selectArchetype}
+          />
           <PlayStylesPanel
             level={level}
             archetype={activeArchetype}
@@ -388,7 +386,7 @@ export default function Page() {
             onWeight={setWeight}
             deltas={physicalDeltas}
           />
-          <div className="panel p-4">
+          <div className="panel flex h-full flex-col p-3">
             <h2 className="panel-title mb-3">Tools</h2>
             <div className="flex flex-col gap-2">
               <button
@@ -431,24 +429,32 @@ export default function Page() {
           </div>
         </div>
 
-        {/* ---- Priority: attributes (always expanded) ---- */}
-        <div className="mt-6 flex items-center justify-between px-1">
-          <h2 className="text-lg font-extrabold uppercase tracking-[0.08em] text-white">
+        {/* ---- Priority: attributes (3 cols; last card fills the row) ---- */}
+        <div className="mt-4 flex items-center justify-between px-1">
+          <h2 className="text-base font-extrabold uppercase tracking-[0.08em] text-white">
             Attributes
           </h2>
           <span className="text-xs text-muted">
             {build.totalApSpent} / {build.maxAp} AP used
           </span>
         </div>
-        <div className="mt-3 grid grid-cols-1 gap-4 xl:grid-cols-2">
-          {categories.map((category) => (
-            <CategorySection
+        <div className="mt-2 grid grid-cols-1 gap-3 lg:grid-cols-2 xl:grid-cols-3">
+          {categories.map((category, i) => (
+            <div
               key={category}
-              category={category}
-              entries={entriesByCategory.get(category) ?? []}
-              categoryAp={build.byCategory[category] ?? 0}
-              onStatChange={handleStatChange}
-            />
+              className={
+                i === categories.length - 1 && categories.length % 3 !== 0
+                  ? "xl:col-span-2"
+                  : undefined
+              }
+            >
+              <CategorySection
+                category={category}
+                entries={entriesByCategory.get(category) ?? []}
+                categoryAp={build.byCategory[category] ?? 0}
+                onStatChange={handleStatChange}
+              />
+            </div>
           ))}
         </div>
 
