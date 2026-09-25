@@ -1,6 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 import ArchetypeDropdown from "@/components/ArchetypeDropdown";
 import AnimationThresholdModal from "@/components/AnimationThresholdModal";
@@ -85,6 +92,23 @@ export default function Page() {
   const [animationsOpen, setAnimationsOpen] = useState(false);
   const [animationThreshold, setAnimationThreshold] = useState<AnimationThreshold>(71);
   const hydrated = useRef(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const [headerH, setHeaderH] = useState(0);
+
+  // Keep the fixed header height in state so the content can offset it.
+  useLayoutEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    const update = () => setHeaderH(el.offsetHeight);
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    window.addEventListener("resize", update);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", update);
+    };
+  }, []);
 
   // --- Hydrate from URL (?archetype=&stats=&m=) --------------------------
   useEffect(() => {
@@ -265,6 +289,7 @@ export default function Page() {
   return (
     <>
       <BudgetBar
+        ref={headerRef}
         archetypeName={archetype}
         spent={build.totalApSpent}
         maxAp={build.maxAp}
@@ -277,10 +302,16 @@ export default function Page() {
         onExport={() => setExportOpen(true)}
       />
 
-      <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
+      <main
+        className="mx-auto max-w-7xl px-4 pb-16 sm:px-6"
+        style={{ paddingTop: (headerH || 88) + 24 }}
+      >
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(320px,380px)_1fr]">
           {/* ---- Sidebar: build configuration ---- */}
-          <aside className="flex flex-col gap-4 lg:sticky lg:top-[6.5rem] lg:self-start">
+          <aside
+            className="flex flex-col gap-4 lg:sticky lg:self-start"
+            style={{ top: headerH + 16 }}
+          >
             <ArchetypeDropdown
               archetypes={ARCHETYPES}
               selected={archetype}

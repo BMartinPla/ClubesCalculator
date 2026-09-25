@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import { getBudgetStatus } from "@/lib/buildEngine";
 import { MAX_LEVEL, getMaxApForLevel } from "@/data/levelProgression";
 
@@ -17,18 +17,21 @@ interface BudgetBarProps {
   onExport: () => void;
 }
 
-export default function BudgetBar({
-  archetypeName,
-  spent,
-  maxAp,
-  statsApCost,
-  starsApCost,
-  level,
-  shareUrl,
-  onLevelChange,
-  onReset,
-  onExport,
-}: BudgetBarProps) {
+const BudgetBar = forwardRef<HTMLElement, BudgetBarProps>(function BudgetBar(
+  {
+    archetypeName,
+    spent,
+    maxAp,
+    statsApCost,
+    starsApCost,
+    level,
+    shareUrl,
+    onLevelChange,
+    onReset,
+    onExport,
+  },
+  ref,
+) {
   const remainingAp = maxAp - spent;
   const status = getBudgetStatus(spent, maxAp);
   const isOver = remainingAp < 0;
@@ -52,7 +55,10 @@ export default function BudgetBar({
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/[0.06] bg-zinc-950/80 backdrop-blur-xl">
+    <header
+      ref={ref}
+      className="fixed left-0 right-0 top-0 z-50 w-full border-b border-white/[0.06] bg-zinc-950/90 px-4 py-3 shadow-xl backdrop-blur-md sm:px-6"
+    >
       {/* Accent hairline */}
       <div className="h-px w-full bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
 
@@ -191,4 +197,6 @@ export default function BudgetBar({
       )}
     </header>
   );
-}
+});
+
+export default BudgetBar;
