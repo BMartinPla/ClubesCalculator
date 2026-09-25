@@ -6,7 +6,7 @@ import {
   getPlusSlotCount,
   getSilverSlotCount,
 } from "@/data/playstyles";
-import { attributeLabel } from "@/lib/attributeNames";
+import { ATTRIBUTE_ID_TO_INTERNAL, attributeLabel } from "@/lib/attributeNames";
 import type { Archetype } from "@/types";
 
 interface PlayStylesPanelProps {
@@ -18,11 +18,13 @@ interface PlayStylesPanelProps {
   onClear: (slotIndex: number) => void;
 }
 
+/** Is a requirement met by the current build stats? */
 function reqMet(
   req: { attributeId: string; min: number },
   statTotals: Record<string, number>,
 ): boolean {
-  return (statTotals[attributeLabel(req.attributeId)] ?? 0) >= req.min;
+  const name = ATTRIBUTE_ID_TO_INTERNAL[req.attributeId] ?? req.attributeId;
+  return (statTotals[name] ?? 0) >= req.min;
 }
 
 export default function PlayStylesPanel({
@@ -41,56 +43,50 @@ export default function PlayStylesPanel({
   return (
     <div className="panel flex h-full flex-col p-4">
       <div className="mb-3 flex items-center justify-between gap-2">
-        <h2 className="text-sm font-bold tracking-tight text-zinc-100">
-          PlayStyles
-        </h2>
-        <span className="chip border-white/10 bg-white/[0.04] text-zinc-400">
-          Nivel {level} · {silverSlots} slot{silverSlots === 1 ? "" : "s"}
+        <h2 className="panel-title">PlayStyles</h2>
+        <span className="chip bg-white/[0.05] text-muted">
+          Lv {level} · {silverSlots}/{getSilverSlotCount(40)} slots
         </span>
       </div>
 
-      {/* Silver slots */}
+      {/* Slots */}
       <div className="grid grid-cols-3 gap-2">
-        {Array.from({ length: Math.max(silverSlots, 1) }).map((_, i) => {
-          const id = i < silverSlots ? selection[i] ?? null : null;
-          const ps = getPlayStyle(id);
+        {[0, 1, 2].map((i) => {
           const locked = i >= silverSlots;
+          const id = locked ? null : selection[i] ?? null;
+          const ps = getPlayStyle(id);
           return (
             <div key={i} className="flex flex-col items-center gap-1">
               <button
                 type="button"
                 disabled={locked}
                 onClick={() => (locked ? undefined : onOpenPicker(i))}
-                className={`flex h-14 w-14 items-center justify-center rounded-xl border transition ${
+                className={`flex h-14 w-14 items-center justify-center rounded-full border-2 transition ${
                   locked
-                    ? "cursor-not-allowed border-white/[0.04] bg-white/[0.01] opacity-40"
+                    ? "cursor-not-allowed border-rose-500/25 bg-black/40 opacity-50"
                     : ps
-                      ? "border-emerald-500/40 bg-emerald-500/10"
-                      : "border-dashed border-white/15 bg-white/[0.02] hover:border-white/30"
+                      ? "border-pitch bg-pitch/10"
+                      : "border-dashed border-line-strong bg-black/20 hover:border-brand"
                 }`}
-                aria-label={ps ? ps.name : "Slot vacío"}
+                aria-label={ps ? ps.name : "Empty slot"}
               >
                 {ps ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={ps.icon} alt={ps.name} width={38} height={38} />
                 ) : (
-                  <span className="text-lg text-zinc-600">+</span>
+                  <span className="text-lg text-muted">{locked ? "🔒" : "+"}</span>
                 )}
               </button>
-              <span className="w-full truncate text-center text-[10px] text-zinc-400">
-                {locked
-                  ? `Nivel ${[5, 15, 40][i]}`
-                  : ps
-                    ? ps.name
-                    : "Vacío"}
+              <span className="w-full truncate text-center text-[10px] text-muted">
+                {locked ? `Lv ${[5, 15, 40][i]}` : ps ? ps.name : "Empty"}
               </span>
               {ps && !locked && (
                 <button
                   type="button"
                   onClick={() => onClear(i)}
-                  className="text-[9px] text-zinc-600 hover:text-rose-400"
+                  className="text-[9px] text-muted hover:text-rose-400"
                 >
-                  quitar
+                  clear
                 </button>
               )}
             </div>
@@ -98,7 +94,7 @@ export default function PlayStylesPanel({
         })}
       </div>
 
-      {/* Requirements of the selected playstyles */}
+      {/* Requirements */}
       <div className="mt-3 space-y-1.5">
         {selection
           .slice(0, silverSlots)
@@ -116,9 +112,7 @@ export default function PlayStylesPanel({
                     <span
                       key={r.attributeId}
                       className={`chip ${
-                        ok
-                          ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-300"
-                          : "border-rose-500/30 bg-rose-500/10 text-rose-300"
+                        ok ? "bg-pitch/15 text-pitch" : "bg-rose-500/15 text-rose-300"
                       }`}
                     >
                       {attributeLabel(r.attributeId)} ≥ {r.min}
@@ -130,16 +124,16 @@ export default function PlayStylesPanel({
           })}
       </div>
 
-      {/* PlayStyle+ (signature) */}
+      {/* PlayStyle+ */}
       {plusSlots > 0 && signature && (
-        <div className="mt-3 flex items-center gap-2 border-t border-white/[0.06] pt-3">
+        <div className="mt-3 flex items-center gap-2 border-t border-line pt-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={signature.iconplus} alt={signature.name} width={32} height={32} />
+          <img src={signature.iconplus} alt={signature.name} width={34} height={34} />
           <div className="min-w-0">
-            <p className="text-[10px] font-bold uppercase tracking-widest text-amber-400/80">
+            <p className="text-[10px] font-bold uppercase tracking-widest text-gold">
               PlayStyle+ ({plusSlots})
             </p>
-            <p className="truncate text-xs font-semibold text-amber-200">
+            <p className="truncate text-sm font-semibold text-amber-200">
               {signature.name} +
             </p>
           </div>

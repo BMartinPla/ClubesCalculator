@@ -38,7 +38,7 @@ export function physicalStepMagnitude(
 }
 
 export function isGoalkeeperRole(role: string | undefined): boolean {
-  return /arquer/i.test(role ?? "");
+  return /goalkeeper|arquer/i.test(role ?? "");
 }
 
 /**

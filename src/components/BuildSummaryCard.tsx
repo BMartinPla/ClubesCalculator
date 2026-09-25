@@ -157,17 +157,17 @@ function MasteriesBlock({
           🏆
         </span>
         <p className="text-[10px] font-bold uppercase tracking-wider text-violet-300">
-          Maestrías Activas ({count}/{totalMasteriesCount})
+          Active Masteries ({count}/{totalMasteriesCount})
         </p>
       </div>
 
       {count === 0 ? (
-        <p className="mt-2 text-[10px] text-zinc-600">Sin maestrías activas</p>
+        <p className="mt-2 text-[10px] text-zinc-600">No active masteries</p>
       ) : (
         <>
           {allActive && (
             <div className="mt-2 rounded-md border border-amber-500/40 bg-amber-500/10 px-2 py-1 text-[10px] font-bold text-amber-300">
-              ★ Todas las Maestrías Activas (+{passiveTotal} Stats Pasivas)
+              ★ Todas las Active Masteries (+{passiveTotal} Passive Stats)
             </div>
           )}
           <div className="mt-2 flex flex-wrap gap-1.5">
@@ -233,7 +233,7 @@ const BuildSummaryCard = forwardRef<HTMLDivElement, BuildSummaryCardProps>(
               </p>
               {activeMasteriesCount > 0 && (
                 <p className="text-[10px] leading-snug text-violet-300">
-                  Maestrías: {activeMasteriesCount} activas
+                  Masteries: {activeMasteriesCount} active
                 </p>
               )}
             </div>

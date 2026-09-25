@@ -46,26 +46,19 @@ function Control({
   defaultValue: number;
   onChange: (value: number) => void;
 }) {
-  const pct = ((value - min) / Math.max(1, max - min)) * 100;
   return (
-    <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-3">
+    <div className="rounded-md border border-line bg-black/20 p-3">
       <div className="flex items-baseline justify-between gap-2">
-        <label htmlFor={id} className="text-[11px] font-bold uppercase tracking-wider text-zinc-400">
+        <label htmlFor={id} className="text-[11px] font-bold uppercase tracking-wider text-muted">
           {label}
         </label>
-        <span className="font-mono text-base font-black text-zinc-100">
+        <span className="font-mono text-base font-extrabold text-white">
           {value}
-          <span className="ml-0.5 text-xs font-medium text-zinc-500">{unit}</span>
-          <span className="ml-2 text-[11px] font-medium text-zinc-500">{altText}</span>
+          <span className="ml-0.5 text-xs font-medium text-muted">{unit}</span>
+          <span className="ml-2 text-[11px] font-medium text-muted">{altText}</span>
         </span>
       </div>
-      <div className="relative mt-2">
-        <div className="absolute inset-x-0 top-1/2 h-1.5 -translate-y-1/2 overflow-hidden rounded-full bg-zinc-800">
-          <div
-            className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400"
-            style={{ width: `${pct}%` }}
-          />
-        </div>
+      <div className="mt-2">
         <input
           id={id}
           type="range"
@@ -74,18 +67,18 @@ function Control({
           step={1}
           value={value}
           onChange={(e) => onChange(Number(e.target.value))}
-          className="ap-range relative"
+          className="ap-range"
           aria-valuetext={`${value} ${unit}`}
         />
       </div>
-      <div className="mt-1 flex items-center justify-between text-[10px] font-medium text-zinc-600">
+      <div className="mt-1 flex items-center justify-between text-[10px] font-medium text-muted">
         <span>
-          Permitido <span className="font-mono text-zinc-400">{min}–{max}</span>
+          Allowed <span className="font-mono text-zinc-300">{min}–{max}</span>
         </span>
         <button
           type="button"
           onClick={() => onChange(defaultValue)}
-          className="text-zinc-500 underline-offset-2 hover:text-emerald-400 hover:underline"
+          className="text-muted underline-offset-2 hover:text-pitch hover:underline"
         >
           Base {defaultValue}
         </button>
@@ -114,15 +107,15 @@ export default function PhysicalControls({
   return (
     <div className="panel p-4">
       <div className="mb-3 flex items-center justify-between">
-        <h2 className="text-sm font-bold tracking-tight text-zinc-100">Físico</h2>
-        <span className="text-[10px] font-medium uppercase tracking-widest text-zinc-500">
-          Altura y peso del arquetipo
+        <h2 className="panel-title">Physical</h2>
+        <span className="text-[10px] font-semibold uppercase tracking-widest text-muted">
+          Height & Weight
         </span>
       </div>
       <div className="flex flex-col gap-2.5">
         <Control
           id="height"
-          label="Altura"
+          label="Height"
           unit="cm"
           altText={`/ ${toFeetInches(heightCm)}`}
           value={heightCm}
@@ -133,7 +126,7 @@ export default function PhysicalControls({
         />
         <Control
           id="weight"
-          label="Peso"
+          label="Weight"
           unit="kg"
           altText={`/ ${toPounds(weightKg)}`}
           value={weightKg}
@@ -144,23 +137,21 @@ export default function PhysicalControls({
         />
       </div>
 
-      <div className="mt-3 rounded-xl border border-white/[0.06] bg-black/20 p-3">
-        <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
-          Stats afectadas
+      <div className="mt-3 rounded-md border border-line bg-black/20 p-2.5">
+        <p className="mb-1.5 text-[10px] font-bold uppercase tracking-widest text-muted">
+          Affected stats
         </p>
         {entries.length === 0 ? (
-          <p className="text-[11px] text-zinc-600">
-            En los valores base no hay modificadores por altura/peso.
+          <p className="text-[11px] text-muted">
+            No height/weight modifiers at base values.
           </p>
         ) : (
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-1">
             {[...positives, ...negatives].map(([stat, v]) => (
               <span
                 key={stat}
                 className={`chip ${
-                  v > 0
-                    ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-300"
-                    : "border-rose-500/30 bg-rose-500/10 text-rose-300"
+                  v > 0 ? "bg-pitch/15 text-pitch" : "bg-rose-500/15 text-rose-300"
                 }`}
               >
                 {stat}

@@ -49,10 +49,10 @@ export function getMaxApForLevel(level: number): number {
   return LEVEL_AP_CUMULATIVE[clampLevel(level) - 1];
 }
 
-/** "Nivel 40 (962 AP)" */
+/** "Level 40 (962 AP)" */
 export function getLevelLabel(level: number): string {
   const lvl = clampLevel(level);
-  return `Nivel ${lvl} (${getMaxApForLevel(lvl)} AP)`;
+  return `Level ${lvl} (${getMaxApForLevel(lvl)} AP)`;
 }
 
 /** Every level with its AP budget, from 1 to 40. */

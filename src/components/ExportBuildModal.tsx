@@ -96,7 +96,7 @@ export default function ExportBuildModal({
       link.href = dataUrl;
       link.click();
     } catch {
-      setError("No se pudo generar la imagen. Inténtalo de nuevo.");
+      setError("Could not generate the image. Please try again.");
     } finally {
       setBusy(null);
     }
@@ -113,15 +113,13 @@ export default function ExportBuildModal({
       }
       const { toBlob } = await import("html-to-image");
       const blob = await toBlob(node, captureOptions);
-      if (!blob) throw new Error("blob vacío");
+      if (!blob) throw new Error("empty blob");
       await navigator.clipboard.write([
         new ClipboardItem({ "image/png": blob }),
       ]);
       setCopied(true);
     } catch {
-      setError(
-        "Tu navegador no permite copiar imágenes. Usa «Descargar Imagen».",
-      );
+      setError("Your browser cannot copy images. Use Download Image.");
     } finally {
       setBusy(null);
     }
@@ -153,7 +151,7 @@ export default function ExportBuildModal({
       setSaved(true);
       setSaveName("");
     } catch {
-      setError("No se pudo guardar la build en este navegador.");
+      setError("Could not save the build in this browser.");
     }
   };
 
@@ -174,16 +172,16 @@ export default function ExportBuildModal({
         <div className="flex items-start justify-between gap-4 border-b border-white/[0.06] p-5">
           <div>
             <h2 id="export-title" className="text-base font-bold text-zinc-50">
-              Exportar captura
+              Export Snapshot
             </h2>
             <p className="mt-0.5 text-xs text-zinc-500">
-              Resumen estilizado de tu build listo para compartir.
+              Stylized summary of your build, ready to share.
             </p>
           </div>
           <button
             type="button"
             onClick={onClose}
-            aria-label="Cerrar"
+            aria-label="Close"
             className="flex h-8 w-8 items-center justify-center rounded-lg text-zinc-500 transition hover:bg-white/[0.06] hover:text-zinc-200"
           >
             <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
@@ -224,7 +222,7 @@ export default function ExportBuildModal({
               disabled={busy !== null}
               className="focus-ring inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-bold text-zinc-950 transition hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {busy === "download" ? "Generando…" : "Descargar Imagen (PNG)"}
+              {busy === "download" ? "Generating…" : "Download Image (PNG)"}
             </button>
             <button
               type="button"
@@ -237,23 +235,23 @@ export default function ExportBuildModal({
               }`}
             >
               {busy === "copy"
-                ? "Copiando…"
+                ? "Copying…"
                 : copied
-                  ? "¡Copiado!"
-                  : "Copiar al Portapapeles"}
+                  ? "Copied!"
+                  : "Copy to Clipboard"}
             </button>
           </div>
 
           {/* Save to localStorage */}
           <div className="mt-4 rounded-xl border border-white/[0.06] bg-white/[0.02] p-3">
             <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
-              Guardar en Mis Builds
+              Save to My Builds
             </p>
             <div className="flex flex-wrap gap-2">
               <input
                 value={saveName}
                 onChange={(e) => setSaveName(e.target.value)}
-                placeholder={`Nombre de la build (ej. ${archetype.name} competitivo)`}
+                placeholder={`Build name (e.g. ${archetype.name} competitivo)`}
                 className="min-w-0 flex-1 rounded-lg border border-white/[0.08] bg-zinc-950 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-violet-500/60 focus:outline-none"
               />
               <button
@@ -265,11 +263,11 @@ export default function ExportBuildModal({
                     : "border border-violet-500/40 bg-violet-500/10 text-violet-200 hover:border-violet-500/70 hover:bg-violet-500/20"
                 }`}
               >
-                {saved ? "¡Guardada!" : "Guardar"}
+                {saved ? "Saved!" : "Save"}
               </button>
             </div>
             <p className="mt-2 text-[10px] text-zinc-600">
-              Se guarda en este navegador (localStorage · clave{" "}
+              Saved in this browser (localStorage · key{" "}
               <span className="font-mono">saved_builds</span>).
             </p>
           </div>

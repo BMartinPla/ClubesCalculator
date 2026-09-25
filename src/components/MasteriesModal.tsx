@@ -13,12 +13,12 @@ interface MasteriesModalProps {
   onUnmarkAll: () => void;
 }
 
-/** "+1 Compostura, +2 Definicion" (skips zero bonuses). */
+/** "+1 Composure, +2 Finishing" (skips zero bonuses). */
 function bonusLabel(m: ArchetypeMastery): string {
   const parts: string[] = [];
   if (m.bonus_1 > 0) parts.push(`+${m.bonus_1} ${m.stat_1}`);
   if (m.bonus_2 > 0) parts.push(`+${m.bonus_2} ${m.stat_2}`);
-  return parts.length > 0 ? parts.join(", ") : "Sin bonificación";
+  return parts.length > 0 ? parts.join(", ") : "No bonus";
 }
 
 export default function MasteriesModal({
@@ -61,32 +61,30 @@ export default function MasteriesModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby="masteries-title"
-        className="relative flex max-h-[85vh] w-full max-w-2xl animate-pop-in flex-col rounded-2xl border border-white/[0.08] bg-zinc-950/95 p-6 shadow-2xl backdrop-blur-xl"
+        className="relative flex max-h-[85vh] w-full max-w-2xl animate-pop-in flex-col rounded-xl border border-line bg-[#0c0f16] p-6 shadow-2xl"
       >
-        {/* Header */}
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-start gap-3">
             <span
               aria-hidden="true"
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-violet-500/30 bg-violet-500/10 text-lg"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-brand/40 bg-brand/15 text-lg"
             >
               🏆
             </span>
             <div>
-              <h2 id="masteries-title" className="text-lg font-bold text-zinc-50">
-                Maestrías Desbloqueadas
+              <h2 id="masteries-title" className="text-lg font-extrabold uppercase tracking-wide text-white">
+                Unlocked Masteries
               </h2>
-              <p className="mt-0.5 text-xs text-zinc-500">
-                Las bonificaciones se aplican automáticamente a tus estadísticas
-                sin consumir AP.
+              <p className="mt-0.5 text-xs text-muted">
+                Bonuses apply automatically to your stats without spending AP.
               </p>
             </div>
           </div>
           <button
             type="button"
             onClick={onClose}
-            aria-label="Cerrar"
-            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-zinc-500 transition hover:bg-white/[0.06] hover:text-zinc-200"
+            aria-label="Close"
+            className="flex h-8 w-8 shrink-0 items-center justify-center rounded text-muted transition hover:bg-white/[0.06] hover:text-white"
           >
             <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
               <line x1="18" y1="6" x2="6" y2="18" />
@@ -95,38 +93,36 @@ export default function MasteriesModal({
           </button>
         </div>
 
-        {/* Quick actions */}
         <div className="mt-4 flex flex-wrap items-center gap-2">
           <button
             type="button"
             onClick={onMarkAll}
-            className="focus-ring rounded-lg border border-violet-500/40 bg-violet-500/10 px-3 py-1.5 text-xs font-semibold text-violet-200 transition hover:border-violet-500/70 hover:bg-violet-500/20"
+            className="focus-ring rounded border border-violet-500/50 bg-violet-500/15 px-3 py-1.5 text-xs font-semibold text-violet-200 transition hover:bg-violet-500/25"
           >
-            Marcar Todas
+            Mark All
           </button>
           <button
             type="button"
             onClick={onUnmarkAll}
-            className="focus-ring rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-1.5 text-xs font-semibold text-zinc-400 transition hover:border-white/20 hover:text-zinc-200"
+            className="focus-ring rounded border border-line bg-black/20 px-3 py-1.5 text-xs font-semibold text-muted transition hover:border-line-strong hover:text-white"
           >
-            Desmarcar Todas
+            Unmark All
           </button>
-          <span className="ml-auto rounded-md bg-white/[0.04] px-2.5 py-1 text-xs font-bold text-zinc-300">
-            {count} de {total} activas
+          <span className="ml-auto rounded bg-white/[0.06] px-2.5 py-1 text-xs font-bold text-zinc-200">
+            {count} of {total} active
           </span>
         </div>
 
-        {/* Body */}
         <div className="mt-3 grid min-h-0 flex-1 grid-cols-1 gap-2.5 overflow-y-auto py-2 pr-1 md:grid-cols-2">
           {masteries.map((m) => {
             const on = Boolean(active[m.archetype]);
             return (
               <label
                 key={m.archetype}
-                className={`flex cursor-pointer items-center gap-3 rounded-xl border p-3 transition ${
+                className={`flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition ${
                   on
-                    ? "border-violet-500/50 bg-violet-950/30 text-violet-200"
-                    : "border-white/[0.06] bg-white/[0.02] text-zinc-400 hover:border-white/[0.12]"
+                    ? "border-violet-500/50 bg-violet-950/40 text-violet-200"
+                    : "border-line bg-black/20 text-muted hover:border-line-strong"
                 }`}
               >
                 <input
@@ -137,10 +133,8 @@ export default function MasteriesModal({
                 />
                 <span
                   aria-hidden="true"
-                  className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition ${
-                    on
-                      ? "border-violet-400 bg-violet-500 text-zinc-950"
-                      : "border-zinc-600 bg-zinc-900"
+                  className={`flex h-5 w-5 shrink-0 items-center justify-center rounded border transition ${
+                    on ? "border-violet-400 bg-violet-500 text-black" : "border-line-strong bg-black/30"
                   }`}
                 >
                   {on && (
@@ -162,14 +156,13 @@ export default function MasteriesModal({
           })}
         </div>
 
-        {/* Footer */}
-        <div className="mt-4 border-t border-white/[0.06] pt-4">
+        <div className="mt-4 border-t border-line pt-4">
           <button
             type="button"
             onClick={onClose}
-            className="focus-ring w-full rounded-xl bg-violet-500 px-4 py-3 text-sm font-bold text-white transition hover:bg-violet-400"
+            className="focus-ring w-full rounded-lg bg-brand px-4 py-3 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-brand-hi"
           >
-            Confirmar y Cerrar
+            Confirm & Close
           </button>
         </div>
       </div>

@@ -5,8 +5,8 @@ export const ARCHETYPES: Archetype[] = [
   {
     "id": 1,
     "name": "Finisher",
-    "role": "Delantero",
-    "primary_position": "DC / SD",
+    "role": "Striker",
+    "primary_position": "LW / ST",
     "signature_playstyle_plus": "Low Driven Shot",
     "specializations": [
       "Chip Shot",
@@ -25,8 +25,8 @@ export const ARCHETYPES: Archetype[] = [
   {
     "id": 2,
     "name": "Target",
-    "role": "Delantero Boya",
-    "primary_position": "DC",
+    "role": "Target Forward",
+    "primary_position": "CF / ST",
     "signature_playstyle_plus": "Precision Header",
     "specializations": [
       "Acrobatic",
@@ -45,8 +45,8 @@ export const ARCHETYPES: Archetype[] = [
   {
     "id": 3,
     "name": "Magician",
-    "role": "Delantero / Mediapunta",
-    "primary_position": "MCO / EI / ED",
+    "role": "Forward / Attacking Mid",
+    "primary_position": "CAM / CF / ST",
     "signature_playstyle_plus": "Technical",
     "specializations": [
       "First Touch",
@@ -65,8 +65,8 @@ export const ARCHETYPES: Archetype[] = [
   {
     "id": 4,
     "name": "Spark",
-    "role": "Extremo",
-    "primary_position": "EI / ED / MD / MI",
+    "role": "Winger",
+    "primary_position": "LW / RW",
     "signature_playstyle_plus": "Trickster",
     "specializations": [
       "Quick Step",
@@ -85,8 +85,8 @@ export const ARCHETYPES: Archetype[] = [
   {
     "id": 5,
     "name": "Creator",
-    "role": "Mediocampista",
-    "primary_position": "MCO / MC",
+    "role": "Midfielder",
+    "primary_position": "CM",
     "signature_playstyle_plus": "Incisive Pass",
     "specializations": [
       "Whipped Pass",
@@ -105,8 +105,8 @@ export const ARCHETYPES: Archetype[] = [
   {
     "id": 6,
     "name": "Maestro",
-    "role": "Mediocampista",
-    "primary_position": "MC",
+    "role": "Midfielder",
+    "primary_position": "CM / CAM",
     "signature_playstyle_plus": "Pinged Pass",
     "specializations": [
       "Technical",
@@ -125,8 +125,8 @@ export const ARCHETYPES: Archetype[] = [
   {
     "id": 7,
     "name": "Disruptor",
-    "role": "Mediocampista Defensivo",
-    "primary_position": "MCD",
+    "role": "Defensive Midfielder",
+    "primary_position": "CDM",
     "signature_playstyle_plus": "Jockey",
     "specializations": [
       "Intercept",
@@ -145,8 +145,8 @@ export const ARCHETYPES: Archetype[] = [
   {
     "id": 8,
     "name": "Recycler",
-    "role": "Mediocampista Defensivo",
-    "primary_position": "MCD / MC",
+    "role": "Defensive Midfielder",
+    "primary_position": "CDM / CM",
     "signature_playstyle_plus": "Intercept",
     "specializations": [
       "Pinged Pass",
@@ -165,8 +165,8 @@ export const ARCHETYPES: Archetype[] = [
   {
     "id": 9,
     "name": "Boss",
-    "role": "Defensa",
-    "primary_position": "DFC",
+    "role": "Defender",
+    "primary_position": "CB",
     "signature_playstyle_plus": "Bruiser",
     "specializations": [
       "Slide Tackle",
@@ -185,8 +185,8 @@ export const ARCHETYPES: Archetype[] = [
   {
     "id": 10,
     "name": "Progressor",
-    "role": "Defensa",
-    "primary_position": "DFC",
+    "role": "Defender",
+    "primary_position": "CB / LB",
     "signature_playstyle_plus": "Long Ball Pass",
     "specializations": [
       "Jockey",
@@ -205,8 +205,8 @@ export const ARCHETYPES: Archetype[] = [
   {
     "id": 11,
     "name": "Marauder",
-    "role": "Lateral",
-    "primary_position": "LD / LI",
+    "role": "Full-back",
+    "primary_position": "LWB / RWB",
     "signature_playstyle_plus": "Quick Step",
     "specializations": [
       "Slide Tackle",
@@ -225,8 +225,8 @@ export const ARCHETYPES: Archetype[] = [
   {
     "id": 12,
     "name": "Shot Stopper",
-    "role": "Arquero",
-    "primary_position": "POR",
+    "role": "Goalkeeper",
+    "primary_position": "GK",
     "signature_playstyle_plus": "Far Reach",
     "specializations": [
       "Cross Claimer",
@@ -245,8 +245,8 @@ export const ARCHETYPES: Archetype[] = [
   {
     "id": 13,
     "name": "Sweeper Keeper",
-    "role": "Arquero",
-    "primary_position": "POR",
+    "role": "Goalkeeper",
+    "primary_position": "GK",
     "signature_playstyle_plus": "Footwork",
     "specializations": [
       "Far Throw",

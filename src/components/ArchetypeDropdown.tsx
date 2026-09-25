@@ -36,6 +36,7 @@ export default function ArchetypeDropdown({
 
   const current = archetypes.find((a) => a.name === selected) ?? archetypes[0];
   const initials = current?.name.slice(0, 2).toUpperCase() ?? "";
+  const icon = getArchetypeIcon(current?.name ?? "");
 
   useEffect(() => {
     if (!open) return;
@@ -62,8 +63,8 @@ export default function ArchetypeDropdown({
 
   return (
     <div ref={rootRef} className="relative">
-      <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
-        Arquetipo activo
+      <p className="mb-1.5 text-[10px] font-bold uppercase tracking-widest text-muted">
+        Active Archetype
       </p>
 
       <button
@@ -71,40 +72,34 @@ export default function ArchetypeDropdown({
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className="focus-ring flex w-full items-center gap-3 rounded-2xl border border-white/[0.08] bg-zinc-900/70 px-4 py-3 text-left backdrop-blur transition hover:border-white/[0.14]"
+        className="focus-ring flex w-full items-center gap-3 rounded-lg border border-line bg-[#161a22]/60 px-4 py-3 text-left transition hover:border-line-strong"
       >
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400/20 to-emerald-500/20 text-sm font-black text-zinc-950 shadow-[0_0_20px_rgba(34,211,238,0.25)]">
-          {getArchetypeIcon(current?.name ?? "") ? (
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-line bg-black/30">
+          {icon ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={getArchetypeIcon(current?.name ?? "")}
-              alt=""
-              width={34}
-              height={34}
-              className="h-9 w-9 object-contain"
-            />
+            <img src={icon} alt="" width={34} height={34} className="h-9 w-9 object-contain" />
           ) : (
-            initials
+            <span className="text-sm font-black text-white">{initials}</span>
           )}
         </span>
         <span className="min-w-0 flex-1">
           <span className="flex flex-wrap items-center gap-2">
-            <span className="truncate text-lg font-black tracking-tight text-zinc-50">
+            <span className="truncate text-lg font-extrabold uppercase tracking-wide text-white">
               {current?.name}
             </span>
-            <span className="chip border-white/10 bg-white/[0.04] text-zinc-300">
+            <span className="chip bg-white/[0.06] text-zinc-300">
               {current?.primary_position}
             </span>
           </span>
           <span className="mt-1 flex flex-wrap items-center gap-2">
-            <span className="chip border-amber-500/50 bg-amber-500/10 text-amber-300">
+            <span className="chip bg-gold/15 text-gold">
               ★ {current?.signature_playstyle_plus}+
             </span>
-            <span className="text-[10px] text-zinc-500">{current?.role}</span>
+            <span className="text-[10px] text-muted">{current?.role}</span>
           </span>
         </span>
         <ChevronDown
-          className={`h-5 w-5 shrink-0 text-zinc-400 transition-transform duration-200 ${
+          className={`h-5 w-5 shrink-0 text-muted transition-transform duration-200 ${
             open ? "rotate-180" : ""
           }`}
         />
@@ -113,51 +108,39 @@ export default function ArchetypeDropdown({
       {open && (
         <ul
           role="listbox"
-          aria-label="Seleccionar arquetipo"
-          className="absolute z-40 mt-2 max-h-96 w-full origin-top animate-fade-in overflow-y-auto rounded-2xl border border-white/[0.08] bg-zinc-950/95 p-1.5 shadow-2xl backdrop-blur-xl"
+          aria-label="Select archetype"
+          className="absolute z-40 mt-2 max-h-96 w-full origin-top animate-fade-in overflow-y-auto rounded-lg border border-line bg-[#10141d] p-1.5 shadow-2xl"
         >
           {archetypes.map((a) => {
             const isSelected = a.name === selected;
+            const rowIcon = getArchetypeIcon(a.name);
             return (
               <li key={a.id} role="option" aria-selected={isSelected}>
                 <button
                   type="button"
                   onClick={() => choose(a.name)}
-                  className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition ${
-                    isSelected ? "bg-emerald-500/10" : "hover:bg-white/[0.05]"
+                  className={`flex w-full items-center gap-3 rounded px-3 py-2.5 text-left transition ${
+                    isSelected ? "bg-brand/25" : "hover:bg-white/[0.05]"
                   }`}
                 >
-                  {getArchetypeIcon(a.name) && (
+                  {rowIcon && (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={getArchetypeIcon(a.name)}
-                      alt=""
-                      width={28}
-                      height={28}
-                      className="h-7 w-7 shrink-0 object-contain"
-                    />
+                    <img src={rowIcon} alt="" width={28} height={28} className="h-7 w-7 shrink-0 object-contain" />
                   )}
                   <span className="min-w-0 flex-1">
                     <span className="flex flex-wrap items-center gap-2">
-                      <span className="truncate text-sm font-semibold text-zinc-100">
+                      <span className="truncate text-sm font-semibold text-white">
                         {a.name}
                       </span>
-                      <span className="chip border-white/10 bg-white/[0.04] text-zinc-400">
+                      <span className="chip bg-white/[0.06] text-muted">
                         {a.primary_position}
                       </span>
                     </span>
-                    <span className="mt-1 flex flex-wrap items-center gap-2">
-                      <span className="text-[10px] font-semibold text-amber-300">
-                        ★ {a.signature_playstyle_plus}+
-                      </span>
-                      {a.specializations.length > 0 && (
-                        <span className="truncate text-[10px] text-zinc-500">
-                          {a.specializations.join(" · ")}
-                        </span>
-                      )}
+                    <span className="mt-0.5 block truncate text-[10px] font-semibold text-gold">
+                      ★ {a.signature_playstyle_plus}+
                     </span>
                   </span>
-                  {isSelected && <CheckIcon className="h-4 w-4 shrink-0 text-emerald-400" />}
+                  {isSelected && <CheckIcon className="h-4 w-4 shrink-0 text-pitch" />}
                 </button>
               </li>
             );

@@ -60,7 +60,7 @@ export function evaluateArchetypeForThreshold(
         target: threshold,
         cost: 0,
         possible: false,
-        reason: "El arquetipo no dispone de este atributo",
+        reason: "This archetype does not have this attribute",
       });
       impossibleAttributes.push(name);
       continue;

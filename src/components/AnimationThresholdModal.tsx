@@ -115,10 +115,10 @@ export default function AnimationThresholdModal({
             </span>
             <div>
               <h2 id="animations-title" className="text-lg font-bold text-zinc-50">
-                Optimizador de Animaciones
+                Animation Optimizer
               </h2>
               <p className="mt-0.5 text-xs text-zinc-500">
-                Encuentra el arquetipo más económico para alcanzar el umbral.
+                Find the cheapest archetype to reach the threshold.
               </p>
             </div>
           </div>
@@ -135,13 +135,13 @@ export default function AnimationThresholdModal({
                     : "border-white/[0.08] bg-white/[0.03] text-zinc-400 hover:border-white/20"
                 }`}
               >
-                {t === 71 ? "⚡ Base" : "⭐ Mejoradas"} · {t}
+                {t === 71 ? "⚡ Base" : "⭐ Improved"} · {t}
               </button>
             ))}
             <button
               type="button"
               onClick={onClose}
-              aria-label="Cerrar"
+              aria-label="Close"
               className="flex h-8 w-8 items-center justify-center rounded-lg text-zinc-500 transition hover:bg-white/[0.06] hover:text-zinc-200"
             >
               <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
@@ -158,7 +158,7 @@ export default function AnimationThresholdModal({
           <div className="min-h-0 overflow-y-auto p-5">
             <div className="mb-3 flex items-center justify-between">
               <p className="text-xs font-bold uppercase tracking-widest text-zinc-500">
-                Atributos ({selectedList.length} seleccionados)
+                Attributes ({selectedList.length} selected)
               </p>
               <div className="flex items-center gap-2">
                 <button
@@ -166,14 +166,14 @@ export default function AnimationThresholdModal({
                   onClick={() => setSelected(new Set(groups.flatMap((g) => g.attributes)))}
                   className="rounded-md border border-white/[0.08] bg-white/[0.03] px-2.5 py-1 text-[11px] font-semibold text-zinc-300 transition hover:border-white/20"
                 >
-                  Todos
+                  All
                 </button>
                 <button
                   type="button"
                   onClick={() => setSelected(new Set())}
                   className="rounded-md border border-white/[0.08] bg-white/[0.03] px-2.5 py-1 text-[11px] font-semibold text-zinc-400 transition hover:border-white/20"
                 >
-                  Limpiar
+                  Clear
                 </button>
               </div>
             </div>
@@ -215,8 +215,8 @@ export default function AnimationThresholdModal({
             <div className="min-h-0 flex-1 overflow-y-auto p-5">
               {!hasSelection ? (
                 <p className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 text-center text-xs text-zinc-500">
-                  Selecciona al menos un atributo para calcular el arquetipo más
-                  económico.
+                  Select at least one attribute to compute the cheapest
+                  archetype.
                 </p>
               ) : (
                 <>
@@ -224,7 +224,7 @@ export default function AnimationThresholdModal({
                   {best && (
                     <div className="mb-4 rounded-2xl border border-emerald-500/40 bg-emerald-500/10 p-4">
                       <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-400/80">
-                        Arquetipo más económico
+                        Cheapest archetype
                       </p>
                       <div className="mt-1 flex items-end justify-between gap-2">
                         <p className="text-xl font-black text-emerald-100">
@@ -244,15 +244,15 @@ export default function AnimationThresholdModal({
                         className="focus-ring mt-3 w-full rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-bold text-zinc-950 transition hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-50"
                       >
                         {best.archetype === archetype
-                          ? "Ya es tu arquetipo activo"
-                          : `Cambiar y Aplicar a ${best.archetype}`}
+                          ? "Already your active archetype"
+                          : `Switch & Apply to ${best.archetype}`}
                       </button>
                     </div>
                   )}
 
                   {/* Ranking */}
                   <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
-                    Ranking de arquetipos
+                    Archetype ranking
                   </p>
                   <ol className="flex flex-col gap-1.5">
                     {optimization.results.map((r, i) => {
@@ -278,7 +278,7 @@ export default function AnimationThresholdModal({
                             </span>
                           ) : (
                             <span className="chip shrink-0 border-rose-500/40 bg-rose-500/10 text-rose-300">
-                              Tope insuficiente
+                              Cap too low
                             </span>
                           )}
                         </li>
@@ -297,11 +297,11 @@ export default function AnimationThresholdModal({
                 onClick={() => apply(archetype)}
                 className="focus-ring w-full rounded-xl bg-gradient-to-b from-cyan-400 to-emerald-500 px-4 py-3 text-sm font-bold text-zinc-950 transition hover:from-cyan-300 hover:to-emerald-400 disabled:cursor-not-allowed disabled:opacity-40"
               >
-                Aplicar solo al arquetipo actual ({current.totalCost} AP)
+                Apply only to current archetype ({current.totalCost} AP)
               </button>
               {hasSelection && !current.isPossible && (
                 <p className="mt-2 text-center text-[11px] text-rose-300">
-                  El arquetipo actual no alcanza: {current.impossibleAttributes.join(", ")}
+                  Current archetype cannot reach: {current.impossibleAttributes.join(", ")}
                 </p>
               )}
             </div>

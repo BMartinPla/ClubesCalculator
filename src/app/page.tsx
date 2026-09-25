@@ -337,10 +337,10 @@ export default function Page() {
       />
 
       <main
-        className="mx-auto max-w-[1440px] px-4 pb-16 sm:px-6"
+        className="mx-auto max-w-[1600px] px-4 pb-16 sm:px-6"
         style={{ paddingTop: (headerH || 88) + 20 }}
       >
-        {/* ---- Top config bar (symmetrical) ---- */}
+        {/* ---- Top config bar (symmetric) ---- */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
           <div className="xl:col-span-2">
             <ArchetypeDropdown
@@ -389,43 +389,41 @@ export default function Page() {
             deltas={physicalDeltas}
           />
           <div className="panel p-4">
-            <h2 className="mb-3 text-sm font-bold tracking-tight text-zinc-100">
-              Extras
-            </h2>
+            <h2 className="panel-title mb-3">Tools</h2>
             <div className="flex flex-col gap-2">
               <button
                 type="button"
                 onClick={() => setMasteriesOpen(true)}
-                className={`focus-ring flex items-center justify-between gap-3 rounded-xl border px-3 py-2 text-xs font-semibold transition ${
+                className={`focus-ring flex items-center justify-between gap-3 rounded border px-3 py-2 text-xs font-semibold transition ${
                   activeMasteriesCount > 0
-                    ? "border-violet-500/40 bg-violet-500/10 text-violet-200 hover:bg-violet-500/20"
-                    : "border-white/[0.08] bg-zinc-900 text-zinc-300 hover:border-white/[0.14]"
+                    ? "border-violet-500/50 bg-violet-500/15 text-violet-200"
+                    : "border-line bg-black/20 text-zinc-300 hover:border-line-strong"
                 }`}
               >
                 <span className="flex items-center gap-2">
-                  <span aria-hidden="true">🏆</span> Maestrías
+                  <span aria-hidden="true">🏆</span> Masteries
                 </span>
-                <span className="rounded bg-white/[0.05] px-1.5 py-0.5 text-[10px] font-bold">
+                <span className="rounded bg-white/[0.06] px-1.5 py-0.5 text-[10px] font-bold">
                   {activeMasteriesCount}/{ARCHETYPE_MASTERIES.length}
                 </span>
               </button>
               <button
                 type="button"
                 onClick={() => openAnimations(71)}
-                className="focus-ring flex items-center gap-2 rounded-xl border border-white/[0.08] bg-zinc-900 px-3 py-2 text-xs font-semibold text-zinc-300 transition hover:border-white/20"
+                className="focus-ring flex items-center gap-2 rounded border border-line bg-black/20 px-3 py-2 text-xs font-semibold text-zinc-300 transition hover:border-line-strong"
               >
-                <span aria-hidden="true">⚡</span> Animaciones Base
-                <span className="ml-auto rounded bg-white/[0.05] px-1.5 py-0.5 font-mono text-[10px] text-zinc-400">
+                <span aria-hidden="true">⚡</span> Base Animations
+                <span className="ml-auto rounded bg-white/[0.06] px-1.5 py-0.5 font-mono text-[10px] text-muted">
                   71
                 </span>
               </button>
               <button
                 type="button"
                 onClick={() => openAnimations(85)}
-                className="focus-ring flex items-center gap-2 rounded-xl border border-white/[0.08] bg-zinc-900 px-3 py-2 text-xs font-semibold text-zinc-300 transition hover:border-white/20"
+                className="focus-ring flex items-center gap-2 rounded border border-line bg-black/20 px-3 py-2 text-xs font-semibold text-zinc-300 transition hover:border-line-strong"
               >
-                <span aria-hidden="true">⭐</span> Animaciones Mejoradas
-                <span className="ml-auto rounded bg-white/[0.05] px-1.5 py-0.5 font-mono text-[10px] text-zinc-400">
+                <span aria-hidden="true">⭐</span> Improved Animations
+                <span className="ml-auto rounded bg-white/[0.06] px-1.5 py-0.5 font-mono text-[10px] text-muted">
                   85
                 </span>
               </button>
@@ -433,13 +431,13 @@ export default function Page() {
           </div>
         </div>
 
-        {/* ---- Priority: attributes (always expanded, 2 columns) ---- */}
-        <div className="mt-5 flex items-center justify-between px-1">
-          <h2 className="text-lg font-black tracking-tight text-zinc-50">
-            Atributos
+        {/* ---- Priority: attributes (always expanded) ---- */}
+        <div className="mt-6 flex items-center justify-between px-1">
+          <h2 className="text-lg font-extrabold uppercase tracking-[0.08em] text-white">
+            Attributes
           </h2>
-          <span className="text-xs text-zinc-500">
-            {build.totalApSpent} / {build.maxAp} AP usados
+          <span className="text-xs text-muted">
+            {build.totalApSpent} / {build.maxAp} AP used
           </span>
         </div>
         <div className="mt-3 grid grid-cols-1 gap-4 xl:grid-cols-2">
@@ -454,12 +452,12 @@ export default function Page() {
           ))}
         </div>
 
-        <footer className="mt-10 border-t border-white/[0.06] pt-5 text-[11px] leading-relaxed text-zinc-600">
+        <footer className="mt-10 border-t border-line pt-5 text-[11px] leading-relaxed text-muted">
           <p>
-            Datos oficiales de arquetipos, atributos, maestrías y tiers de coste
-            extraídos de <span className="font-mono text-zinc-500">raw-data/</span>.
-            Presupuesto según nivel (100–962 AP). Herramienta no oficial, sin
-            afiliación con EA SPORTS.
+            Archetype, attribute, mastery, star and cost data from{" "}
+            <span className="font-mono text-zinc-400">raw-data/</span> (source:
+            builder.proleague.tools). Budget scales with level (100–962 AP).
+            Unofficial tool, not affiliated with EA SPORTS.
           </p>
         </footer>
       </main>

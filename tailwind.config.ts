@@ -6,21 +6,24 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: [
-          "Inter",
-          "ui-sans-serif",
+          '"Anek Malayalam"',
+          "Tahoma",
           "system-ui",
-          "-apple-system",
-          "Segoe UI",
-          "Roboto",
           "sans-serif",
         ],
       },
       colors: {
-        budget: {
-          ok: "#22c55e",
-          warn: "#f59e0b",
-          over: "#ef4444",
+        base: "#0d0f12",
+        panel: "#161a22",
+        "panel-solid": "#11151f",
+        line: "#242b35",
+        "line-strong": "#3b4554",
+        brand: {
+          DEFAULT: "#c61044",
+          hi: "#ff1767",
         },
+        pitch: "#00ff87",
+        gold: "#fbbf24",
       },
       keyframes: {
         "fade-in": {
@@ -31,14 +34,10 @@ const config: Config = {
           "0%": { opacity: "0", transform: "scale(0.96)" },
           "100%": { opacity: "1", transform: "scale(1)" },
         },
-        shimmer: {
-          "100%": { transform: "translateX(100%)" },
-        },
       },
       animation: {
         "fade-in": "fade-in 0.25s ease-out both",
         "pop-in": "pop-in 0.2s ease-out both",
-        shimmer: "shimmer 1.6s infinite",
       },
     },
   },

@@ -1,5 +1,5 @@
-/** Web attribute id -> our (Spanish) attribute name. */
-export const ATTRIBUTE_ID_TO_NAME: Record<string, string> = {
+/** Web attribute id -> internal (data) attribute name. */
+export const ATTRIBUTE_ID_TO_INTERNAL: Record<string, string> = {
   acceleration: "Aceleracion",
   sprint_speed: "Sprint",
   att_position: "Posicionamiento",
@@ -36,5 +36,50 @@ export const ATTRIBUTE_ID_TO_NAME: Record<string, string> = {
   gk_positioning: "GK_Colocacion",
 };
 
-export const attributeLabel = (id: string): string =>
-  ATTRIBUTE_ID_TO_NAME[id] ?? id;
+/** Internal (data) attribute name -> display (English) name. */
+export const ATTRIBUTE_NAME_TO_EN: Record<string, string> = {
+  Aceleracion: "Acceleration",
+  Sprint: "Sprint Speed",
+  Posicionamiento: "Att. Position",
+  Definicion: "Finishing",
+  "Potencia Tiro": "Shot Power",
+  "Tiros Lejanos": "Long Shots",
+  Voleas: "Volleys",
+  Penales: "Penalties",
+  Vision: "Vision",
+  Centros: "Crossing",
+  "Precision TL": "FK Accuracy",
+  "Pase Corto": "Short Passing",
+  "Pase Largo": "Long Passing",
+  Efecto: "Curve",
+  Agilidad: "Agility",
+  Balance: "Balance",
+  Reacciones: "Reactions",
+  "Control Balon": "Ball Control",
+  Regates: "Dribbling",
+  Compostura: "Composure",
+  Intercepciones: "Interceptions",
+  "Precision Cabeza": "Heading Accuracy",
+  "Percepcion Defensiva": "Def. Awareness",
+  Robos: "Standing Tackle",
+  Barridas: "Sliding Tackle",
+  Salto: "Jumping",
+  Resistencia: "Stamina",
+  Fuerza: "Strength",
+  Agresividad: "Aggression",
+  GK_Estirada: "GK Diving",
+  GK_Paradas: "GK Handling",
+  GK_Saque: "GK Kicking",
+  GK_Reflejos: "GK Reflexes",
+  GK_Colocacion: "GK Positioning",
+};
+
+/** Web stat id -> English display label. */
+export const attributeLabel = (id: string): string => {
+  const internal = ATTRIBUTE_ID_TO_INTERNAL[id];
+  return internal ? ATTRIBUTE_NAME_TO_EN[internal] ?? internal : id;
+};
+
+/** Internal (data) attribute name -> English display label. */
+export const attributeNameToEn = (name: string): string =>
+  ATTRIBUTE_NAME_TO_EN[name] ?? name;

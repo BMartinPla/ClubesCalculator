@@ -2,13 +2,13 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Clubs Build Calculator | EA SPORTS FC Pro Clubs",
+  title: "FC Clubs Builder | Pro Clubs Build Calculator",
   description:
-    "Simulador y constructor de builds para Clubes Pro de EA SPORTS FC. Calibra altura y peso, ajusta atributos y calcula el coste exacto en Puntos de Atributo (AP).",
+    "Build simulator and calculator for EA SPORTS FC Pro Clubs. Tune height and weight, adjust attributes, equip PlayStyles and work out the exact Attribute Point (AP) cost.",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#09090b",
+  themeColor: "#0d0f12",
   width: "device-width",
   initialScale: 1,
 };
@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className="dark">
+    <html lang="en" className="dark">
       <body className="min-h-screen font-sans">{children}</body>
     </html>
   );
