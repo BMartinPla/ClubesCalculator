@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { getArchetypeIcon } from "@/data/playstyles";
 import type { Archetype } from "@/types";
 
 interface ArchetypeDropdownProps {
@@ -72,8 +73,19 @@ export default function ArchetypeDropdown({
         aria-expanded={open}
         className="focus-ring flex w-full items-center gap-3 rounded-2xl border border-white/[0.08] bg-zinc-900/70 px-4 py-3 text-left backdrop-blur transition hover:border-white/[0.14]"
       >
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-emerald-500 text-sm font-black text-zinc-950 shadow-[0_0_20px_rgba(34,211,238,0.4)]">
-          {initials}
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400/20 to-emerald-500/20 text-sm font-black text-zinc-950 shadow-[0_0_20px_rgba(34,211,238,0.25)]">
+          {getArchetypeIcon(current?.name ?? "") ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={getArchetypeIcon(current?.name ?? "")}
+              alt=""
+              width={34}
+              height={34}
+              className="h-9 w-9 object-contain"
+            />
+          ) : (
+            initials
+          )}
         </span>
         <span className="min-w-0 flex-1">
           <span className="flex flex-wrap items-center gap-2">
@@ -115,6 +127,16 @@ export default function ArchetypeDropdown({
                     isSelected ? "bg-emerald-500/10" : "hover:bg-white/[0.05]"
                   }`}
                 >
+                  {getArchetypeIcon(a.name) && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={getArchetypeIcon(a.name)}
+                      alt=""
+                      width={28}
+                      height={28}
+                      className="h-7 w-7 shrink-0 object-contain"
+                    />
+                  )}
                   <span className="min-w-0 flex-1">
                     <span className="flex flex-wrap items-center gap-2">
                       <span className="truncate text-sm font-semibold text-zinc-100">

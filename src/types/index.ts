@@ -80,6 +80,24 @@ export interface StarsSelection {
 /** Simple on/off state per archetype mastery: { [archetypeName]: boolean }. */
 export type MasteriesState = Record<string, boolean>;
 
+/** A stat requirement to use a PlayStyle. */
+export interface PlayStyleRequirement {
+  attributeId: string;
+  min: number;
+}
+
+/** A PlayStyle (silver) with its icon, PlayStyle+ icon and requirements. */
+export interface PlayStyleDef {
+  id: string;
+  name: string;
+  category: string;
+  /** Regular (silver) icon path. */
+  icon: string;
+  /** PlayStyle+ (gold) icon path. */
+  iconplus: string;
+  requirements: PlayStyleRequirement[];
+}
+
 /** Per-attribute cost breakdown produced by the engine. */
 export interface AttributeBreakdown {
   category: CategoryName;

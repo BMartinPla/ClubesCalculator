@@ -16,7 +16,8 @@ import CategorySection from "@/components/CategorySection";
 import ExportBuildModal from "@/components/ExportBuildModal";
 import MasteriesModal from "@/components/MasteriesModal";
 import PhysicalControls from "@/components/PhysicalControls";
-import PlaystylesCard from "@/components/PlaystylesCard";
+import PlayStylePickerModal from "@/components/PlayStylePickerModal";
+import PlayStylesPanel from "@/components/PlayStylesPanel";
 import SkillControls from "@/components/SkillControls";
 import { ARCHETYPES, DEFAULT_ARCHETYPE, getArchetype } from "@/data/archetypes";
 import { ARCHETYPE_MASTERIES, getMastery } from "@/data/archetypeMasteries";
@@ -97,13 +98,12 @@ export default function Page() {
   const [height, setHeight] = useState(initialPhysical.height);
   const [weight, setWeight] = useState(initialPhysical.weight);
   const [level, setLevel] = useState(MIN_LEVEL);
-  const [openCategories, setOpenCategories] = useState<Set<CategoryName>>(
-    () => new Set(categoriesFor(DEFAULT_ARCHETYPE).slice(0, 1)),
-  );
   const [exportOpen, setExportOpen] = useState(false);
   const [masteriesOpen, setMasteriesOpen] = useState(false);
   const [animationsOpen, setAnimationsOpen] = useState(false);
   const [animationThreshold, setAnimationThreshold] = useState<AnimationThreshold>(71);
+  const [playStyleSelection, setPlayStyleSelection] = useState<(string | null)[]>([]);
+  const [playStyleSlot, setPlayStyleSlot] = useState<number | null>(null);
   const hydrated = useRef(false);
   const headerRef = useRef<HTMLElement>(null);
   const [headerH, setHeaderH] = useState(0);
@@ -148,7 +148,6 @@ export default function Page() {
     setMasteries(parseMasteriesParam(params.get("m")));
     const lvlParam = Number.parseInt(params.get("lvl") ?? "", 10);
     setLevel(Number.isFinite(lvlParam) ? clampLevel(lvlParam) : MIN_LEVEL);
-    setOpenCategories(new Set(categoriesFor(validArch).slice(0, 1)));
   }, []);
 
   // --- Derived build -----------------------------------------------------
@@ -217,6 +216,12 @@ export default function Page() {
     return map;
   }, [breakdown]);
 
+  const statTotals = useMemo(() => {
+    const map: Record<string, number> = {};
+    for (const entry of breakdown) map[entry.attribute] = entry.statTotal;
+    return map;
+  }, [breakdown]);
+
   // --- Share URL ---------------------------------------------------------
   const shareUrl = useMemo(() => {
     if (typeof window === "undefined") return "";
@@ -255,7 +260,6 @@ export default function Page() {
     setWeakFoot(base.weakFoot);
     setHeight(phys.height);
     setWeight(phys.weight);
-    setOpenCategories(new Set(categoriesFor(name).slice(0, 1)));
   }, []);
 
   const handleStatChange = useCallback(
@@ -270,15 +274,6 @@ export default function Page() {
     },
     [baseByName],
   );
-
-  const toggleCategory = useCallback((category: CategoryName) => {
-    setOpenCategories((prev) => {
-      const next = new Set(prev);
-      if (next.has(category)) next.delete(category);
-      else next.add(category);
-      return next;
-    });
-  }, []);
 
   // Reset build points + stars + physical to base. Masteries stay intact.
   const resetPoints = useCallback(() => {
@@ -312,7 +307,6 @@ export default function Page() {
         setArchetype(name);
         setSkills(base.skills);
         setWeakFoot(base.weakFoot);
-        setOpenCategories(new Set(categoriesFor(name).slice(0, 1)));
       }
       setTargetStats((prev) =>
         changing ? { ...targets } : { ...prev, ...targets },
@@ -343,122 +337,121 @@ export default function Page() {
       />
 
       <main
-        className="mx-auto max-w-7xl px-4 pb-16 sm:px-6"
-        style={{ paddingTop: (headerH || 88) + 24 }}
+        className="mx-auto max-w-[1440px] px-4 pb-16 sm:px-6"
+        style={{ paddingTop: (headerH || 88) + 20 }}
       >
-        <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(320px,380px)_1fr]">
-          {/* ---- Sidebar: build configuration ---- */}
-          <aside
-            className="flex flex-col gap-4 lg:sticky lg:self-start"
-            style={{ top: headerH + 16 }}
-          >
+        {/* ---- Top config bar (symmetrical) ---- */}
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <div className="xl:col-span-2">
             <ArchetypeDropdown
               archetypes={ARCHETYPES}
               selected={archetype}
               onSelect={selectArchetype}
             />
-
-            <PlaystylesCard archetype={activeArchetype} />
-
-            <SkillControls
-              skills={skills}
-              minSkills={minSkills}
-              maxSkills={maxSkills}
-              weakFoot={weakFoot}
-              minWeakFoot={minWeakFoot}
-              maxWeakFoot={maxWeakFoot}
-              skillsCost={build.skillsCost}
-              weakFootCost={build.weakFootCost}
-              onSkills={setSkills}
-              onWeakFoot={setWeakFoot}
-            />
-
-            <PhysicalControls
-              heightCm={height}
-              weightKg={weight}
-              minHeight={activeArchetype.min_height}
-              maxHeight={activeArchetype.max_height}
-              defaultHeight={activeArchetype.default_height}
-              minWeight={activeArchetype.min_weight}
-              maxWeight={activeArchetype.max_weight}
-              defaultWeight={activeArchetype.default_weight}
-              onHeight={setHeight}
-              onWeight={setWeight}
-              deltas={physicalDeltas}
-            />
-
-            <button
-              type="button"
-              onClick={() => setMasteriesOpen(true)}
-              className={`focus-ring flex items-center justify-between gap-3 rounded-2xl border px-4 py-3.5 text-sm font-semibold transition ${
-                activeMasteriesCount > 0
-                  ? "border-violet-500/40 bg-violet-500/10 text-violet-200 hover:bg-violet-500/20"
-                  : "border-white/[0.08] bg-zinc-900/70 text-zinc-300 hover:border-white/[0.14]"
-              }`}
-            >
-              <span className="flex items-center gap-2">
-                <span aria-hidden="true" className="text-base">🏆</span>
-                Maestrías
-              </span>
-              <span className="rounded-md bg-zinc-950/60 px-2 py-0.5 text-[10px] font-bold">
-                {activeMasteriesCount}/{ARCHETYPE_MASTERIES.length} activas
-              </span>
-            </button>
-
-            <div className="panel p-4">
-              <h2 className="mb-3 text-sm font-bold tracking-tight text-zinc-100">
-                Optimizador de Animaciones
-              </h2>
-              <div className="flex flex-col gap-2">
-                <button
-                  type="button"
-                  onClick={() => openAnimations(71)}
-                  className="focus-ring flex items-center gap-2 rounded-lg border border-white/[0.08] bg-zinc-900 px-3 py-2 text-xs font-semibold text-zinc-300 transition hover:border-white/20 hover:bg-zinc-800"
-                >
-                  <span aria-hidden="true">⚡</span>
-                  Animaciones Base
-                  <span className="ml-auto rounded bg-white/[0.05] px-1.5 py-0.5 font-mono text-[10px] text-zinc-400">
-                    71
-                  </span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => openAnimations(85)}
-                  className="focus-ring flex items-center gap-2 rounded-lg border border-white/[0.08] bg-zinc-900 px-3 py-2 text-xs font-semibold text-zinc-300 transition hover:border-white/20 hover:bg-zinc-800"
-                >
-                  <span aria-hidden="true">⭐</span>
-                  Animaciones Mejoradas
-                  <span className="ml-auto rounded bg-white/[0.05] px-1.5 py-0.5 font-mono text-[10px] text-zinc-400">
-                    85
-                  </span>
-                </button>
-              </div>
-            </div>
-          </aside>
-
-          {/* ---- Attributes column ---- */}
-          <div className="flex min-w-0 flex-col gap-3">
-            <div className="flex items-center justify-between px-1">
-              <h2 className="text-sm font-bold tracking-tight text-zinc-200">
-                Atributos
-              </h2>
-              <span className="text-[11px] text-zinc-500">
-                {build.totalApSpent} / {build.maxAp} AP usados
-              </span>
-            </div>
-
-            {categories.map((category) => (
-              <CategorySection
-                key={category}
-                category={category}
-                entries={entriesByCategory.get(category) ?? []}
-                categoryAp={build.byCategory[category] ?? 0}
-                isOpen={openCategories.has(category)}
-                onToggle={() => toggleCategory(category)}
-                onStatChange={handleStatChange}
-              />
-            ))}
           </div>
+          <PlayStylesPanel
+            level={level}
+            archetype={activeArchetype}
+            statTotals={statTotals}
+            selection={playStyleSelection}
+            onOpenPicker={(slot) => setPlayStyleSlot(slot)}
+            onClear={(slot) =>
+              setPlayStyleSelection((prev) => {
+                const next = [...prev];
+                next[slot] = null;
+                return next;
+              })
+            }
+          />
+          <SkillControls
+            skills={skills}
+            minSkills={minSkills}
+            maxSkills={maxSkills}
+            weakFoot={weakFoot}
+            minWeakFoot={minWeakFoot}
+            maxWeakFoot={maxWeakFoot}
+            skillsCost={build.skillsCost}
+            weakFootCost={build.weakFootCost}
+            onSkills={setSkills}
+            onWeakFoot={setWeakFoot}
+          />
+          <PhysicalControls
+            heightCm={height}
+            weightKg={weight}
+            minHeight={activeArchetype.min_height}
+            maxHeight={activeArchetype.max_height}
+            defaultHeight={activeArchetype.default_height}
+            minWeight={activeArchetype.min_weight}
+            maxWeight={activeArchetype.max_weight}
+            defaultWeight={activeArchetype.default_weight}
+            onHeight={setHeight}
+            onWeight={setWeight}
+            deltas={physicalDeltas}
+          />
+          <div className="panel p-4">
+            <h2 className="mb-3 text-sm font-bold tracking-tight text-zinc-100">
+              Extras
+            </h2>
+            <div className="flex flex-col gap-2">
+              <button
+                type="button"
+                onClick={() => setMasteriesOpen(true)}
+                className={`focus-ring flex items-center justify-between gap-3 rounded-xl border px-3 py-2 text-xs font-semibold transition ${
+                  activeMasteriesCount > 0
+                    ? "border-violet-500/40 bg-violet-500/10 text-violet-200 hover:bg-violet-500/20"
+                    : "border-white/[0.08] bg-zinc-900 text-zinc-300 hover:border-white/[0.14]"
+                }`}
+              >
+                <span className="flex items-center gap-2">
+                  <span aria-hidden="true">🏆</span> Maestrías
+                </span>
+                <span className="rounded bg-white/[0.05] px-1.5 py-0.5 text-[10px] font-bold">
+                  {activeMasteriesCount}/{ARCHETYPE_MASTERIES.length}
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={() => openAnimations(71)}
+                className="focus-ring flex items-center gap-2 rounded-xl border border-white/[0.08] bg-zinc-900 px-3 py-2 text-xs font-semibold text-zinc-300 transition hover:border-white/20"
+              >
+                <span aria-hidden="true">⚡</span> Animaciones Base
+                <span className="ml-auto rounded bg-white/[0.05] px-1.5 py-0.5 font-mono text-[10px] text-zinc-400">
+                  71
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={() => openAnimations(85)}
+                className="focus-ring flex items-center gap-2 rounded-xl border border-white/[0.08] bg-zinc-900 px-3 py-2 text-xs font-semibold text-zinc-300 transition hover:border-white/20"
+              >
+                <span aria-hidden="true">⭐</span> Animaciones Mejoradas
+                <span className="ml-auto rounded bg-white/[0.05] px-1.5 py-0.5 font-mono text-[10px] text-zinc-400">
+                  85
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* ---- Priority: attributes (always expanded, 2 columns) ---- */}
+        <div className="mt-5 flex items-center justify-between px-1">
+          <h2 className="text-lg font-black tracking-tight text-zinc-50">
+            Atributos
+          </h2>
+          <span className="text-xs text-zinc-500">
+            {build.totalApSpent} / {build.maxAp} AP usados
+          </span>
+        </div>
+        <div className="mt-3 grid grid-cols-1 gap-4 xl:grid-cols-2">
+          {categories.map((category) => (
+            <CategorySection
+              key={category}
+              category={category}
+              entries={entriesByCategory.get(category) ?? []}
+              categoryAp={build.byCategory[category] ?? 0}
+              onStatChange={handleStatChange}
+            />
+          ))}
         </div>
 
         <footer className="mt-10 border-t border-white/[0.06] pt-5 text-[11px] leading-relaxed text-zinc-600">
@@ -502,6 +495,22 @@ export default function Page() {
         archetype={archetype}
         masteryBonus={build.masteryBonuses}
         onApply={applyThresholdOptimization}
+      />
+
+      <PlayStylePickerModal
+        open={playStyleSlot !== null}
+        onClose={() => setPlayStyleSlot(null)}
+        statTotals={statTotals}
+        selectedIds={playStyleSelection}
+        onSelect={(id) => {
+          if (playStyleSlot === null) return;
+          setPlayStyleSelection((prev) => {
+            const next = [...prev];
+            next[playStyleSlot] = id;
+            return next;
+          });
+          setPlayStyleSlot(null);
+        }}
       />
     </>
   );

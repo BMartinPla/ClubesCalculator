@@ -64,7 +64,7 @@ function AttributeRowBase({ entry, onChange }: AttributeRowProps) {
             aria-hidden="true"
             className={`h-1.5 w-1.5 shrink-0 rounded-full ${accent.dot}`}
           />
-          <p className="truncate text-sm font-semibold text-zinc-100">{attribute}</p>
+          <p className="truncate text-[15px] font-bold text-zinc-50">{attribute}</p>
           {physicalModifier !== 0 && (
             <span
               title="Modificador por altura/peso"
@@ -140,7 +140,7 @@ function AttributeRowBase({ entry, onChange }: AttributeRowProps) {
         </div>
 
         <span
-          className={`w-10 shrink-0 text-center font-mono text-lg font-black tabular-nums ${text}`}
+          className={`w-12 shrink-0 text-center font-mono text-2xl font-black tabular-nums ${text}`}
         >
           {statTotal}
         </span>
