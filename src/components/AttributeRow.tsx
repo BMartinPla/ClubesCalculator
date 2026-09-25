@@ -1,6 +1,7 @@
 "use client";
 
 import { memo } from "react";
+import { CATEGORY_ACCENTS } from "@/data/categories";
 import type { AttributeBreakdown, CostTier } from "@/types";
 
 interface AttributeRowProps {
@@ -22,8 +23,17 @@ const TIER_SHORT: Record<CostTier, string> = {
   "Most Expensive": "Muy caro",
 };
 
+/** Stat number color/bar by level. */
+function statAccent(value: number): { text: string; bar: string } {
+  if (value >= 80) return { text: "text-emerald-400", bar: "bg-emerald-400" };
+  if (value >= 70) return { text: "text-amber-400", bar: "bg-amber-400" };
+  if (value >= 60) return { text: "text-orange-400", bar: "bg-orange-400" };
+  return { text: "text-rose-500", bar: "bg-rose-500" };
+}
+
 function AttributeRowBase({ entry, onChange }: AttributeRowProps) {
   const {
+    category,
     attribute,
     targetStat,
     baseStat,
@@ -34,6 +44,8 @@ function AttributeRowBase({ entry, onChange }: AttributeRowProps) {
     statTotal,
   } = entry;
 
+  const accent = CATEGORY_ACCENTS[category] ?? CATEGORY_ACCENTS.Physical;
+  const { text } = statAccent(statTotal);
   const span = Math.max(capStat - baseStat, 1);
   const pct = ((targetStat - baseStat) / span) * 100;
   const atBase = targetStat <= baseStat;
@@ -43,22 +55,37 @@ function AttributeRowBase({ entry, onChange }: AttributeRowProps) {
     onChange(attribute, Math.min(capStat, Math.max(baseStat, targetStat + delta)));
 
   return (
-    <div className="rounded-xl border border-zinc-800/70 bg-zinc-950/40 px-3 py-3 transition hover:border-zinc-700/80">
-      <div className="flex items-center justify-between gap-3">
-        <p className="truncate text-sm font-semibold text-zinc-200">{attribute}</p>
+    <div className="group rounded-xl border border-white/[0.06] bg-white/[0.02] p-3 transition hover:border-white/[0.12] hover:bg-white/[0.035]">
+      {/* Header */}
+      <div className="flex items-center justify-between gap-2">
+        <div className="flex min-w-0 items-center gap-2">
+          <span
+            aria-hidden="true"
+            className={`h-1.5 w-1.5 shrink-0 rounded-full ${accent.dot}`}
+          />
+          <p className="truncate text-sm font-semibold text-zinc-100">{attribute}</p>
+          {masteryBonus > 0 && (
+            <span
+              title={`${targetStat} por AP + ${masteryBonus} de maestría`}
+              className="chip shrink-0 border-violet-500/40 bg-violet-500/10 text-violet-300"
+            >
+              +{masteryBonus} M
+            </span>
+          )}
+        </div>
 
         <div className="flex shrink-0 items-center gap-2">
           <span
-            className={`hidden rounded border px-1.5 py-0.5 text-[10px] font-semibold sm:inline ${TIER_STYLES[costTier]}`}
+            className={`hidden chip sm:inline-flex ${TIER_STYLES[costTier]}`}
             title={`Tier de coste: ${costTier}`}
           >
             {TIER_SHORT[costTier]}
           </span>
           <span
-            className={`w-16 rounded-md px-2 py-1 text-right font-mono text-xs font-bold ${
+            className={`min-w-[3.5rem] rounded-lg px-2 py-1 text-right font-mono text-xs font-bold ${
               apCost > 0
                 ? "bg-zinc-800 text-zinc-100"
-                : "bg-zinc-900 text-zinc-600"
+                : "bg-white/[0.03] text-zinc-600"
             }`}
             title="Coste en AP"
           >
@@ -67,13 +94,14 @@ function AttributeRowBase({ entry, onChange }: AttributeRowProps) {
         </div>
       </div>
 
-      <div className="mt-2.5 flex items-center gap-3">
+      {/* Control */}
+      <div className="mt-3 flex items-center gap-3">
         <button
           type="button"
           onClick={() => step(-1)}
           disabled={atBase}
           aria-label={`Reducir ${attribute}`}
-          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-zinc-800 bg-zinc-900 text-lg font-bold leading-none text-zinc-300 transition hover:border-zinc-600 hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.03] text-lg font-bold leading-none text-zinc-300 transition hover:border-white/20 hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
         >
           −
         </button>
@@ -81,7 +109,7 @@ function AttributeRowBase({ entry, onChange }: AttributeRowProps) {
         <div className="relative flex-1">
           <div className="relative h-1.5 overflow-hidden rounded-full bg-zinc-800">
             <div
-              className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400 transition-[width] duration-150"
+              className={`absolute inset-y-0 left-0 rounded-full ${accent.bar} transition-[width] duration-150`}
               style={{ width: `${pct}%` }}
             />
           </div>
@@ -97,18 +125,10 @@ function AttributeRowBase({ entry, onChange }: AttributeRowProps) {
           />
         </div>
 
-        <span className="flex w-24 shrink-0 items-center justify-end gap-1.5">
-          <span className="font-mono text-base font-bold text-zinc-100">
-            {statTotal}
-          </span>
-          {masteryBonus > 0 && (
-            <span
-              title={`${targetStat} por AP + ${masteryBonus} de maestría`}
-              className="rounded border border-violet-500/50 bg-violet-500/10 px-1.5 py-0.5 font-mono text-[10px] font-bold text-violet-200"
-            >
-              (+{masteryBonus} Maestría)
-            </span>
-          )}
+        <span
+          className={`w-10 shrink-0 text-center font-mono text-lg font-black tabular-nums ${text}`}
+        >
+          {statTotal}
         </span>
 
         <button
@@ -116,19 +136,20 @@ function AttributeRowBase({ entry, onChange }: AttributeRowProps) {
           onClick={() => step(1)}
           disabled={atCap}
           aria-label={`Aumentar ${attribute}`}
-          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-zinc-800 bg-zinc-900 text-lg font-bold leading-none text-zinc-300 transition hover:border-zinc-600 hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/[0.08] bg-white/[0.03] text-lg font-bold leading-none text-zinc-300 transition hover:border-white/20 hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
         >
           +
         </button>
       </div>
 
-      <div className="mt-1.5 flex items-center justify-between text-[10px] font-medium text-zinc-600">
+      {/* Footer */}
+      <div className="mt-2 flex items-center justify-between text-[10px] font-medium text-zinc-600">
         <span>
-          Base: <span className="font-mono text-zinc-400">{baseStat}</span>
+          Base <span className="font-mono text-zinc-400">{baseStat}</span>
         </span>
         <span>
-          AP <span className="font-mono text-zinc-400">{targetStat}</span>
-          {" · "}Tope: <span className="font-mono text-zinc-400">{capStat}</span>
+          AP <span className="font-mono text-zinc-300">{targetStat}</span>
+          {" · "}Tope <span className="font-mono text-zinc-400">{capStat}</span>
         </span>
       </div>
     </div>

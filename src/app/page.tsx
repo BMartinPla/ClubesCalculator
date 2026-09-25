@@ -7,6 +7,7 @@ import BudgetBar from "@/components/BudgetBar";
 import CategorySection from "@/components/CategorySection";
 import ExportBuildModal from "@/components/ExportBuildModal";
 import MasteriesModal from "@/components/MasteriesModal";
+import PlaystylesCard from "@/components/PlaystylesCard";
 import SkillControls from "@/components/SkillControls";
 import { ARCHETYPES, DEFAULT_ARCHETYPE, getArchetype } from "@/data/archetypes";
 import { ARCHETYPE_MASTERIES, getMastery } from "@/data/archetypeMasteries";
@@ -250,32 +251,16 @@ export default function Page() {
       />
 
       <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
-        {/* Build controls bar */}
-        <div className="flex flex-col gap-3 lg:flex-row lg:items-stretch">
-          <div className="min-w-0 lg:flex-1">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(320px,380px)_1fr]">
+          {/* ---- Sidebar: build configuration ---- */}
+          <aside className="flex flex-col gap-4 lg:sticky lg:top-[6.5rem] lg:self-start">
             <ArchetypeDropdown
               archetypes={ARCHETYPES}
               selected={archetype}
               onSelect={selectArchetype}
             />
-          </div>
 
-          <div className="flex flex-wrap items-stretch gap-3">
-            <button
-              type="button"
-              onClick={() => setMasteriesOpen(true)}
-              className={`inline-flex items-center gap-2 rounded-xl border px-4 py-3 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500 ${
-                activeMasteriesCount > 0
-                  ? "border-violet-500/40 bg-violet-500/10 text-violet-300 hover:bg-violet-500/20"
-                  : "border-zinc-800 bg-zinc-900/90 text-zinc-300 hover:bg-zinc-800"
-              }`}
-            >
-              <span aria-hidden="true">🏆</span>
-              Maestrías
-              <span className="rounded-md bg-zinc-950/60 px-1.5 py-0.5 text-[10px] font-bold">
-                {activeMasteriesCount}/{ARCHETYPE_MASTERIES.length} activas
-              </span>
-            </button>
+            <PlaystylesCard archetype={activeArchetype} />
 
             <SkillControls
               skills={skills}
@@ -289,29 +274,56 @@ export default function Page() {
               onSkills={setSkills}
               onWeakFoot={setWeakFoot}
             />
+
+            <button
+              type="button"
+              onClick={() => setMasteriesOpen(true)}
+              className={`focus-ring flex items-center justify-between gap-3 rounded-2xl border px-4 py-3.5 text-sm font-semibold transition ${
+                activeMasteriesCount > 0
+                  ? "border-violet-500/40 bg-violet-500/10 text-violet-200 hover:bg-violet-500/20"
+                  : "border-white/[0.08] bg-zinc-900/70 text-zinc-300 hover:border-white/[0.14]"
+              }`}
+            >
+              <span className="flex items-center gap-2">
+                <span aria-hidden="true" className="text-base">🏆</span>
+                Maestrías
+              </span>
+              <span className="rounded-md bg-zinc-950/60 px-2 py-0.5 text-[10px] font-bold">
+                {activeMasteriesCount}/{ARCHETYPE_MASTERIES.length} activas
+              </span>
+            </button>
+          </aside>
+
+          {/* ---- Attributes column ---- */}
+          <div className="flex min-w-0 flex-col gap-3">
+            <div className="flex items-center justify-between px-1">
+              <h2 className="text-sm font-bold tracking-tight text-zinc-200">
+                Atributos
+              </h2>
+              <span className="text-[11px] text-zinc-500">
+                {build.totalApSpent} / {build.maxAp} AP usados
+              </span>
+            </div>
+
+            {categories.map((category) => (
+              <CategorySection
+                key={category}
+                category={category}
+                entries={entriesByCategory.get(category) ?? []}
+                categoryAp={build.byCategory[category] ?? 0}
+                isOpen={openCategories.has(category)}
+                onToggle={() => toggleCategory(category)}
+                onStatChange={handleStatChange}
+              />
+            ))}
           </div>
         </div>
 
-        {/* Attributes */}
-        <div className="mt-4 flex flex-col gap-3">
-          {categories.map((category) => (
-            <CategorySection
-              key={category}
-              category={category}
-              entries={entriesByCategory.get(category) ?? []}
-              categoryAp={build.byCategory[category] ?? 0}
-              isOpen={openCategories.has(category)}
-              onToggle={() => toggleCategory(category)}
-              onStatChange={handleStatChange}
-            />
-          ))}
-        </div>
-
-        <footer className="mt-10 border-t border-zinc-800 pt-5 text-[11px] leading-relaxed text-zinc-600">
+        <footer className="mt-10 border-t border-white/[0.06] pt-5 text-[11px] leading-relaxed text-zinc-600">
           <p>
             Datos oficiales de arquetipos, atributos, maestrías y tiers de coste
             extraídos de <span className="font-mono text-zinc-500">raw-data/</span>.
-            Presupuesto base de 962 AP por build. Herramienta no oficial, sin
+            Presupuesto según nivel (100–962 AP). Herramienta no oficial, sin
             afiliación con EA SPORTS.
           </p>
         </footer>

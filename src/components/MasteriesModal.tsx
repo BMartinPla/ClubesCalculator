@@ -61,24 +61,32 @@ export default function MasteriesModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby="masteries-title"
-        className="relative flex max-h-[85vh] w-full max-w-2xl animate-pop-in flex-col rounded-2xl border border-zinc-800 bg-zinc-900 p-6 shadow-2xl"
+        className="relative flex max-h-[85vh] w-full max-w-2xl animate-pop-in flex-col rounded-2xl border border-white/[0.08] bg-zinc-950/95 p-6 shadow-2xl backdrop-blur-xl"
       >
         {/* Header */}
         <div className="flex items-start justify-between gap-4">
-          <div>
-            <h2 id="masteries-title" className="text-lg font-bold text-zinc-100">
-              Maestrías Desbloqueadas
-            </h2>
-            <p className="mt-0.5 text-xs text-zinc-500">
-              Las bonificaciones se aplican automáticamente a tus estadísticas
-              sin consumir AP.
-            </p>
+          <div className="flex items-start gap-3">
+            <span
+              aria-hidden="true"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-violet-500/30 bg-violet-500/10 text-lg"
+            >
+              🏆
+            </span>
+            <div>
+              <h2 id="masteries-title" className="text-lg font-bold text-zinc-50">
+                Maestrías Desbloqueadas
+              </h2>
+              <p className="mt-0.5 text-xs text-zinc-500">
+                Las bonificaciones se aplican automáticamente a tus estadísticas
+                sin consumir AP.
+              </p>
+            </div>
           </div>
           <button
             type="button"
             onClick={onClose}
             aria-label="Cerrar"
-            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-zinc-500 transition hover:bg-zinc-800 hover:text-zinc-200"
+            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-zinc-500 transition hover:bg-white/[0.06] hover:text-zinc-200"
           >
             <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
               <line x1="18" y1="6" x2="6" y2="18" />
@@ -92,18 +100,18 @@ export default function MasteriesModal({
           <button
             type="button"
             onClick={onMarkAll}
-            className="rounded-lg border border-violet-500/40 bg-violet-500/10 px-3 py-1.5 text-xs font-semibold text-violet-200 transition hover:border-violet-500/70 hover:bg-violet-500/20"
+            className="focus-ring rounded-lg border border-violet-500/40 bg-violet-500/10 px-3 py-1.5 text-xs font-semibold text-violet-200 transition hover:border-violet-500/70 hover:bg-violet-500/20"
           >
             Marcar Todas
           </button>
           <button
             type="button"
             onClick={onUnmarkAll}
-            className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs font-semibold text-zinc-400 transition hover:border-zinc-600 hover:text-zinc-200"
+            className="focus-ring rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-1.5 text-xs font-semibold text-zinc-400 transition hover:border-white/20 hover:text-zinc-200"
           >
             Desmarcar Todas
           </button>
-          <span className="ml-auto rounded-md bg-zinc-800 px-2.5 py-1 text-xs font-bold text-zinc-300">
+          <span className="ml-auto rounded-md bg-white/[0.04] px-2.5 py-1 text-xs font-bold text-zinc-300">
             {count} de {total} activas
           </span>
         </div>
@@ -118,7 +126,7 @@ export default function MasteriesModal({
                 className={`flex cursor-pointer items-center gap-3 rounded-xl border p-3 transition ${
                   on
                     ? "border-violet-500/50 bg-violet-950/30 text-violet-200"
-                    : "border-zinc-800/80 bg-zinc-950/50 text-zinc-400 hover:border-zinc-700 hover:bg-zinc-900"
+                    : "border-white/[0.06] bg-white/[0.02] text-zinc-400 hover:border-white/[0.12]"
                 }`}
               >
                 <input
@@ -155,11 +163,11 @@ export default function MasteriesModal({
         </div>
 
         {/* Footer */}
-        <div className="mt-4 border-t border-zinc-800 pt-4">
+        <div className="mt-4 border-t border-white/[0.06] pt-4">
           <button
             type="button"
             onClick={onClose}
-            className="w-full rounded-xl bg-violet-500 px-4 py-3 text-sm font-bold text-white transition hover:bg-violet-400"
+            className="focus-ring w-full rounded-xl bg-violet-500 px-4 py-3 text-sm font-bold text-white transition hover:bg-violet-400"
           >
             Confirmar y Cerrar
           </button>

@@ -165,15 +165,15 @@ export default function ExportBuildModal({
       className="fixed inset-0 z-[70] flex items-center justify-center p-4"
     >
       <div
-        className="absolute inset-0 bg-zinc-950/80 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/75 backdrop-blur-sm"
         onClick={onClose}
         aria-hidden="true"
       />
 
-      <div className="relative flex max-h-[92vh] w-full max-w-[900px] animate-pop-in flex-col overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900 shadow-2xl">
-        <div className="flex items-start justify-between gap-4 border-b border-zinc-800 p-5">
+      <div className="relative flex max-h-[92vh] w-full max-w-[900px] animate-pop-in flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-zinc-950/95 shadow-2xl backdrop-blur-xl">
+        <div className="flex items-start justify-between gap-4 border-b border-white/[0.06] p-5">
           <div>
-            <h2 id="export-title" className="text-base font-bold text-zinc-100">
+            <h2 id="export-title" className="text-base font-bold text-zinc-50">
               Exportar captura
             </h2>
             <p className="mt-0.5 text-xs text-zinc-500">
@@ -184,7 +184,7 @@ export default function ExportBuildModal({
             type="button"
             onClick={onClose}
             aria-label="Cerrar"
-            className="flex h-8 w-8 items-center justify-center rounded-lg text-zinc-500 transition hover:bg-zinc-800 hover:text-zinc-200"
+            className="flex h-8 w-8 items-center justify-center rounded-lg text-zinc-500 transition hover:bg-white/[0.06] hover:text-zinc-200"
           >
             <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
               <line x1="18" y1="6" x2="6" y2="18" />
@@ -194,7 +194,7 @@ export default function ExportBuildModal({
         </div>
 
         {/* Preview */}
-        <div className="min-h-0 flex-1 overflow-auto bg-zinc-950/60 p-4">
+        <div className="min-h-0 flex-1 overflow-auto bg-black/40 p-4">
           <div className="mx-auto w-fit">
             <BuildSummaryCard
               ref={cardRef}
@@ -210,7 +210,7 @@ export default function ExportBuildModal({
         </div>
 
         {/* Actions */}
-        <div className="border-t border-zinc-800 p-5">
+        <div className="border-t border-white/[0.06] p-5">
           {error && (
             <p className="mb-3 rounded-lg border border-rose-500/30 bg-rose-500/10 px-3 py-2 text-xs text-rose-300">
               {error}
@@ -222,7 +222,7 @@ export default function ExportBuildModal({
               type="button"
               onClick={handleDownload}
               disabled={busy !== null}
-              className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg bg-emerald-500 px-4 py-2.5 text-sm font-bold text-zinc-950 transition hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-60"
+              className="focus-ring inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-bold text-zinc-950 transition hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {busy === "download" ? "Generando…" : "Descargar Imagen (PNG)"}
             </button>
@@ -230,10 +230,10 @@ export default function ExportBuildModal({
               type="button"
               onClick={handleCopy}
               disabled={busy !== null}
-              className={`inline-flex flex-1 items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-bold transition disabled:cursor-not-allowed disabled:opacity-60 ${
+              className={`focus-ring inline-flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold transition disabled:cursor-not-allowed disabled:opacity-60 ${
                 copied
                   ? "bg-violet-500 text-white"
-                  : "border border-zinc-700 bg-zinc-800 text-zinc-100 hover:border-zinc-600"
+                  : "border border-white/[0.08] bg-white/[0.04] text-zinc-100 hover:border-white/20"
               }`}
             >
               {busy === "copy"
@@ -245,7 +245,7 @@ export default function ExportBuildModal({
           </div>
 
           {/* Save to localStorage */}
-          <div className="mt-4 rounded-xl border border-zinc-800 bg-zinc-950/60 p-3">
+          <div className="mt-4 rounded-xl border border-white/[0.06] bg-white/[0.02] p-3">
             <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
               Guardar en Mis Builds
             </p>
@@ -254,12 +254,12 @@ export default function ExportBuildModal({
                 value={saveName}
                 onChange={(e) => setSaveName(e.target.value)}
                 placeholder={`Nombre de la build (ej. ${archetype.name} competitivo)`}
-                className="min-w-0 flex-1 rounded-lg border border-zinc-800 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-violet-500/60 focus:outline-none"
+                className="min-w-0 flex-1 rounded-lg border border-white/[0.08] bg-zinc-950 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-violet-500/60 focus:outline-none"
               />
               <button
                 type="button"
                 onClick={handleSave}
-                className={`rounded-lg px-4 py-2 text-sm font-bold transition ${
+                className={`focus-ring rounded-lg px-4 py-2 text-sm font-bold transition ${
                   saved
                     ? "bg-violet-500 text-white"
                     : "border border-violet-500/40 bg-violet-500/10 text-violet-200 hover:border-violet-500/70 hover:bg-violet-500/20"

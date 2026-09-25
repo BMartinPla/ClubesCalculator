@@ -52,7 +52,7 @@ export default function BudgetBar({
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-zinc-800 bg-zinc-950/95 px-4 py-3 backdrop-blur sm:px-6">
+    <header className="sticky top-0 z-50 w-full border-b border-white/[0.06] bg-zinc-950/95 px-4 py-3 backdrop-blur sm:px-6">
       <div className="mx-auto flex max-w-7xl flex-col gap-3 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
         {/* Izquierda: Branding y arquetipo activo */}
         <div className="flex items-center gap-3">
@@ -71,7 +71,7 @@ export default function BudgetBar({
 
         {/* Centro: selector de nivel + cápsula de presupuesto unificada */}
         <div className="flex flex-wrap items-center gap-3">
-          <div className="flex items-center gap-2 rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-1.5">
+          <div className="flex items-center gap-2 rounded-lg border border-white/[0.08] bg-zinc-900/70 px-3 py-1.5">
             <span className="text-xs font-semibold uppercase tracking-wider text-zinc-400">
               Nivel
             </span>
@@ -89,7 +89,7 @@ export default function BudgetBar({
             </select>
           </div>
 
-          <div className="flex items-center gap-4 rounded-xl border border-zinc-800 bg-zinc-900/90 px-4 py-2">
+          <div className="flex items-center gap-4 rounded-xl border border-white/[0.08] bg-zinc-900/70 px-4 py-2">
             {/* Número grande de AP disponibles */}
             <div className="text-right">
               <div className="flex items-baseline justify-end gap-1.5">
@@ -115,7 +115,7 @@ export default function BudgetBar({
             </div>
 
             {/* Desglose compacto */}
-            <div className="flex flex-col justify-center border-l border-zinc-800 pl-3 text-xs text-zinc-400">
+            <div className="flex flex-col justify-center border-l border-white/[0.08] pl-3 text-xs text-zinc-400">
               <div>
                 Gastados:{" "}
                 <span className="font-semibold text-zinc-200">{spent}</span> / {maxAp}
@@ -147,7 +147,7 @@ export default function BudgetBar({
             className={`inline-flex items-center gap-2 rounded-lg border px-3.5 py-2 text-sm font-medium transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500 ${
               copied
                 ? "border-emerald-500/50 bg-emerald-500/15 text-emerald-300"
-                : "border-zinc-700 bg-zinc-800 text-zinc-200 hover:bg-zinc-700"
+                : "border-white/[0.08] bg-white/[0.06] text-zinc-200 hover:bg-white/[0.1]"
             }`}
           >
             <span aria-hidden="true">🔗</span>
@@ -157,7 +157,7 @@ export default function BudgetBar({
           <button
             type="button"
             onClick={onReset}
-            className="inline-flex items-center gap-2 rounded-lg border border-zinc-800 bg-zinc-800/80 px-3.5 py-2 text-sm font-medium text-zinc-400 transition hover:border-rose-500/30 hover:bg-rose-500/20 hover:text-rose-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-500"
+            className="focus-ring inline-flex items-center gap-2 rounded-lg border border-white/[0.08] bg-white/[0.04] px-3.5 py-2 text-sm font-medium text-zinc-400 transition hover:border-rose-500/30 hover:bg-rose-500/20 hover:text-rose-400"
           >
             <span aria-hidden="true">🔄</span>
             Resetear
