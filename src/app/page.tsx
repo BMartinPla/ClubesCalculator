@@ -416,15 +416,21 @@ export default function Page() {
           </div>
 
           {/* Attributes only */}
-          <div className="grid min-w-0 grid-cols-1 items-start gap-3.5 sm:grid-cols-2 2xl:gap-4">
-            {categories.map((category) => (
-              <CategorySection
-                key={category}
-                category={category}
-                entries={entriesByCategory.get(category) ?? []}
-                categoryAp={build.byCategory[category] ?? 0}
-                onStatChange={handleStatChange}
-              />
+          <div className="grid min-w-0 grid-cols-1 content-start gap-3.5 sm:grid-cols-2 2xl:gap-4">
+            {[0, 1].map((column) => (
+              <div key={column} className="flex min-w-0 flex-col gap-3.5">
+                {categories
+                  .filter((_, index) => index % 2 === column)
+                  .map((category) => (
+                    <CategorySection
+                      key={category}
+                      category={category}
+                      entries={entriesByCategory.get(category) ?? []}
+                      categoryAp={build.byCategory[category] ?? 0}
+                      onStatChange={handleStatChange}
+                    />
+                  ))}
+              </div>
             ))}
           </div>
         </div>
