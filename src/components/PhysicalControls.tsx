@@ -1,5 +1,7 @@
 "use client";
 
+import { attributeNameToEn } from "@/lib/attributeNames";
+
 interface PhysicalControlsProps {
   heightCm: number;
   weightKg: number;
@@ -154,7 +156,7 @@ export default function PhysicalControls({
                   v > 0 ? "bg-pitch/15 text-pitch" : "bg-rose-500/15 text-rose-300"
                 }`}
               >
-                {stat}
+                {attributeNameToEn(stat)}
                 <span className="font-mono">
                   {v > 0 ? "+" : ""}
                   {v}

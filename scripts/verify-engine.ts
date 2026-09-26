@@ -14,6 +14,7 @@ import { ARCHETYPE_MASTERIES } from "../src/data/archetypeMasteries";
 import { getStars } from "../src/data/archetypeStars";
 import { getMaxApForLevel } from "../src/data/levelProgression";
 import { getPhysicalModifiers, physicalStepMagnitude } from "../src/lib/physicalModifiers";
+import { attributeNameToEn } from "../src/lib/attributeNames";
 import {
   optimizeForAnimationThreshold,
   evaluateArchetypeForThreshold,
@@ -129,6 +130,8 @@ check("Boss default peso", getArchetype("Boss")!.default_weight, 90);
 check("clamp altura Boss", clamp(150, getArchetype("Boss")!.min_height, getArchetype("Boss")!.max_height), 180);
 
 console.log("--- Modificadores de altura/peso (portados de proleague) ---");
+check("Etiqueta modifier GK Diving en inglés", attributeNameToEn("GK_Estirada"), "GK Diving");
+check("Etiqueta modifier Sprint Speed en inglés", attributeNameToEn("Sprint"), "Sprint Speed");
 check("Magnitud por pasos (qe)", physicalStepMagnitude(190, 177, 4), 4);
 check("Magnitud en base = 0", physicalStepMagnitude(177, 177, 4), 0);
 check("Magnitud 1 punto = 1", physicalStepMagnitude(178, 177, 4), 1);
@@ -158,6 +161,11 @@ const acelTall = tall.breakdown.find((b) => b.attribute === "Aceleracion")!;
 check("Aceleracion base (raw) @190 = 75", acelTall.baseStat, 75);
 check("Aceleracion statTotal @190 = 71 (75-4)", acelTall.statTotal, 71);
 check("Aceleracion modifier @190", acelTall.physicalModifier, -4);
+check(
+  "Coste del siguiente punto Sprint es marginal",
+  getSinglePointCost(91, "Expensive"),
+  15,
+);
 // Cost does not change with height/weight.
 const sprintTall = evaluateBuild("Finisher", { Sprint: 90 }, {}, null, 40, 190, 80);
 const sprintBase = evaluateBuild("Finisher", { Sprint: 90 }, {}, null, 40, 177, 80);

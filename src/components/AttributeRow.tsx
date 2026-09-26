@@ -2,26 +2,13 @@
 
 import { memo, type CSSProperties } from "react";
 import { attributeNameToEn } from "@/lib/attributeNames";
-import type { AttributeBreakdown, CostTier } from "@/types";
+import { getSinglePointCost } from "@/lib/buildEngine";
+import type { AttributeBreakdown } from "@/types";
 
 interface AttributeRowProps {
   entry: AttributeBreakdown;
   onChange: (attribute: string, value: number) => void;
 }
-
-const TIER_STYLES: Record<CostTier, string> = {
-  Cheapest: "border-emerald-500/30 bg-emerald-500/10 text-emerald-300",
-  Cheap: "border-sky-500/30 bg-sky-500/10 text-sky-300",
-  Expensive: "border-amber-500/30 bg-amber-500/10 text-amber-300",
-  "Most Expensive": "border-rose-500/30 bg-rose-500/10 text-rose-300",
-};
-
-const TIER_LABEL: Record<CostTier, string> = {
-  Cheapest: "Cheapest",
-  Cheap: "Cheap",
-  Expensive: "Expensive",
-  "Most Expensive": "Most Exp.",
-};
 
 /** Stat number color by level (web palette). */
 function statColor(value: number): string {
@@ -49,6 +36,7 @@ function AttributeRowBase({ entry, onChange }: AttributeRowProps) {
   const rangeStyle = { "--range-progress": `${pct}%` } as CSSProperties;
   const atBase = targetStat <= baseStat;
   const atCap = targetStat >= capStat;
+  const nextPointCost = atCap ? null : getSinglePointCost(targetStat + 1, costTier);
 
   const step = (delta: number) =>
     onChange(attribute, Math.min(capStat, Math.max(baseStat, targetStat + delta)));
@@ -85,18 +73,23 @@ function AttributeRowBase({ entry, onChange }: AttributeRowProps) {
 
         <div className="flex shrink-0 items-center gap-1.5">
           <span
-            className={`hidden chip lg:inline-flex ${TIER_STYLES[costTier]}`}
-            title={`Cost tier: ${costTier}`}
-          >
-            {TIER_LABEL[costTier]}
-          </span>
-          <span
             className={`data-number min-w-[2.8rem] rounded-md px-1.5 py-1 text-right text-[10px] font-bold ${
-              apCost > 0 ? "bg-white/[0.055] text-zinc-200" : "text-muted"
+              nextPointCost !== null
+                ? "bg-brand/10 text-brand"
+                : "bg-white/[0.04] text-muted"
             }`}
-            title="AP cost"
+            title={
+              nextPointCost === null
+                ? "Attribute is at its maximum"
+                : `Next point costs ${nextPointCost} AP (${costTier})`
+            }
+            aria-label={
+              nextPointCost === null
+                ? "Attribute is at its maximum"
+                : `Next point costs ${nextPointCost} AP`
+            }
           >
-            {apCost} AP
+            {nextPointCost === null ? "MAX" : `+${nextPointCost} AP`}
           </span>
         </div>
       </div>
