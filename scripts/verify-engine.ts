@@ -15,6 +15,7 @@ import { getStars } from "../src/data/archetypeStars";
 import { getMaxApForLevel } from "../src/data/levelProgression";
 import { getPhysicalModifiers, physicalStepMagnitude } from "../src/lib/physicalModifiers";
 import { attributeNameToEn } from "../src/lib/attributeNames";
+import { PLAYSTYLES } from "../src/data/playstyles";
 import {
   optimizeForAnimationThreshold,
   evaluateArchetypeForThreshold,
@@ -130,6 +131,7 @@ check("Boss default peso", getArchetype("Boss")!.default_weight, 90);
 check("clamp altura Boss", clamp(150, getArchetype("Boss")!.min_height, getArchetype("Boss")!.max_height), 180);
 
 console.log("--- Modificadores de altura/peso (portados de proleague) ---");
+check("PlayStyles dataset disponible para reset limpio", PLAYSTYLES.length > 0, true);
 check("Etiqueta modifier GK Diving en inglés", attributeNameToEn("GK_Estirada"), "GK Diving");
 check("Etiqueta modifier Sprint Speed en inglés", attributeNameToEn("Sprint"), "Sprint Speed");
 check("Magnitud por pasos (qe)", physicalStepMagnitude(190, 177, 4), 4);

@@ -275,16 +275,28 @@ export default function Page() {
     [baseByName],
   );
 
-  // Reset build points + stars + physical to base. Masteries stay intact.
+  // Reset the complete build and return the app to its initial preset.
   const resetPoints = useCallback(() => {
-    const base = baseStars(archetype);
-    const phys = basePhysical(archetype);
+    const base = baseStars(DEFAULT_ARCHETYPE);
+    const phys = basePhysical(DEFAULT_ARCHETYPE);
+    setArchetype(DEFAULT_ARCHETYPE);
+    setLevel(MIN_LEVEL);
     setTargetStats({});
+    setMasteries({});
     setSkills(base.skills);
     setWeakFoot(base.weakFoot);
     setHeight(phys.height);
     setWeight(phys.weight);
-  }, [archetype]);
+    setPlayStyleSelection([]);
+    setAnimationThreshold(71);
+    setAnimationsOpen(false);
+    setMasteriesOpen(false);
+    setPlayStyleSlot(null);
+    setExportOpen(false);
+    if (typeof window !== "undefined") {
+      window.history.replaceState(null, "", window.location.pathname);
+    }
+  }, []);
 
   const toggleMastery = useCallback((name: string) => {
     setMasteries((prev) => ({ ...prev, [name]: !prev[name] }));
