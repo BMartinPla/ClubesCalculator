@@ -8,8 +8,9 @@ import {
   optimizeForAnimationThreshold,
   type AnimationThreshold,
 } from "@/lib/animationOptimizer";
-import { CATEGORY_ICONS, CATEGORY_LABELS } from "@/data/categories";
+import { CATEGORY_LABELS } from "@/data/categories";
 import type { CategoryName } from "@/types";
+import UiIcon from "@/components/UiIcon";
 
 interface AnimationThresholdModalProps {
   open: boolean;
@@ -93,7 +94,7 @@ export default function AnimationThresholdModal({
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
       <div
-        className="absolute inset-0 bg-black/75 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/80 backdrop-blur-md"
         onClick={onClose}
         aria-hidden="true"
       />
@@ -102,16 +103,16 @@ export default function AnimationThresholdModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby="animations-title"
-        className="relative flex max-h-[92vh] w-full max-w-5xl animate-pop-in flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-zinc-950/95 shadow-2xl backdrop-blur-xl"
+        className="relative flex max-h-[92vh] w-full max-w-5xl animate-pop-in flex-col overflow-hidden rounded-2xl border border-line bg-[#0d130f]/98 shadow-2xl shadow-black/50 backdrop-blur-xl"
       >
         {/* Header */}
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/[0.06] p-5">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line bg-white/[0.015] p-4 sm:p-5">
           <div className="flex items-center gap-3">
             <span
               aria-hidden="true"
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-500/30 bg-cyan-500/10 text-lg"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-brand/30 bg-brand/10 text-brand"
             >
-              🎬
+              <UiIcon name="film" className="h-5 w-5" />
             </span>
             <div>
               <h2 id="animations-title" className="text-lg font-bold text-zinc-50">
@@ -131,23 +132,21 @@ export default function AnimationThresholdModal({
                 onClick={() => setThreshold(t)}
                 className={`rounded-lg border px-3 py-1.5 text-xs font-bold transition ${
                   threshold === t
-                    ? "border-emerald-500/50 bg-emerald-500/15 text-emerald-300"
-                    : "border-white/[0.08] bg-white/[0.03] text-zinc-400 hover:border-white/20"
+                    ? "border-brand/40 bg-brand/10 text-brand"
+                    : "border-line bg-surface-input text-zinc-400 hover:border-line-strong"
                 }`}
               >
-                {t === 71 ? "⚡ Base" : "⭐ Improved"} · {t}
+                <span className="mr-1.5 inline-flex h-4 min-w-4 items-center justify-center rounded bg-white/[0.07] px-1 font-mono text-[9px]">{t}</span>
+                {t === 71 ? "Base" : "Improved"}
               </button>
             ))}
             <button
               type="button"
               onClick={onClose}
               aria-label="Close"
-              className="flex h-8 w-8 items-center justify-center rounded-lg text-zinc-500 transition hover:bg-white/[0.06] hover:text-zinc-200"
+              className="focus-ring flex h-9 w-9 items-center justify-center rounded-lg text-zinc-500 transition hover:bg-white/[0.06] hover:text-zinc-200"
             >
-              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
+              <UiIcon name="close" className="h-4 w-4" />
             </button>
           </div>
         </div>
@@ -181,8 +180,8 @@ export default function AnimationThresholdModal({
             <div className="flex flex-col gap-4">
               {groups.map((group) => (
                 <div key={group.category}>
-                  <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-zinc-400">
-                    {CATEGORY_ICONS[group.category as CategoryName]}{" "}
+                  <p className="mb-2 flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-[0.14em] text-zinc-300">
+                    <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden="true" />
                     {CATEGORY_LABELS[group.category as CategoryName] ?? group.category}
                   </p>
                   <div className="flex flex-wrap gap-1.5">
@@ -196,8 +195,8 @@ export default function AnimationThresholdModal({
                           aria-pressed={on}
                           className={`rounded-lg border px-2.5 py-1 text-xs font-medium transition ${
                             on
-                              ? "border-emerald-500/50 bg-emerald-500/15 text-emerald-200"
-                              : "border-white/[0.08] bg-white/[0.03] text-zinc-300 hover:border-white/20 hover:bg-white/[0.06]"
+                              ? "border-brand/40 bg-brand/10 text-brand"
+                              : "border-line bg-surface-input text-zinc-300 hover:border-line-strong hover:bg-white/[0.04]"
                           }`}
                         >
                           {attr}
@@ -222,17 +221,17 @@ export default function AnimationThresholdModal({
                 <>
                   {/* Best */}
                   {best && (
-                    <div className="mb-4 rounded-2xl border border-emerald-500/40 bg-emerald-500/10 p-4">
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-400/80">
+                    <div className="mb-4 rounded-2xl border border-brand/35 bg-brand/5 p-4">
+                      <p className="text-[10px] font-extrabold uppercase tracking-[0.15em] text-brand/80">
                         Cheapest archetype
                       </p>
                       <div className="mt-1 flex items-end justify-between gap-2">
-                        <p className="text-xl font-black text-emerald-100">
+                        <p className="text-xl font-extrabold text-zinc-100">
                           {best.archetype}
                         </p>
-                        <p className="font-mono text-2xl font-black text-emerald-300">
+                        <p className="data-number text-2xl font-bold text-brand">
                           {best.totalCost}
-                          <span className="ml-1 text-xs font-semibold text-emerald-400/70">
+                          <span className="ml-1 text-xs font-semibold text-brand/70">
                             AP
                           </span>
                         </p>
@@ -241,7 +240,7 @@ export default function AnimationThresholdModal({
                         type="button"
                         disabled={best.archetype === archetype}
                         onClick={() => apply(best.archetype)}
-                        className="focus-ring mt-3 w-full rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-bold text-zinc-950 transition hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-50"
+                        className="focus-ring mt-3 w-full rounded-xl bg-brand px-4 py-2.5 text-sm font-extrabold text-[#10150b] transition hover:bg-brand-hi disabled:cursor-not-allowed disabled:opacity-50"
                       >
                         {best.archetype === archetype
                           ? "Already your active archetype"
@@ -262,8 +261,8 @@ export default function AnimationThresholdModal({
                           key={r.archetype}
                           className={`flex items-center gap-3 rounded-lg border px-3 py-2 ${
                             isCurrent
-                              ? "border-emerald-500/40 bg-emerald-500/[0.07]"
-                              : "border-white/[0.06] bg-white/[0.02]"
+                              ? "border-brand/35 bg-brand/5"
+                              : "border-line bg-white/[0.02]"
                           }`}
                         >
                           <span className="w-5 shrink-0 text-center font-mono text-xs font-bold text-zinc-500">
@@ -273,7 +272,7 @@ export default function AnimationThresholdModal({
                             {r.archetype}
                           </span>
                           {r.isPossible ? (
-                            <span className="shrink-0 font-mono text-sm font-bold text-zinc-100">
+                            <span className="data-number shrink-0 text-sm font-bold text-zinc-100">
                               {r.totalCost} AP
                             </span>
                           ) : (
@@ -295,7 +294,7 @@ export default function AnimationThresholdModal({
                 type="button"
                 disabled={!hasSelection}
                 onClick={() => apply(archetype)}
-                className="focus-ring w-full rounded-xl bg-gradient-to-b from-cyan-400 to-emerald-500 px-4 py-3 text-sm font-bold text-zinc-950 transition hover:from-cyan-300 hover:to-emerald-400 disabled:cursor-not-allowed disabled:opacity-40"
+                className="focus-ring w-full rounded-xl bg-brand px-4 py-3 text-sm font-extrabold text-[#10150b] transition hover:bg-brand-hi disabled:cursor-not-allowed disabled:opacity-40"
               >
                 Apply only to current archetype ({current.totalCost} AP)
               </button>

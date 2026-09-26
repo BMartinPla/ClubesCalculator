@@ -78,9 +78,9 @@ export default function PlayStylePickerModal({
 
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-black/75 backdrop-blur-sm" onClick={onClose} aria-hidden="true" />
-      <div className="relative flex max-h-[88vh] w-full max-w-3xl animate-pop-in flex-col overflow-hidden rounded-xl border border-line bg-[#0c0f16] shadow-2xl">
-        <div className="flex items-center justify-between gap-4 border-b border-line p-5">
+      <div className="absolute inset-0 bg-black/80 backdrop-blur-md" onClick={onClose} aria-hidden="true" />
+      <div className="relative flex max-h-[88vh] w-full max-w-4xl animate-pop-in flex-col overflow-hidden rounded-2xl border border-line bg-[#0d130f] shadow-2xl shadow-black/50">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-line bg-white/[0.015] p-4 sm:p-5">
           <div>
             <h2 className="text-lg font-extrabold uppercase tracking-wide text-white">
               Choose a PlayStyle
@@ -93,14 +93,16 @@ export default function PlayStylePickerModal({
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search…"
-            className="w-40 rounded border border-line-strong bg-[#0d0f12] px-3 py-1.5 text-sm text-white placeholder:text-muted focus:border-brand focus:outline-none"
+            aria-label="Search PlayStyles"
+            className="w-full rounded-lg border border-line bg-surface-input px-3 py-2 text-sm text-white placeholder:text-muted focus:border-brand focus:outline-none sm:w-48"
           />
         </div>
 
-        <div className="min-h-0 flex-1 space-y-4 overflow-y-auto p-5">
+        <div className="min-h-0 flex-1 space-y-5 overflow-y-auto p-4 sm:p-5">
           {grouped.map((group) => (
             <div key={group.category}>
-              <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-muted">
+              <p className="mb-2.5 flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-[0.16em] text-muted">
+                <span className="h-1.5 w-1.5 rounded-full bg-brand" aria-hidden="true" />
                 {CATEGORY_LABEL[group.category] ?? group.category}
               </p>
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
@@ -142,14 +144,16 @@ function PlayStyleOption({
       onClick={onSelect}
       className={`flex items-start gap-3 rounded-lg border p-2.5 text-left transition ${
         isSelected
-          ? "border-pitch bg-pitch/10"
+          ? "border-pitch bg-pitch/10 shadow-[0_0_16px_rgba(186,250,76,.07)]"
           : met
-            ? "border-line bg-[#11151f] hover:border-line-strong"
-            : "border-line bg-[#11151f]/60 opacity-75 hover:border-line-strong"
+            ? "border-line bg-[#111914] hover:border-line-strong"
+            : "border-line bg-[#0d130f] opacity-75 hover:border-line-strong"
       }`}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={playstyle.icon} alt="" width={34} height={34} className="shrink-0" />
+      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/[0.06] bg-black/20">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={playstyle.icon} alt="" width={34} height={34} className="h-9 w-9 object-contain" />
+      </span>
       <span className="min-w-0 flex-1">
         <span className="flex items-center gap-2">
           <span className="truncate text-sm font-semibold text-white">

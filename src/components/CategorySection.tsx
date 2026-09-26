@@ -30,9 +30,9 @@ export default function CategorySection({
   );
 
   return (
-    <section className="rounded-lg border border-line bg-[#161a22]/60 p-3">
-      <div className="mb-2 flex items-center justify-between gap-2">
-        <h3 className="text-[12px] font-bold uppercase tracking-[0.08em] text-muted">
+    <section className="group rounded-xl border border-line bg-[linear-gradient(145deg,rgba(19,27,22,.98),rgba(13,19,16,.98))] p-3.5 shadow-[0_10px_24px_rgba(0,0,0,.12)] transition-colors duration-200 hover:border-line-strong">
+      <div className="mb-2.5 flex items-center justify-between gap-2">
+        <h3 className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-zinc-300">
           {CATEGORY_LABELS[category]}
         </h3>
         <div className="flex items-center gap-2">
@@ -41,14 +41,14 @@ export default function CategorySection({
               AVG
             </span>
             <span
-              className={`min-w-[1.8rem] rounded border border-line bg-black/30 px-1 py-0.5 text-center font-mono text-xs font-bold ${avgColor(avg)}`}
+              className={`data-number min-w-[2rem] rounded-md border border-line bg-black/30 px-1.5 py-1 text-center text-xs font-bold ${avgColor(avg)}`}
             >
               {avg}
             </span>
           </span>
           <span
             className={`chip ${
-              categoryAp > 0 ? "bg-brand/20 text-rose-300" : "bg-white/[0.04] text-muted"
+              categoryAp > 0 ? "bg-brand/10 text-brand" : "bg-white/[0.04] text-muted"
             }`}
           >
             {categoryAp} AP

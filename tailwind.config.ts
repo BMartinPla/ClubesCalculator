@@ -6,24 +6,29 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: [
-          '"Anek Malayalam"',
+          '"Manrope"',
           "Tahoma",
           "system-ui",
           "sans-serif",
         ],
+        mono: ['"DM Mono"', "ui-monospace", "SFMono-Regular", "monospace"],
       },
       colors: {
-        base: "#0d0f12",
-        panel: "#161a22",
-        "panel-solid": "#11151f",
-        line: "#242b35",
-        "line-strong": "#3b4554",
+        base: "#080c0a",
+        panel: "#101613",
+        "panel-solid": "#0b100e",
+        surface: "#101613",
+        "surface-raised": "#151c18",
+        "surface-input": "#0b100e",
+        line: "#27332d",
+        "line-strong": "#3a4a40",
+        muted: "#a0aca4",
         brand: {
-          DEFAULT: "#c61044",
-          hi: "#ff1767",
+          DEFAULT: "#bafa4c",
+          hi: "#caff6a",
         },
-        pitch: "#00ff87",
-        gold: "#fbbf24",
+        pitch: "#bafa4c",
+        gold: "#f3c969",
       },
       keyframes: {
         "fade-in": {

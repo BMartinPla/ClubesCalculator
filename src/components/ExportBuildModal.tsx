@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import BuildSummaryCard from "@/components/BuildSummaryCard";
+import UiIcon from "@/components/UiIcon";
 import type {
   Archetype,
   ArchetypeMastery,
@@ -79,7 +80,7 @@ export default function ExportBuildModal({
   const captureOptions = {
     quality: 0.95,
     pixelRatio: 2,
-    backgroundColor: "#0c1017",
+      backgroundColor: "#0a100d",
     cacheBust: true,
   } as const;
 
@@ -163,13 +164,13 @@ export default function ExportBuildModal({
       className="fixed inset-0 z-[70] flex items-center justify-center p-4"
     >
       <div
-        className="absolute inset-0 bg-black/75 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/80 backdrop-blur-md"
         onClick={onClose}
         aria-hidden="true"
       />
 
-      <div className="relative flex max-h-[92vh] w-full max-w-[900px] animate-pop-in flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-zinc-950/95 shadow-2xl backdrop-blur-xl">
-        <div className="flex items-start justify-between gap-4 border-b border-white/[0.06] p-5">
+      <div className="relative flex max-h-[92vh] w-full max-w-[900px] animate-pop-in flex-col overflow-hidden rounded-2xl border border-line bg-[#0d130f]/98 shadow-2xl shadow-black/50 backdrop-blur-xl">
+        <div className="flex items-start justify-between gap-4 border-b border-line bg-white/[0.015] p-4 sm:p-5">
           <div>
             <h2 id="export-title" className="text-base font-bold text-zinc-50">
               Export Snapshot
@@ -182,17 +183,14 @@ export default function ExportBuildModal({
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="flex h-8 w-8 items-center justify-center rounded-lg text-zinc-500 transition hover:bg-white/[0.06] hover:text-zinc-200"
+            className="focus-ring flex h-9 w-9 items-center justify-center rounded-lg text-zinc-500 transition hover:bg-white/[0.06] hover:text-zinc-200"
           >
-            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
+            <UiIcon name="close" className="h-4 w-4" />
           </button>
         </div>
 
         {/* Preview */}
-        <div className="min-h-0 flex-1 overflow-auto bg-black/40 p-4">
+        <div className="min-h-0 flex-1 overflow-auto bg-[#080c0a] p-3 sm:p-4">
           <div className="mx-auto w-fit">
             <BuildSummaryCard
               ref={cardRef}
@@ -208,7 +206,7 @@ export default function ExportBuildModal({
         </div>
 
         {/* Actions */}
-        <div className="border-t border-white/[0.06] p-5">
+        <div className="border-t border-line bg-white/[0.015] p-4 sm:p-5">
           {error && (
             <p className="mb-3 rounded-lg border border-rose-500/30 bg-rose-500/10 px-3 py-2 text-xs text-rose-300">
               {error}
@@ -220,7 +218,7 @@ export default function ExportBuildModal({
               type="button"
               onClick={handleDownload}
               disabled={busy !== null}
-              className="focus-ring inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-bold text-zinc-950 transition hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-60"
+              className="focus-ring inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl bg-brand px-4 py-2.5 text-sm font-extrabold text-[#10150b] transition hover:bg-brand-hi disabled:cursor-not-allowed disabled:opacity-60"
             >
               {busy === "download" ? "Generating…" : "Download Image (PNG)"}
             </button>
@@ -230,8 +228,8 @@ export default function ExportBuildModal({
               disabled={busy !== null}
               className={`focus-ring inline-flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold transition disabled:cursor-not-allowed disabled:opacity-60 ${
                 copied
-                  ? "bg-violet-500 text-white"
-                  : "border border-white/[0.08] bg-white/[0.04] text-zinc-100 hover:border-white/20"
+                  ? "bg-brand text-[#10150b]"
+                  : "border border-line bg-surface-input text-zinc-100 hover:border-line-strong"
               }`}
             >
               {busy === "copy"
@@ -243,7 +241,7 @@ export default function ExportBuildModal({
           </div>
 
           {/* Save to localStorage */}
-          <div className="mt-4 rounded-xl border border-white/[0.06] bg-white/[0.02] p-3">
+          <div className="mt-4 rounded-xl border border-line bg-surface-input p-3">
             <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
               Save to My Builds
             </p>
@@ -251,16 +249,17 @@ export default function ExportBuildModal({
               <input
                 value={saveName}
                 onChange={(e) => setSaveName(e.target.value)}
-                placeholder={`Build name (e.g. ${archetype.name} competitivo)`}
-                className="min-w-0 flex-1 rounded-lg border border-white/[0.08] bg-zinc-950 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-violet-500/60 focus:outline-none"
+                placeholder={`Build name (e.g. ${archetype.name} Competitive)`}
+                aria-label="Build name"
+                className="min-w-0 flex-1 rounded-lg border border-line bg-[#080c0a] px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-brand/60 focus:outline-none"
               />
               <button
                 type="button"
                 onClick={handleSave}
                 className={`focus-ring rounded-lg px-4 py-2 text-sm font-bold transition ${
                   saved
-                    ? "bg-violet-500 text-white"
-                    : "border border-violet-500/40 bg-violet-500/10 text-violet-200 hover:border-violet-500/70 hover:bg-violet-500/20"
+                    ? "bg-brand text-[#10150b]"
+                    : "border border-brand/30 bg-brand/5 text-brand hover:border-brand/60 hover:bg-brand/10"
                 }`}
               >
                 {saved ? "Saved!" : "Save"}

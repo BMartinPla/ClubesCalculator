@@ -31,21 +31,21 @@ function StarRow({
   onChange: (value: number) => void;
 }) {
   return (
-    <div className="rounded-md border border-line bg-black/20 p-3">
+    <div className="rounded-lg border border-line bg-[#0b110e] p-3">
       <div className="flex items-center justify-between gap-3">
         <span title={title} className="text-[11px] font-bold uppercase tracking-wider text-muted">
           {label}
         </span>
         <span
-          className={`rounded px-2 py-0.5 font-mono text-[11px] font-bold ${
-            cost > 0 ? "bg-pitch/15 text-pitch" : "text-muted"
+          className={`data-number rounded-md px-2 py-1 text-[10px] font-bold ${
+            cost > 0 ? "bg-pitch/10 text-pitch" : "text-muted"
           }`}
         >
           +{cost} AP
         </span>
       </div>
       <div className="mt-2 flex items-center justify-between">
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-0.5">
           {[1, 2, 3, 4, 5].map((n) => {
             const allowed = n >= min && n <= max;
             const filled = n <= value;
@@ -56,9 +56,10 @@ function StarRow({
                 disabled={!allowed}
                 onClick={() => onChange(n)}
                 aria-label={`${title}: ${n}`}
+                aria-pressed={n === value}
                 title={allowed ? `${title}: ${n}` : `${title} out of range (${min}–${max})`}
-                className={`text-lg leading-none transition ${
-                  filled ? "text-gold" : "text-white/15"
+                className={`focus-ring flex h-8 w-8 items-center justify-center rounded-md text-base leading-none transition ${
+                  filled ? "text-gold" : "text-white/20"
                 } ${allowed ? "hover:scale-110 hover:text-amber-300" : "cursor-not-allowed opacity-30"}`}
               >
                 ★
@@ -85,7 +86,7 @@ export default function SkillControls({
   onWeakFoot,
 }: SkillControlsProps) {
   return (
-    <div className="panel flex flex-col p-3">
+    <div className="panel flex flex-col p-3.5">
       <div className="mb-3 flex items-center justify-between">
         <h2 className="panel-title">Skill Moves & Weak Foot</h2>
         <span className="text-[10px] font-semibold uppercase tracking-widest text-muted">

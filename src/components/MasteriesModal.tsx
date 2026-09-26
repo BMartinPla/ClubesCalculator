@@ -2,6 +2,8 @@
 
 import { useEffect } from "react";
 import type { ArchetypeMastery, MasteriesState } from "@/types";
+import { getArchetypeIcon } from "@/data/playstyles";
+import UiIcon from "@/components/UiIcon";
 
 interface MasteriesModalProps {
   open: boolean;
@@ -52,7 +54,7 @@ export default function MasteriesModal({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div
-        className="absolute inset-0 bg-black/75 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/80 backdrop-blur-md"
         onClick={onClose}
         aria-hidden="true"
       />
@@ -61,15 +63,15 @@ export default function MasteriesModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby="masteries-title"
-        className="relative flex max-h-[85vh] w-full max-w-2xl animate-pop-in flex-col rounded-xl border border-line bg-[#0c0f16] p-6 shadow-2xl"
+        className="relative flex max-h-[88vh] w-full max-w-3xl animate-pop-in flex-col rounded-2xl border border-line bg-[#0d130f] p-5 shadow-2xl shadow-black/50 sm:p-6"
       >
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-start gap-3">
             <span
               aria-hidden="true"
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-brand/40 bg-brand/15 text-lg"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-brand/30 bg-brand/10 text-brand"
             >
-              🏆
+              <UiIcon name="trophy" className="h-5 w-5" />
             </span>
             <div>
               <h2 id="masteries-title" className="text-lg font-extrabold uppercase tracking-wide text-white">
@@ -84,12 +86,9 @@ export default function MasteriesModal({
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="flex h-8 w-8 shrink-0 items-center justify-center rounded text-muted transition hover:bg-white/[0.06] hover:text-white"
+            className="focus-ring flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-muted transition hover:bg-white/[0.06] hover:text-white"
           >
-            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
+            <UiIcon name="close" className="h-4 w-4" />
           </button>
         </div>
 
@@ -97,18 +96,18 @@ export default function MasteriesModal({
           <button
             type="button"
             onClick={onMarkAll}
-            className="focus-ring rounded border border-violet-500/50 bg-violet-500/15 px-3 py-1.5 text-xs font-semibold text-violet-200 transition hover:bg-violet-500/25"
+            className="focus-ring rounded-lg border border-brand/30 bg-brand/10 px-3 py-2 text-xs font-bold text-brand transition hover:bg-brand/15"
           >
             Mark All
           </button>
           <button
             type="button"
             onClick={onUnmarkAll}
-            className="focus-ring rounded border border-line bg-black/20 px-3 py-1.5 text-xs font-semibold text-muted transition hover:border-line-strong hover:text-white"
+            className="focus-ring rounded-lg border border-line bg-surface-input px-3 py-2 text-xs font-semibold text-muted transition hover:border-line-strong hover:text-white"
           >
             Unmark All
           </button>
-          <span className="ml-auto rounded bg-white/[0.06] px-2.5 py-1 text-xs font-bold text-zinc-200">
+          <span className="data-number ml-auto rounded-md bg-white/[0.06] px-2.5 py-1.5 text-xs font-bold text-zinc-200">
             {count} of {total} active
           </span>
         </div>
@@ -121,8 +120,8 @@ export default function MasteriesModal({
                 key={m.archetype}
                 className={`flex cursor-pointer items-center gap-3 rounded-lg border p-3 transition ${
                   on
-                    ? "border-violet-500/50 bg-violet-950/40 text-violet-200"
-                    : "border-line bg-black/20 text-muted hover:border-line-strong"
+                    ? "border-brand/40 bg-brand/10 text-zinc-100"
+                    : "border-line bg-surface-input text-muted hover:border-line-strong"
                 }`}
               >
                 <input
@@ -134,7 +133,7 @@ export default function MasteriesModal({
                 <span
                   aria-hidden="true"
                   className={`flex h-5 w-5 shrink-0 items-center justify-center rounded border transition ${
-                    on ? "border-violet-400 bg-violet-500 text-black" : "border-line-strong bg-black/30"
+                    on ? "border-brand bg-brand text-[#10150b]" : "border-line-strong bg-black/30"
                   }`}
                 >
                   {on && (
@@ -143,6 +142,10 @@ export default function MasteriesModal({
                     </svg>
                   )}
                 </span>
+                {getArchetypeIcon(m.archetype) && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={getArchetypeIcon(m.archetype)} alt="" width={32} height={32} className="h-8 w-8 shrink-0 object-contain" />
+                )}
                 <span className="min-w-0">
                   <span className="block truncate text-sm font-semibold">
                     {m.archetype}
@@ -160,7 +163,7 @@ export default function MasteriesModal({
           <button
             type="button"
             onClick={onClose}
-            className="focus-ring w-full rounded-lg bg-brand px-4 py-3 text-sm font-bold uppercase tracking-wide text-white transition hover:bg-brand-hi"
+            className="focus-ring w-full rounded-xl bg-brand px-4 py-3 text-sm font-extrabold text-[#10150b] transition hover:bg-brand-hi"
           >
             Confirm & Close
           </button>

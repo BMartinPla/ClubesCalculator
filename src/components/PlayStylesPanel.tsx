@@ -41,10 +41,10 @@ export default function PlayStylesPanel({
     PLAYSTYLES.find((p) => p.name === archetype.signature_playstyle_plus) ?? null;
 
   return (
-    <div className="panel flex flex-col p-3">
+    <div className="panel flex flex-col p-3.5">
       <div className="mb-3 flex items-center justify-between gap-2">
         <h2 className="panel-title">PlayStyles</h2>
-        <span className="chip bg-white/[0.05] text-muted">
+          <span className="chip bg-white/[0.05] text-muted">
           Lv {level} · {silverSlots}/{getSilverSlotCount(40)} slots
         </span>
       </div>
@@ -65,8 +65,8 @@ export default function PlayStylesPanel({
                   locked
                     ? "cursor-not-allowed border-rose-500/25 bg-black/40 opacity-50"
                     : ps
-                      ? "border-pitch bg-pitch/10"
-                      : "border-dashed border-line-strong bg-black/20 hover:border-brand"
+                  ? "border-pitch bg-pitch/10 shadow-[0_0_18px_rgba(186,250,76,.1)]"
+                  : "border-dashed border-line-strong bg-black/25 hover:border-brand hover:bg-brand/5"
                 }`}
                 aria-label={ps ? ps.name : "Empty slot"}
               >

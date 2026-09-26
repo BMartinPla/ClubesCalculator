@@ -47,12 +47,12 @@ function Control({
   onChange: (value: number) => void;
 }) {
   return (
-    <div className="rounded-md border border-line bg-black/20 p-3">
+    <div className="rounded-lg border border-line bg-[#0b110e] p-3">
       <div className="flex items-baseline justify-between gap-2">
         <label htmlFor={id} className="text-[11px] font-bold uppercase tracking-wider text-muted">
           {label}
         </label>
-        <span className="font-mono text-base font-extrabold text-white">
+        <span className="data-number text-sm font-bold text-white">
           {value}
           <span className="ml-0.5 text-xs font-medium text-muted">{unit}</span>
           <span className="ml-2 text-[11px] font-medium text-muted">{altText}</span>
@@ -105,7 +105,7 @@ export default function PhysicalControls({
   const negatives = entries.filter(([, v]) => v < 0);
 
   return (
-    <div className="panel flex flex-col p-3">
+    <div className="panel flex flex-col p-3.5">
       <div className="mb-3 flex items-center justify-between">
         <h2 className="panel-title">Physical</h2>
         <span className="text-[10px] font-semibold uppercase tracking-widest text-muted">
@@ -137,7 +137,7 @@ export default function PhysicalControls({
         />
       </div>
 
-      <div className="mt-3 rounded-md border border-line bg-black/20 p-2.5">
+      <div className="mt-3 rounded-lg border border-line bg-[#0b110e] p-2.5">
         <p className="mb-1.5 text-[10px] font-bold uppercase tracking-widest text-muted">
           Affected stats
         </p>

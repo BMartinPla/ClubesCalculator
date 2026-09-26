@@ -18,6 +18,7 @@ import PhysicalControls from "@/components/PhysicalControls";
 import PlayStylePickerModal from "@/components/PlayStylePickerModal";
 import PlayStylesPanel from "@/components/PlayStylesPanel";
 import SkillControls from "@/components/SkillControls";
+import UiIcon from "@/components/UiIcon";
 import { ARCHETYPES, DEFAULT_ARCHETYPE, getArchetype } from "@/data/archetypes";
 import { ARCHETYPE_MASTERIES, getMastery } from "@/data/archetypeMasteries";
 import { getStars } from "@/data/archetypeStars";
@@ -338,25 +339,25 @@ export default function Page() {
       />
 
       <main
-        className="mx-auto max-w-[1600px] px-4 pb-8 sm:px-6"
+        className="mx-auto max-w-[1680px] px-3 pb-10 sm:px-5 xl:px-7"
         style={{ paddingTop: (headerH || 88) + 14 }}
       >
         {/* ---- Left: Tools + PlayStyles + Skills + Physical · Right: attributes ---- */}
-        <div className="grid grid-cols-1 items-start gap-3 lg:grid-cols-[330px_minmax(0,1fr)]">
-          <div className="flex flex-col gap-3">
+        <div className="grid grid-cols-1 items-start gap-4 lg:grid-cols-[300px_minmax(0,1fr)] xl:grid-cols-[320px_minmax(0,1fr)] 2xl:grid-cols-[340px_minmax(0,1fr)]">
+          <div className="flex min-w-0 flex-col gap-3.5">
             {/* Tools (horizontal, on top) */}
-            <div className="panel flex flex-wrap items-center gap-2 p-3">
-              <span className="panel-title px-1">Tools</span>
+            <div className="panel flex flex-wrap items-center gap-2 p-3.5">
+              <span className="panel-title flex w-full items-center justify-between px-0.5 pb-0.5">Tools <span className="text-[9px] font-semibold tracking-normal text-muted/80">BUILD UTILITIES</span></span>
               <button
                 type="button"
                 onClick={() => setMasteriesOpen(true)}
-                className={`focus-ring flex items-center gap-2 rounded border px-3 py-1.5 text-xs font-semibold transition ${
+                className={`focus-ring flex min-h-10 items-center gap-2 rounded-lg border px-3 py-2 text-xs font-bold transition ${
                   activeMasteriesCount > 0
-                    ? "border-violet-500/50 bg-violet-500/15 text-violet-200"
-                    : "border-line bg-black/20 text-zinc-300 hover:border-line-strong"
+                    ? "border-brand/40 bg-brand/10 text-brand"
+                    : "border-line bg-[#0b110e] text-zinc-300 hover:border-line-strong hover:bg-surface-raised"
                 }`}
               >
-                <span aria-hidden="true">🏆</span> Masteries
+                <UiIcon name="trophy" /> Masteries
                 <span className="rounded bg-white/[0.06] px-1.5 py-0.5 text-[10px] font-bold">
                   {activeMasteriesCount}/{ARCHETYPE_MASTERIES.length}
                 </span>
@@ -364,9 +365,9 @@ export default function Page() {
               <button
                 type="button"
                 onClick={() => openAnimations(71)}
-                className="focus-ring flex items-center gap-2 rounded border border-line bg-black/20 px-3 py-1.5 text-xs font-semibold text-zinc-300 transition hover:border-line-strong"
+                className="focus-ring flex min-h-10 items-center gap-2 rounded-lg border border-line bg-[#0b110e] px-3 py-2 text-xs font-bold text-zinc-300 transition hover:border-line-strong hover:bg-surface-raised"
               >
-                <span aria-hidden="true">🎬</span> Animations
+                <UiIcon name="film" /> Animations
                 <span className="rounded bg-white/[0.06] px-1.5 py-0.5 font-mono text-[10px] text-muted">
                   Base / Improved
                 </span>
@@ -415,7 +416,7 @@ export default function Page() {
           </div>
 
           {/* Attributes only */}
-          <div className="grid grid-cols-1 items-start gap-3 sm:grid-cols-2">
+          <div className="grid min-w-0 grid-cols-1 items-start gap-3.5 sm:grid-cols-2 2xl:gap-4">
             {categories.map((category) => (
               <CategorySection
                 key={category}

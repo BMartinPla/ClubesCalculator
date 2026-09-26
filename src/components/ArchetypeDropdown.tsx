@@ -76,12 +76,12 @@ export default function ArchetypeDropdown({
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className={`focus-ring flex w-full items-center gap-2.5 rounded-lg border border-line bg-[#161a22]/60 text-left transition hover:border-line-strong ${
+        className={`focus-ring flex w-full items-center gap-2.5 rounded-xl border border-line bg-surface/90 text-left shadow-inner shadow-black/10 transition hover:border-line-strong hover:bg-surface-raised ${
           compact ? "px-2.5 py-1.5" : "h-full px-3 py-2.5"
         }`}
       >
         <span
-          className={`flex shrink-0 items-center justify-center rounded-lg border border-line bg-black/30 ${
+          className={`flex shrink-0 items-center justify-center rounded-lg border border-line bg-[#0a100d] ${
             compact ? "h-8 w-8" : "h-11 w-11"
           }`}
         >
@@ -131,7 +131,7 @@ export default function ArchetypeDropdown({
         <ul
           role="listbox"
           aria-label="Select archetype"
-          className="absolute z-40 mt-2 max-h-96 w-full origin-top animate-fade-in overflow-y-auto rounded-lg border border-line bg-[#10141d] p-1.5 shadow-2xl"
+          className="absolute z-40 mt-2 max-h-96 w-full origin-top animate-fade-in overflow-y-auto rounded-xl border border-line bg-[#101713] p-1.5 shadow-2xl shadow-black/50"
         >
           {archetypes.map((a) => {
             const isSelected = a.name === selected;
@@ -142,7 +142,7 @@ export default function ArchetypeDropdown({
                   type="button"
                   onClick={() => choose(a.name)}
                   className={`flex w-full items-center gap-3 rounded px-3 py-2.5 text-left transition ${
-                    isSelected ? "bg-brand/25" : "hover:bg-white/[0.05]"
+                    isSelected ? "bg-brand/10" : "hover:bg-white/[0.04]"
                   }`}
                 >
                   {rowIcon && (

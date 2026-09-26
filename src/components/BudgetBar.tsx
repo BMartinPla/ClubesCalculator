@@ -4,6 +4,7 @@ import { forwardRef, useEffect, useState } from "react";
 import { getBudgetStatus } from "@/lib/buildEngine";
 import { MAX_LEVEL, getMaxApForLevel } from "@/data/levelProgression";
 import ArchetypeDropdown from "@/components/ArchetypeDropdown";
+import UiIcon from "@/components/UiIcon";
 import type { Archetype } from "@/types";
 
 interface BudgetBarProps {
@@ -63,23 +64,24 @@ const BudgetBar = forwardRef<HTMLElement, BudgetBarProps>(function BudgetBar(
   return (
     <header
       ref={ref}
-      className="fixed left-0 right-0 top-0 z-50 w-full border-b border-line bg-[#0c0f16]/95 px-4 py-2.5 shadow-xl backdrop-blur-md sm:px-6"
+      className="fixed left-0 right-0 top-0 z-50 w-full border-b border-line bg-[#080c0a]/95 px-4 py-2.5 shadow-[0_14px_38px_rgba(0,0,0,0.36)] backdrop-blur-xl sm:px-6"
     >
-      <div className="mx-auto flex max-w-[1600px] flex-col gap-3 lg:flex-row lg:items-center lg:gap-5">
+      <div className="mx-auto flex max-w-[1680px] flex-col gap-3 xl:flex-row xl:items-center xl:gap-5">
         {/* Left: brand */}
         <div className="flex shrink-0 items-center gap-3">
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-brand/60 bg-brand/15 text-[10px] font-black leading-none text-brand-hi">
-            FC27
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-brand/35 bg-brand/10 text-[10px] font-extrabold leading-none tracking-tight text-brand">
+            FC<span className="ml-0.5 text-white">27</span>
           </div>
           <div className="leading-tight">
             <p className="text-sm font-extrabold uppercase tracking-[0.08em] text-white">
               Clubs Builder
             </p>
+            <p className="mt-0.5 text-[9px] font-semibold uppercase tracking-[0.16em] text-muted">Performance Lab</p>
           </div>
         </div>
 
         {/* Archetype selector (from the header) */}
-        <div className="w-full min-w-0 lg:max-w-xs">
+        <div className="w-full min-w-0 xl:max-w-xs">
           <ArchetypeDropdown
             archetypes={archetypes}
             selected={archetypeName}
@@ -89,8 +91,8 @@ const BudgetBar = forwardRef<HTMLElement, BudgetBarProps>(function BudgetBar(
         </div>
 
         {/* Center: level + AP */}
-        <div className="flex flex-1 flex-wrap items-center gap-3 lg:justify-end">
-          <label className="flex items-center gap-2 rounded-lg border border-line bg-black/20 px-3 py-2">
+        <div className="flex flex-1 flex-wrap items-center gap-3 xl:justify-end">
+          <label className="flex items-center gap-2 rounded-lg border border-line bg-surface/80 px-3 py-2">
             <span className="text-[10px] font-bold uppercase tracking-widest text-muted">
               Level
             </span>
@@ -108,11 +110,11 @@ const BudgetBar = forwardRef<HTMLElement, BudgetBarProps>(function BudgetBar(
             </select>
           </label>
 
-          <div className="flex items-center gap-4 rounded-lg border border-line bg-[#161a22]/70 px-4 py-1.5">
+          <div className="flex items-center gap-4 rounded-xl border border-line bg-surface/90 px-4 py-2 shadow-inner shadow-black/10">
             <div className="text-right">
               <div className="flex items-baseline justify-end gap-1.5">
                 <span
-                  className={`text-2xl font-extrabold leading-none tabular-nums ${
+                  className={`data-number text-2xl font-extrabold leading-none tabular-nums ${
                     isOver ? "text-rose-500" : "text-pitch"
                   }`}
                 >
@@ -122,10 +124,10 @@ const BudgetBar = forwardRef<HTMLElement, BudgetBarProps>(function BudgetBar(
                   AP Left
                 </span>
               </div>
-              <div className="mt-1 h-1.5 w-28 overflow-hidden rounded-full bg-line">
+              <div className="mt-1.5 h-1.5 w-28 overflow-hidden rounded-full bg-line">
                 <div
                   className={`h-full transition-all duration-300 ${
-                    isOver ? "bg-rose-500" : "bg-pitch"
+                    isOver ? "bg-rose-500" : "bg-pitch shadow-[0_0_10px_rgba(186,250,76,.4)]"
                   }`}
                   style={{ width: `${pct}%` }}
                 />
@@ -135,26 +137,26 @@ const BudgetBar = forwardRef<HTMLElement, BudgetBarProps>(function BudgetBar(
             <div className="hidden border-l border-line pl-3.5 text-xs text-muted xl:flex xl:flex-col xl:justify-center">
               <div>
                 Spent{" "}
-                <span className="font-mono font-bold text-white">{spent}</span>
+                <span className="data-number font-bold text-white">{spent}</span>
                 <span className="text-line-strong"> / {maxAp}</span>
               </div>
               <div className="mt-0.5 text-[11px]">
-                Stats <span className="font-mono font-semibold text-zinc-200">{statsApCost}</span>
+                Stats <span className="data-number font-semibold text-zinc-200">{statsApCost}</span>
                 {" · "}Stars{" "}
-                <span className="font-mono font-semibold text-zinc-200">{starsApCost}</span>
+                <span className="data-number font-semibold text-zinc-200">{starsApCost}</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Right: actions */}
-        <div className="flex items-center gap-2.5">
+        <div className="flex flex-wrap items-center justify-end gap-2">
           <button
             type="button"
             onClick={onExport}
-            className="focus-ring inline-flex items-center gap-2 rounded-lg border border-pitch bg-pitch/10 px-4 py-2 text-sm font-bold text-pitch transition hover:bg-pitch hover:text-[#11141a]"
+            className="focus-ring inline-flex min-h-10 items-center gap-2 rounded-lg border border-pitch/55 bg-pitch px-4 py-2 text-sm font-extrabold text-[#10150b] shadow-[0_4px_18px_rgba(186,250,76,.12)] transition hover:bg-brand-hi hover:shadow-[0_5px_22px_rgba(186,250,76,.2)]"
           >
-            <span aria-hidden="true">📷</span>
+            <UiIcon name="camera" />
             Export
           </button>
 
@@ -164,26 +166,26 @@ const BudgetBar = forwardRef<HTMLElement, BudgetBarProps>(function BudgetBar(
             className={`focus-ring inline-flex items-center gap-2 rounded-lg border px-3.5 py-2 text-sm font-semibold transition ${
               copied
                 ? "border-pitch/60 bg-pitch/15 text-pitch"
-                : "border-line-strong bg-black/20 text-zinc-200 hover:border-zinc-500"
+                : "border-line bg-surface/80 text-zinc-200 hover:border-line-strong hover:bg-surface-raised"
             }`}
           >
-            <span aria-hidden="true">🔗</span>
+            <UiIcon name="link" />
             {copied ? "Copied!" : "Share"}
           </button>
 
           <button
             type="button"
             onClick={onReset}
-            className="focus-ring inline-flex items-center gap-2 rounded-lg border border-brand/70 bg-transparent px-3.5 py-2 text-sm font-bold uppercase tracking-wide text-rose-400 transition hover:bg-rose-500/20"
+            className="focus-ring inline-flex min-h-10 items-center gap-2 rounded-lg border border-line bg-surface/70 px-3.5 py-2 text-sm font-bold text-muted transition hover:border-rose-500/40 hover:bg-rose-500/10 hover:text-rose-300"
           >
-            <span aria-hidden="true">↺</span>
+            <UiIcon name="reset" />
             Reset
           </button>
         </div>
       </div>
 
       {status === "over" && (
-        <div className="mx-auto mt-2 max-w-[1600px] rounded-lg border border-rose-500/40 bg-rose-500/20 px-4 py-2 text-center text-xs font-semibold text-rose-200">
+        <div className="mx-auto mt-2 max-w-[1600px] rounded-lg border border-rose-500/40 bg-rose-950/65 px-4 py-2 text-center text-xs font-semibold text-rose-200">
           Budget exceeded: {Math.abs(remainingAp)} AP over. Reduce attributes or
           stars to return to {maxAp} AP.
         </div>

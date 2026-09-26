@@ -2,6 +2,7 @@
 
 import { forwardRef } from "react";
 import { CATEGORY_ORDER } from "@/data/categories";
+import { PLAYSTYLES, getArchetypeIcon } from "@/data/playstyles";
 import type {
   Archetype,
   ArchetypeMastery,
@@ -90,7 +91,7 @@ function masteryBadge(m: ArchetypeMastery): string {
 
 /** Accent color class (text + bar) by stat level. */
 function accentClass(value: number): { text: string; bar: string } {
-  if (value >= 80) return { text: "text-emerald-400", bar: "bg-emerald-400" };
+  if (value >= 80) return { text: "text-brand", bar: "bg-brand" };
   if (value >= 70) return { text: "text-amber-400", bar: "bg-amber-400" };
   if (value >= 60) return { text: "text-orange-400", bar: "bg-orange-400" };
   return { text: "text-rose-500", bar: "bg-rose-500" };
@@ -110,13 +111,13 @@ function StatLine({
   return (
     <div>
       <div className="flex items-baseline justify-between gap-2 text-xs leading-none">
-        <span className={isKey ? "font-medium text-emerald-400" : "text-zinc-200"}>
+        <span className={isKey ? "font-semibold text-brand" : "text-zinc-200"}>
           {labelFor(entry.attribute)}
         </span>
-        <span className="whitespace-nowrap font-mono font-bold">
+          <span className="data-number whitespace-nowrap font-bold">
           <span className={text}>{value}</span>
           {entry.masteryBonus > 0 ? (
-            <span className="ml-1 font-normal text-violet-300">
+            <span className="ml-1 font-normal text-brand">
               (+{entry.masteryBonus} M)
             </span>
           ) : showBase ? (
@@ -151,12 +152,15 @@ function MasteriesBlock({
   const allActive = totalMasteriesCount > 0 && count === totalMasteriesCount;
 
   return (
-    <div className="rounded-lg border border-violet-500/30 bg-violet-950/20 p-3">
+    <div className="rounded-xl border border-brand/25 bg-brand/[0.045] p-3">
       <div className="flex items-center gap-1.5">
         <span aria-hidden="true" className="text-[11px]">
-          🏆
+          <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 text-brand" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4Z" />
+            <path d="M7 6H4v2a4 4 0 0 0 4 4M17 6h3v2a4 4 0 0 1-4 4" />
+          </svg>
         </span>
-        <p className="text-[10px] font-bold uppercase tracking-wider text-violet-300">
+        <p className="text-[10px] font-bold uppercase tracking-wider text-brand">
           Active Masteries ({count}/{totalMasteriesCount})
         </p>
       </div>
@@ -167,14 +171,14 @@ function MasteriesBlock({
         <>
           {allActive && (
             <div className="mt-2 rounded-md border border-amber-500/40 bg-amber-500/10 px-2 py-1 text-[10px] font-bold text-amber-300">
-              ★ Todas las Active Masteries (+{passiveTotal} Passive Stats)
+              All Active Masteries (+{passiveTotal} Passive Stats)
             </div>
           )}
           <div className="mt-2 flex flex-wrap gap-1.5">
             {activeMasteries.map((m) => (
               <span
                 key={m.archetype}
-                className="whitespace-nowrap rounded-md border border-violet-500/40 bg-violet-950/50 px-2 py-0.5 text-[10px] font-medium text-violet-300"
+                className="whitespace-nowrap rounded-md border border-brand/25 bg-brand/5 px-2 py-0.5 text-[10px] font-medium text-brand"
               >
                 {masteryBadge(m)}
               </span>
@@ -205,18 +209,27 @@ const BuildSummaryCard = forwardRef<HTMLDivElement, BuildSummaryCardProps>(
     );
     const initials = archetype.name.slice(0, 2).toUpperCase();
     const activeMasteriesCount = activeMasteries.length;
+    const archetypeIcon = getArchetypeIcon(archetype.name);
+    const signaturePlayStyle = PLAYSTYLES.find(
+      (playStyle) => playStyle.name === archetype.signature_playstyle_plus,
+    );
 
     return (
       <div
         ref={ref}
-        className="w-[820px] rounded-xl border border-zinc-800 bg-[#0c1017] p-5 font-sans text-white shadow-2xl"
+        className="w-[820px] rounded-2xl border border-[#334039] bg-[radial-gradient(ellipse_at_85%_0%,rgba(75,104,57,.18),transparent_35%),#0a100d] p-5 font-sans text-white shadow-2xl"
       >
         {/* ---- Header: 3 info boxes ---- */}
         <div className="grid grid-cols-3 gap-3">
           {/* Box 1: archetype info */}
-          <div className="flex items-center gap-3 rounded-lg border border-zinc-800 bg-white/[0.02] p-3">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-emerald-500 text-sm font-black text-zinc-950 shadow-[0_0_20px_rgba(34,211,238,0.45)]">
-              {initials}
+          <div className="flex items-center gap-3 rounded-xl border border-[#27332d] bg-white/[0.025] p-3">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-brand/25 bg-brand/5 p-1">
+              {archetypeIcon ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={archetypeIcon} alt="" width={40} height={40} className="h-10 w-10 object-contain" />
+              ) : (
+                <span className="text-sm font-extrabold text-brand">{initials}</span>
+              )}
             </div>
             <div className="min-w-0">
               <p className="truncate text-lg font-black leading-tight">{archetype.name}</p>
@@ -232,7 +245,7 @@ const BuildSummaryCard = forwardRef<HTMLDivElement, BuildSummaryCardProps>(
                 </span>
               </p>
               {activeMasteriesCount > 0 && (
-                <p className="text-[10px] leading-snug text-violet-300">
+                <p className="text-[10px] leading-snug text-brand">
                   Masteries: {activeMasteriesCount} active
                 </p>
               )}
@@ -240,22 +253,23 @@ const BuildSummaryCard = forwardRef<HTMLDivElement, BuildSummaryCardProps>(
           </div>
 
           {/* Box 2: signature playstyles */}
-          <div className="rounded-lg border border-zinc-800 bg-white/[0.02] p-3">
+          <div className="rounded-xl border border-[#27332d] bg-white/[0.025] p-3">
             <p className="mb-2 text-center text-[10px] font-bold uppercase tracking-widest text-zinc-400">
               Signature Playstyles
             </p>
-            <div className="flex flex-col items-center gap-1.5">
-              <div className="flex h-8 w-8 rotate-45 items-center justify-center rounded-[4px] border border-cyan-400/70 bg-cyan-500/10 shadow-[0_0_14px_rgba(34,211,238,0.35)]">
-                <span className="-rotate-45 text-xs text-cyan-300">★</span>
-              </div>
-              <span className="text-center text-[11px] font-semibold text-cyan-200">
+            <div className="flex items-center justify-center gap-2.5">
+              {signaturePlayStyle?.iconplus && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={signaturePlayStyle.iconplus} alt="" width={38} height={38} className="h-9 w-9 object-contain" />
+              )}
+              <span className="text-[11px] font-semibold text-brand">
                 {archetype.signature_playstyle_plus} +
               </span>
             </div>
           </div>
 
           {/* Box 3: secondary playstyles */}
-          <div className="rounded-lg border border-zinc-800 bg-white/[0.02] p-3">
+          <div className="rounded-xl border border-[#27332d] bg-white/[0.025] p-3">
             <p className="mb-2 text-center text-[10px] font-bold uppercase tracking-widest text-zinc-400">
               Playstyles
             </p>
@@ -263,7 +277,7 @@ const BuildSummaryCard = forwardRef<HTMLDivElement, BuildSummaryCardProps>(
               {archetype.specializations.map((spec) => (
                 <span
                   key={spec}
-                  className="rounded border border-zinc-700 bg-zinc-800/70 px-1.5 py-0.5 text-[10px] text-zinc-300"
+                  className="rounded-md border border-zinc-700 bg-zinc-800/70 px-1.5 py-0.5 text-[10px] text-zinc-300"
                 >
                   {spec}
                 </span>
@@ -279,8 +293,8 @@ const BuildSummaryCard = forwardRef<HTMLDivElement, BuildSummaryCardProps>(
               (b) => b.category === category,
             );
             const card = (
-              <div className="rounded-lg border border-zinc-800/70 bg-white/[0.02] p-3">
-                <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-cyan-300">
+              <div className="rounded-xl border border-[#27332d] bg-white/[0.025] p-3">
+                <p className="mb-2 text-[11px] font-bold uppercase tracking-wider text-brand">
                   {CATEGORY_LABELS[category]}
                 </p>
                 <div className="space-y-2">
