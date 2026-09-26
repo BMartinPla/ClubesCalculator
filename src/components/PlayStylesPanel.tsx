@@ -14,7 +14,9 @@ interface PlayStylesPanelProps {
   archetype: Archetype;
   statTotals: Record<string, number>;
   selection: (string | null)[];
+  selectedPlusId: string | null;
   onOpenPicker: (slotIndex: number) => void;
+  onOpenPlusPicker: () => void;
   onClear: (slotIndex: number) => void;
 }
 
@@ -32,13 +34,17 @@ export default function PlayStylesPanel({
   archetype,
   statTotals,
   selection,
+  selectedPlusId,
   onOpenPicker,
+  onOpenPlusPicker,
   onClear,
 }: PlayStylesPanelProps) {
   const silverSlots = getSilverSlotCount(level);
   const plusSlots = getPlusSlotCount(level);
   const signature =
-    PLAYSTYLES.find((p) => p.name === archetype.signature_playstyle_plus) ?? null;
+    PLAYSTYLES.find((playStyle) => playStyle.id === selectedPlusId) ??
+    PLAYSTYLES.find((playStyle) => playStyle.name === archetype.signature_playstyle_plus) ??
+    null;
 
   return (
     <div className="panel flex flex-col p-3.5">
@@ -126,18 +132,26 @@ export default function PlayStylesPanel({
 
       {/* PlayStyle+ */}
       {plusSlots > 0 && signature && (
-        <div className="mt-3 flex items-center gap-2 border-t border-line pt-3">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={signature.iconplus} alt={signature.name} width={34} height={34} />
-          <div className="min-w-0">
-            <p className="text-[10px] font-bold uppercase tracking-widest text-gold">
+        <button
+          type="button"
+          onClick={onOpenPlusPicker}
+          aria-label="Choose a PlayStyle+"
+          className="focus-ring mt-3 flex w-full items-center gap-2 border-t border-line pt-3 text-left"
+        >
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-amber-300/20 bg-amber-300/[0.06]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={signature.iconplus} alt="" width={34} height={34} />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-[10px] font-bold uppercase tracking-widest text-gold">
               PlayStyle+ ({plusSlots})
-            </p>
-            <p className="truncate text-sm font-semibold text-amber-200">
+            </span>
+            <span className="block truncate text-sm font-semibold text-amber-200">
               {signature.name} +
-            </p>
-          </div>
-        </div>
+            </span>
+          </span>
+          <span className="text-xs font-semibold text-amber-300">Change</span>
+        </button>
       )}
     </div>
   );

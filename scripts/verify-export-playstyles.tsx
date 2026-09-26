@@ -21,6 +21,7 @@ const markup = renderToStaticMarkup(
     skills: 3,
     weakFoot: 3,
     selectedPlayStyleIds,
+    selectedPlusId: "chip_shot",
   }),
 );
 
@@ -35,9 +36,9 @@ for (const id of selectedPlayStyleIds) {
   }
 }
 
-const signature = getPlayStyle("low_driven_shot") as PlayStyleDef;
-if (!markup.includes(signature.iconplus)) {
-  throw new Error(`Export image preview does not include PlayStyle+ icon ${signature.iconplus}`);
+const signature = getPlayStyle("chip_shot") as PlayStyleDef;
+if (!markup.includes(signature.iconplus) || !markup.includes("Chip Shot +")) {
+  throw new Error(`Export image preview does not reflect the equipped PlayStyle+ ${signature.name}`);
 }
 
-console.log("PASS equipped PlayStyles names and icons appear in export image markup");
+console.log("PASS equipped PlayStyles and replacement PlayStyle+ names and icons appear in export image markup");

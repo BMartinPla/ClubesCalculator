@@ -743,6 +743,29 @@ export function getPlayStyle(id: string | null | undefined): PlayStyleDef | unde
   return PLAYSTYLES.find((p) => p.id === id);
 }
 
+const PLAYSTYLE_NAME_ALIASES: Record<string, string> = {
+  "1v1 close down": "gk_rush_out",
+  "cross claimer": "gk_cross_claimer",
+  "far throw": "gk_far_throw",
+  "far reach": "gk_far_reach",
+  "footwork": "gk_footwork",
+  "deflector": "gk_deflector",
+};
+
+/** Resolve source specialization names to the canonical PlayStyle dataset entry. */
+export function getPlayStyleByName(name: string): PlayStyleDef | undefined {
+  const normalized = name.trim().toLowerCase().replace(/[^a-z0-9]/g, "");
+  const withoutGoalkeeperPrefix = normalized.replace(/^gk/, "");
+  const aliasId = PLAYSTYLE_NAME_ALIASES[name.trim().toLowerCase()];
+  return (
+    (aliasId ? getPlayStyle(aliasId) : undefined) ??
+    PLAYSTYLES.find((playStyle) => {
+      const candidate = playStyle.name.toLowerCase().replace(/[^a-z0-9]/g, "");
+      return candidate === normalized || candidate.replace(/^gk/, "") === withoutGoalkeeperPrefix;
+    })
+  );
+}
+
 export const ARCHETYPE_ICONS: Record<string, string> = {
   "Finisher": "/icons/finisher.svg",
   "Target": "/icons/target.svg",

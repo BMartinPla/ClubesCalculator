@@ -14,6 +14,7 @@ import BudgetBar from "@/components/BudgetBar";
 import CategorySection from "@/components/CategorySection";
 import ExportBuildModal from "@/components/ExportBuildModal";
 import MasteriesModal from "@/components/MasteriesModal";
+import PlayStylePlusPickerModal from "@/components/PlayStylePlusPickerModal";
 import PhysicalControls from "@/components/PhysicalControls";
 import PlayStylePickerModal from "@/components/PlayStylePickerModal";
 import PlayStylesPanel from "@/components/PlayStylesPanel";
@@ -22,6 +23,7 @@ import UiIcon from "@/components/UiIcon";
 import { ARCHETYPES, DEFAULT_ARCHETYPE, getArchetype } from "@/data/archetypes";
 import { ARCHETYPE_MASTERIES, getMastery } from "@/data/archetypeMasteries";
 import { getStars } from "@/data/archetypeStars";
+import { getPlayStyleByName } from "@/data/playstyles";
 import { CATEGORY_ORDER } from "@/data/categories";
 import { MIN_LEVEL, MAX_LEVEL } from "@/data/levelProgression";
 import { evaluateBuild } from "@/lib/buildEngine";
@@ -38,6 +40,21 @@ function clampLevel(level: number): number {
 
 const resolveArchetype = (name: string): Archetype =>
   getArchetype(name) ?? FALLBACK_ARCHETYPE;
+
+const signaturePlayStyleId = (name: string): string | null => {
+  const signatureName = resolveArchetype(name).signature_playstyle_plus;
+  return getPlayStyleByName(signatureName)?.id ?? null;
+};
+
+const resolvePlusSelection = (archetypeName: string, candidateId: string | null): string | null => {
+  const archetype = resolveArchetype(archetypeName);
+  const isSpecialization = archetype.specializations.some(
+    (specialization) => getPlayStyleByName(specialization)?.id === candidateId,
+  );
+  return candidateId && isSpecialization
+    ? candidateId
+    : signaturePlayStyleId(archetypeName);
+};
 
 const baseStars = (name: string) => {
   const s = getStars(name);
@@ -104,6 +121,10 @@ export default function Page() {
   const [animationThreshold, setAnimationThreshold] = useState<AnimationThreshold>(71);
   const [playStyleSelection, setPlayStyleSelection] = useState<(string | null)[]>([]);
   const [playStyleSlot, setPlayStyleSlot] = useState<number | null>(null);
+  const [selectedPlusId, setSelectedPlusId] = useState<string | null>(
+    signaturePlayStyleId(DEFAULT_ARCHETYPE),
+  );
+  const [plusPickerOpen, setPlusPickerOpen] = useState(false);
   const hydrated = useRef(false);
   const headerRef = useRef<HTMLElement>(null);
   const [headerH, setHeaderH] = useState(0);
@@ -138,6 +159,7 @@ export default function Page() {
     const base = baseStars(validArch);
     const phys = basePhysical(validArch);
     setArchetype(validArch);
+    setSelectedPlusId(resolvePlusSelection(validArch, params.get("plus")));
     setSkills(base.skills);
     setWeakFoot(base.weakFoot);
     const hParam = Number.parseInt(params.get("h") ?? "", 10);
@@ -230,6 +252,9 @@ export default function Page() {
     params.set("lvl", String(level));
     params.set("h", String(height));
     params.set("w", String(weight));
+    if (selectedPlusId && selectedPlusId !== signaturePlayStyleId(archetype)) {
+      params.set("plus", selectedPlusId);
+    }
     const raised = Object.entries(targetStats)
       .filter(([, v]) => Number.isFinite(v))
       .sort(([a], [b]) => a.localeCompare(b))
@@ -241,7 +266,7 @@ export default function Page() {
       .sort();
     if (activeMasteries.length > 0) params.set("m", activeMasteries.join(","));
     return `${window.location.origin}${window.location.pathname}?${params.toString()}`;
-  }, [archetype, targetStats, masteries, level, height, weight]);
+  }, [archetype, targetStats, masteries, level, height, weight, selectedPlusId]);
 
   // Keep the address bar in sync with the current build.
   useEffect(() => {
@@ -255,6 +280,8 @@ export default function Page() {
     const base = baseStars(name);
     const phys = basePhysical(name);
     setArchetype(name);
+    setSelectedPlusId(signaturePlayStyleId(name));
+    setPlusPickerOpen(false);
     setTargetStats({});
     setSkills(base.skills);
     setWeakFoot(base.weakFoot);
@@ -288,10 +315,12 @@ export default function Page() {
     setHeight(phys.height);
     setWeight(phys.weight);
     setPlayStyleSelection([]);
+    setSelectedPlusId(signaturePlayStyleId(DEFAULT_ARCHETYPE));
     setAnimationThreshold(71);
     setAnimationsOpen(false);
     setMasteriesOpen(false);
     setPlayStyleSlot(null);
+    setPlusPickerOpen(false);
     setExportOpen(false);
     if (typeof window !== "undefined") {
       window.history.replaceState(null, "", window.location.pathname);
@@ -317,6 +346,7 @@ export default function Page() {
       if (changing) {
         const base = baseStars(name);
         setArchetype(name);
+        setSelectedPlusId(signaturePlayStyleId(name));
         setSkills(base.skills);
         setWeakFoot(base.weakFoot);
       }
@@ -391,7 +421,9 @@ export default function Page() {
               archetype={activeArchetype}
               statTotals={statTotals}
               selection={playStyleSelection}
+              selectedPlusId={selectedPlusId}
               onOpenPicker={(slot) => setPlayStyleSlot(slot)}
+              onOpenPlusPicker={() => setPlusPickerOpen(true)}
               onClear={(slot) =>
                 setPlayStyleSelection((prev) => {
                   const next = [...prev];
@@ -480,6 +512,7 @@ export default function Page() {
         targetStats={targetStats}
         masteries={masteries}
         selectedPlayStyleIds={playStyleSelection}
+        selectedPlusId={selectedPlusId}
       />
 
       <AnimationThresholdModal
@@ -504,6 +537,18 @@ export default function Page() {
             return next;
           });
           setPlayStyleSlot(null);
+        }}
+      />
+
+      <PlayStylePlusPickerModal
+        open={plusPickerOpen}
+        onClose={() => setPlusPickerOpen(false)}
+        archetype={activeArchetype}
+        breakdown={build.breakdown}
+        selectedId={selectedPlusId}
+        onSelect={(id) => {
+          setSelectedPlusId(resolvePlusSelection(archetype, id));
+          setPlusPickerOpen(false);
         }}
       />
     </>

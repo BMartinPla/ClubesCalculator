@@ -23,6 +23,7 @@ interface BuildSummaryCardProps {
   skills: number;
   weakFoot: number;
   selectedPlayStyleIds: (string | null)[];
+  selectedPlusId: string | null;
 }
 
 /** EA-style English labels for the raw (Spanish) attribute names. */
@@ -202,6 +203,7 @@ const BuildSummaryCard = forwardRef<HTMLDivElement, BuildSummaryCardProps>(
       skills,
       weakFoot,
       selectedPlayStyleIds,
+      selectedPlusId,
     },
     ref,
   ) {
@@ -212,9 +214,9 @@ const BuildSummaryCard = forwardRef<HTMLDivElement, BuildSummaryCardProps>(
     const initials = archetype.name.slice(0, 2).toUpperCase();
     const activeMasteriesCount = activeMasteries.length;
     const archetypeIcon = getArchetypeIcon(archetype.name);
-    const signaturePlayStyle = PLAYSTYLES.find(
-      (playStyle) => playStyle.name === archetype.signature_playstyle_plus,
-    );
+    const signaturePlayStyle =
+      PLAYSTYLES.find((playStyle) => playStyle.id === selectedPlusId) ??
+      PLAYSTYLES.find((playStyle) => playStyle.name === archetype.signature_playstyle_plus);
     const equippedPlayStyles = selectedPlayStyleIds
       .map((id) => PLAYSTYLES.find((playStyle) => playStyle.id === id))
       .filter((playStyle) => playStyle !== undefined);
@@ -268,7 +270,7 @@ const BuildSummaryCard = forwardRef<HTMLDivElement, BuildSummaryCardProps>(
                 <img src={signaturePlayStyle.iconplus} alt="" width={38} height={38} className="h-9 w-9 object-contain" />
               )}
               <span className="text-[11px] font-semibold text-brand">
-                {archetype.signature_playstyle_plus} +
+                {signaturePlayStyle?.name ?? archetype.signature_playstyle_plus} +
               </span>
             </div>
           </div>
