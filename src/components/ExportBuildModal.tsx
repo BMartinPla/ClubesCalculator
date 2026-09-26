@@ -23,6 +23,7 @@ interface ExportBuildModalProps {
   weakFoot: number;
   targetStats: Record<string, number>;
   masteries: MasteriesState;
+  selectedPlayStyleIds: (string | null)[];
 }
 
 type Busy = "download" | "copy" | null;
@@ -41,6 +42,7 @@ export default function ExportBuildModal({
   weakFoot,
   targetStats,
   masteries,
+  selectedPlayStyleIds,
 }: ExportBuildModalProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [busy, setBusy] = useState<Busy>(null);
@@ -201,6 +203,7 @@ export default function ExportBuildModal({
               totalMasteriesCount={totalMasteriesCount}
               skills={skills}
               weakFoot={weakFoot}
+              selectedPlayStyleIds={selectedPlayStyleIds}
             />
           </div>
         </div>

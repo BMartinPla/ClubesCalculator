@@ -467,6 +467,7 @@ export default function Page() {
         weakFoot={weakFoot}
         targetStats={targetStats}
         masteries={masteries}
+        selectedPlayStyleIds={playStyleSelection}
       />
 
       <AnimationThresholdModal

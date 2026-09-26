@@ -22,6 +22,7 @@ interface BuildSummaryCardProps {
   totalMasteriesCount: number;
   skills: number;
   weakFoot: number;
+  selectedPlayStyleIds: (string | null)[];
 }
 
 /** EA-style English labels for the raw (Spanish) attribute names. */
@@ -200,6 +201,7 @@ const BuildSummaryCard = forwardRef<HTMLDivElement, BuildSummaryCardProps>(
       totalMasteriesCount,
       skills,
       weakFoot,
+      selectedPlayStyleIds,
     },
     ref,
   ) {
@@ -213,6 +215,9 @@ const BuildSummaryCard = forwardRef<HTMLDivElement, BuildSummaryCardProps>(
     const signaturePlayStyle = PLAYSTYLES.find(
       (playStyle) => playStyle.name === archetype.signature_playstyle_plus,
     );
+    const equippedPlayStyles = selectedPlayStyleIds
+      .map((id) => PLAYSTYLES.find((playStyle) => playStyle.id === id))
+      .filter((playStyle) => playStyle !== undefined);
 
     return (
       <div
@@ -323,6 +328,36 @@ const BuildSummaryCard = forwardRef<HTMLDivElement, BuildSummaryCardProps>(
             }
             return <div key={category}>{card}</div>;
           })}
+        </div>
+
+        <div className="mt-3 rounded-xl border border-[#27332d] bg-white/[0.025] p-3">
+          <p className="mb-2 text-[10px] font-bold uppercase tracking-widest text-zinc-400">
+            Equipped PlayStyles ({equippedPlayStyles.length})
+          </p>
+          {equippedPlayStyles.length > 0 ? (
+            <div className="flex flex-wrap gap-2">
+              {equippedPlayStyles.map((playStyle) => (
+                <div
+                  key={playStyle.id}
+                  className="flex items-center gap-1.5 rounded-lg border border-[#334039] bg-black/20 px-2 py-1"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={playStyle.icon}
+                    alt=""
+                    width={28}
+                    height={28}
+                    className="h-7 w-7 object-contain"
+                  />
+                  <span className="text-[10px] font-semibold text-zinc-200">
+                    {playStyle.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="text-[10px] text-zinc-500">No PlayStyles equipped</p>
+          )}
         </div>
 
         {/* ---- Watermark ---- */}
