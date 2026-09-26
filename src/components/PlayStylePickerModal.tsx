@@ -3,12 +3,15 @@
 import { useEffect, useMemo, useState } from "react";
 import { PLAYSTYLES } from "@/data/playstyles";
 import { ATTRIBUTE_ID_TO_INTERNAL, attributeLabel } from "@/lib/attributeNames";
-import type { PlayStyleDef } from "@/types";
+import { canApplyPlayStyleAutoUpgrade, planPlayStyleAutoUpgrade } from "@/lib/playstyleRequirements";
+import type { AttributeBreakdown, PlayStyleDef } from "@/types";
 
 interface PlayStylePickerModalProps {
   open: boolean;
   onClose: () => void;
   statTotals: Record<string, number>;
+  breakdown: AttributeBreakdown[];
+  availableAp: number;
   selectedIds: (string | null)[];
   onSelect: (id: string) => void;
 }
@@ -45,6 +48,8 @@ export default function PlayStylePickerModal({
   open,
   onClose,
   statTotals,
+  breakdown,
+  availableAp,
   selectedIds,
   onSelect,
 }: PlayStylePickerModalProps) {
@@ -106,16 +111,23 @@ export default function PlayStylePickerModal({
                 {CATEGORY_LABEL[group.category] ?? group.category}
               </p>
               <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-                {group.items.map((p) => (
-                  <PlayStyleOption
-                    key={p.id}
-                    playstyle={p}
-                    met={p.requirements.every((r) => requirementMet(r, statTotals))}
-                    isSelected={selectedIds.includes(p.id)}
-                    statTotals={statTotals}
-                    onSelect={() => onSelect(p.id)}
-                  />
-                ))}
+                {group.items.map((p) => {
+                  const plan = planPlayStyleAutoUpgrade(p.requirements, breakdown);
+                  return (
+                    <PlayStyleOption
+                      key={p.id}
+                      playstyle={p}
+                      met={p.requirements.every((r) => requirementMet(r, statTotals))}
+                      isSelected={selectedIds.includes(p.id)}
+                      statTotals={statTotals}
+                      reachable={plan.reachable}
+                      canApply={canApplyPlayStyleAutoUpgrade(plan, availableAp)}
+                      apCost={plan.apCost}
+                      availableAp={availableAp}
+                      onSelect={() => onSelect(p.id)}
+                    />
+                  );
+                })}
               </div>
             </div>
           ))}
@@ -130,19 +142,35 @@ function PlayStyleOption({
   met,
   isSelected,
   statTotals,
+  reachable,
+  canApply,
+  apCost,
+  availableAp,
   onSelect,
 }: {
   playstyle: PlayStyleDef;
   met: boolean;
   isSelected: boolean;
   statTotals: Record<string, number>;
+  reachable: boolean;
+  canApply: boolean;
+  apCost: number;
+  availableAp: number;
   onSelect: () => void;
 }) {
   return (
-    <button
-      type="button"
-      onClick={onSelect}
-      className={`flex items-start gap-3 rounded-lg border p-2.5 text-left transition ${
+      <button
+        type="button"
+        disabled={!canApply}
+        onClick={onSelect}
+        title={
+          !reachable
+            ? "Requirement exceeds this archetype's cap"
+            : canApply
+              ? `Automatically upgrade stats for ${apCost} AP`
+              : `Requires ${apCost} AP; ${availableAp} AP available`
+        }
+        className={`flex items-start gap-3 rounded-lg border p-2.5 text-left transition disabled:cursor-not-allowed disabled:opacity-50 ${
         isSelected
           ? "border-pitch bg-pitch/10 shadow-[0_0_16px_rgba(186,250,76,.07)]"
           : met
@@ -177,6 +205,13 @@ function PlayStyleOption({
               </span>
             );
           })}
+        </span>
+        <span className="mt-1 block text-[10px] font-semibold uppercase tracking-wider text-muted">
+          {!reachable
+            ? "Requirement exceeds this archetype's cap"
+            : canApply
+              ? `Estimated additional cost: ${apCost} AP`
+              : `Requires ${apCost} AP · ${availableAp} AP available`}
         </span>
       </span>
     </button>

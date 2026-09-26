@@ -39,6 +39,7 @@ const pickerMarkup = renderToStaticMarkup(
     onClose: () => undefined,
     archetype,
     breakdown: evaluateBuild("Finisher").breakdown,
+    availableAp: 962,
     selectedId: "low_driven_shot",
     onSelect: () => undefined,
   }),
@@ -79,6 +80,7 @@ for (const name of ["Finisher", "Creator", "Shot Stopper"]) {
     onClose: () => undefined,
     archetype: currentArchetype,
     breakdown: evaluateBuild(name).breakdown,
+    availableAp: 962,
     selectedId: null,
     onSelect: () => undefined,
   });

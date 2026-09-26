@@ -23,13 +23,23 @@ import UiIcon from "@/components/UiIcon";
 import { ARCHETYPES, DEFAULT_ARCHETYPE, getArchetype } from "@/data/archetypes";
 import { ARCHETYPE_MASTERIES, getMastery } from "@/data/archetypeMasteries";
 import { getStars } from "@/data/archetypeStars";
-import { getPlayStyleByName } from "@/data/playstyles";
+import { getPlayStyle, getPlayStyleByName } from "@/data/playstyles";
+import { getPlayStylePlusRequirements } from "@/data/playstylePlusRequirements";
 import { CATEGORY_ORDER } from "@/data/categories";
 import { MIN_LEVEL, MAX_LEVEL } from "@/data/levelProgression";
 import { evaluateBuild } from "@/lib/buildEngine";
 import { getPhysicalModifiers } from "@/lib/physicalModifiers";
+import {
+  canApplyPlayStyleAutoUpgrade,
+  planPlayStyleAutoUpgrade,
+} from "@/lib/playstyleRequirements";
 import type { AnimationThreshold } from "@/lib/animationOptimizer";
-import type { Archetype, CategoryName, MasteriesState } from "@/types";
+import type {
+  Archetype,
+  CategoryName,
+  MasteriesState,
+  PlayStyleRequirement,
+} from "@/types";
 
 const FALLBACK_ARCHETYPE = getArchetype(DEFAULT_ARCHETYPE) as Archetype;
 
@@ -362,6 +372,18 @@ export default function Page() {
     setAnimationsOpen(true);
   }, []);
 
+  const autoUpgradeForRequirements = useCallback(
+    (requirements: PlayStyleRequirement[]) => {
+      const plan = planPlayStyleAutoUpgrade(requirements, breakdown);
+      if (!canApplyPlayStyleAutoUpgrade(plan, build.remainingAp)) return false;
+      if (Object.keys(plan.targetStats).length > 0) {
+        setTargetStats((prev) => ({ ...prev, ...plan.targetStats }));
+      }
+      return true;
+    },
+    [breakdown, build.remainingAp],
+  );
+
   return (
     <>
       <BudgetBar
@@ -528,9 +550,13 @@ export default function Page() {
         open={playStyleSlot !== null}
         onClose={() => setPlayStyleSlot(null)}
         statTotals={statTotals}
+        breakdown={build.breakdown}
+        availableAp={build.remainingAp}
         selectedIds={playStyleSelection}
         onSelect={(id) => {
           if (playStyleSlot === null) return;
+          const playStyle = getPlayStyle(id);
+          if (!playStyle || !autoUpgradeForRequirements(playStyle.requirements)) return;
           setPlayStyleSelection((prev) => {
             const next = [...prev];
             next[playStyleSlot] = id;
@@ -545,8 +571,11 @@ export default function Page() {
         onClose={() => setPlusPickerOpen(false)}
         archetype={activeArchetype}
         breakdown={build.breakdown}
+        availableAp={build.remainingAp}
         selectedId={selectedPlusId}
         onSelect={(id) => {
+          const requirements = getPlayStylePlusRequirements(archetype, id);
+          if (!requirements || !autoUpgradeForRequirements(requirements)) return;
           setSelectedPlusId(resolvePlusSelection(archetype, id));
           setPlusPickerOpen(false);
         }}

@@ -3,7 +3,11 @@
 import { useEffect } from "react";
 import { getPlayStyleByName } from "@/data/playstyles";
 import { getPlayStylePlusRequirements } from "@/data/playstylePlusRequirements";
-import { estimatePlayStyleRequirements } from "@/lib/playstyleRequirements";
+import {
+  canApplyPlayStyleAutoUpgrade,
+  estimatePlayStyleRequirements,
+  planPlayStyleAutoUpgrade,
+} from "@/lib/playstyleRequirements";
 import { attributeLabel } from "@/lib/attributeNames";
 import type { Archetype, AttributeBreakdown } from "@/types";
 
@@ -12,6 +16,7 @@ interface PlayStylePlusPickerModalProps {
   onClose: () => void;
   archetype: Archetype;
   breakdown: AttributeBreakdown[];
+  availableAp: number;
   selectedId: string | null;
   onSelect: (id: string) => void;
 }
@@ -21,6 +26,7 @@ export default function PlayStylePlusPickerModal({
   onClose,
   archetype,
   breakdown,
+  availableAp,
   selectedId,
   onSelect,
 }: PlayStylePlusPickerModalProps) {
@@ -74,17 +80,27 @@ export default function PlayStylePlusPickerModal({
             const estimates = requirements
               ? estimatePlayStyleRequirements({ ...playStyle, requirements }, breakdown)
               : [];
-            const available = Boolean(requirements) && estimates.every((requirement) => requirement.reachable);
-            const apCost = estimates.reduce((sum, requirement) => sum + requirement.apCost, 0);
+            const plan = requirements
+              ? planPlayStyleAutoUpgrade(requirements, breakdown)
+              : { targetStats: {}, apCost: 0, reachable: false };
+            const canApply = Boolean(requirements) && canApplyPlayStyleAutoUpgrade(plan, availableAp);
             const isSelected = playStyle.id === selectedId;
 
             return (
               <button
                 key={playStyle.id}
                 type="button"
-                onClick={() => onSelect(playStyle.id)}
+                disabled={!canApply}
+                onClick={() => canApply && onSelect(playStyle.id)}
                 aria-pressed={isSelected}
-                className={`flex w-full items-start gap-3 rounded-xl border p-3 text-left transition sm:items-center sm:p-3.5 ${
+                title={
+                  !plan.reachable
+                    ? "Requirement exceeds this archetype's cap"
+                    : canApply
+                      ? `Automatically upgrade stats for ${plan.apCost} AP`
+                      : `Requires ${plan.apCost} AP; ${availableAp} AP available`
+                }
+                className={`flex w-full items-start gap-3 rounded-xl border p-3 text-left transition disabled:cursor-not-allowed disabled:opacity-50 sm:items-center sm:p-3.5 ${
                   isSelected
                     ? "border-amber-300/60 bg-amber-300/[0.08]"
                     : "border-line bg-[#111914] hover:border-amber-300/35 hover:bg-amber-300/[0.03]"
@@ -130,9 +146,11 @@ export default function PlayStylePlusPickerModal({
                   <span className="mt-2 block text-[10px] font-semibold uppercase tracking-wider text-muted">
                     {!requirements
                       ? "Gold requirement data unavailable"
-                      : available
-                        ? `Estimated additional cost: ${apCost} AP`
-                        : "Requirement exceeds this archetype's cap"}
+                      : !plan.reachable
+                        ? "Requirement exceeds this archetype's cap"
+                        : canApply
+                          ? `Estimated additional cost: ${plan.apCost} AP`
+                          : `Requires ${plan.apCost} AP · ${availableAp} AP available`}
                   </span>
                 </span>
                 <span aria-hidden="true" className="hidden text-amber-300 sm:block">›</span>
