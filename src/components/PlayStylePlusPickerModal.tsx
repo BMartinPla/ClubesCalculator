@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { getPlayStyleByName } from "@/data/playstyles";
+import { getPlayStylePlusRequirements } from "@/data/playstylePlusRequirements";
 import { estimatePlayStyleRequirements } from "@/lib/playstyleRequirements";
 import { attributeLabel } from "@/lib/attributeNames";
 import type { Archetype, AttributeBreakdown } from "@/types";
@@ -69,8 +70,11 @@ export default function PlayStylePlusPickerModal({
 
         <div className="min-h-0 flex-1 space-y-2 overflow-y-auto p-4 sm:p-5">
           {specializations.map((playStyle) => {
-            const estimates = estimatePlayStyleRequirements(playStyle, breakdown);
-            const available = estimates.every((requirement) => requirement.reachable);
+            const requirements = getPlayStylePlusRequirements(archetype.name, playStyle.id);
+            const estimates = requirements
+              ? estimatePlayStyleRequirements({ ...playStyle, requirements }, breakdown)
+              : [];
+            const available = Boolean(requirements) && estimates.every((requirement) => requirement.reachable);
             const apCost = estimates.reduce((sum, requirement) => sum + requirement.apCost, 0);
             const isSelected = playStyle.id === selectedId;
 
@@ -105,24 +109,30 @@ export default function PlayStylePlusPickerModal({
                       <span className="chip bg-amber-300/10 text-amber-200">Equipped</span>
                     )}
                   </span>
-                  <span className="mt-2 flex flex-wrap gap-1">
-                    {estimates.map((requirement) => (
-                      <span
-                        key={requirement.attributeId}
-                        className={`chip ${
-                          requirement.met
-                            ? "bg-pitch/15 text-pitch"
-                            : requirement.reachable
-                              ? "bg-rose-500/15 text-rose-300"
-                              : "bg-zinc-700/40 text-zinc-400"
-                        }`}
-                      >
-                        {attributeLabel(requirement.attributeId)} {requirement.current} → {requirement.min}
-                      </span>
-                    ))}
-                  </span>
+                  {requirements && (
+                    <span className="mt-2 flex flex-wrap gap-1">
+                      {estimates.map((requirement) => (
+                        <span
+                          key={requirement.attributeId}
+                          className={`chip ${
+                            requirement.met
+                              ? "bg-pitch/15 text-pitch"
+                              : requirement.reachable
+                                ? "bg-rose-500/15 text-rose-300"
+                                : "bg-zinc-700/40 text-zinc-400"
+                          }`}
+                        >
+                          {attributeLabel(requirement.attributeId)} {requirement.current} → {requirement.min}
+                        </span>
+                      ))}
+                    </span>
+                  )}
                   <span className="mt-2 block text-[10px] font-semibold uppercase tracking-wider text-muted">
-                    {available ? `Estimated additional cost: ${apCost} AP` : "Requirement exceeds this archetype's cap"}
+                    {!requirements
+                      ? "Gold requirement data unavailable"
+                      : available
+                        ? `Estimated additional cost: ${apCost} AP`
+                        : "Requirement exceeds this archetype's cap"}
                   </span>
                 </span>
                 <span aria-hidden="true" className="hidden text-amber-300 sm:block">›</span>

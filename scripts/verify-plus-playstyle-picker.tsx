@@ -9,6 +9,7 @@ import { getPlayStyleByName } from "../src/data/playstyles";
 import { ARCHETYPES } from "../src/data/archetypes";
 import { evaluateBuild } from "../src/lib/buildEngine";
 import { estimatePlayStyleRequirements } from "../src/lib/playstyleRequirements";
+import { getPlayStylePlusRequirements } from "../src/data/playstylePlusRequirements";
 
 Object.assign(globalThis, { React });
 
@@ -48,6 +49,10 @@ for (const entry of ARCHETYPES) {
     const playStyle = getPlayStyleByName(specialization);
     if (!playStyle) {
       throw new Error(`${entry.name} specialization ${specialization} is missing from PlayStyles`);
+    }
+    const plusRequirements = getPlayStylePlusRequirements(entry.name, playStyle.id);
+    if (!plusRequirements || plusRequirements.length !== 3) {
+      throw new Error(`${entry.name} ${specialization}+ is missing its three gold stat requirements`);
     }
     if (!existsSync(resolve(process.cwd(), "public", playStyle.iconplus.slice(1)))) {
       throw new Error(`${entry.name} specialization ${specialization} has no gold icon file`);
@@ -95,13 +100,27 @@ if (!pickerMarkup.includes("Finishing") || !pickerMarkup.includes("→")) {
 
 const chipShot = getPlayStyleByName("Chip Shot");
 if (!chipShot) throw new Error("Chip Shot specialization is missing");
+const chipShotPlusRequirements = getPlayStylePlusRequirements("Finisher", chipShot.id);
+if (!chipShotPlusRequirements) throw new Error("Finisher Chip Shot+ requirements are missing");
+if (
+  chipShotPlusRequirements.map(({ attributeId, min }) => `${attributeId}:${min}`).join(",") !==
+  "ball_control:90,composure:92,reactions:90"
+) {
+  throw new Error("Finisher Chip Shot+ must use its own gold thresholds, not regular PlayStyle requirements");
+}
 const chipShotEstimate = estimatePlayStyleRequirements(
-  chipShot,
+  { ...chipShot, requirements: chipShotPlusRequirements },
   evaluateBuild("Finisher").breakdown,
 );
 const chipShotAp = chipShotEstimate.reduce((sum, requirement) => sum + requirement.apCost, 0);
 if (chipShotAp <= 0 || !pickerMarkup.includes(`Estimated additional cost: ${chipShotAp} AP`)) {
   throw new Error("PlayStyle+ AP estimate does not match its stat requirements");
+}
+for (const threshold of ["Ball Control", "Composure", "Reactions"]) {
+  if (!pickerMarkup.includes(threshold)) throw new Error(`PlayStyle+ picker is missing ${threshold}`);
+}
+if (!pickerMarkup.includes("→ 92") || !pickerMarkup.includes("→ 90")) {
+  throw new Error("PlayStyle+ picker is not displaying the gold requirement thresholds");
 }
 
 const capBlockedStyle = getPlayStyleByName("Bruiser");
