@@ -3,6 +3,7 @@
 import { forwardRef } from "react";
 import { CATEGORY_ORDER } from "@/data/categories";
 import { PLAYSTYLES, getArchetypeIcon } from "@/data/playstyles";
+import { attributeNameToEn } from "@/lib/attributeNames";
 import type {
   Archetype,
   ArchetypeMastery,
@@ -76,9 +77,10 @@ const CATEGORY_LABELS: Record<CategoryName, string> = {
 
 const labelFor = (attribute: string) => ATTRIBUTE_LABELS[attribute] ?? attribute;
 
-/** 3-letter Spanish abbreviation, e.g. "Compostura" -> "Com", "GK_Paradas" -> "Par". */
+/** 3-letter English abbreviation, e.g. "Compostura" -> "Com", "GK_Paradas" -> "Han". */
 function abbrev(stat: string): string {
-  const clean = stat.startsWith("GK_") ? stat.slice(3) : stat;
+  const english = attributeNameToEn(stat);
+  const clean = english.startsWith("GK ") ? english.slice(3) : english;
   const short = clean.slice(0, 3);
   return short.charAt(0).toUpperCase() + short.slice(1).toLowerCase();
 }

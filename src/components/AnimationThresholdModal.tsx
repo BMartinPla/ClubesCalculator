@@ -11,6 +11,7 @@ import {
 import { CATEGORY_LABELS } from "@/data/categories";
 import type { CategoryName } from "@/types";
 import UiIcon from "@/components/UiIcon";
+import { attributeNameToEn } from "@/lib/attributeNames";
 
 interface AnimationThresholdModalProps {
   open: boolean;
@@ -199,7 +200,7 @@ export default function AnimationThresholdModal({
                               : "border-line bg-surface-input text-zinc-300 hover:border-line-strong hover:bg-white/[0.04]"
                           }`}
                         >
-                          {attr}
+                          {attributeNameToEn(attr)}
                         </button>
                       );
                     })}
@@ -300,7 +301,7 @@ export default function AnimationThresholdModal({
               </button>
               {hasSelection && !current.isPossible && (
                 <p className="mt-2 text-center text-[11px] text-rose-300">
-                  Current archetype cannot reach: {current.impossibleAttributes.join(", ")}
+                  Current archetype cannot reach: {current.impossibleAttributes.map(attributeNameToEn).join(", ")}
                 </p>
               )}
             </div>

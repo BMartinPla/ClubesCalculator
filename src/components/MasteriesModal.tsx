@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import type { ArchetypeMastery, MasteriesState } from "@/types";
 import { getArchetypeIcon } from "@/data/playstyles";
 import UiIcon from "@/components/UiIcon";
+import { attributeNameToEn } from "@/lib/attributeNames";
 
 interface MasteriesModalProps {
   open: boolean;
@@ -18,8 +19,8 @@ interface MasteriesModalProps {
 /** "+1 Composure, +2 Finishing" (skips zero bonuses). */
 function bonusLabel(m: ArchetypeMastery): string {
   const parts: string[] = [];
-  if (m.bonus_1 > 0) parts.push(`+${m.bonus_1} ${m.stat_1}`);
-  if (m.bonus_2 > 0) parts.push(`+${m.bonus_2} ${m.stat_2}`);
+  if (m.bonus_1 > 0) parts.push(`+${m.bonus_1} ${attributeNameToEn(m.stat_1)}`);
+  if (m.bonus_2 > 0) parts.push(`+${m.bonus_2} ${attributeNameToEn(m.stat_2)}`);
   return parts.length > 0 ? parts.join(", ") : "No bonus";
 }
 
