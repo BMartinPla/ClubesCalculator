@@ -54,7 +54,7 @@ function Control({
         <label htmlFor={id} className="text-[11px] font-bold uppercase tracking-wider text-muted">
           {label}
         </label>
-        <span className="data-number text-sm font-bold text-white">
+        <span className="data-number text-base font-bold text-white">
           {value}
           <span className="ml-0.5 text-xs font-medium text-muted">{unit}</span>
           <span className="ml-2 text-[11px] font-medium text-muted">{altText}</span>
@@ -80,7 +80,7 @@ function Control({
         <button
           type="button"
           onClick={() => onChange(defaultValue)}
-          className="text-muted underline-offset-2 hover:text-pitch hover:underline"
+          className="focus-ring rounded px-1 text-muted underline-offset-2 transition-colors hover:text-pitch hover:underline"
         >
           Base {defaultValue}
         </button>
@@ -108,11 +108,9 @@ export default function PhysicalControls({
 
   return (
     <div className="panel flex flex-col p-3.5">
-      <div className="mb-3 flex items-center justify-between">
+      <div className="panel-head">
         <h2 className="panel-title">Physical</h2>
-        <span className="text-[10px] font-semibold uppercase tracking-widest text-muted">
-          Height & Weight
-        </span>
+        <span className="panel-kicker">Height & Weight</span>
       </div>
       <div className="flex flex-col gap-2.5">
         <Control

@@ -52,13 +52,21 @@ body {
 @layer components {
   .panel {
     @apply rounded-xl border;
-    background: linear-gradient(145deg, rgba(20, 28, 23, 0.97), rgba(13, 19, 16, 0.97));
+    background: linear-gradient(160deg, rgba(21, 30, 24, 0.97), rgba(12, 18, 15, 0.97));
     border-color: var(--border);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.018);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.03);
   }
   .panel-title {
     @apply text-[10px] font-extrabold uppercase tracking-[0.16em];
-    color: #c2ccc4;
+    color: #d3dcd5;
+  }
+  .panel-head {
+    @apply mb-3 flex items-center justify-between gap-2 border-b pb-2.5;
+    border-color: rgba(39, 51, 45, 0.7);
+  }
+  .panel-kicker {
+    @apply text-[9px] font-semibold uppercase tracking-[0.14em];
+    color: rgba(160, 172, 164, 0.8);
   }
   .chip {
     @apply inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-[10px] font-bold;
@@ -112,19 +120,19 @@ body {
 }
 
 .ap-range::-webkit-slider-runnable-track {
-  height: 5px;
+  height: 6px;
   border-radius: 999px;
   background: linear-gradient(to right, var(--accent) 0 var(--range-progress, 0%), var(--range-track) var(--range-progress, 0%) 100%);
 }
 
 .ap-range::-moz-range-track {
-  height: 5px;
+  height: 6px;
   border-radius: 999px;
   background: var(--range-track);
 }
 
 .ap-range::-moz-range-progress {
-  height: 5px;
+  height: 6px;
   border-radius: 999px;
   background: var(--accent);
 }
@@ -132,8 +140,8 @@ body {
 .ap-range::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
   margin-top: -5px;
   border: 2px solid #e9ffd1;
   border-radius: 50%;
@@ -155,6 +163,112 @@ body {
   border-radius: 50%;
   background: #a9e83f;
   box-shadow: 0 0 0 3px rgba(186, 250, 76, 0.12);
+}
+
+/* ---- Archetype hero (horizontal accordion) ---------------------------- */
+:root {
+  --hero-ease: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.archetype-hero-pitch {
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      rgba(186, 250, 76, 0.028) 0 28px,
+      transparent 28px 56px
+    ),
+    radial-gradient(ellipse at 20% 0%, rgba(186, 250, 76, 0.09), transparent 60%);
+}
+
+.archetype-hero-vertical {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Artwork: same geometry in both states so only left/transform/opacity animate. */
+.archetype-hero-art {
+  --art-hover: 1;
+  position: absolute;
+  top: 50%;
+  right: -1rem;
+  height: 78%;
+  width: auto;
+  max-width: none;
+  opacity: 0.22;
+  transform: translateY(-50%) scale(var(--art-hover));
+  transition: transform 600ms var(--hero-ease), opacity 450ms ease;
+}
+
+.group:hover .archetype-hero-art {
+  --art-hover: 1.05;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --hero-ease: cubic-bezier(0.32, 0.72, 0, 1);
+    --hero-duration: 650ms;
+  }
+
+  .archetype-hero-item {
+    flex-grow: var(--grow, 1);
+    transition: flex-grow var(--hero-duration) var(--hero-ease);
+  }
+
+  /* Collapsed: artwork centred and faint. Expanded: it glides to the right edge. */
+  .archetype-hero-art {
+    right: auto;
+    left: 50%;
+    height: 86%;
+    opacity: 0.1;
+    transform: translate(-50%, -50%) scale(calc(0.88 * var(--art-hover)));
+    transition:
+      left var(--hero-duration) var(--hero-ease),
+      transform var(--hero-duration) var(--hero-ease),
+      opacity 500ms ease;
+  }
+
+  [data-expanded="true"] .archetype-hero-art {
+    left: 100%;
+    opacity: 0.3;
+    transform: translate(calc(-100% + 1.5rem), -50%) scale(var(--art-hover));
+  }
+
+  /* Expanded content: leaves quickly, arrives once the card has room. */
+  .archetype-hero-content {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 160ms ease, transform 160ms ease;
+  }
+
+  [data-expanded="true"] .archetype-hero-content {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 380ms ease 200ms,
+      transform 520ms var(--hero-ease) 200ms;
+  }
+
+  /* Vertical rail: hides instantly on expand, fades back in after collapsing. */
+  .archetype-hero-rail {
+    opacity: 1;
+    transition: opacity 320ms ease 260ms;
+  }
+
+  [data-expanded="true"] .archetype-hero-rail {
+    opacity: 0;
+    transition: opacity 140ms ease;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .archetype-hero-item,
+  .archetype-hero-art,
+  .archetype-hero-content,
+  .archetype-hero-rail {
+    transition-delay: 0s !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

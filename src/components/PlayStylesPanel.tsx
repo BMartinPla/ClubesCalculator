@@ -48,9 +48,9 @@ export default function PlayStylesPanel({
 
   return (
     <div className="panel flex flex-col p-3.5">
-      <div className="mb-3 flex items-center justify-between gap-2">
+      <div className="panel-head">
         <h2 className="panel-title">PlayStyles</h2>
-          <span className="chip bg-white/[0.05] text-muted">
+        <span className="chip bg-white/[0.05] text-muted">
           Lv {level} · {silverSlots}/{getSilverSlotCount(40)} slots
         </span>
       </div>
@@ -67,12 +67,12 @@ export default function PlayStylesPanel({
                 type="button"
                 disabled={locked}
                 onClick={() => (locked ? undefined : onOpenPicker(i))}
-                className={`flex h-14 w-14 items-center justify-center rounded-full border-2 transition ${
+                className={`focus-ring flex h-14 w-14 items-center justify-center rounded-full border-2 transition ${
                   locked
-                    ? "cursor-not-allowed border-rose-500/25 bg-black/40 opacity-50"
+                    ? "cursor-not-allowed border-line bg-black/40 opacity-60"
                     : ps
-                  ? "border-pitch bg-pitch/10 shadow-[0_0_18px_rgba(186,250,76,.1)]"
-                  : "border-dashed border-line-strong bg-black/25 hover:border-brand hover:bg-brand/5"
+                      ? "border-pitch bg-pitch/10 shadow-[0_0_18px_rgba(186,250,76,.12)] hover:scale-105"
+                      : "border-dashed border-line-strong bg-black/25 hover:scale-105 hover:border-brand hover:bg-brand/5"
                 }`}
                 aria-label={ps ? ps.name : "Empty slot"}
               >
@@ -80,17 +80,24 @@ export default function PlayStylesPanel({
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={ps.icon} alt={ps.name} width={38} height={38} />
                 ) : (
-                  <span className="text-lg text-muted">{locked ? "🔒" : "+"}</span>
+                  locked ? (
+                    <svg viewBox="0 0 24 24" className="h-5 w-5 text-muted" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <rect x="5" y="11" width="14" height="10" rx="2" />
+                      <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+                    </svg>
+                  ) : (
+                    <span className="text-xl font-light text-muted">+</span>
+                  )
                 )}
               </button>
-              <span className="w-full truncate text-center text-[10px] text-muted">
+              <span className={`w-full truncate text-center text-[10px] ${ps && !locked ? "font-semibold text-zinc-200" : "text-muted"}`}>
                 {locked ? `Lv ${[5, 15, 40][i]}` : ps ? ps.name : "Empty"}
               </span>
               {ps && !locked && (
                 <button
                   type="button"
                   onClick={() => onClear(i)}
-                  className="text-[9px] text-muted hover:text-rose-400"
+                  className="focus-ring rounded px-1 text-[9px] font-semibold uppercase tracking-wider text-muted transition-colors hover:text-rose-400"
                 >
                   clear
                 </button>
@@ -136,7 +143,7 @@ export default function PlayStylesPanel({
           type="button"
           onClick={onOpenPlusPicker}
           aria-label="Choose a PlayStyle+"
-          className="focus-ring mt-3 flex w-full items-center gap-2 border-t border-line pt-3 text-left"
+          className="focus-ring group mt-3 flex w-full items-center gap-2.5 rounded-lg border border-gold/20 bg-gold/[0.04] p-2.5 text-left transition-colors hover:border-gold/40 hover:bg-gold/[0.07]"
         >
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-amber-300/20 bg-amber-300/[0.06]">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -150,7 +157,7 @@ export default function PlayStylesPanel({
               {signature.name} +
             </span>
           </span>
-          <span className="text-xs font-semibold text-amber-300">Change</span>
+          <span className="rounded-md border border-gold/25 px-2 py-1 text-[11px] font-bold text-amber-300 transition-colors group-hover:bg-gold/10">Change</span>
         </button>
       )}
     </div>

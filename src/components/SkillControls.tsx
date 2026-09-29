@@ -38,7 +38,7 @@ function StarRow({
         </span>
         <span
           className={`data-number rounded-md px-2 py-1 text-[10px] font-bold ${
-            cost > 0 ? "bg-pitch/10 text-pitch" : "text-muted"
+            cost > 0 ? "bg-pitch/10 text-pitch" : "bg-white/[0.04] text-muted"
           }`}
         >
           +{cost} AP
@@ -58,16 +58,23 @@ function StarRow({
                 aria-label={`${title}: ${n}`}
                 aria-pressed={n === value}
                 title={allowed ? `${title}: ${n}` : `${title} out of range (${min}–${max})`}
-                className={`focus-ring flex h-8 w-8 items-center justify-center rounded-md text-base leading-none transition ${
-                  filled ? "text-gold" : "text-white/20"
-                } ${allowed ? "hover:scale-110 hover:text-amber-300" : "cursor-not-allowed opacity-30"}`}
+                className={`focus-ring flex h-8 w-8 items-center justify-center rounded-md text-lg leading-none transition ${
+                  filled
+                    ? "text-gold drop-shadow-[0_0_6px_rgba(243,201,105,.35)]"
+                    : allowed
+                      ? "text-white/35"
+                      : "text-white/15"
+                } ${allowed ? "hover:scale-110 hover:bg-white/[0.04] hover:text-amber-300" : "cursor-not-allowed"}`}
               >
                 ★
               </button>
             );
           })}
         </div>
-        <span className="font-mono text-sm font-extrabold text-white">{value}/5</span>
+        <span className="data-number text-sm font-extrabold text-white">
+          {value}
+          <span className="text-muted">/5</span>
+        </span>
       </div>
     </div>
   );
@@ -87,11 +94,9 @@ export default function SkillControls({
 }: SkillControlsProps) {
   return (
     <div className="panel flex flex-col p-3.5">
-      <div className="mb-3 flex items-center justify-between">
+      <div className="panel-head">
         <h2 className="panel-title">Skill Moves & Weak Foot</h2>
-        <span className="text-[10px] font-semibold uppercase tracking-widest text-muted">
-          Costs AP
-        </span>
+        <span className="panel-kicker">Costs AP</span>
       </div>
       <div className="flex flex-col gap-2.5">
         <StarRow

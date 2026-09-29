@@ -10,6 +10,7 @@ import {
 } from "react";
 
 import AnimationThresholdModal from "@/components/AnimationThresholdModal";
+import ArchetypeHero from "@/components/ArchetypeHero";
 import BudgetBar from "@/components/BudgetBar";
 import CategorySection from "@/components/CategorySection";
 import ExportBuildModal from "@/components/ExportBuildModal";
@@ -388,16 +389,11 @@ export default function Page() {
     <>
       <BudgetBar
         ref={headerRef}
-        archetypes={ARCHETYPES}
-        archetypeName={archetype}
-        onArchetypeSelect={selectArchetype}
         spent={build.totalApSpent}
         maxAp={build.maxAp}
         statsApCost={build.statsApCost}
         starsApCost={build.totalStarsCost}
-        level={level}
         shareUrl={shareUrl}
-        onLevelChange={(lvl) => setLevel(clampLevel(lvl))}
         onReset={resetPoints}
         onExport={() => setExportOpen(true)}
       />
@@ -406,36 +402,56 @@ export default function Page() {
         className="mx-auto max-w-[1680px] px-3 pb-10 sm:px-5 xl:px-7"
         style={{ paddingTop: (headerH || 88) + 14 }}
       >
+        {/* ---- Hero: archetype accordion (the builder's archetype selector) ---- */}
+        <ArchetypeHero
+          archetypes={ARCHETYPES}
+          selected={archetype}
+          onSelect={selectArchetype}
+          level={level}
+          onLevelChange={(lvl) => setLevel(clampLevel(lvl))}
+        />
+
         {/* ---- Left: Tools + PlayStyles + Skills + Physical · Right: attributes ---- */}
         <div className="grid grid-cols-1 items-start gap-4 lg:grid-cols-[300px_minmax(0,1fr)] xl:grid-cols-[320px_minmax(0,1fr)] 2xl:grid-cols-[340px_minmax(0,1fr)]">
           <div className="flex min-w-0 flex-col gap-3.5">
             {/* Tools (horizontal, on top) */}
-            <div className="panel flex flex-wrap items-center gap-2 p-3.5">
-              <span className="panel-title flex w-full items-center justify-between px-0.5 pb-0.5">Tools <span className="text-[9px] font-semibold tracking-normal text-muted/80">BUILD UTILITIES</span></span>
-              <button
-                type="button"
-                onClick={() => setMasteriesOpen(true)}
-                className={`focus-ring flex min-h-10 items-center gap-2 rounded-lg border px-3 py-2 text-xs font-bold transition ${
-                  activeMasteriesCount > 0
-                    ? "border-brand/40 bg-brand/10 text-brand"
-                    : "border-line bg-[#0b110e] text-zinc-300 hover:border-line-strong hover:bg-surface-raised"
-                }`}
-              >
-                <UiIcon name="trophy" /> Masteries
-                <span className="rounded bg-white/[0.06] px-1.5 py-0.5 text-[10px] font-bold">
-                  {activeMasteriesCount}/{ARCHETYPE_MASTERIES.length}
-                </span>
-              </button>
-              <button
-                type="button"
-                onClick={() => openAnimations(71)}
-                className="focus-ring flex min-h-10 items-center gap-2 rounded-lg border border-line bg-[#0b110e] px-3 py-2 text-xs font-bold text-zinc-300 transition hover:border-line-strong hover:bg-surface-raised"
-              >
-                <UiIcon name="film" /> Animations
-                <span className="rounded bg-white/[0.06] px-1.5 py-0.5 font-mono text-[10px] text-muted">
-                  Base / Improved
-                </span>
-              </button>
+            <div className="panel p-3.5">
+              <div className="panel-head">
+                <h2 className="panel-title">Tools</h2>
+                <span className="panel-kicker">Build utilities</span>
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                <button
+                  type="button"
+                  onClick={() => setMasteriesOpen(true)}
+                  className={`focus-ring group flex min-h-[4.25rem] flex-col items-start justify-between gap-1.5 rounded-lg border p-2.5 text-left text-xs font-bold transition ${
+                    activeMasteriesCount > 0
+                      ? "border-brand/40 bg-brand/10 text-brand hover:border-brand/60"
+                      : "border-line bg-[#0b110e] text-zinc-200 hover:border-line-strong hover:bg-surface-raised"
+                  }`}
+                >
+                  <span className="flex w-full items-center justify-between gap-2">
+                    <UiIcon name="trophy" />
+                    <span className="data-number rounded bg-white/[0.06] px-1.5 py-0.5 text-[10px] font-bold">
+                      {activeMasteriesCount}/{ARCHETYPE_MASTERIES.length}
+                    </span>
+                  </span>
+                  Masteries
+                </button>
+                <button
+                  type="button"
+                  onClick={() => openAnimations(71)}
+                  className="focus-ring group flex min-h-[4.25rem] flex-col items-start justify-between gap-1.5 rounded-lg border border-line bg-[#0b110e] p-2.5 text-left text-xs font-bold text-zinc-200 transition hover:border-line-strong hover:bg-surface-raised"
+                >
+                  <span className="flex w-full items-center justify-between gap-2">
+                    <UiIcon name="film" />
+                    <span className="rounded bg-white/[0.06] px-1.5 py-0.5 font-mono text-[9px] font-medium text-muted">
+                      Base / Improved
+                    </span>
+                  </span>
+                  Animations
+                </button>
+              </div>
             </div>
 
             <PlayStylesPanel
@@ -482,22 +498,41 @@ export default function Page() {
           </div>
 
           {/* Attributes only */}
-          <div className="grid min-w-0 grid-cols-1 content-start gap-3.5 sm:grid-cols-2 2xl:gap-4">
-            {[0, 1].map((column) => (
-              <div key={column} className="flex min-w-0 flex-col gap-3.5">
-                {categories
-                  .filter((_, index) => index % 2 === column)
-                  .map((category) => (
-                    <CategorySection
-                      key={category}
-                      category={category}
-                      entries={entriesByCategory.get(category) ?? []}
-                      categoryAp={build.byCategory[category] ?? 0}
-                      onStatChange={handleStatChange}
-                    />
-                  ))}
+          <div className="min-w-0">
+            <div className="mb-3 flex flex-wrap items-end justify-between gap-x-4 gap-y-2 px-0.5">
+              <div>
+                <h2 className="text-sm font-extrabold uppercase tracking-[0.12em] text-white">
+                  Attributes
+                </h2>
+                <p className="mt-0.5 text-[11px] text-muted">
+                  <span className="data-number font-semibold text-zinc-200">{build.statsApCost}</span> AP
+                  in stats · {breakdown.filter((e) => e.targetStat > e.baseStat).length} trained
+                </p>
               </div>
-            ))}
+              <ul className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] font-semibold text-muted" aria-label="Stat color scale">
+                <li className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-pitch" aria-hidden="true" />80+</li>
+                <li className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-gold" aria-hidden="true" />70–79</li>
+                <li className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-orange-400" aria-hidden="true" />60–69</li>
+                <li className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-rose-500" aria-hidden="true" />&lt;60</li>
+              </ul>
+            </div>
+            <div className="grid min-w-0 grid-cols-1 content-start gap-3.5 sm:grid-cols-2 2xl:gap-4">
+              {[0, 1].map((column) => (
+                <div key={column} className="flex min-w-0 flex-col gap-3.5">
+                  {categories
+                    .filter((_, index) => index % 2 === column)
+                    .map((category) => (
+                      <CategorySection
+                        key={category}
+                        category={category}
+                        entries={entriesByCategory.get(category) ?? []}
+                        categoryAp={build.byCategory[category] ?? 0}
+                        onStatChange={handleStatChange}
+                      />
+                    ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 

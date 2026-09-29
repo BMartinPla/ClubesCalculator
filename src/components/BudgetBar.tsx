@@ -2,38 +2,25 @@
 
 import { forwardRef, useEffect, useState } from "react";
 import { getBudgetStatus } from "@/lib/buildEngine";
-import { MAX_LEVEL, getMaxApForLevel } from "@/data/levelProgression";
-import ArchetypeDropdown from "@/components/ArchetypeDropdown";
 import UiIcon from "@/components/UiIcon";
-import type { Archetype } from "@/types";
 
 interface BudgetBarProps {
-  archetypes: Archetype[];
-  archetypeName: string;
-  onArchetypeSelect: (name: string) => void;
   spent: number;
   maxAp: number;
   statsApCost: number;
   starsApCost: number;
-  level: number;
   shareUrl: string;
-  onLevelChange: (level: number) => void;
   onReset: () => void;
   onExport: () => void;
 }
 
 const BudgetBar = forwardRef<HTMLElement, BudgetBarProps>(function BudgetBar(
   {
-    archetypes,
-    archetypeName,
-    onArchetypeSelect,
     spent,
     maxAp,
     statsApCost,
     starsApCost,
-    level,
     shareUrl,
-    onLevelChange,
     onReset,
     onExport,
   },
@@ -66,10 +53,10 @@ const BudgetBar = forwardRef<HTMLElement, BudgetBarProps>(function BudgetBar(
       ref={ref}
       className="fixed left-0 right-0 top-0 z-50 w-full border-b border-line bg-[#080c0a]/95 px-4 py-2.5 shadow-[0_14px_38px_rgba(0,0,0,0.36)] backdrop-blur-xl sm:px-6"
     >
-      <div className="mx-auto flex max-w-[1680px] flex-col gap-3 xl:flex-row xl:items-center xl:gap-5">
+      <div className="mx-auto flex max-w-[1680px] flex-wrap items-center gap-x-4 gap-y-2.5 xl:flex-nowrap xl:gap-5">
         {/* Left: brand */}
         <div className="flex shrink-0 items-center gap-3">
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-brand/35 bg-brand/10 text-[10px] font-extrabold leading-none tracking-tight text-brand">
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-brand/35 bg-[radial-gradient(circle_at_30%_20%,rgba(186,250,76,.22),rgba(186,250,76,.06))] text-[10px] font-extrabold leading-none tracking-tight text-brand shadow-[0_0_18px_rgba(186,250,76,.08)]">
             FC<span className="ml-0.5 text-white">27</span>
           </div>
           <div className="leading-tight">
@@ -80,41 +67,13 @@ const BudgetBar = forwardRef<HTMLElement, BudgetBarProps>(function BudgetBar(
           </div>
         </div>
 
-        {/* Archetype selector (from the header) */}
-        <div className="w-full min-w-0 xl:max-w-xs">
-          <ArchetypeDropdown
-            archetypes={archetypes}
-            selected={archetypeName}
-            onSelect={onArchetypeSelect}
-            compact
-          />
-        </div>
-
-        {/* Center: level + AP */}
-        <div className="flex flex-1 flex-wrap items-center gap-3 xl:justify-end">
-          <label className="flex items-center gap-2 rounded-lg border border-line bg-surface/80 px-3 py-2">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-muted">
-              Level
-            </span>
-            <select
-              value={level}
-              onChange={(e) => onLevelChange(Number(e.target.value))}
-              aria-label="Pro level"
-              className="cursor-pointer bg-transparent text-sm font-extrabold text-pitch focus:outline-none"
-            >
-              {Array.from({ length: MAX_LEVEL }, (_, i) => i + 1).map((lvl) => (
-                <option key={lvl} value={lvl} className="bg-panel text-white">
-                  {lvl} · {getMaxApForLevel(lvl)} AP
-                </option>
-              ))}
-            </select>
-          </label>
-
-          <div className="flex items-center gap-4 rounded-xl border border-line bg-surface/90 px-4 py-2 shadow-inner shadow-black/10">
+        {/* Center: AP */}
+        <div className="ml-auto flex items-center gap-3 xl:flex-1 xl:justify-end">
+          <div className="flex items-center gap-4 rounded-xl border border-line bg-surface/90 px-3 py-1.5 shadow-inner shadow-black/10 sm:px-4 sm:py-2">
             <div className="text-right">
               <div className="flex items-baseline justify-end gap-1.5">
                 <span
-                  className={`data-number text-2xl font-extrabold leading-none tabular-nums ${
+                  className={`data-number text-xl font-extrabold leading-none tabular-nums sm:text-2xl ${
                     isOver ? "text-rose-500" : "text-pitch"
                   }`}
                 >
@@ -124,7 +83,7 @@ const BudgetBar = forwardRef<HTMLElement, BudgetBarProps>(function BudgetBar(
                   AP Left
                 </span>
               </div>
-              <div className="mt-1.5 h-1.5 w-28 overflow-hidden rounded-full bg-line">
+              <div className="mt-1.5 h-1.5 w-24 overflow-hidden rounded-full bg-line sm:w-32">
                 <div
                   className={`h-full transition-all duration-300 ${
                     isOver ? "bg-rose-500" : "bg-pitch shadow-[0_0_10px_rgba(186,250,76,.4)]"
@@ -150,11 +109,11 @@ const BudgetBar = forwardRef<HTMLElement, BudgetBarProps>(function BudgetBar(
         </div>
 
         {/* Right: actions */}
-        <div className="flex flex-wrap items-center justify-end gap-2">
+        <div className="grid w-full grid-cols-3 gap-2 sm:flex sm:w-auto sm:flex-wrap sm:items-center sm:justify-end">
           <button
             type="button"
             onClick={onExport}
-            className="focus-ring inline-flex min-h-10 items-center gap-2 rounded-lg border border-pitch/55 bg-pitch px-4 py-2 text-sm font-extrabold text-[#10150b] shadow-[0_4px_18px_rgba(186,250,76,.12)] transition hover:bg-brand-hi hover:shadow-[0_5px_22px_rgba(186,250,76,.2)]"
+            className="focus-ring inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-pitch/55 bg-pitch px-4 py-2 text-sm font-extrabold text-[#10150b] shadow-[0_4px_18px_rgba(186,250,76,.12)] transition hover:bg-brand-hi hover:shadow-[0_5px_22px_rgba(186,250,76,.2)]"
           >
             <UiIcon name="camera" />
             Export
@@ -163,7 +122,7 @@ const BudgetBar = forwardRef<HTMLElement, BudgetBarProps>(function BudgetBar(
           <button
             type="button"
             onClick={handleShare}
-            className={`focus-ring inline-flex items-center gap-2 rounded-lg border px-3.5 py-2 text-sm font-semibold transition ${
+            className={`focus-ring inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border px-3.5 py-2 text-sm font-semibold transition ${
               copied
                 ? "border-pitch/60 bg-pitch/15 text-pitch"
                 : "border-line bg-surface/80 text-zinc-200 hover:border-line-strong hover:bg-surface-raised"
@@ -176,7 +135,7 @@ const BudgetBar = forwardRef<HTMLElement, BudgetBarProps>(function BudgetBar(
           <button
             type="button"
             onClick={onReset}
-            className="focus-ring inline-flex min-h-10 items-center gap-2 rounded-lg border border-line bg-surface/70 px-3.5 py-2 text-sm font-bold text-muted transition hover:border-rose-500/40 hover:bg-rose-500/10 hover:text-rose-300"
+            className="focus-ring inline-flex min-h-10 items-center justify-center gap-2 rounded-lg border border-line bg-surface/70 px-3.5 py-2 text-sm font-bold text-muted transition hover:border-rose-500/40 hover:bg-rose-500/10 hover:text-rose-300"
           >
             <UiIcon name="reset" />
             Reset

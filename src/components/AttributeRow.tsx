@@ -41,11 +41,27 @@ function AttributeRowBase({ entry, onChange }: AttributeRowProps) {
   const step = (delta: number) =>
     onChange(attribute, Math.min(capStat, Math.max(baseStat, targetStat + delta)));
 
+  const raised = targetStat > baseStat;
+  const gained = targetStat - baseStat;
+
   return (
-    <div className="rounded-lg border border-transparent bg-[#0a100d]/80 px-2.5 py-1.5 transition-colors duration-150 hover:border-line hover:bg-[#0c130f]">
+    <div
+      className={`relative rounded-lg border px-2.5 pb-2 pt-1.5 transition-colors duration-150 ${
+        raised
+          ? "border-brand/20 bg-brand/[0.035] hover:border-brand/35"
+          : "border-transparent bg-[#0a100d]/80 hover:border-line hover:bg-[#0c130f]"
+      }`}
+    >
+      {raised && (
+        <span
+          aria-hidden="true"
+          className="absolute inset-y-2 left-0 w-[2px] rounded-full bg-brand/70"
+        />
+      )}
+
       <div className="flex items-center justify-between gap-2">
         <div className="flex min-w-0 items-center gap-1.5">
-          <p className="truncate text-[11px] font-semibold text-zinc-200">
+          <p className="truncate text-[12px] font-semibold text-zinc-100">
             {attributeNameToEn(attribute)}
           </p>
           {physicalModifier !== 0 && (
@@ -64,19 +80,28 @@ function AttributeRowBase({ entry, onChange }: AttributeRowProps) {
           {masteryBonus > 0 && (
             <span
               title="Mastery bonus"
-              className="chip shrink-0 bg-brand/10 text-brand"
+              className="chip shrink-0 bg-gold/10 text-gold"
             >
               +{masteryBonus}M
             </span>
           )}
         </div>
 
-        <div className="flex shrink-0 items-center gap-1.5">
+        <div className="flex shrink-0 items-center gap-2">
+          {raised && (
+            <span
+              className="data-number text-[10px] font-medium text-muted"
+              title={`Base ${baseStat}, trained +${gained}`}
+            >
+              {baseStat}
+              <span className="text-brand"> +{gained}</span>
+            </span>
+          )}
           <span
-            className={`data-number min-w-[2.8rem] rounded-md px-1.5 py-1 text-right text-[10px] font-bold ${
+            className={`data-number min-w-[3.1rem] rounded-md border px-1.5 py-0.5 text-center text-[10px] font-semibold ${
               nextPointCost !== null
-                ? "bg-brand/10 text-brand"
-                : "bg-white/[0.04] text-muted"
+                ? "border-line bg-black/25 text-zinc-300"
+                : "border-gold/30 bg-gold/10 text-gold"
             }`}
             title={
               nextPointCost === null
@@ -100,7 +125,7 @@ function AttributeRowBase({ entry, onChange }: AttributeRowProps) {
           onClick={() => step(-1)}
           disabled={atBase}
           aria-label={`Decrease ${attribute}`}
-          className="focus-ring flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-line bg-surface/80 text-sm font-bold leading-none text-zinc-300 transition hover:border-line-strong hover:bg-surface-raised hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
+          className="focus-ring flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-line bg-surface/80 text-sm font-bold leading-none text-zinc-300 transition hover:border-line-strong hover:bg-surface-raised hover:text-white active:scale-95 disabled:cursor-not-allowed disabled:opacity-25"
         >
           −
         </button>
@@ -119,21 +144,21 @@ function AttributeRowBase({ entry, onChange }: AttributeRowProps) {
           />
         </div>
 
-        <span
-          className={`data-number w-8 shrink-0 text-center text-base font-bold tabular-nums ${statColor(statTotal)}`}
-        >
-          {statTotal}
-        </span>
-
         <button
           type="button"
           onClick={() => step(1)}
           disabled={atCap}
           aria-label={`Increase ${attribute}`}
-          className="focus-ring flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-line bg-surface/80 text-sm font-bold leading-none text-zinc-300 transition hover:border-line-strong hover:bg-surface-raised hover:text-white disabled:cursor-not-allowed disabled:opacity-30"
+          className="focus-ring flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-line bg-surface/80 text-sm font-bold leading-none text-zinc-300 transition hover:border-brand/40 hover:bg-brand/10 hover:text-brand active:scale-95 disabled:cursor-not-allowed disabled:opacity-25"
         >
           +
         </button>
+
+        <span
+          className={`data-number w-9 shrink-0 text-right text-lg font-bold leading-none tabular-nums ${statColor(statTotal)}`}
+        >
+          {statTotal}
+        </span>
       </div>
     </div>
   );
